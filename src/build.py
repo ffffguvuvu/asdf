@@ -17,8 +17,10 @@ from content_a import CHAPTERS_A                 # noqa: E402
 from content_b import CHAPTERS_B                 # noqa: E402
 from content_c import CHAPTERS_C                 # noqa: E402
 from extras import EXAM, TIPS, PLAN, QUICKTABLE, SOURCES  # noqa: E402
+from drills import attach                        # noqa: E402
+from genlib import ar                            # noqa: E402
 
-CHAPTERS = balance_answers(CHAPTERS_A + CHAPTERS_B + CHAPTERS_C)
+CHAPTERS = attach(balance_answers(CHAPTERS_A + CHAPTERS_B + CHAPTERS_C))
 FONT_DIR = os.path.join(ROOT, "assets", "fonts")
 
 
@@ -114,6 +116,18 @@ def render_question(ch, q, n):
 
 def render_chapter(ch):
     qs = "".join(render_question(ch, q, i + 1) for i, q in enumerate(ch["questions"]))
+    base = len(ch["questions"])
+    drill = ch.get("drill") or []
+    if drill:
+        dqs = "".join(render_question(ch, q, base + i + 1) for i, q in enumerate(drill))
+        drill_html = f"""
+  <details class="drillbox">
+    <summary><b>🎯 بنك تدريب إضافي</b> — {len(drill)} سؤالًا جديدًا على هذا النمط، كلها بالحل خطوة بخطوة
+      <span class="hint">(اضغط للفتح)</span></summary>
+    <div class="drillinner">{dqs}</div>
+  </details>"""
+    else:
+        drill_html = ""
     how = "".join(f"<li>{s}</li>" for s in ch["how"])
     traps = "".join(f"<li>{s}</li>" for s in ch["traps"])
     src = "".join(f'<span class="srcchip">▶ {s}</span>' for s in ch["source"])
@@ -126,7 +140,7 @@ def render_chapter(ch):
       <h2>{ch['title']}</h2>
       <p>{ch['subtitle']}</p>
     </div>
-    <div class="ccount">{len(ch['questions'])}<small>سؤال</small></div>
+    <div class="ccount">{len(ch['questions']) + len(ch.get('drill') or [])}<small>سؤال</small></div>
   </div>
   <div class="cintro">
     <div class="box idea"><h3>💡 فكرة السؤال</h3><p>{ch['idea']}</p></div>
@@ -135,6 +149,7 @@ def render_chapter(ch):
   </div>
   <div class="srcline">مصدر الشرح على القناة: {src}</div>
   {qs}
+  {drill_html}
   <div class="backtop"><a href="#toc">↑ العودة إلى الفهرس</a></div>
 </section>"""
 
@@ -145,7 +160,7 @@ def render_toc():
         items += (f'<a class="tocitem" href="#{ch["id"]}" style="--c1:{ch["color"]};--c2:{ch["color2"]}">'
                   f'<span class="ti">{ch["icon"]}</span>'
                   f'<span class="tt"><b>{ch["num"]}. {ch["title"]}</b><small>{ch["subtitle"]}</small></span>'
-                  f'<span class="tc">{len(ch["questions"])}</span></a>')
+                  f'<span class="tc">{len(ch["questions"]) + len(ch.get("drill") or [])}</span></a>')
     return items
 
 
@@ -159,7 +174,12 @@ def render_exam():
 
 
 def build():
-    total_q = sum(len(c["questions"]) for c in CHAPTERS)
+    total_q = sum(len(c["questions"]) + len(c.get("drill") or []) for c in CHAPTERS)
+    total_figs = 0
+    for c in CHAPTERS:
+        for q in list(c["questions"]) + list(c.get("drill") or []):
+            cells = list(q.get("stem") or []) + list(q["options"])
+            total_figs += sum(1 for x in cells if "<svg" in str(x))
     css = CSS.replace("/*FONTS*/", fonts_css())
     html = f"""<!doctype html>
 <html lang="ar" dir="rtl">
@@ -181,6 +201,7 @@ def build():
       <option value="exam">نموذج اختبار سريع</option>
     </select>
     <button id="toggleAns" class="btn">🙈 إخفاء الإجابات</button>
+    <button id="openAll" class="btn">📖 فتح بنوك التدريب</button>
     <button id="printBtn" class="btn alt">🖨️ طباعة / حفظ PDF</button>
   </div>
 </div>
@@ -191,9 +212,9 @@ def build():
     <h1>الدليل الشامل لأسئلة الذكاء <span>IQ</span></h1>
     <p class="sub">كل أنماط أسئلة الذكاء: الأشكال والصور والأعداد والحروف — مع صورة كل شكل وبجانبها طريقة الحل خطوة بخطوة</p>
     <div class="stats">
-      <div class="stat"><b>{len(CHAPTERS)}</b><span>محورًا</span></div>
-      <div class="stat"><b>{total_q}</b><span>سؤالًا محلولًا</span></div>
-      <div class="stat"><b>{total_q}</b><span>شكلًا ورسمًا</span></div>
+      <div class="stat"><b>{ar(len(CHAPTERS))}</b><span>محورًا</span></div>
+      <div class="stat"><b>{ar(total_q)}</b><span>سؤالًا محلولًا</span></div>
+      <div class="stat"><b>{ar(total_figs)}</b><span>شكلًا مرسومًا</span></div>
       <div class="stat"><b>١٠</b><span>أسئلة اختبار ذاتي</span></div>
     </div>
     <div class="credit">مُستخلَص من سلسلة شرح الـ IQ على قناة
@@ -265,12 +286,22 @@ def build():
 (function(){{
   var body = document.body;
   body.classList.add('answers-on');
+  function openAll(){{
+    document.querySelectorAll('details.drillbox').forEach(function(d){{ d.open = true; }});
+  }}
+  window.addEventListener('beforeprint', openAll);
+  var oa = document.getElementById('openAll');
+  if(oa){{ oa.addEventListener('click', function(){{
+      var any = document.querySelector('details.drillbox:not([open])');
+      document.querySelectorAll('details.drillbox').forEach(function(d){{ d.open = !!any; }});
+      oa.textContent = any ? '📕 طيّ بنوك التدريب' : '📖 فتح بنوك التدريب';
+  }}); }}
   var btn = document.getElementById('toggleAns');
   btn.addEventListener('click', function(){{
     var on = body.classList.toggle('answers-on');
     btn.textContent = on ? '🙈 إخفاء الإجابات' : '👁️ إظهار الإجابات';
   }});
-  document.getElementById('printBtn').addEventListener('click', function(){{ window.print(); }});
+  document.getElementById('printBtn').addEventListener('click', function(){{ openAll();window.print(); }});
   document.getElementById('jump').addEventListener('change', function(e){{
     var id = e.target.value;
     if(id){{ document.getElementById(id).scrollIntoView({{behavior:'smooth'}}); }}
@@ -384,6 +415,14 @@ li{margin:.25em 0}
 .qfig{background:#fbfdff;border:1px solid #e6eefc;border-radius:14px;padding:12px}
 .stem{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;align-items:center}
 .cell{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:5px;min-width:76px;flex:0 0 auto}
+.drillbox{margin:22px 10px 6px;border:2px dashed var(--c1);border-radius:18px;background:#fff}
+.drillbox>summary{cursor:pointer;padding:14px 18px;font-size:16px;color:var(--c1);
+  background:linear-gradient(90deg,color-mix(in srgb,var(--c1) 10%, #fff),#fff);border-radius:16px;list-style:none}
+.drillbox>summary::-webkit-details-marker{display:none}
+.drillbox>summary::before{content:"▶";display:inline-block;margin-inline-end:8px;transition:transform .2s}
+.drillbox[open]>summary::before{transform:rotate(90deg)}
+.drillbox>summary .hint{color:#64748b;font-size:13px;font-weight:400}
+.drillinner{padding:6px 0 10px}
 .cell svg{width:84px;height:84px;display:block}
 .cell svg.big{width:132px;height:132px}
 .cell:has(.series){width:100%;border:0;background:transparent;padding:0}

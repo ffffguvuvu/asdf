@@ -16,7 +16,9 @@ from content_c import CHAPTERS_C                 # noqa: E402
 
 from model import balance_answers, AR_LABELS     # noqa: E402
 
-ALL_CHAPTERS = balance_answers(CHAPTERS_A + CHAPTERS_B + CHAPTERS_C)
+from drills import attach                        # noqa: E402
+
+ALL_CHAPTERS = attach(balance_answers(CHAPTERS_A + CHAPTERS_B + CHAPTERS_C))
 from extras import EXAM, QUICKTABLE, TIPS, PLAN, SOURCES  # noqa: E402
 
 errors, warnings = [], []
@@ -33,7 +35,7 @@ def warn(msg):
 # ---------- 1) سلامة كل سؤال ----------
 total = 0
 for ci, ch in enumerate(ALL_CHAPTERS, 1):
-    for qi, q in enumerate(ch["questions"], 1):
+    for qi, q in enumerate(list(ch["questions"]) + list(ch.get("drill") or []), 1):
         total += 1
         tag = f"محور {ci} ({ch['title']}) — سؤال {qi}"
         opts = q["options"]
