@@ -254,18 +254,17 @@ def matrix_bank():
     # (ج) تجميع الخطوط (العمود الثالث = اتحاد العمودين)
     parts = {"v": line(50, 16, 50, 84, PURPLE, 6), "h": line(16, 50, 84, 50, PURPLE, 6),
              "d1": line(22, 22, 78, 78, PURPLE, 6), "d2": line(78, 22, 22, 78, PURPLE, 6)}
-    combos = [(("v",), ("h",), ("v", "h")), (("d1",), ("d2",), ("d1", "d2")),
-              (("v",), ("d1",), ("v", "d1")), (("h",), ("d2",), ("h", "d2"))]
-    for a, b, c in combos:
+    trios = [("v", "h", "d1"), ("d1", "d2", "v"), ("h", "d1", "d2"), ("v", "d2", "h")]
+    for pp, qq, rr in trios:
+        rows = [((pp,), (qq,), (pp, qq)), ((qq,), (rr,), (qq, rr)), ((pp,), (rr,), None)]
         cells = []
-        rows = [(a, b, c), (b, c, tuple(sorted(set(b) | set(c)))), (a, c, None)]
-        for r, (x, y, z) in enumerate(rows):
-            cells.append("".join(parts[p] for p in x))
-            cells.append("".join(parts[p] for p in y))
-            cells.append(None if z is None else "".join(parts[p] for p in z))
-        target = tuple(sorted(set(a) | set(c)))
-        wrongs = [("v", "h", "d1", "d2"), a, c]
-        opts = [fig("".join(parts[p] for p in t)) for t in [target] + wrongs]
+        for (x, y, z) in rows:
+            cells.append("".join(parts[t] for t in x))
+            cells.append("".join(parts[t] for t in y))
+            cells.append(None if z is None else "".join(parts[t] for t in z))
+        target = (pp, rr)
+        wrongs = [("v", "h", "d1", "d2"), (pp,), (qq, rr)]
+        opts = [fig("".join(parts[t] for t in tt)) for tt in [target] + wrongs]
         opts, ans = rotate_options(opts, 0, k)
         out.append(gqf("ما الشكل الناقص في المصفوفة؟", opts, ans,
                        ["القاعدة في كل صف: الخانة الثالثة = الأولى + الثانية (اتحاد الخطوط).",
@@ -396,60 +395,61 @@ def rotate_bank():
 
 # ===================================================== ٦ طي الورق والقصّ
 def fold_bank():
+    """ثقوب الورقة المطوية. ملاحظة: paper() يستقبل مواضع الثقوب كنِسَب (0..1) داخل الورقة."""
     out, k = [], 0
-    half_positions = [(0.35, 0.3), (0.3, 0.6), (0.5, 0.45), (0.6, 0.35), (0.4, 0.7)]
-    for (hx, hy) in half_positions:
-        # طيّة رأسية واحدة
-        x = 16 + 68 * hx / 2 + 34
-        y = 16 + 68 * hy
-        folded = paper(holes=[(x, y)], x=50, y=16, s=34, fill="#fde68a")
-        mx = 100 - x
-        correct = paper(holes=[(x, y), (mx, y)])
-        wrongs = [paper(holes=[(x, y)]), paper(holes=[(x, y), (x, 100 - y)]),
-                  paper(holes=[(x, y), (mx, y), (x, 100 - y), (mx, 100 - y)])]
-        opts = [fig(correct)] + [fig(w) for w in wrongs]
-        opts, ans = rotate_options(opts, 0, k)
-        out.append(gqf("ورقة طُويت نصفين ثم ثُقبت. كيف تبدو بعد فردها؟", opts, ans,
+    half_positions = [(0.34, 0.28), (0.28, 0.62), (0.52, 0.44), (0.62, 0.32), (0.40, 0.72)]
+    for (hu, hv) in half_positions:
+        # ---------- طيّة رأسية واحدة (الظاهر هو النصف الأيمن)
+        folded = paper(holes=[(hu, hv)], x=50, y=16, s=34, fill="#fde68a")
+        u = 0.5 + hu / 2
+        mu = 1 - u
+        correct = paper(holes=[(u, hv), (mu, hv)], folds=["v"])
+        wrongs = [paper(holes=[(u, hv)], folds=["v"]),
+                  paper(holes=[(u, hv), (u, 1 - hv)], folds=["v"]),
+                  paper(holes=[(u, hv), (mu, hv), (u, 1 - hv), (mu, 1 - hv)], folds=["v"])]
+        opts, ans = rotate_options([fig(correct)] + [fig(w) for w in wrongs], 0, k)
+        out.append(gqf("ورقة طُويت نصفين (طيّة رأسية) ثم ثُقبت ثقبًا واحدًا. كيف تبدو بعد فردها؟", opts, ans,
                        ["الطيّة واحدة ⇒ عدد الثقوب يتضاعف: ثقب واحد ⇐ ثقبان.",
-                        "الثقب الجديد يقابل الأصلي تمامًا على الجهة الأخرى من خط الطي.",
-                        "ارتفاع الثقبين واحد؛ المتغيّر هو الجهة فقط."],
+                        "الثقب الجديد يقابل الأصلي تمامًا على الجهة الأخرى من خط الطي الرأسي.",
+                        "ارتفاع الثقبين واحد؛ المتغيّر هو الجهة (يمين/يسار) فقط."],
                        [fig(paper(folds=["v"])), fig(folded), QM],
                        stem_note="الورقة ← بعد الطي والثقب ← المطلوب بعد الفرد",
                        tip="عدد الثقوب = الثقوب المرسومة × ٢ لكل طيّة."))
         k += 1
-        # طيّة أفقية واحدة
-        xh = 16 + 68 * hx
-        yh = 16 + 68 * hy / 2 + 34
-        folded_h = paper(holes=[(xh, yh)], x=16, y=50, s=34, fill="#fde68a")
-        correct_h = paper(holes=[(xh, yh), (xh, 100 - yh)])
-        wrongs_h = [paper(holes=[(xh, yh)]), paper(holes=[(xh, yh), (100 - xh, yh)]),
-                    paper(holes=[(xh, yh), (100 - xh, 100 - yh)])]
-        opts = [fig(correct_h)] + [fig(w) for w in wrongs_h]
-        opts, ans = rotate_options(opts, 0, k)
+        # ---------- طيّة أفقية واحدة (الظاهر هو النصف السفلي)
+        folded_h = paper(holes=[(hu, hv)], x=16, y=50, s=34, fill="#fde68a")
+        v = 0.5 + hv / 2
+        mv = 1 - v
+        correct_h = paper(holes=[(hu, v), (hu, mv)], folds=["h"])
+        wrongs_h = [paper(holes=[(hu, v)], folds=["h"]),
+                    paper(holes=[(hu, v), (1 - hu, v)], folds=["h"]),
+                    paper(holes=[(hu, v), (1 - hu, mv)], folds=["h"])]
+        opts, ans = rotate_options([fig(correct_h)] + [fig(w) for w in wrongs_h], 0, k)
         out.append(gqf("طيّة أفقية واحدة وثقب واحد: ما شكل الورقة بعد الفرد؟", opts, ans,
                        ["خط الطي أفقي ⇒ الانعكاس يكون لأعلى/لأسفل.",
                         "الثقب ينعكس فوق خط الطي بنفس البُعد عنه.",
-                        "الجهة اليمنى/اليسرى لا تتغيّر."],
+                        "الموضع يمينًا ويسارًا لا يتغيّر إطلاقًا."],
                        [fig(paper(folds=["h"])), fig(folded_h), QM],
+                       stem_note="الورقة ← بعد الطي والثقب ← المطلوب بعد الفرد",
                        tip="حدّد محور الطي أولًا؛ هو الذي يحدد اتجاه الانعكاس."))
         k += 1
-    # طيّتان
-    for (hx, hy) in [(0.4, 0.4), (0.6, 0.35), (0.35, 0.65)]:
-        x = 33 + 34 * hx
-        y = 33 + 34 * hy
-        quarter = paper(holes=[(x, y)], x=33, y=33, s=34, fill="#fde68a")
-        pts = [(x, y), (100 - x, y), (x, 100 - y), (100 - x, 100 - y)]
+    # ---------- طيّتان (الظاهر هو الربع السفلي الأيمن)
+    for (hu, hv) in [(0.38, 0.38), (0.62, 0.34), (0.34, 0.66), (0.5, 0.5)]:
+        quarter = paper(holes=[(hu, hv)], x=50, y=50, s=34, fill="#fde68a")
+        u, v = 0.5 + hu / 2, 0.5 + hv / 2
+        pts = [(u, v), (1 - u, v), (u, 1 - v), (1 - u, 1 - v)]
         correct = paper(holes=pts, folds=["v", "h"])
-        wrongs = [paper(holes=pts[:2], folds=["v", "h"]), paper(holes=pts[:1], folds=["v", "h"]),
+        wrongs = [paper(holes=pts[:2], folds=["v", "h"]),
+                  paper(holes=pts[:1], folds=["v", "h"]),
                   paper(holes=[pts[0], pts[3]], folds=["v", "h"])]
-        opts = [fig(correct)] + [fig(w) for w in wrongs]
-        opts, ans = rotate_options(opts, 0, k)
+        opts, ans = rotate_options([fig(correct)] + [fig(w) for w in wrongs], 0, k)
         out.append(gqf("ورقة طُويت مرتين (رأسيًا ثم أفقيًا) ثم ثُقبت ثقبًا واحدًا. كم ثقبًا بعد الفرد وأين؟",
                        opts, ans,
-                       ["عدد الطيّات = ٢ ⇒ عدد الثقوب = ٢² = ٤ ثقوب.",
-                        "كل ثقب ينعكس حول المحور الرأسي ثم حول الأفقي.",
+                       ["عدد الطيّات = ٢ ⇒ عدد الثقوب = ٢ × ٢ = ٤ ثقوب.",
+                        "كل ثقب ينعكس حول المحور الرأسي ثم حول المحور الأفقي.",
                         "النتيجة أربعة ثقوب متناظرة حول مركز الورقة."],
                        [fig(paper(folds=["v", "h"])), fig(quarter), QM],
+                       stem_note="الورقة ← بعد طيّتين وثقب ← المطلوب بعد الفرد",
                        tip="احفظ: ثقب واحد و n طيّة ⇐ ٢ أُس n من الثقوب."))
         k += 1
     return out
@@ -614,10 +614,21 @@ def spatial_bank():
                     fillc = "#93c5fd" if (c, r) in cells else WHITE
                     inner += rect(14 + c * s, 14 + r * s, s, s, fillc, INK, 2)
             return inner
-        wrong1 = {(c, r) for c, r in top if c > 0} or {(0, 0)}
-        wrong2 = {((c + 1) % 3, r) for c, r in top}
-        wrong3 = set(top) | {(maxc % 3, maxr % 3)}
-        opts = [fig(grid_top(set(top)))] + [fig(grid_top(w)) for w in (wrong1, wrong2, wrong3)]
+        base = set(top)
+        cands = [{(c, r) for c, r in base if c > 0} or {(0, 0)},
+                 {((c + 1) % 3, r) for c, r in base},
+                 {(c, (r + 1) % 3) for c, r in base},
+                 base | {(maxc % 3, maxr % 3)},
+                 base | {(2, 2)}, base | {(0, 2)}, base | {(2, 0)},
+                 set(list(base)[1:]) or {(1, 1)}]
+        picked, seen = [], [frozenset(base)]
+        for cnd in cands:
+            if frozenset(cnd) not in seen:
+                seen.append(frozenset(cnd))
+                picked.append(cnd)
+            if len(picked) == 3:
+                break
+        opts = [fig(grid_top(base))] + [fig(grid_top(w)) for w in picked]
         opts, ans = rotate_options(opts, 0, k)
         out.append(gqf("ما المنظر العلوي للمجسم (الرؤية من أعلى)؟", opts, ans,
                        ["المنظر العلوي = ظل المجسم على الأرض: أي مربع يوجد فوقه مكعب واحد على الأقل.",
@@ -663,7 +674,8 @@ def merge_bank():
               (("sq", "o"), ("d2",)), (("v",), ("d1", "d2"))]
     for a, b in combos:
         merged = tuple(sorted(set(a) | set(b)))
-        wrongs = [a, b, tuple(sorted(set(merged) | ({"tri"} if "tri" not in merged else {"o"})))]
+        extra = next(x for x in ("tri", "o", "sq", "d1", "d2", "v", "h") if x not in merged)
+        wrongs = [a, b, tuple(sorted(set(merged) | {extra}))]
         opts = [fig(_draw(merged))] + [fig(_draw(w)) for w in wrongs]
         opts, ans = rotate_options(opts, 0, k)
         out.append(gqf("ما ناتج دمج الشكلين؟", opts, ans,
@@ -695,7 +707,15 @@ def merge_bank():
                         (("v", "h", "o"), ("v", "h")), (("tri", "v", "o"), ("tri", "v")),
                         (("sq", "o", "h"), ("sq", "o")), (("d1", "d2", "o"), ("d1", "d2"))]:
         need = tuple(sorted(set(whole) - set(part)))
-        wrongs = [(x,) for x in whole if (x,) != need][:2] + [("sq",) if "sq" not in whole else ("tri",)]
+        pool = [(x,) for x in whole if (x,) != need] + \
+               [(x,) for x in ("o", "sq", "tri", "v", "h", "d1", "d2") if (x,) != need]
+        wrongs, seenw = [], {need}
+        for w in pool:
+            if w not in seenw:
+                seenw.add(w)
+                wrongs.append(w)
+            if len(wrongs) == 3:
+                break
         opts = [fig(_draw(need))] + [fig(_draw(w)) for w in wrongs]
         opts, ans = rotate_options(opts, 0, k)
         out.append(gqf("ما القطعة التي تُضاف للشكل الأول ليصير مثل الثاني؟", opts, ans,
@@ -710,6 +730,21 @@ def merge_bank():
 
 
 # ===================================================== ١١ عدّ الأشكال
+def _nums4(correct, cands):
+    """أربع قيم موجبة متمايزة أولها الصحيحة."""
+    vals = [correct]
+    for v in cands:
+        if v > 0 and v not in vals:
+            vals.append(v)
+        if len(vals) == 4:
+            break
+    bump = max(vals) + 1
+    while len(vals) < 4:
+        vals.append(bump)
+        bump += 1
+    return vals
+
+
 def count_bank():
     out, k = [], 0
 
@@ -729,7 +764,8 @@ def count_bank():
         out.append(gqf(f"كم مستطيلًا (بما فيها المربعات) في الشبكة {ar(cols)}×{ar(rows)}؟",
                        *rotate_options([fig(f'<text x="50" y="62" font-size="40" text-anchor="middle" '
                                             f'fill="{INK}" font-weight="800">{ar(v)}</text>')
-                                        for v in (rects, rects - 3, rects + 4, cols * rows)], 0, k),
+                                        for v in _nums4(rects, (rects - 3, rects + 4, cols * rows,
+                                                                 rects + 1, rects - 1))], 0, k),
                        [f"عدد الخطوط الرأسية = {ar(cols + 1)} والأفقية = {ar(rows + 1)}.",
                         f"أي مستطيل يتحدّد باختيار خطين رأسيين وخطين أفقيين.",
                         f"عدد الطرق = C({ar(cols + 1)}،٢) × C({ar(rows + 1)}،٢) = {ar(comb2(cols + 1))} × {ar(comb2(rows + 1))}.",
@@ -740,7 +776,8 @@ def count_bank():
         out.append(gqf(f"كم مربعًا (بكل الأحجام) في الشبكة {ar(cols)}×{ar(rows)}؟",
                        *rotate_options([fig(f'<text x="50" y="62" font-size="40" text-anchor="middle" '
                                             f'fill="{INK}" font-weight="800">{ar(v)}</text>')
-                                        for v in (squares, squares + 2, squares - 2, cols * rows)], 0, k),
+                                        for v in _nums4(squares, (squares + 2, squares - 2, cols * rows,
+                                                                 squares + 3, squares + 1))], 0, k),
                        [f"مربعات ١×١ عددها {ar(cols * rows)}.",
                         "ثم مربعات ٢×٢ وهكذا حتى أكبر مربع ممكن.",
                         f"المجموع = " + " + ".join(ar((cols - i) * (rows - i)) for i in range(min(cols, rows))) +
@@ -803,26 +840,20 @@ def odd_bank():
                        tip="ابدأ دائمًا بعدّ الأضلاع قبل النظر إلى اللون أو الحجم."))
         k += 1
     # (ب) عدد النقاط
+    _POS = [[(50, 30), (34, 44), (66, 44), (38, 66), (62, 66), (50, 52)],
+            [(50, 32), (33, 46), (67, 46), (41, 68), (59, 68), (50, 54)],
+            [(48, 29), (35, 43), (65, 45), (37, 64), (63, 65), (52, 51)],
+            [(51, 31), (32, 45), (68, 43), (40, 67), (60, 66), (49, 53)]]
     for base, odd in ((3, 4), (4, 5), (5, 3), (2, 3)):
-        def shape_dots(c, color=GREEN):
-            inner = circle(50, 50, 32, "#f0fdf4", color, 4)
-            pos = [(50, 32), (34, 60), (66, 60), (50, 66), (34, 40), (66, 40)]
-            return inner + "".join(dot(x, y, 6, color) for x, y in pos[:c])
-        opts, ans = rotate_options([fig(shape_dots(odd))] + [fig(shape_dots(base)) for _ in range(3)], 0, k)
-        # تمييز الثلاثة المتشابهة بترتيب مختلف للنقاط حتى لا تتطابق الصور
-        variants = []
-        for i in range(3):
-            inner = circle(50, 50, 32, "#f0fdf4", GREEN, 4)
-            pos = [[(50, 32), (34, 60), (66, 60)], [(34, 40), (66, 40), (50, 66)],
-                   [(50, 34), (36, 62), (64, 62)], [(40, 36), (62, 44), (50, 66)]][i % 4][:base]
-            while len(pos) < base:
-                pos.append((50, 50))
-            variants.append(fig(inner + "".join(dot(x, y, 6, GREEN) for x, y in pos)))
-        opts, ans = rotate_options([fig(shape_dots(odd))] + variants, 0, k)
+        def shape_dots(c, pos, color=GREEN):
+            return circle(50, 50, 32, "#f0fdf4", color, 4) + \
+                "".join(dot(x, y, 6, color) for x, y in pos[:c])
+        opts = [fig(shape_dots(odd, _POS[0]))] + [fig(shape_dots(base, pp)) for pp in _POS[1:]]
+        opts, ans = rotate_options(opts, 0, k)
         out.append(gqf("أي شكل لا ينتمي للمجموعة؟", opts, ans,
-                       ["كل الأشكال دوائر متطابقة ⇒ الفرق ليس في الشكل.",
-                        f"عُدّ النقاط: ثلاثة أشكال بها {ar(base)} نقاط.",
-                        f"الشكل الذي به {ar(odd)} نقاط هو الشاذ."],
+                       ["كل الأشكال دوائر متطابقة ⇒ الفرق ليس في الشكل نفسه.",
+                        f"عُدّ النقاط: ثلاث دوائر بداخل كل منها {ar(base)} نقاط (وإن اختلفت مواضعها قليلًا).",
+                        f"الدائرة التي بها {ar(odd)} نقاط هي الشاذة."],
                        None,
                        tip="غيّر زاوية نظرك: الشكل، العدد، التظليل، الاتجاه."))
         k += 1
@@ -850,21 +881,32 @@ def odd_bank():
                        None,
                        tip="انظر إلى «شكل المنطقة المظللة» لا إلى موضعها."))
         k += 1
-    # (هـ) شكل مختلف في النوع
-    for group, odd_name in ((["circle", "square", "diamond"], "tri"), (["tri", "star", "diamond"], "circle"),
-                            (["square", "diamond", "tri"], "circle"), (["circle", "star", "tri"], "square")):
-        opts = [fig(SYM[odd_name])] + [fig(SYM[n]) for n in group]
+    # (هـ) المنحني وسط المستقيم
+    for group in (["square", "diamond", "tri"], ["tri", "star", "diamond"]):
+        opts = [fig(SYM["circle"])] + [fig(SYM[n]) for n in group]
         opts, ans = rotate_options(opts, 0, k)
-        has_curve = odd_name == "circle"
-        reason = ("ثلاثة أشكال مضلّعة بخطوط مستقيمة، والدائرة وحدها منحنية." if has_curve
-                  else f"الأشكال الثلاثة الأخرى تشترك في صفة لا تنطبق على {NAMES[odd_name]}.")
         out.append(gqf("أي شكل لا ينتمي للمجموعة؟", opts, ans,
-                       ["ابحث عن صفة مشتركة بين ثلاثة أشكال.",
-                        reason,
-                        f"إذن الشاذ هو {NAMES[odd_name]}."],
+                       ["ابحث عن صفة تجمع ثلاثة أشكال وتغيب عن الرابع.",
+                        "ثلاثة أشكال مرسومة بخطوط مستقيمة ولها رؤوس وزوايا.",
+                        "الدائرة وحدها منحنية بلا أضلاع ولا زوايا ⇐ هي الشاذة."],
                        None,
                        tip="الصفات الشائعة: عدد الأضلاع، الاستقامة أو الانحناء، التماثل، التظليل."))
         k += 1
+
+    # (و) الفارغ وسط المظلّل
+    for n, color, tint in ((4, BLUE, "#dbeafe"), (5, PURPLE, "#ede9fe"), (6, GREEN, "#dcfce7")):
+        hollow = polygon(n, 32, fill="none", stroke=color, sw=4)
+        filled = [polygon(n, 32, fill=tint, stroke=color, sw=4, start=-90 + r) for r in (0, 14, 28)]
+        opts = [fig(hollow)] + [fig(f) for f in filled]
+        opts, ans = rotate_options(opts, 0, k)
+        out.append(gqf("أي شكل مختلف عن البقية؟", opts, ans,
+                       [f"كل الأشكال {ARN[n]} بعدد الأضلاع نفسه ⇒ الفرق ليس في الشكل.",
+                        "ثلاثة منها مظلّلة من الداخل (ملوّنة).",
+                        "الشكل الفارغ (غير المظلّل) هو الشاذ."],
+                       None,
+                       tip="بعد عدّ الأضلاع، انظر للتظليل: فارغ أم ممتلئ."))
+        k += 1
+
     return out
 
 
@@ -874,18 +916,45 @@ def faces_bank():
     specs = [("smile", "dots", None, "الفرح"), ("frown", "dots", None, "الحزن"),
              ("frown", "dots", "angry", "الغضب"), ("open", "wide", None, "الدهشة"),
              ("flat", "dots", None, "الحياد"), ("smile", "closed", None, "الرضا")]
-    # الشاذ
-    for i, (m, e, b, name) in enumerate(specs):
-        same = [s for s in specs if s[3] != name][:3]
-        opts = [fig(face(m, e, brow=b))] + [fig(face(s[0], s[1], brow=s[2])) for s in same]
+    # الشاذ: ثلاثة وجوه تشترك في علامة واحدة ورابع يخالفها
+    groups = [
+        ([("smile", "dots", None), ("smile", "closed", None), ("smile", "wide", None)],
+         ("frown", "dots", None),
+         "ثلاثة وجوه فمها مقوّس لأعلى (ابتسامة) مهما اختلفت العيون",
+         "الوجه الرابع فمه مقلوب لأسفل (حزن) ⇐ هو الشاذ"),
+        ([("frown", "dots", None), ("frown", "closed", None), ("frown", "wide", None)],
+         ("smile", "dots", None),
+         "ثلاثة وجوه فمها مقوّس لأسفل (حزن)",
+         "الوجه المبتسم وحده يخالف المجموعة ⇐ هو الشاذ"),
+        ([("frown", "dots", "angry"), ("flat", "dots", "angry"), ("open", "dots", "angry")],
+         ("frown", "dots", None),
+         "ثلاثة وجوه حاجباها مائلان نحو الأنف (علامة الغضب)",
+         "الوجه الذي بلا حاجبين غاضبين هو الشاذ"),
+        ([("open", "wide", None), ("open", "dots", None), ("open", "closed", None)],
+         ("smile", "closed", None),
+         "ثلاثة وجوه فمها مفتوح (دهشة)",
+         "الوجه المغلق الفم المبتسم هو الشاذ"),
+        ([("flat", "dots", None), ("flat", "closed", None), ("flat", "wide", None)],
+         ("smile", "dots", None),
+         "ثلاثة وجوه فمها خط مستقيم (حياد بلا انفعال)",
+         "الوجه المبتسم وحده يحمل انفعالًا ⇐ هو الشاذ"),
+        ([("smile", "closed", None), ("smile", "dots", None), ("flat", "dots", None)],
+         ("frown", "dots", "angry"),
+         "ثلاثة وجوه مشاعرها إيجابية أو محايدة",
+         "الوجه الغاضب (فم مقلوب + حاجبان مائلان) هو الوحيد السلبي ⇐ الشاذ"),
+    ]
+    for same, oddf, rule, concl in groups:
+        opts = [fig(face(oddf[0], oddf[1], brow=oddf[2]))] + \
+               [fig(face(m, e, brow=b)) for (m, e, b) in same]
         opts, ans = rotate_options(opts, 0, k)
         out.append(gqf("أي وجه شاذ عن المجموعة؟", opts, ans,
-                       ["ابدأ بالفم: هو العلامة الأقوى على الشعور.",
-                        "ثم الحاجبان: الميل نحو الأنف = غضب، والميل لأعلى = حزن أو خوف.",
-                        f"الوجه المعبّر عن {name} يختلف عن بقية المجموعة ⇐ هو الشاذ."],
+                       ["ابدأ بالفم: هو العلامة الأقوى على الشعور، ثم انظر للحاجبين.",
+                        rule + ".",
+                        concl + "."],
                        None,
-                       tip="العيون وحدها لا تكفي؛ الفم والحاجب يحسمان الشعور."))
+                       tip="لا تنخدع باختلاف العيون؛ ابحث عن العلامة المشتركة بين ثلاثة وجوه."))
         k += 1
+
     # إكمال التدرّج
     ladders = [(("smile", "dots", None), ("flat", "dots", None), ("frown", "dots", None), "من الفرح إلى الحياد ثم الحزن"),
                (("frown", "dots", None), ("flat", "dots", None), ("smile", "dots", None), "من الحزن إلى الحياد ثم الفرح"),
@@ -1005,7 +1074,7 @@ def complete_bank():
 
         def patch(c, color=color):
             inner = rect(34, 34, 32, 32, "#faf5ff", color, 3)
-            pos = [(42, 42), (58, 42), (42, 58), (58, 58), (50, 50)]
+            pos = [(42, 42), (58, 42), (42, 58), (58, 58), (50, 42), (50, 58), (50, 50)]
             return inner + "".join(dot(x, y, 4.5, color) for x, y in pos[:c])
         opts, ans = rotate_options([fig(patch(cnt))] + [fig(patch(v)) for v in (cnt + 1, max(cnt - 1, 0), cnt + 2)], 0, k)
         out.append(gqf("أي قطعة تكمل الشبكة؟", opts, ans,
