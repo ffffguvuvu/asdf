@@ -39,12 +39,17 @@ def esc(s):
 def rule_html(idx, r):
     parts = []
     bits = [r["t"], r["lead"]]
+    extra = bool(r.get("extra"))
+    if extra:
+        bits.append("زيادة على الفيديوهات قاعدة إضافية لم تُشرح في الفيديو")
 
     parts.append(
         '<h3 class="rt"><span class="num">%s</span>'
-        '<span class="ttl">%s</span>'
+        '<span class="ttl">%s</span>%s'
         '<button type="button" class="tg" aria-expanded="true">طيّ</button></h3>'
-        % (ad(idx), esc(r["t"])))
+        % (ad(idx), esc(r["t"]),
+           '<span class="ex" title="قاعدة لم تُشرح في الفيديوهات">'
+           'زيادة على الفيديوهات</span>' if extra else ''))
 
     body = ['<div class="bd">']
     body.append('<p class="lead">%s</p>' % esc(r["lead"]))
@@ -104,6 +109,9 @@ def rule_html(idx, r):
                     % esc(" · ".join(src)))
 
     vids = sorted(set(r.get("v", [])))
+    if extra and not vids:
+        body.append('<p class="vids nov">هذه القاعدة <b>زيادة على ما ورد في الفيديوهات</b>'
+                    ' — أُضيفت استكمالًا للباب من كتب النحو المذكورة أعلاه.</p>')
     if vids:
         chips = "".join(
             '<a class="vc" href="%s" target="_blank" rel="noopener">فيديو %s</a>'
@@ -113,8 +121,8 @@ def rule_html(idx, r):
     body.append("</div>")
     parts.append("".join(body))
 
-    return '<article class="rule" data-s="%s">%s</article>' % (
-        esc(norm(" ".join(bits))), "".join(parts))
+    return '<article class="rule" data-x="%s" data-s="%s">%s</article>' % (
+        "1" if extra else "0", esc(norm(" ".join(bits))), "".join(parts))
 
 
 def build():
@@ -126,6 +134,7 @@ def build():
     n_shw = sum(len(r.get("shw", [])) for r in nahw.R)
     n_erab = sum(len(r.get("erab", [])) for r in nahw.R)
     n_tbl = sum(1 for r in nahw.R if r.get("tbl"))
+    n_extra = sum(1 for r in nahw.R if r.get("extra"))
 
     for ci, (cid, ctitle, cintro) in enumerate(nahw.CHAPTERS, 1):
         items = by_ch.get(cid, [])
@@ -160,6 +169,7 @@ font:inherit;font-size:15px}
 .btn{background:rgba(255,255,255,.17);color:#fff;border:1px solid rgba(255,255,255,.38);
 padding:8px 14px;border-radius:9px;cursor:pointer;font:inherit;font-size:14px}
 .btn:hover{background:rgba(255,255,255,.3)}
+.btn.on{background:#fbbf24;color:#4a2c00;border-color:#fbbf24;font-weight:700}
 .stat{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
 .stat span{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.26);
 border-radius:999px;padding:3px 12px;font-size:12.5px}
@@ -191,6 +201,11 @@ background:var(--soft);font-size:17.5px;color:var(--acc2)}
 .rt .num{background:var(--acc);color:#fff;border-radius:8px;min-width:30px;
 text-align:center;font-size:13.5px;padding:2px 7px;font-weight:700}
 .rt .ttl{flex:1}
+.rt .ex{background:#fef3c7;color:#92400e;border:1px solid #fcd34d;border-radius:999px;
+padding:2px 10px;font-size:11.5px;font-weight:700;white-space:nowrap}
+.rule[data-x="1"]{border-color:#fcd34d;box-shadow:0 1px 10px rgba(146,64,14,.07)}
+.rule[data-x="1"] .rt{background:#fffbeb;color:var(--gold)}
+.rule[data-x="1"] .rt .num{background:var(--gold)}
 .tg{background:#fff;border:1px solid var(--line);border-radius:7px;padding:3px 11px;
 cursor:pointer;font:inherit;font-size:12.5px;color:var(--mut)}
 .bd{padding:14px 16px}
@@ -223,6 +238,8 @@ padding:1px 10px;font-size:12px;color:var(--mut);margin:3px 0}
 .tan h4{color:var(--warm)}
 .src{margin:10px 0 4px;font-size:13.5px;color:var(--mut)}
 .vids{margin:0;font-size:13.5px;color:var(--mut)}
+.vids.nov{background:#fffbeb;border:1px dashed #fcd34d;border-radius:9px;
+padding:8px 11px;color:var(--gold)}
 .vc{display:inline-block;background:#fff;border:1px solid var(--line);border-radius:999px;
 padding:2px 10px;margin:2px 3px 2px 0;font-size:12.5px;text-decoration:none}
 .vc:hover{background:var(--soft)}
@@ -264,6 +281,8 @@ a{color:#000;text-decoration:none}
   var tally=document.getElementById('shown');
   var blank=document.getElementById('none');
   var navLinks=[].slice.call(document.querySelectorAll('#nav a'));
+  var xBtn=document.getElementById('onlyExtra');
+  var xOnly=false;
 
   function setCount(n){ tally.textContent=AD(n); }
 
@@ -273,7 +292,8 @@ a{color:#000;text-decoration:none}
     chaps.forEach(function(sec){
       var live=0;
       [].slice.call(sec.querySelectorAll('.rule')).forEach(function(card){
-        var hit=!term||card.getAttribute('data-s').indexOf(term)>=0;
+        var hit=(!term||card.getAttribute('data-s').indexOf(term)>=0)
+                && (!xOnly||card.getAttribute('data-x')==='1');
         card.classList.toggle('hid',!hit);
         if(hit){ live++; total++; }
       });
@@ -313,7 +333,15 @@ a{color:#000;text-decoration:none}
   document.getElementById('fold').addEventListener('click',function(){ setAll(true); });
   document.getElementById('toPrint').addEventListener('click',function(){ window.print(); });
   document.getElementById('clear').addEventListener('click',function(){
-    box.value=''; apply(); box.focus();
+    box.value=''; xOnly=false;
+    xBtn.classList.remove('on'); xBtn.setAttribute('aria-pressed','false');
+    apply(); box.focus();
+  });
+  xBtn.addEventListener('click',function(){
+    xOnly=!xOnly;
+    xBtn.classList.toggle('on',xOnly);
+    xBtn.setAttribute('aria-pressed',xOnly?'true':'false');
+    apply();
   });
 
   navLinks.forEach(function(a){
@@ -350,6 +378,8 @@ a{color:#000;text-decoration:none}
     <button type="button" class="btn" id="clear">مسح</button>
     <button type="button" class="btn" id="expand">فتح الكل</button>
     <button type="button" class="btn" id="fold">طيّ الكل</button>
+    <button type="button" class="btn" id="onlyExtra" aria-pressed="false"
+            title="عرض القواعد التي لم تُشرح في الفيديوهات فقط">★ الزيادات فقط</button>
     <button type="button" class="btn" id="toPrint">طباعة</button>
   </div>
   <div class="stat">
@@ -358,6 +388,7 @@ a{color:#000;text-decoration:none}
     <span>%(ns)s شاهدًا</span>
     <span>%(ne)s نموذجًا إعرابيًّا</span>
     <span>%(nt)s جدولًا</span>
+    <span>منها <b>%(nx)s</b> قاعدة زائدة على الفيديوهات</span>
     <span><a style="color:#fff" href="arabic-grammar-playlist.html">← بنك الأسئلة (%(nq)s سؤالًا)</a></span>
   </div>
 </header>
@@ -389,6 +420,7 @@ a{color:#000;text-decoration:none}
         "ns": ad(n_shw),
         "ne": ad(n_erab),
         "nt": ad(n_tbl),
+        "nx": ad(n_extra),
         "nq": ad(len(marwa.QS)),
     }
 
