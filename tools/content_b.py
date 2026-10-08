@@ -682,7 +682,7 @@ add(
                        lambda x, y, s: lamp(x, y, s),
                        lambda x, y, s: f'<text x="{x}" y="{y + 12}" text-anchor="middle" font-size="28" '
                                        f'font-weight="800" fill="{C["red"]}">؟</text>'],
-                      labels=["الأصل", "١", ""]),
+                      ch=78, labels=["الأصل", "١", ""]),
              ask="اختر الشكل المطابق للشكل المرسوم (شبيه المصباح).",
              steps=["الصفات: جزء علوي (كالغطاء) + ذراع من 3 خطوط + دائرة مقسومة نصفين نصفها مظلل.",
                     "يُستبعد الخيار الذي يجعل الدائرة غير مظللة.",
@@ -692,9 +692,9 @@ add(
              answer="الخيار 1 (بعد ميل الشكل على قاعدته)", tip=""),
         dict(id="i11", title="نفس الشكل «بالعدد» (عدّ المربعات)",
              fig=svg(360, 150, f'<g transform="translate(6,10)">{block_count([5, 4, 3, 2, 1], cw=22, gap=3).split(">", 1)[1].rsplit("</svg>", 1)[0]}</g>'
-                     + f'<text x="60" y="140" text-anchor="middle" font-size="15" fill="{C["dark"]}">5+4+3+2+1 = 15 مربعًا</text>'
+                     + f'<text x="62" y="140" text-anchor="middle" font-size="13" fill="{C["dark"]}">5+4+3+2+1 = 15</text>'
                      + f'<g transform="translate(180,10)">{block_count([4, 4, 3, 3, 1], cw=22, gap=3).split(">", 1)[1].rsplit("</svg>", 1)[0]}</g>'
-                     + f'<text x="235" y="140" text-anchor="middle" font-size="15" fill="{C["dark"]}">4+4+3+3+1 = 15 ✓</text>'),
+                     + f'<text x="237" y="140" text-anchor="middle" font-size="13" fill="{C["dark"]}">4+4+3+3+1 = 15 ✓</text>'),
              ask="إن لم تجد نفس الشكل بين الخيارات، فابحث عن الشكل الذي يحتوي نفس <b>العدد</b> من المربعات.",
              steps=["عدّ مربعات الشكل الأصلي: 5 + 4 + 3 + 2 + 1 = 15.",
                     "ابحث بين الخيارات عن شكل عدد مربعاته 15 (حتى لو اختلف ترتيبها).",

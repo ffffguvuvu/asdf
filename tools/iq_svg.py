@@ -190,6 +190,14 @@ def cell(x, y, w, h, content, fill="#fff", stroke=C["gray"], sw=2, dash=None, la
 import re as _re
 
 
+def fit_font(text, avail, size=13, min_size=6, factor=0.70):
+    """يصغّر الخط تلقائيًا ليتناسب النص مع عرض متاح."""
+    n = max(1, len(text))
+    if factor * size * n <= avail:
+        return size
+    return max(min_size, avail / (factor * n))
+
+
 def hstack(parts, gap=18, pad=4, labels=()):
     """دمج عدة رسوم SVG أفقيًا في رسم واحد."""
     items, x, H = [], pad, 0
@@ -200,8 +208,10 @@ def hstack(parts, gap=18, pad=4, labels=()):
         inner = _re.sub(r'</svg>$', '', inner)
         items.append(f'<g transform="translate({x:.1f},{0})">{inner}</g>')
         if labels and i < len(labels) and labels[i]:
+            lab = labels[i]
+            fsz = fit_font(lab, w + gap - 8, 13)
             items.append(f'<text x="{x + w / 2:.1f}" y="{h + 16}" text-anchor="middle" '
-                         f'font-size="13" font-weight="700" fill="{C["gray"]}">{labels[i]}</text>')
+                         f'font-size="{fsz}" font-weight="700" fill="{C["gray"]}">{lab}</text>')
         x += w + gap
         H = max(H, h)
     return svg(x - gap + pad, H + (18 if labels else 0), "".join(items))
@@ -354,8 +364,9 @@ def pills(nums, gap=10, h=52, unknown_index=None, w=64, sub=None):
         col = C["red"] if i == unknown_index else C["blue"]
         out.append(f'<rect x="{x}" y="{16 if sub else 0}" width="{w}" height="{h}" rx="12" '
                    f'fill="{fill}" stroke="{stroke}" stroke-width="2.5"/>')
+        fsz = fit_font(txt, w - 12, 22, min_size=9)
         out.append(f'<text x="{x + w / 2}" y="{(16 if sub else 0) + h / 2 + 7}" text-anchor="middle" '
-                   f'font-size="22" font-weight="800" fill="{col}">{txt}</text>')
+                   f'font-size="{fsz}" font-weight="800" fill="{col}">{txt}</text>')
         if sub and i < len(sub) and sub[i]:
             out.append(f'<text x="{x + w / 2}" y="12" text-anchor="middle" font-size="13" '
                        f'fill="{C["green"]}">{sub[i]}</text>')

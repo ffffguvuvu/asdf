@@ -35,28 +35,33 @@ def op(x, y, sign="+"):
 
 def mirror4(draw_fn, size=180, pad=14, label=None):
     """ورقة مطوية 4 أرباع: الشكل في الربع الأيمن العلوي + انعكاساته الثلاثة."""
-    cx = cy = size / 2
-    q = draw_fn(cx + size * 0.24, cy - size * 0.24, size * 0.2)
+    ax = ay = pad + size / 2          # محورا الطيّ = منتصف الصندوق
+    q = draw_fn(ax + size * 0.25, ay - size * 0.25, size * 0.2)
     o = [box(pad, pad, size, size, fill="#fff", stroke=INK, sw=3),
-         f'<path d="M {cx} {pad} V {size + pad} M {pad} {cy} H {size + pad}" stroke="{C["blue"]}" '
+         f'<path d="M {ax} {pad} V {size + pad} M {pad} {ay} H {size + pad}" stroke="{C["blue"]}" '
          f'stroke-width="2" stroke-dasharray="7 5"/>',
          f'<g>{q}</g>',
-         f'<g transform="translate({2 * cx} 0) scale(-1 1)">{q}</g>',
-         f'<g transform="translate(0 {2 * cy}) scale(1 -1)">{q}</g>',
-         f'<g transform="translate({2 * cx} {2 * cy}) scale(-1 -1)">{q}</g>']
+         f'<g transform="translate({2 * ax} 0) scale(-1 1)">{q}</g>',
+         f'<g transform="translate(0 {2 * ay}) scale(1 -1)">{q}</g>',
+         f'<g transform="translate({2 * ax} {2 * ay}) scale(-1 -1)">{q}</g>']
+    if label:
+        o.append(txt(label, size / 2 + pad, size + pad * 2 - 4, 13, C["gray"]))
     return svg(size + pad * 2, size + pad * 2, "".join(o))
 
 
 def cut_corner(cx, cy, s):
-    return (f'<path d="M {cx + s * 1.9:.1f} {cy - s * 1.9:.1f} L {cx + s * 1.9:.1f} {cy - s * 0.2:.1f} '
-            f'L {cx + s * 0.2:.1f} {cy - s * 1.9:.1f} Z" fill="{INK}"/>')
+    """مثلث مقصوص من الركن الخارجي للربع (cx,cy = مركز الربع)."""
+    L = s * 1.3
+    return (f'<path d="M {cx + L:.1f} {cy - L:.1f} L {cx + L:.1f} {cy:.1f} '
+            f'L {cx:.1f} {cy - L:.1f} Z" fill="{INK}"/>')
 
 
 def circle_line_cut(cx, cy, s):
-    return (f'<circle cx="{cx + s * 0.9:.1f}" cy="{cy + s * 0.4:.1f}" r="{s * 0.55:.1f}" fill="none" '
+    """دائرة + خط مائل داخل حدود الربع."""
+    return (f'<circle cx="{cx + s * 0.55:.1f}" cy="{cy - s * 0.35:.1f}" r="{s * 0.45:.1f}" fill="none" '
             f'stroke="{INK}" stroke-width="2.6"/>'
-            f'<path d="M {cx - s * 0.4:.1f} {cy + s * 1.7:.1f} L {cx + s * 1.5:.1f} {cy - s * 0.2:.1f}" '
-            f'stroke="{INK}" stroke-width="3"/>')
+            f'<path d="M {cx - s * 0.95:.1f} {cy - s * 0.95:.1f} L {cx + s * 0.95:.1f} '
+            f'{cy + s * 0.95:.1f}" stroke="{INK}" stroke-width="2.6"/>')
 
 
 # ============================================================ تركيب الأشكال
