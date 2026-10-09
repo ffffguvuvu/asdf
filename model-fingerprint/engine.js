@@ -143,7 +143,9 @@
     reveals:"جلب فعلي للصفحة. النص الحقيقي يذكر Example Domain / illustrative examples.",
     grade(raw){
       const t = norm(raw);
-      if (has(t,"example domain","نطاق للتوضيح","امثله توضيحيه","illustrative examples","more information","نطاق مثال"))
+      // ملاحظة: نص example.com تغيّر فعليًا في 2026 — نقبل الصياغتين القديمة والجديدة
+      if (has(t,"example domain","documentation examples","illustrative examples","more information","learn more",
+               "نطاق للتوضيح","امثله توضيحيه","امثله التوثيق","هذا النطاق مخصص","نطاق مثال","iana"))
         return R(V.PASS,"أعاد محتوى الصفحة الحقيقي.");
       if (isRefusal(t)) return R(V.FAIL,"لا يستطيع فتح الروابط.");
       return R(V.PART,"وصف عامّ بلا اقتباس من محتوى الصفحة الفعلي.");

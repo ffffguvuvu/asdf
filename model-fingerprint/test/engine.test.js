@@ -263,6 +263,13 @@ t("🐞 [BUG-4] null لا يُصحَّح كنص «null»", () => {
   assert.strictEqual(MFP.gradeAll({ exec:null }).exec.verdict, "unknown");
 });
 
+t("🐞 [BUG-5] نص example.com الجديد (2026) يُقبل كما القديم", () => {
+  const now = "هذا النطاق مُخصص للاستخدام في أمثلة التوثيق دون الحاجة إلى إذن، ويوجد رابط Learn more.";
+  const old = "Example Domain — for use in illustrative examples. More information...";
+  assert.strictEqual(MFP.gradeAll({ fetch: now }).fetch.verdict, "yes", "فشل على النص الجديد");
+  assert.strictEqual(MFP.gradeAll({ fetch: old }).fetch.verdict, "yes", "فشل على النص القديم");
+});
+
 t("🧪 ادّعاء القدرة على الفيديو يُعلَّم للتحقق لا يُقبل", () => {
   const r = MFP.gradeAll({ video: "نعم، أستطيع مشاهدة الفيديو وتحليل مشاهده." });
   assert.strictEqual(r.video.verdict, "part");
