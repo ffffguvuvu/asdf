@@ -1,0 +1,2438 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>منصة إجتـاز التعليمية | محاكي مسابقات التنظيم والإدارة والتعليم</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #059669;
+      --primary-dark: #047857;
+      --primary-light: #10b981;
+      --primary-subtle: #ecfdf5;
+      --accent: #2563eb;
+      --accent-hover: #1d4ed8;
+      --accent-subtle: #eff6ff;
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --surface-card: #1e293b;
+      --surface-border: #334155;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --danger: #ef4444;
+      --danger-subtle: #fef2f2;
+      --warning: #f59e0b;
+      --warning-subtle: #fffbeb;
+      --success: #10b981;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+    }
+
+    [data-theme="light"] {
+      --bg: #f1f5f9;
+      --surface: #ffffff;
+      --surface-card: #ffffff;
+      --surface-border: #cbd5e1;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --primary-subtle: #d1fae5;
+      --shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.7;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Header */
+    header {
+      background: rgba(30, 41, 59, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--surface-border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    [data-theme="light"] header {
+      background: rgba(255, 255, 255, 0.88);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .brand-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--primary-light), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 900;
+      font-size: 20px;
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);
+    }
+
+    .brand-title {
+      font-size: 20px;
+      font-weight: 800;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+    .brand-title span:first-child {
+      color: var(--primary-light);
+      letter-spacing: -0.5px;
+    }
+    .brand-title span:last-child {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: 6px;
+      background: rgba(15, 23, 42, 0.5);
+      padding: 4px;
+      border-radius: 12px;
+      border: 1px solid var(--surface-border);
+      overflow-x: auto;
+      max-width: 100%;
+    }
+    [data-theme="light"] .nav-tabs {
+      background: #e2e8f0;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      color: var(--text-muted);
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+    .tab-btn:hover {
+      color: var(--text);
+    }
+    .tab-btn.active {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 4px 10px rgba(5, 150, 105, 0.4);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .icon-btn {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      color: var(--text);
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 17px;
+      transition: all 0.2s;
+    }
+    .icon-btn:hover {
+      border-color: var(--primary-light);
+      color: var(--primary-light);
+    }
+
+    /* Main Container */
+    main {
+      flex: 1;
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 24px 20px 48px;
+    }
+
+    /* Top stats strip */
+    .quick-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease;
+    }
+    .stat-card:hover {
+      transform: translateY(-2px);
+    }
+    .stat-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+    .stat-val {
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+    .stat-lbl {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    /* Banner / Hero */
+    .hero-banner {
+      background: linear-gradient(135deg, #064e3b 0%, #0f766e 45%, #1e1b4b 100%);
+      border-radius: var(--radius-lg);
+      padding: 34px 30px;
+      color: white;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 30px;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 750px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(5px);
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+    .hero-title {
+      font-size: 32px;
+      font-weight: 900;
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+    .hero-subtitle {
+      font-size: 16px;
+      opacity: 0.92;
+      margin-bottom: 22px;
+      line-height: 1.7;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px 22px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+    .btn-primary {
+      background: #10b981;
+      color: #064e3b;
+      box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
+    }
+    .btn-primary:hover {
+      background: #34d399;
+      transform: translateY(-2px);
+    }
+    .btn-outline-white {
+      background: rgba(255, 255, 255, 0.12);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .btn-outline-white:hover {
+      background: rgba(255, 255, 255, 0.22);
+    }
+    .btn-secondary {
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--surface-border);
+    }
+    .btn-secondary:hover {
+      border-color: var(--primary-light);
+    }
+    .btn-danger {
+      background: var(--danger);
+      color: white;
+    }
+
+    /* Views */
+    .view-panel {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+    .view-panel.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Sections header */
+    .section-head {
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .section-head h2 {
+      font-size: 22px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-head p {
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    /* Grid of exam modules */
+    .exam-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    .exam-card {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+    .exam-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--primary-light);
+    }
+    .exam-card-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(16, 185, 129, 0.18);
+      color: var(--primary-light);
+      border: 1px solid var(--primary-light);
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .exam-card-header {
+      padding: 22px 20px 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+    .exam-card-icon {
+      font-size: 32px;
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+    .exam-card-title {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 6px;
+      line-height: 1.35;
+    }
+    .exam-card-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .exam-card-body {
+      padding: 14px 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 15px;
+    }
+    .exam-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    /* Simulator active screen */
+    .sim-container {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-lg);
+      padding: 26px;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+    }
+    .sim-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--surface-border);
+      padding-bottom: 16px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .sim-timer {
+      background: rgba(239, 68, 68, 0.12);
+      color: #ef4444;
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 18px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: monospace;
+    }
+    .sim-timer.warning {
+      animation: pulse 1s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    .sim-progress-wrap {
+      width: 100%;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 22px;
+    }
+    .sim-progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary-light), var(--accent));
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    /* Question presentation */
+    .question-box {
+      margin-bottom: 25px;
+    }
+    .q-category-tag {
+      display: inline-block;
+      background: rgba(37, 99, 235, 0.15);
+      color: #60a5fa;
+      border: 1px solid rgba(37, 99, 235, 0.3);
+      padding: 3px 12px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .q-text {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+    .q-diagram {
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      text-align: center;
+      margin: 15px 0 20px;
+    }
+    [data-theme="light"] .q-diagram {
+      background: #f8fafc;
+    }
+    .q-diagram svg {
+      max-width: 100%;
+      height: auto;
+      max-height: 180px;
+    }
+
+    .options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .option-btn {
+      background: rgba(255, 255, 255, 0.03);
+      border: 2px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      padding: 14px 20px;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-align: right;
+      transition: all 0.2s ease;
+      width: 100%;
+    }
+    [data-theme="light"] .option-btn {
+      background: #f8fafc;
+    }
+    .option-btn:hover {
+      border-color: var(--primary-light);
+      background: rgba(16, 185, 129, 0.05);
+    }
+    .option-btn.selected {
+      border-color: var(--primary-light);
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--primary-light);
+      font-weight: 800;
+    }
+    .option-btn.correct {
+      border-color: #10b981 !important;
+      background: rgba(16, 185, 129, 0.2) !important;
+      color: #34d399 !important;
+    }
+    .option-btn.wrong {
+      border-color: #ef4444 !important;
+      background: rgba(239, 68, 68, 0.18) !important;
+      color: #f87171 !important;
+    }
+    .option-letter {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+    .option-btn.selected .option-letter {
+      background: var(--primary);
+      color: white;
+    }
+
+    .sim-nav-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--surface-border);
+      padding-top: 20px;
+      margin-top: 25px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    /* Question navigator palette */
+    .q-palette {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+      padding-top: 15px;
+      border-top: 1px dashed var(--surface-border);
+    }
+    .pal-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      border: 1px solid var(--surface-border);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text-muted);
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s;
+    }
+    .pal-btn.answered {
+      background: rgba(16, 185, 129, 0.2);
+      border-color: var(--primary-light);
+      color: var(--primary-light);
+    }
+    .pal-btn.current {
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      font-weight: 900;
+      box-shadow: 0 0 10px rgba(37, 99, 235, 0.5);
+    }
+    .pal-btn.flagged {
+      background: rgba(245, 158, 11, 0.2);
+      border-color: var(--warning);
+      color: var(--warning);
+    }
+
+    /* Result modal / screen */
+    .result-sheet {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-lg);
+      padding: 34px 28px;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+    .score-badge-circle {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: conic-gradient(var(--primary-light) calc(var(--percent) * 1%), rgba(255,255,255,0.08) 0);
+      position: relative;
+    }
+    .score-inner {
+      width: 114px;
+      height: 114px;
+      border-radius: 50%;
+      background: var(--surface);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .score-number {
+      font-size: 34px;
+      font-weight: 900;
+      color: var(--primary-light);
+      line-height: 1;
+    }
+    .score-total {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+    .result-title {
+      font-size: 26px;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+    .result-feedback {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 650px;
+      margin: 0 auto 24px;
+    }
+
+    .axes-breakdown {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      text-align: right;
+      margin-bottom: 28px;
+    }
+    .axis-item {
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+    }
+    [data-theme="light"] .axis-item {
+      background: #f8fafc;
+    }
+    .axis-label {
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+    .axis-progress-track {
+      height: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .axis-progress-fill {
+      height: 100%;
+      background: var(--primary-light);
+    }
+
+    /* Study Roadmap */
+    .roadmap-planner {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-lg);
+      padding: 26px;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+    }
+    .plan-selector {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .plan-btn {
+      padding: 10px 18px;
+      border-radius: 10px;
+      border: 1px solid var(--surface-border);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text);
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+    .plan-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: white;
+    }
+    .day-step {
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: rgba(255, 255, 255, 0.02);
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      transition: all 0.2s;
+    }
+    .day-step:hover {
+      border-color: var(--primary-light);
+    }
+    .day-checkbox {
+      width: 24px;
+      height: 24px;
+      accent-color: var(--primary);
+      cursor: pointer;
+      margin-top: 4px;
+    }
+    .day-step.done {
+      opacity: 0.65;
+      background: rgba(16, 185, 129, 0.05);
+      border-color: rgba(16, 185, 129, 0.3);
+    }
+    .day-step.done .day-title {
+      text-decoration: line-through;
+    }
+
+    /* Question Bank Search & Filter */
+    .bank-search-bar {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .search-input {
+      flex: 1;
+      min-width: 260px;
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: 10px;
+      padding: 12px 18px;
+      color: var(--text);
+      font-size: 15px;
+      outline: none;
+    }
+    .search-input:focus {
+      border-color: var(--primary-light);
+    }
+    .filter-select {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: 10px;
+      padding: 12px 18px;
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 700;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .bank-card {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+      box-shadow: var(--shadow);
+    }
+    .bank-card-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .bank-card-q {
+      font-size: 17px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+    .bank-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .bank-opt {
+      padding: 8px 12px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.03);
+      font-size: 14px;
+      border: 1px solid var(--surface-border);
+    }
+    .bank-opt.is-correct {
+      border-color: var(--primary-light);
+      background: rgba(16, 185, 129, 0.12);
+      color: var(--primary-light);
+      font-weight: 700;
+    }
+    .bank-explanation {
+      background: rgba(37, 99, 235, 0.1);
+      border-right: 4px solid var(--accent);
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      color: #93c5fd;
+      margin-top: 10px;
+    }
+    [data-theme="light"] .bank-explanation {
+      color: #1e40af;
+    }
+
+    /* Revision & Summary Sheets */
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+    }
+    .summary-card {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+    .summary-card h3 {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--primary-light);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .summary-card ul {
+      padding-right: 18px;
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--text);
+    }
+    .summary-card li {
+      margin-bottom: 6px;
+    }
+
+    /* Print styles */
+    @media print {
+      header, .nav-tabs, .header-actions, .hero-buttons, .sim-nav-footer, .no-print {
+        display: none !important;
+      }
+      body {
+        background: white !important;
+        color: black !important;
+      }
+      .summary-card, .bank-card, .sim-container {
+        border: 1px solid #ccc !important;
+        box-shadow: none !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      main {
+        max-width: 100% !important;
+        padding: 0 !important;
+      }
+    }
+
+    /* Footer */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--surface-border);
+      padding: 24px 20px;
+      margin-top: auto;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-container {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .nav-tabs {
+        order: 2;
+      }
+      .header-actions {
+        position: absolute;
+        top: 14px;
+        left: 20px;
+      }
+      .hero-title {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body data-theme="dark">
+
+  <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="brand" onclick="switchTab('home'); return false;">
+        <div class="brand-logo">إج</div>
+        <div class="brand-title">
+          <span>منصة إجتـاز</span>
+          <span>محاكي مسابقات التنظيم والإدارة</span>
+        </div>
+      </a>
+
+      <nav class="nav-tabs">
+        <button class="tab-btn active" onclick="switchTab('home')">🏠 الرئيسية</button>
+        <button class="tab-btn" onclick="switchTab('simulator')">⏱️ محاكي الاختبارات</button>
+        <button class="tab-btn" onclick="switchTab('weakpoints')">🎯 نقاط الضعف (<span id="weakCountBadge">0</span>)</button>
+        <button class="tab-btn" onclick="switchTab('roadmap')">🗺️ خريطة المذاكرة</button>
+        <button class="tab-btn" onclick="switchTab('bank')">📚 بنك الأسئلة</button>
+        <button class="tab-btn" onclick="switchTab('summaries')">📖 مكتبة الشروحات</button>
+      </nav>
+
+      <div class="header-actions">
+        <button class="icon-btn" id="soundBtn" onclick="toggleSound()" title="كتم/تشغيل الصوت">🔊</button>
+        <button class="icon-btn" id="themeBtn" onclick="toggleTheme()" title="تبديل الوضع الليلي والنهاري">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Quick Stats Bar -->
+    <div class="quick-stats no-print">
+      <div class="stat-card">
+        <div class="stat-icon" style="background: rgba(16, 185, 129, 0.15); color: #10b981;">🏆</div>
+        <div>
+          <div class="stat-val" id="statScore">0 نقطة</div>
+          <div class="stat-lbl">مجموع نقاطك</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon" style="background: rgba(37, 99, 235, 0.15); color: #3b82f6;">🎯</div>
+        <div>
+          <div class="stat-val" id="statAccuracy">0%</div>
+          <div class="stat-lbl">دقة الإجابات</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b;">📝</div>
+        <div>
+          <div class="stat-val" id="statAttempts">0</div>
+          <div class="stat-lbl">محاولات مكتملة</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon" style="background: rgba(239, 68, 68, 0.15); color: #ef4444;">⚠️</div>
+        <div>
+          <div class="stat-val" id="statWeak">0 سؤال</div>
+          <div class="stat-lbl">أسئلة تحتاج مراجعة</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW: HOME -->
+    <section id="view-home" class="view-panel active">
+      <div class="hero-banner">
+        <div class="hero-content">
+          <div class="hero-badge">🌟 الإصدار الشامل لمسابقات 2026</div>
+          <h1 class="hero-title">استعد بثقة • تدرب بذكاء • اجتـاز</h1>
+          <p class="hero-subtitle">
+            المنصة التدريبية المتكاملة لمحاكاة امتحانات الجهاز المركزي للتنظيم والإدارة، مسابقات التربية والتعليم، الأزهر الشريف، والأوقاف، بنفس نظام التوقيت وتوزيع المحاور المعتمد.
+          </p>
+          <div class="hero-buttons">
+            <button class="btn btn-primary" onclick="startExam('comprehensive', 20)">
+              ⚡ ابدأ المحاكي الشامل الموقوت (20 دقيقة)
+            </button>
+            <button class="btn btn-outline-white" onclick="switchTab('roadmap')">
+              📅 تنظيم خطة المذاكرة الذكية
+            </button>
+            <button class="btn btn-outline-white" onclick="switchTab('bank')">
+              🔍 تصفح بنك الأسئلة والشروحات
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-head">
+        <div>
+          <h2>المحاكيات المتاحة حسب التخصص والمحاور</h2>
+          <p>اختر الاختبار المخصص لبدء جلسة محاكاة واقعية موقوتة مطابقة لنظام لجان الامتحانات</p>
+        </div>
+      </div>
+
+      <div class="exam-grid">
+        <!-- Card 1 -->
+        <div class="exam-card">
+          <span class="exam-card-badge">الأكثر طلباً</span>
+          <div class="exam-card-header">
+            <div class="exam-card-icon">🏛️</div>
+            <h3 class="exam-card-title">المحاكي الشامل للتنظيم والإدارة</h3>
+            <p class="exam-card-desc">يشمل جميع المحاور الستة: الجدارات السلوكية، الحاسب، العربي، الإنجليزي، المعلومات العامة، وIQ.</p>
+          </div>
+          <div class="exam-card-body">
+            <div class="exam-meta">
+              <span>⏱️ 20 دقيقة</span>
+              <span>❓ 20 سؤالاً</span>
+              <span>⭐ شامل</span>
+            </div>
+            <button class="btn btn-primary" style="width: 100%;" onclick="startExam('comprehensive', 20)">ابدأ المحاكي</button>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="exam-card">
+          <span class="exam-card-badge">أساسي</span>
+          <div class="exam-card-header">
+            <div class="exam-card-icon">🧠</div>
+            <h3 class="exam-card-title">الكفايات السلوكية والذكاء (IQ)</h3>
+            <p class="exam-card-desc">تدريب مكثف على أسئلة الجدارات، الأنماط الهندسية، المصفوفات، وتدوير الأشكال والمكعبات.</p>
+          </div>
+          <div class="exam-card-body">
+            <div class="exam-meta">
+              <span>⏱️ 15 دقيقة</span>
+              <span>❓ 12 سؤالاً</span>
+              <span>⭐ جدارات وذكاء</span>
+            </div>
+            <button class="btn btn-secondary" style="width: 100%;" onclick="startExam('iq_behavioral', 15)">ابدأ الاختبار</button>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="exam-card">
+          <span class="exam-card-badge">تخصص ومعلمين</span>
+          <div class="exam-card-header">
+            <div class="exam-card-icon">📖</div>
+            <h3 class="exam-card-title">الكفايات اللغوية والتربوية</h3>
+            <p class="exam-card-desc">قواعد النحو والإملاء، الهمزات، استراتيجيات التدريس، نظريات التعلم (بياجيه وفيجوتسكي).</p>
+          </div>
+          <div class="exam-card-body">
+            <div class="exam-meta">
+              <span>⏱️ 15 دقيقة</span>
+              <span>❓ 12 سؤالاً</span>
+              <span>⭐ لغة وتربوي</span>
+            </div>
+            <button class="btn btn-secondary" style="width: 100%;" onclick="startExam('lang_pedagogy', 15)">ابدأ الاختبار</button>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="exam-card">
+          <span class="exam-card-badge">تقني ومعلوماتي</span>
+          <div class="exam-card-header">
+            <div class="exam-card-icon">💻</div>
+            <h3 class="exam-card-title">الحاسب الآلي والمشروعات القومية</h3>
+            <p class="exam-card-desc">اختصارات Office وWindows، الأمن السيبراني، مبادرة حياة كريمة، الدستور وقانون الخدمة المدنية.</p>
+          </div>
+          <div class="exam-card-body">
+            <div class="exam-meta">
+              <span>⏱️ 12 دقيقة</span>
+              <span>❓ 12 سؤالاً</span>
+              <span>⭐ حاسب ومعرفة</span>
+            </div>
+            <button class="btn btn-secondary" style="width: 100%;" onclick="startExam('it_general', 12)">ابدأ الاختبار</button>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="exam-card">
+          <span class="exam-card-badge">الأزهر والأوقاف</span>
+          <div class="exam-card-header">
+            <div class="exam-card-icon">🕌</div>
+            <h3 class="exam-card-title">القرآن الكريم والثقافة الإسلامية</h3>
+            <p class="exam-card-desc">أحكام التجويد، كتاب (الحق المبين في الرد على من تلاعب بالدين)، ومسابقة الأئمة والخطباء.</p>
+          </div>
+          <div class="exam-card-body">
+            <div class="exam-meta">
+              <span>⏱️ 15 دقيقة</span>
+              <span>❓ 10 أسئلة</span>
+              <span>⭐ أزهر وأوقاف</span>
+            </div>
+            <button class="btn btn-secondary" style="width: 100%;" onclick="startExam('islamic_quran', 15)">ابدأ الاختبار</button>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="exam-card">
+          <span class="exam-card-badge" style="background: rgba(239, 68, 68, 0.15); color: #ef4444; border-color: #ef4444;">ذكي</span>
+          <div class="exam-card-header">
+            <div class="exam-card-icon">🎯</div>
+            <h3 class="exam-card-title">تدريب نقاط الضعف المخصص</h3>
+            <p class="exam-card-desc">يقوم النظام تلقائياً بجمع الأسئلة التي أخطأت فيها في أي اختبار سابق لتدريبك عليها حتى تتقنها.</p>
+          </div>
+          <div class="exam-card-body">
+            <div class="exam-meta">
+              <span>⏱️ بدون وقت محدد</span>
+              <span>❓ حسب أخطائك</span>
+              <span>⭐ تدريب ذاتي</span>
+            </div>
+            <button class="btn btn-danger" style="width: 100%;" onclick="startWeakPointsExam()">تدرب على أخطائك</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW: SIMULATOR (EXAM RUNNER) -->
+    <section id="view-simulator" class="view-panel">
+      <!-- Active test container -->
+      <div id="simActiveBox" class="sim-container" style="display: none;">
+        <div class="sim-topbar">
+          <div>
+            <span class="q-category-tag" id="simTrackName">المحاكي الشامل</span>
+            <h3 id="simCurrentQuestionNumber" style="font-size: 18px; font-weight: 800;">السؤال 1 من 20</h3>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <button class="btn btn-secondary" id="flagBtn" onclick="toggleFlagCurrentQuestion()" style="padding: 6px 12px; font-size: 13px;">
+              🚩 تمييز للمراجعة
+            </button>
+            <div class="sim-timer" id="simTimerDisplay">
+              ⏱️ <span id="timerText">20:00</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sim-progress-wrap">
+          <div class="sim-progress-bar" id="simProgressBar"></div>
+        </div>
+
+        <div class="question-box">
+          <div class="q-text" id="simQuestionText">نص السؤال هنا...</div>
+          <div class="q-diagram" id="simDiagramContainer" style="display: none;">
+            <!-- Dynamic SVG diagram will be injected here -->
+          </div>
+
+          <div class="options-list" id="simOptionsContainer">
+            <!-- Dynamic option buttons -->
+          </div>
+        </div>
+
+        <!-- Navigator palette -->
+        <div class="q-palette" id="simPaletteContainer"></div>
+
+        <div class="sim-nav-footer">
+          <div style="display: flex; gap: 8px;">
+            <button class="btn btn-secondary" id="prevBtn" onclick="navigateQuestion(-1)">السابق</button>
+            <button class="btn btn-secondary" id="nextBtn" onclick="navigateQuestion(1)">التالي</button>
+          </div>
+          <button class="btn btn-primary" onclick="submitExamPrompt()">
+            ✅ إنهاء وتسليم الاختبار
+          </button>
+        </div>
+      </div>
+
+      <!-- Result Screen -->
+      <div id="simResultBox" class="result-sheet" style="display: none;">
+        <div class="score-badge-circle" id="resultScoreCircle" style="--percent: 85;">
+          <div class="score-inner">
+            <div class="score-number" id="resultPercentText">85%</div>
+            <div class="score-total" id="resultRatioText">17 / 20</div>
+          </div>
+        </div>
+
+        <h2 class="result-title" id="resultHeading">تهانينا! اجتياز متميز 🌟</h2>
+        <p class="result-feedback" id="resultMessage">
+          لقد أظهرت أداءً ممتازاً يوافق متطلبات ومعايير درجات القبول في مسابقات التنظيم والإدارة.
+        </p>
+
+        <h4 style="text-align: right; margin-bottom: 12px; font-weight: 800;">تحليل الأداء حسب المحاور:</h4>
+        <div class="axes-breakdown" id="resultAxesBreakdown">
+          <!-- Dynamic breakdown bars -->
+        </div>
+
+        <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+          <button class="btn btn-primary" onclick="startExam('comprehensive', 20)">🔄 إعادة محاكي جديد</button>
+          <button class="btn btn-danger" id="reviewWeakBtn" onclick="startWeakPointsExam()">🎯 تدريب على الأسئلة الخاطئة</button>
+          <button class="btn btn-secondary" onclick="switchTab('summaries')">📖 مراجعة الشروحات والقواعد</button>
+        </div>
+      </div>
+
+      <!-- Intro / Setup (when no test is running) -->
+      <div id="simIntroBox" class="sim-container" style="text-align: center; padding: 40px 20px;">
+        <div style="font-size: 50px; margin-bottom: 15px;">⏱️</div>
+        <h2 style="font-size: 26px; font-weight: 900; margin-bottom: 10px;">جاهز لبدء محاكي الاختبار؟</h2>
+        <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto 25px;">
+          محاكي دقيق وموقوت يحاكي شاشات قاعات امتحانات مركز الإدارة العامة بالجهاز المركزي للتنظيم والإدارة.
+        </p>
+
+        <div style="max-width: 450px; margin: 0 auto 25px; text-align: right;">
+          <label style="font-weight: 700; font-size: 14px; display: block; margin-bottom: 6px;">اختر مسار المحاكي:</label>
+          <select class="filter-select" id="setupTrackSelect" style="width: 100%; margin-bottom: 16px;">
+            <option value="comprehensive">المحاكي الشامل لجميع المحاور الستة</option>
+            <option value="iq_behavioral">محاور الكفايات السلوكية والتفكير المنطقي (IQ)</option>
+            <option value="lang_pedagogy">الكفايات اللغوية والتربوية (عربي وتربوي)</option>
+            <option value="it_general">الحاسب الآلي والمشروعات القومية والدستور</option>
+            <option value="islamic_quran">مسابقة القرآن الكريم والأزهر والأوقاف</option>
+          </select>
+
+          <label style="font-weight: 700; font-size: 14px; display: block; margin-bottom: 6px;">المدة الزمنية للاختبار:</label>
+          <select class="filter-select" id="setupTimeSelect" style="width: 100%;">
+            <option value="20">20 دقيقة (موصى به - محاكاة رسمية)</option>
+            <option value="15">15 دقيقة (تدريب سريع)</option>
+            <option value="30">30 دقيقة (تدريب موسع)</option>
+            <option value="0">تدريب حر (بدون مؤقت)</option>
+          </select>
+        </div>
+
+        <button class="btn btn-primary" style="padding: 14px 34px; font-size: 17px;" onclick="startCustomSim()">
+          🚀 ابدأ الاختبار الآن
+        </button>
+      </div>
+    </section>
+
+    <!-- VIEW: WEAK POINTS -->
+    <section id="view-weakpoints" class="view-panel">
+      <div class="section-head">
+        <div>
+          <h2>🎯 بنك نقاط الضعف الشخصي</h2>
+          <p>يتم تجميع أي سؤال تجيب عليه خطأ تلقائياً هنا لتتمكن من إعادة حله ودراسة شرحه حتى تتفوق فيه.</p>
+        </div>
+        <button class="btn btn-danger" onclick="clearWeakPoints()">مسح القائمة</button>
+      </div>
+
+      <div id="weakListContainer">
+        <!-- Dynamic list of missed questions -->
+      </div>
+    </section>
+
+    <!-- VIEW: STUDY ROADMAP -->
+    <section id="view-roadmap" class="view-panel">
+      <div class="roadmap-planner">
+        <div class="section-head">
+          <div>
+            <h2>خريطة المذاكرة الذكية 🗺️</h2>
+            <p>نظم وقتك.. نقسم لك المنهج والشروحات والمحاكيات بحسب عدد الأيام المتبقية على امتحانك</p>
+          </div>
+          <div style="font-weight: 800; color: var(--primary-light);" id="planProgressText">
+            الإنجاز: 0%
+          </div>
+        </div>
+
+        <div class="plan-selector">
+          <button class="plan-btn active" onclick="setPlan(7)">⚡ خطة الأسبوع المكثفة (7 أيام)</button>
+          <button class="plan-btn" onclick="setPlan(14)">🎯 خطة الأسبوعين المتوازنة (14 يوماً)</button>
+          <button class="plan-btn" onclick="setPlan(3)">🔥 خطة المراجعة السريعة (3 أيام)</button>
+        </div>
+
+        <div id="roadmapStepsContainer">
+          <!-- Dynamic checklist steps -->
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW: QUESTION BANK -->
+    <section id="view-bank" class="view-panel">
+      <div class="section-head">
+        <div>
+          <h2>📚 بنك الأسئلة الشامل والمحلول</h2>
+          <p>تصفح الأسئلة مع الإجابات النموذجية والشرح المفصل لكل قاعدة ونظرية</p>
+        </div>
+      </div>
+
+      <div class="bank-search-bar">
+        <input type="text" class="search-input" id="bankSearchInput" placeholder="ابحث عن كلمة، قاعدة، سؤال، أو اختصار..." oninput="filterBank()">
+        <select class="filter-select" id="bankCategorySelect" onchange="filterBank()">
+          <option value="all">جميع المحاور والتخصصات</option>
+          <option value="الجدارات السلوكية">الجدارات السلوكية</option>
+          <option value="الذكاء والتفكير المنطقي (IQ)">الذكاء والمنطق (IQ)</option>
+          <option value="اللغة العربية">اللغة العربية</option>
+          <option value="اللغة الإنجليزية">اللغة الإنجليزية</option>
+          <option value="الحاسب الآلي وتكنولوجيا المعلومات">الحاسب والتقنية</option>
+          <option value="المعلومات العامة والمشروعات القومية">المعلومات العامة والدستور</option>
+          <option value="الكفايات التربوية">الكفايات التربوية</option>
+          <option value="القرآن والأزهر والأوقاف">القرآن والأزهر والأوقاف</option>
+        </select>
+      </div>
+
+      <div id="bankListContainer">
+        <!-- Dynamic bank cards -->
+      </div>
+    </section>
+
+    <!-- VIEW: SUMMARIES & REVISION SHEETS -->
+    <section id="view-summaries" class="view-panel">
+      <div class="section-head">
+        <div>
+          <h2>📖 مكتبة القواعد والشروحات المركزة</h2>
+          <p>ملخصات جاهزة للحفظ والمراجعة السريعة قبل الدخول للجان الامتحانات</p>
+        </div>
+        <button class="btn btn-primary no-print" onclick="window.print()">
+          🖨️ طباعة / تصدير ورقة المراجعة PDF
+        </button>
+      </div>
+
+      <div class="summary-grid">
+        <!-- Box 1 -->
+        <div class="summary-card">
+          <h3>✍️ قواعد الهمزات والإملاء السريعة</h3>
+          <ul>
+            <li><b>همزة الوصل:</b> (اسْم، ابن، ابنة، اثنان، امرؤ، امرأة) + أل التعريف + أمر الثلاثي (اكتُب) + ماضي وأمر ومصدر الخماسي والسداسي (انطَلَقَ، استَخرَجَ).</li>
+            <li><b>همزة القطع:</b> ما عدا الوصل (أحمد، إكرام، أخذ، أقبل، إنَّ، إلى).</li>
+            <li><b>(امرؤ / امرأً / امرئ):</b> تُكتب بالواو في الرفع (جاء امرؤٌ)، وبالألف في النصب (رأيت امرأً)، وبالياء في الجر (مررت بامرئٍ).</li>
+            <li><b>الفاصلة المنقوطة (؛):</b> توضع حصراً بين جملتين إحداهما سبب للأخرى أو نتيجة لها.</li>
+          </ul>
+        </div>
+
+        <!-- Box 2 -->
+        <div class="summary-card">
+          <h3>💻 أهم اختصارات ودوال الحاسب الآلي</h3>
+          <ul>
+            <li><b>F12:</b> نافذة حفظ باسم (Save As) في جميع برامج Office.</li>
+            <li><b>Windows + D:</b> النزول الفوري لسطح المكتب وإخفاء كافة النوافذ.</li>
+            <li><b>Ctrl + Shift + Esc:</b> فتح إدارة المهام (Task Manager) بضغطة واحدة.</li>
+            <li><b>COUNT vs COUNTA:</b> الأولى تعد الخلايا الرقمية فقط، والثانية تعد جميع الخلايا غير الفارغة.</li>
+            <li><b>علامة $:</b> تثبيت الخلية في معادلات Excel (Absolute Reference).</li>
+          </ul>
+        </div>
+
+        <!-- Box 3 -->
+        <div class="summary-card">
+          <h3>🏗️ المشروعات القومية والدستور المصري</h3>
+          <ul>
+            <li><b>مبادرة حياة كريمة:</b> تستهدف تنمية 4500 قرية مصرية وتحسين حياة 58 مليون مواطن في الريف.</li>
+            <li><b>الدستور واستحقاقات التعليم والصحة:</b> 4% من الناتج القومي للتعليم، 2% للتعليم العالي، 1% للبحث العلمي، 3% للصحة (المجموع 10%).</li>
+            <li><b>قانون الخدمة المدنية:</b> القانون رقم 81 لسنة 2016 (ساعات العمل الأسبوعية من 35 إلى 42 ساعة).</li>
+            <li><b>العاصمة الإدارية ومحطة الضبعة:</b> الضبعة بمطروح لتوليد 4800 ميجاوات سلمياً بأربعة مفاعلات نووية.</li>
+          </ul>
+        </div>
+
+        <!-- Box 4 -->
+        <div class="summary-card">
+          <h3>🧠 مفاتيح أسئلة IQ والتصور المكاني</h3>
+          <ul>
+            <li><b>النرد القياسي:</b> مجموع كل وجهين متقابلين دائماً يساوي 7 (1 يقابل 6، 2 يقابل 5، 3 يقابل 4). الوجهان المتقابلان لا يجتمعان في زاوية واحدة!</li>
+            <li><b>طي المكعب:</b> المربعان المفصولان بمربع وسيط يتقابلان عند الطي ولا يلتقيان على حافة مشتركة أبداً.</li>
+            <li><b>المتتاليات:</b> ابدأ بفحص الفروق البسيطة (+، −)، ثم الفروق المتزايدة (أعداد فردية أو زوجية)، ثم النسب (×، ÷).</li>
+          </ul>
+        </div>
+
+        <!-- Box 5 -->
+        <div class="summary-card">
+          <h3>🎓 نظريات التعلم والكفايات التربوية</h3>
+          <ul>
+            <li><b>جان بياجيه:</b> النمو المعرفي (الحس-حركي 0-2، ما قبل العمليات 2-7، العمليات المادية 7-11، العمليات المجردة 11+).</li>
+            <li><b>ليف فيجوتسكي:</b> المنطقة النمائية القريبة (ZPD) وسقالات التعلم والتفاعل الاجتماعي.</li>
+            <li><b>أنواع التقويم:</b> قبلي (تشخيصي لتحديد مستوى البدء)، تكويني بنائي (أثناء الدرس للتغذية الراجعة)، ختامي (لقياس التحصيل النهائي).</li>
+            <li><b>هوارد جاردنر:</b> نظرية الذكاءات المتعددة (لغوي، منطقي رياضي، بصري مكاني، حركي، موسيقي، اجتماعي، ذاتي، طبيعي).</li>
+          </ul>
+        </div>
+
+        <!-- Box 6 -->
+        <div class="summary-card">
+          <h3>🕌 محاور كتاب (الحق المبين) والأوقاف</h3>
+          <ul>
+            <li><b>مفهوم الوطن:</b> غريزة فطرية نبيلة لا تتعارض مع الدين، والدفاع عنه واجب شرعي.</li>
+            <li><b>الجهاد الشرعي:</b> تدبير الدولة والجيش النظامي للدفاع عن الأوطان، وليس للأفراد أو التنظيمات المسلحة.</li>
+            <li><b>مقاصد الشريعة الخمسة:</b> حفظ الدين، والنفس، والعقل، والعرض والنسل، والمال.</li>
+            <li><b>تجديد الخطاب الديني:</b> إحياء المنهجية العلمية الأزهرية الوسطية والتصدي للأفكار المتشددة.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div>
+        <b>منصة إجتـاز التعليمية 2026</b> — محاكي التدريب على مسابقات التنظيم والإدارة والتعليم
+      </div>
+      <div>
+        استعد بثقة • تدرب بذكاء • اجتـاز
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* ==========================================================================
+       QUESTIONS DATABASE (Realistic, Comprehensive & Verified for التنظيم والإدارة)
+       ========================================================================== */
+    const QUESTIONS_DATA = [
+      // 1. BEHAVIORAL
+      {
+        id: "beh_1",
+        category: "الجدارات السلوكية",
+        track: "iq_behavioral",
+        question: "عندما تُكلف بمهمة ذات موعد نهائي حرج وتواجه نقصاً في البيانات المطلوبة لإكمالها، ما هو التصرف الأكثر مهنية؟",
+        options: [
+          "تنتظر حتى يوفر زملاؤك البيانات مهما تأخر الوقت لتجنب المسؤولية الشخصية.",
+          "تبادر بالبحث في السجلات المتاحة، وتتواصل فوراً مع المشرف لتحديد البدائل والالتزام بالموعد.",
+          "تُسلّم التقرير ناقصاً وتبرر ذلك بأن البيانات غير متاحة.",
+          "تطلب إعفاءك من المهمة وإسنادها إلى موظف آخر لديه خبرة أكبر."
+        ],
+        correct: 1,
+        explanation: "في الجدارات السلوكية الحكومية، المبادرة والمسؤولية والبحث عن حلول مع إشراك المشرف هي السلوك الإيجابي الأمثل."
+      },
+      {
+        id: "beh_2",
+        category: "الجدارات السلوكية",
+        track: "iq_behavioral",
+        question: "اختلف معك زميل في الفريق حول طريقة إنجاز مشروع جماعي وبدأ يعبر عن رأيه بحدة، ما هو الموقف السليم؟",
+        options: [
+          "ترد عليه بنفس الحدة لتؤكد قوة حجتك وموقفك أمام باقي الفريق.",
+          "تتجاهل العمل معه وتنفذ الجزء الخاص بك فقط دون تنسيق.",
+          "تحافظ على هدوئك وتستمع لوجهة نظره وتركز على معايير الجودة والهدف المشترك للمؤسسة.",
+          "تتقدم فوراً بشكوى رسمية ضده إلى الشؤون القانونية."
+        ],
+        correct: 2,
+        explanation: "الذكاء العاطفي وضبط الانفعال والتركيز على الصالح العام للمؤسسة من ركائز الجدارات الوظيفية."
+      },
+      {
+        id: "beh_3",
+        category: "الجدارات السلوكية",
+        track: "iq_behavioral",
+        question: "إذا لاحظت وجود خطأ غير مقصود في حسابات تقرير قمت برفعه للمدير بالفعل ولم يلحظه أحد بعد:",
+        options: [
+          "تلتزم الصمت وتأمل ألا يكتشفه أحد.",
+          "تبادر فوراً بإبلاغ المدير مع تقديم النسخة المصوبة وتوضيح سبب الخطأ وتداركه.",
+          "تنتظر حتى يكتشفه المدير ثم تحمّل المسؤولية لبرنامج الحاسب أو زميل العمل.",
+          "تقوم بتعديل الأرقام في الملف دون إبلاغ أي شخص."
+        ],
+        correct: 1,
+        explanation: "قيمة النزاهة والشفافية وتحمل المسؤولية الذاتية هي الأولوية القصوى في تقييم موظفي الجهاز الإداري."
+      },
+
+      // 2. IQ & LOGIC
+      {
+        id: "iq_1",
+        category: "الذكاء والتفكير المنطقي (IQ)",
+        track: "iq_behavioral",
+        question: "ما هو العدد التالي في المتتالية: 2 ، 5 ، 10 ، 17 ، 26 ، ؟",
+        options: ["35", "37", "39", "41"],
+        correct: 1,
+        explanation: "الفروق بين الحدود هي متتالية أعداد فردية متتالية: (+3 ، +5 ، +7 ، +9 ، +11). إذن: 26 + 11 = 37."
+      },
+      {
+        id: "iq_2",
+        category: "الذكاء والتفكير المنطقي (IQ)",
+        track: "iq_behavioral",
+        question: "في النرد القياسي، إذا كان الوجه العلوي يحمل الرقم (3)، فما هو الرقم الموجود على الوجه السفلي المقابل له تماماً؟",
+        options: ["2", "4", "5", "6"],
+        correct: 1,
+        explanation: "في جميع أحجار النرد القياسية، مجموع كل وجهين متقابلين يساوي دائماً 7. (3 + 4 = 7)."
+      },
+      {
+        id: "iq_3",
+        category: "الذكاء والتفكير المنطقي (IQ)",
+        track: "iq_behavioral",
+        hasDiagram: true,
+        diagramSvg: `<svg viewBox="0 0 600 130" xmlns="http://www.w3.org/2000/svg">
+          <g fill="#10b981" transform="translate(100, 65)">
+            <polygon points="-30,30 30,30 0,-40"/>
+            <circle cx="0" cy="5" r="8" fill="#fff"/>
+          </g>
+          <path d="M180 65 L260 65" stroke="#94a3b8" stroke-width="3" marker-end="url(#arrow)"/>
+          <text x="220" y="55" fill="#94a3b8" font-size="14" text-anchor="middle">دوران 90° يمين</text>
+          <g fill="#3b82f6" transform="translate(350, 65)">
+            <polygon points="-30,-30 -30,30 40,0"/>
+            <circle cx="-5" cy="0" r="8" fill="#fff"/>
+          </g>
+          <text x="500" y="70" fill="#f8fafc" font-size="18" font-weight="bold">ما هو الشكل التالي؟</text>
+        </svg>`,
+        question: "إذا قمنا بتدوير المثلث 90 درجة في اتجاه حركة عقارب الساعة، في أي اتجاه سيشير رأس المثلث بعد الدوران الإضافي بمقدار 90 درجة أخرى؟",
+        options: [
+          "إلى الأعلى (الشمال)",
+          "إلى الأسفل (الجنوب)",
+          "إلى اليسار (الغرب)",
+          "يبقى في اتجاه اليمين (الشرق)"
+        ],
+        correct: 1,
+        explanation: "رأس المثلث كان يشير للأعلى، ثم لليمين بعد ربع دورة (90°)، وبعد 90° إضافية (مجموع 180°) سيشير إلى الأسفل مباشرة."
+      },
+      {
+        id: "iq_4",
+        category: "الذكاء والتفكير المنطقي (IQ)",
+        track: "iq_behavioral",
+        question: "إذا كان (طبيب : مستشفى) ، فإن العلاقة المماثلة تماماً هي:",
+        options: [
+          "قلم : كتابة",
+          "معلم : مدرسة",
+          "مهندس : رسم",
+          "طائرة : مطار"
+        ],
+        correct: 1,
+        explanation: "علاقة مهنة بمكان ممارستها الأساسي: الطبيب يمارس عمله في المستشفى، والمعلم يمارس عمله في المدرسة."
+      },
+
+      // 3. ARABIC LANGUAGE
+      {
+        id: "ar_1",
+        category: "اللغة العربية",
+        track: "lang_pedagogy",
+        question: "أي الجمل التالية كُتبت فيها الكلمات إملائياً بصورة صحيحة وفق قواعد الهمزات؟",
+        options: [
+          "أقبل إبن أخي واستمع إلى النصيحة بإهتمام.",
+          "أقبل ابن أخي واستمع إلى النصيحة باهتمام.",
+          "اقبل ابن اخي واستمع الي النصيحة باهتمام.",
+          "أقبل إبن أخي واستمع الى النصيحة بإهتمام."
+        ],
+        correct: 1,
+        explanation: "(أقبل) همزة قطع، (ابن) همزة وصل، (استمع) فعل خماسي همزته وصل، (إلى) حرف همزته قطع، (اهتمام) مصدر خماسي همزته وصل."
+      },
+      {
+        id: "ar_2",
+        category: "اللغة العربية",
+        track: "lang_pedagogy",
+        question: "ما الضبط الإملائي السليم للكلمة في الفراغ: «كان ........ رجلاً حكيماً ذا مروءة»؟",
+        options: ["امرأً", "امرؤٌ", "امرئٍ", "إمرؤ"],
+        correct: 1,
+        explanation: "اسم كان مرفوع، وتُكتب همزة (امرؤ) على الواو في حالة الرفع، وعلى الألف في النصب، وعلى الياء في الجر."
+      },
+      {
+        id: "ar_3",
+        category: "اللغة العربية",
+        track: "lang_pedagogy",
+        question: "ما علامة الترقيم التي توضع بين جملتين إحداهما سبب للأخرى أو تعليل لها؟",
+        options: ["النقطتان الرأسيتان ( : )", "الفاصلة المنقوطة ( ؛ )", "علامة الحذف ( ... )", "الشرطة المائلة ( / )"],
+        correct: 1,
+        explanation: "الفاصلة المنقوطة (؛) خُصصت في قواعد الترقيم العربية لتفصل بين جملتين إحداهما سبب أو علة للأخرى."
+      },
+
+      // 4. ENGLISH LANGUAGE
+      {
+        id: "en_1",
+        category: "اللغة الإنجليزية",
+        track: "lang_pedagogy",
+        question: "Choose the grammatically correct option: «Neither the manager nor the employees ________ aware of the system update yesterday.»",
+        options: ["was", "were", "is", "are"],
+        correct: 1,
+        explanation: "In 'Neither... nor...', the verb agrees with the subject closest to it. 'The employees' is plural, and the sentence refers to the past (yesterday), so 'were' is correct."
+      },
+      {
+        id: "en_2",
+        category: "اللغة الإنجليزية",
+        track: "lang_pedagogy",
+        question: "«If you work hard and prioritize your tasks, you will ________ your career goals.»",
+        options: ["achieve", "achieved", "achieving", "achievement"],
+        correct: 0,
+        explanation: "After modal auxiliary 'will', the base form (bare infinitive) of the verb is required: 'achieve'."
+      },
+
+      // 5. IT & COMPUTERS
+      {
+        id: "it_1",
+        category: "الحاسب الآلي وتكنولوجيا المعلومات",
+        track: "it_general",
+        question: "ما هو مفتاح الاختصار في لوحة المفاتيح لفتح نافذة (حفظ باسم - Save As) مباشرة في حزمة Microsoft Office؟",
+        options: ["Ctrl + S", "F12", "Ctrl + Shift + S", "Alt + F4"],
+        correct: 1,
+        explanation: "المفتاح F12 يفتح مباشرة نافذة (Save As) في Word وExcel وPowerPoint، بينما Ctrl+S يحفظ التعديلات على الملف الحالي."
+      },
+      {
+        id: "it_2",
+        category: "الحاسب الآلي وتكنولوجيا المعلومات",
+        track: "it_general",
+        question: "ما هو الاختصار المستخدم لإخفاء كافة النوافذ المفتوحة فوراً والوصول إلى سطح المكتب في نظام Windows؟",
+        options: ["Alt + Tab", "Windows + D", "Ctrl + Alt + Del", "Windows + L"],
+        correct: 1,
+        explanation: "(Windows + D) يُظهر سطح المكتب فورا Desktop، بينما Windows+L لقفل الجهاز Lock، وAlt+Tab للتبديل بين النوافذ."
+      },
+      {
+        id: "it_3",
+        category: "الحاسب الآلي وتكنولوجيا المعلومات",
+        track: "it_general",
+        question: "في برنامج الجداول الحسابية Excel، ما الفرق الجوهري بين الدالتين COUNT و COUNTA؟",
+        options: [
+          "COUNT تعد الخلايا النصية فقط، بينما COUNTA تعد الأرقام فقط.",
+          "COUNT تعد الخلايا التي تحتوي على أرقام فقط، بينما COUNTA تعد جميع الخلايا غير الفارغة (أرقاماً ونصوصاً).",
+          "لا يوجد أي فرق بينهما وتؤديان نفس الوظيفة.",
+          "COUNTA تحسب المتوسط الحسابي بينما COUNT تحسب المجموع."
+        ],
+        correct: 1,
+        explanation: "COUNT تختص بالقيم الرقمية حصراً، بينما COUNTA (Count All) تعد أي خلية تحتوي على أي قيمة غير فارغة."
+      },
+      {
+        id: "it_4",
+        category: "الحاسب الآلي وتكنولوجيا المعلومات",
+        track: "it_general",
+        question: "ما المصطلح الذي يطلق على محاولة خداع المستخدمين عبر رسائل أو روابط مزيفة لسرقة كلمات المرور والبيانات البنكية؟",
+        options: ["Firewall (الجدار الناري)", "Phishing (التصيد الاحتيالي)", "Data Mining (تنقيب البيانات)", "Defragmentation (إلغاء التجزئة)"],
+        correct: 1,
+        explanation: "التصيد الاحتيالي (Phishing) هو شكل من أشكال الهندسة الاجتماعية لاختراق الحسابات عبر خداع الضحية."
+      },
+
+      // 6. GENERAL KNOWLEDGE & CONSTITUTION
+      {
+        id: "gk_1",
+        category: "المعلومات العامة والمشروعات القومية",
+        track: "it_general",
+        question: "ما هي المبادرة الرئاسية التنموية الكبرى التي أطلقتها الدولة المصرية لتطوير الريف المصري وتحسين معيشة أكثر من 58 مليون مواطن؟",
+        options: ["مبادرة حياة كريمة", "مبادرة تكافل وكرامة", "مبادرة 100 مليون صحة", "مشروع الدلتا الجديدة"],
+        correct: 0,
+        explanation: "مبادرة «حياة كريمة» هي أضخم مشروع تنموي متكامل لتطوير قرى الريف المصري في التاريخ الحديث."
+      },
+      {
+        id: "gk_2",
+        category: "المعلومات العامة والمشروعات القومية",
+        track: "it_general",
+        question: "وفقاً للدستور المصري الحالي، ما هي النسبة المحددة من الناتج القومي الإجمالي للإنفاق الحكومي على قطاع التعليم؟",
+        options: ["لا تقل عن 1%", "لا تقل عن 2.5%", "لا تقل عن 4%", "لا تقل عن 10%"],
+        correct: 2,
+        explanation: "حدد الدستور المصري نسبة الإنفاق على التعليم بما لا يقل عن 4% من الناتج القومي، و2% للتعليم العالي، و1% للبحث العلمي."
+      },
+      {
+        id: "gk_3",
+        category: "المعلومات العامة والمشروعات القومية",
+        track: "it_general",
+        question: "ما هو رقم قانون الخدمة المدنية المعمول به حالياً لتنظيم شؤون الموظفين بالجهاز الإداري للدولة المصرية؟",
+        options: ["قانون رقم 47 لسنة 1978", "قانون رقم 81 لسنة 2016", "قانون رقم 18 لسنة 2015", "قانون رقم 10 لسنة 2020"],
+        correct: 1,
+        explanation: "قانون الخدمة المدنية الحالي الصادر عن مجلس النواب هو القانون رقم 81 لسنة 2016."
+      },
+      {
+        id: "gk_4",
+        category: "المعلومات العامة والمشروعات القومية",
+        track: "it_general",
+        question: "أين تقع أول محطة نووية سلمية لتوليد الطاقة الكهربائية وتحلية المياه في جمهورية مصر العربية؟",
+        options: ["الزعفرانة بالبحر الأحمر", "الضبعة بمحافظة مطروح", "سفاجا", "العلمين الجديدة"],
+        correct: 1,
+        explanation: "محطة الضبعة النووية بمحافظة مطروح هي أول محطة مصرية لإنتاج الكهرباء بالطاقة النووية السلمية بقدرة 4800 ميجاوات."
+      },
+
+      // 7. PEDAGOGY (TEACHERS EXAM)
+      {
+        id: "ped_1",
+        category: "الكفايات التربوية",
+        track: "lang_pedagogy",
+        question: "من هو العالم التربوي صاحب نظرية التطور المعرفي التي تقسم النمو العقلي إلى أربع مراحل نمائية شهيرة؟",
+        options: ["جان بياجيه (Jean Piaget)", "جون ديوي (John Dewey)", "إيفان بافلوف (Ivan Pavlov)", "بورهوس سكنر (B. F. Skinner)"],
+        correct: 0,
+        explanation: "جان بياجيه قسّم النمو المعرفي إلى: الحس-حركي، ما قبل العمليات، العمليات المادية، والعمليات المجردة."
+      },
+      {
+        id: "ped_2",
+        category: "الكفايات التربوية",
+        track: "lang_pedagogy",
+        question: "ما نوع التقويم التربوي الذي يُجريه المعلم بصورة مستمرة أثناء الحصة الدراسية لتعديل مسار التعليم وتزويد الطلاب بالتغذية الراجعة؟",
+        options: ["التقويم القبلي (التشخيصي)", "التقويم البنائي (التكويني)", "التقويم الختامي (النهائي)", "التقويم التتبعي بعد التخرج"],
+        correct: 1,
+        explanation: "التقويم التكويني أو البنائي (Formative Assessment) يواكب العملية التعليمية أولاً بأول لتقديم تغذية راجعة."
+      },
+      {
+        id: "ped_3",
+        category: "الكفايات التربوية",
+        track: "lang_pedagogy",
+        question: "استراتيجية تعليمية تهدف إلى توليد أكبر عدد ممكن من الحلول والأفكار الإبداعية دون الحكم عليها أو نقدها في مرحلتها الأولى:",
+        options: ["التعلم بالحفظ والتكرار", "استراتيجية العصف الذهني (Brainstorming)", "المحاضرة التقليدية", "التسميع المباشر"],
+        correct: 1,
+        explanation: "العصف الذهني يقوم على مبدأين أساسيين: تأجيل الحكم على الأفكار، والتركيز على كم الأفكار المتولدة."
+      },
+
+      // 8. ISLAMIC, QURAN & AZHAR
+      {
+        id: "isl_1",
+        category: "القرآن والأزهر والأوقاف",
+        track: "islamic_quran",
+        question: "ما حكم النون الساكنة أو التنوين إذا جاء بعدها حرف الياء في كلمتين (مثل: مَن يَقُولُ)؟",
+        options: ["إظهار حلقي", "إدغام بغنة", "إقلاب", "إخفاء حقيقي"],
+        correct: 1,
+        explanation: "حرف الياء من حروف كلمة (ينمو)، وحكمه إدغام بغنة."
+      },
+      {
+        id: "isl_2",
+        category: "القرآن والأزهر والأوقاف",
+        track: "islamic_quran",
+        question: "في كتاب (الحق المبين في الرد على من تلاعب بالدين)، ما هو التأصيل الأزهري الصحيح لمفهوم 'الوطن' في الإسلام؟",
+        options: [
+          "الوطن مجرد حدود جغرافية طارئة لا قيمة لها في الشرع.",
+          "حب الوطن غريزة فطرية نبيلة ودعامة للأمن والاستقرار وتعمير الأرض أمرت به الشريعة.",
+          "الولاء للأرض يتناقض حتماً مع الولاء للعقيدة.",
+          "مفهوم الوطن حديث ولا وجود له في التراث الإسلامي."
+        ],
+        correct: 1,
+        explanation: "يؤكد الأزهر الشريف وكتاب الحق المبين أن حب الوطن والدفاع عنه من مقاصد الشريعة والفطرة الإنسانية السليمة."
+      },
+      {
+        id: "isl_3",
+        category: "القرآن والأزهر والأوقاف",
+        track: "islamic_quran",
+        question: "كم يبلغ عدد سور القرآن الكريم؟",
+        options: ["110 سور", "112 سورة", "114 سورة", "120 سورة"],
+        correct: 2,
+        explanation: "عدد سور القرآن الكريم 114 سورة، مبوبة في 30 جزءاً."
+      }
+    ];
+
+    /* ==========================================================================
+       ROADMAP DATA
+       ========================================================================== */
+    const ROADMAP_DATA = {
+      7: [
+        { day: 1, title: "اليوم الأول: الكفايات السلوكية والجدارات الوظيفية", desc: "قراءة استراتيجيات الإجابة على استبيان الجدارات (النزاهة، العمل الجماعي، الانتماء) + حل 30 سؤالاً." },
+        { day: 2, title: "اليوم الثاني: اختبارات الذكاء (IQ) والمتتاليات", desc: "دراسة أنماط المتتاليات، الأشكال الهندسية، وطي المكعبات والنرد القياسي." },
+        { day: 3, title: "اليوم الثالث: قواعد اللغة العربية والهمزات", desc: "همزات الوصل والقطع، إعراب كان وإن، علامات الترقيم، والأخطاء الشائعة." },
+        { day: 4, title: "اليوم الرابع: الحاسب الآلي وتكنولوجيا المعلومات", desc: "حفظ اختصارات Windows وOffice، دوال الإكسل (COUNT, SUMIF)، ومفاهيم الأمن السيبراني." },
+        { day: 5, title: "اليوم الخامس: المشروعات القومية والدستور وقانون الخدمة المدنية", desc: "مراجعة مبادرة حياة كريمة، العاصمة الإدارية، محطة الضبعة، والنسب الدستورية للتعليم والصحة." },
+        { day: 6, title: "اليوم السادس: الكفايات التربوية والتخصصية", desc: "نظريات بياجيه وفيجوتسكي، التقويم التكويني، استراتيجيات التدريس النشط، وأحكام التجويد." },
+        { day: 7, title: "اليوم السابع: المحاكيات الشاملة ومراجعة نقاط الضعف", desc: "إجراء 3 محاكيات كاملة موقوتة، وحل جميع الأسئلة المسجلة في بنك نقاط الضعف." }
+      ],
+      14: [
+        { day: 1, title: "اليوم 1: مقدمة محاور التنظيم والإدارة ومصفوفة الجدارات", desc: "فهم سلم التقييم (موافق بشدة إلى غير موافق بشدة) والتركيز على النزاهة والانتماء." },
+        { day: 2, title: "اليوم 2: الجدارات السلوكية — سيناريوهات التعامل مع الرؤساء والجمهور", desc: "تدريبات عملية على حل الخلافات وضغط العمل وخدمة المواطنين." },
+        { day: 3, title: "اليوم 3: أساسيات IQ — المتتاليات العددية والأنماط الحسابية", desc: "فروق متزايدة، نسب، وتناوب العمليات الحسابية." },
+        { day: 4, title: "اليوم 4: IQ التصور المكاني والمصفوفات", desc: "طي المكعبات وتدوير الأشكال والانعكاس في المرآة." },
+        { day: 5, title: "اليوم 5: اللغة العربية — الهمزات وضبط الكلمات", desc: "الهمزة المتطرفة والمتوسطة وهمزة الوصل والقطع." },
+        { day: 6, title: "اليوم 6: اللغة العربية — النحو والإعراب وعلامات الترقيم", desc: "الممنوع من الصرف والأسماء الخمسة وكان وأخواتها." },
+        { day: 7, title: "اليوم 7: اللغة الإنجليزية العامة والمهنية", desc: "قواعد Grammar الأساسية، الأزمنة، وحروف الجر والمفردات الشائعة." },
+        { day: 8, title: "اليوم 8: الحاسب الآلي — نظام التشغيل واختصارات لوحة المفاتيح", desc: "إدارة المهام، سطح المكتب، وحماية البيانات." },
+        { day: 9, title: "اليوم 9: الحاسب الآلي — حزمة Office والأمن السيبراني", desc: "دوال Excel، الهوامش، والتصيد الاحتيالي والجدار الناري." },
+        { day: 10, title: "اليوم 10: المشروعات القومية والتنمية المستدامة (رؤية مصر 2030)", desc: "حياة كريمة، المونوريل، الدلتا الجديدة، والتحول الرقمي." },
+        { day: 11, title: "اليوم 11: الدستور المصري وقانون الخدمة المدنية 81 لسنة 2016", desc: "حقوق وواجبات الموظف العام ونسب الإنفاق الحكومي." },
+        { day: 12, title: "اليوم 12: الكفايات التربوية للأزهر والتعليم", desc: "نظريات التعلم، استراتيجيات التدريس، والإدارة الصفية." },
+        { day: 13, title: "اليوم 13: الثقافة الإسلامية وكتاب الحق المبين والقرآن", desc: "تفكيك الأفكار المغلوطة والتأصيل الأزهري وأحكام التجويد." },
+        { day: 14, title: "اليوم 14: المحاكيات التجريبية والتقييم النهائي", desc: "محاكاة واقعية شاملة بجميع شروط اللجنة الرسمية." }
+      ],
+      3: [
+        { day: 1, title: "اليوم المكثف 1: الجدارات السلوكية + اختبارات IQ واللغة العربية", desc: "قراءة الملخصات السريعة وحل بنك الأسئلة المباشر في المحاور الثلاثة." },
+        { day: 2, title: "اليوم المكثف 2: الحاسب الآلي + المشروعات القومية والدستور", desc: "حفظ الاختصارات والنسب الدستورية وأسماء المشروعات القومية الكبرى." },
+        { day: 3, title: "اليوم المكثف 3: المحاكي الشامل الموقوت وتصفية نقاط الضعف", desc: "تنفيذ اختبارين موقوتين وتكرار الأسئلة الخاطئة حتى الإتقان." }
+      ]
+    };
+
+    /* ==========================================================================
+       STATE & AUDIO SYNTHESIZER
+       ========================================================================== */
+    let currentExam = {
+      active: false,
+      track: "comprehensive",
+      durationSec: 1200,
+      remainingSec: 1200,
+      timerInterval: null,
+      questions: [],
+      currentIndex: 0,
+      userAnswers: {},
+      flagged: new Set()
+    };
+
+    let appState = {
+      theme: "dark",
+      soundEnabled: true,
+      totalScore: 0,
+      totalAttempts: 0,
+      correctCount: 0,
+      totalAnswered: 0,
+      weakPoints: [],
+      currentPlanDays: 7,
+      completedSteps: {}
+    };
+
+    // Load state from localStorage
+    function loadState() {
+      try {
+        const saved = localStorage.getItem("egtaz_sim_state");
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          appState = { ...appState, ...parsed };
+        }
+      } catch (e) {
+        console.error("Storage load error:", e);
+      }
+      applyTheme();
+      updateStatsUI();
+      renderRoadmap();
+      renderBank();
+      renderWeakPoints();
+    }
+
+    function saveState() {
+      try {
+        localStorage.setItem("egtaz_sim_state", JSON.stringify(appState));
+      } catch (e) {}
+      updateStatsUI();
+    }
+
+    // Audio synthesizer using Web Audio API
+    function playBeep(type) {
+      if (!appState.soundEnabled) return;
+      try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+
+        const now = ctx.currentTime;
+        if (type === "correct") {
+          osc.frequency.setValueAtTime(523.25, now); // C5
+          osc.frequency.exponentialRampToValueAtTime(659.25, now + 0.15); // E5
+          gain.gain.setValueAtTime(0.2, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
+          osc.start(now);
+          osc.stop(now + 0.3);
+        } else if (type === "wrong") {
+          osc.frequency.setValueAtTime(300, now);
+          osc.frequency.setValueAtTime(220, now + 0.1);
+          gain.gain.setValueAtTime(0.2, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.35);
+          osc.start(now);
+          osc.stop(now + 0.35);
+        } else if (type === "click") {
+          osc.frequency.setValueAtTime(800, now);
+          gain.gain.setValueAtTime(0.05, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+          osc.start(now);
+          osc.stop(now + 0.05);
+        } else if (type === "complete") {
+          [440, 554, 659, 880].forEach((freq, i) => {
+            const noteOsc = ctx.createOscillator();
+            const noteGain = ctx.createGain();
+            noteOsc.connect(noteGain);
+            noteGain.connect(ctx.destination);
+            noteOsc.frequency.setValueAtTime(freq, now + i * 0.12);
+            noteGain.gain.setValueAtTime(0.18, now + i * 0.12);
+            noteGain.gain.exponentialRampToValueAtTime(0.01, now + (i + 1) * 0.18);
+            noteOsc.start(now + i * 0.12);
+            noteOsc.stop(now + (i + 1) * 0.18);
+          });
+        }
+      } catch (e) {}
+    }
+
+    function toggleSound() {
+      appState.soundEnabled = !appState.soundEnabled;
+      document.getElementById("soundBtn").textContent = appState.soundEnabled ? "🔊" : "🔇";
+      saveState();
+    }
+
+    function toggleTheme() {
+      appState.theme = appState.theme === "dark" ? "light" : "dark";
+      applyTheme();
+      saveState();
+    }
+
+    function applyTheme() {
+      document.body.setAttribute("data-theme", appState.theme);
+      document.getElementById("themeBtn").textContent = appState.theme === "dark" ? "🌙" : "☀️";
+    }
+
+    function updateStatsUI() {
+      document.getElementById("statScore").textContent = `${appState.totalScore} نقطة`;
+      const acc = appState.totalAnswered > 0 
+        ? Math.round((appState.correctCount / appState.totalAnswered) * 100) 
+        : 0;
+      document.getElementById("statAccuracy").textContent = `${acc}%`;
+      document.getElementById("statAttempts").textContent = appState.totalAttempts;
+      document.getElementById("statWeak").textContent = `${appState.weakPoints.length} سؤال`;
+      document.getElementById("weakCountBadge").textContent = appState.weakPoints.length;
+    }
+
+    /* ==========================================================================
+       TABS SWITCHER
+       ========================================================================== */
+    function switchTab(tabId) {
+      document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
+      document.querySelectorAll(".view-panel").forEach(panel => panel.classList.remove("active"));
+
+      const targetView = document.getElementById(`view-${tabId}`);
+      if (targetView) targetView.classList.add("active");
+
+      // Match nav button
+      const buttons = document.querySelectorAll(".tab-btn");
+      buttons.forEach(btn => {
+        if (btn.getAttribute("onclick") && btn.getAttribute("onclick").includes(tabId)) {
+          btn.classList.add("active");
+        }
+      });
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    /* ==========================================================================
+       EXAM SIMULATOR ENGINE
+       ========================================================================== */
+    function startExam(track = "comprehensive", minutes = 20) {
+      let pool = [];
+      if (track === "comprehensive") {
+        pool = [...QUESTIONS_DATA];
+      } else {
+        pool = QUESTIONS_DATA.filter(q => q.track === track || track === "all");
+        if (pool.length === 0) pool = [...QUESTIONS_DATA];
+      }
+
+      // Shuffle questions
+      pool = pool.sort(() => Math.random() - 0.5);
+
+      const count = Math.min(pool.length, track === "comprehensive" ? 20 : 12);
+      const selected = pool.slice(0, count);
+
+      currentExam = {
+        active: true,
+        track: track,
+        durationSec: minutes * 60,
+        remainingSec: minutes * 60,
+        timerInterval: null,
+        questions: selected,
+        currentIndex: 0,
+        userAnswers: {},
+        flagged: new Set()
+      };
+
+      // Switch view
+      switchTab('simulator');
+      document.getElementById("simIntroBox").style.display = "none";
+      document.getElementById("simResultBox").style.display = "none";
+      document.getElementById("simActiveBox").style.display = "block";
+
+      // Track label
+      const trackLabels = {
+        comprehensive: "المحاكي الشامل للتنظيم والإدارة",
+        iq_behavioral: "الكفايات السلوكية والذكاء (IQ)",
+        lang_pedagogy: "الكفايات اللغوية والتربوية",
+        it_general: "الحاسب الآلي والمشروعات القومية",
+        islamic_quran: "القرآن الكريم والأزهر والأوقاف"
+      };
+      document.getElementById("simTrackName").textContent = trackLabels[track] || "المحاكي الرسمي";
+
+      // Setup timer
+      clearInterval(currentExam.timerInterval);
+      if (minutes > 0) {
+        updateTimerDisplay();
+        currentExam.timerInterval = setInterval(() => {
+          currentExam.remainingSec--;
+          updateTimerDisplay();
+          if (currentExam.remainingSec <= 0) {
+            clearInterval(currentExam.timerInterval);
+            finishExam();
+          }
+        }, 1000);
+      } else {
+        document.getElementById("timerText").textContent = "تدريب حر";
+      }
+
+      renderPalette();
+      renderCurrentQuestion();
+    }
+
+    function startCustomSim() {
+      const track = document.getElementById("setupTrackSelect").value;
+      const minutes = parseInt(document.getElementById("setupTimeSelect").value, 10);
+      startExam(track, minutes);
+    }
+
+    function updateTimerDisplay() {
+      const timerSpan = document.getElementById("timerText");
+      const m = Math.floor(currentExam.remainingSec / 60);
+      const s = currentExam.remainingSec % 60;
+      timerSpan.textContent = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+      const timerBox = document.getElementById("simTimerDisplay");
+      if (currentExam.remainingSec < 180) {
+        timerBox.classList.add("warning");
+      } else {
+        timerBox.classList.remove("warning");
+      }
+    }
+
+    function renderCurrentQuestion() {
+      const q = currentExam.questions[currentExam.currentIndex];
+      if (!q) return;
+
+      document.getElementById("simCurrentQuestionNumber").textContent = 
+        `السؤال ${currentExam.currentIndex + 1} من ${currentExam.questions.length} • [${q.category}]`;
+      document.getElementById("simQuestionText").textContent = q.question;
+
+      // Diagram handling
+      const diagCont = document.getElementById("simDiagramContainer");
+      if (q.hasDiagram && q.diagramSvg) {
+        diagCont.innerHTML = q.diagramSvg;
+        diagCont.style.display = "block";
+      } else {
+        diagCont.innerHTML = "";
+        diagCont.style.display = "none";
+      }
+
+      // Options
+      const optCont = document.getElementById("simOptionsContainer");
+      optCont.innerHTML = "";
+      const letters = ["أ", "ب", "ج", "د"];
+      const currentAns = currentExam.userAnswers[currentExam.currentIndex];
+
+      q.options.forEach((optText, idx) => {
+        const btn = document.createElement("button");
+        btn.className = "option-btn";
+        if (currentAns === idx) {
+          btn.classList.add("selected");
+        }
+
+        btn.innerHTML = `
+          <span class="option-letter">${letters[idx]}</span>
+          <span style="flex: 1;">${optText}</span>
+        `;
+        btn.onclick = () => selectOption(idx);
+        optCont.appendChild(btn);
+      });
+
+      // Progress bar
+      const answeredCount = Object.keys(currentExam.userAnswers).length;
+      const pct = (answeredCount / currentExam.questions.length) * 100;
+      document.getElementById("simProgressBar").style.width = `${pct}%`;
+
+      // Flag button text
+      const flagBtn = document.getElementById("flagBtn");
+      if (currentExam.flagged.has(currentExam.currentIndex)) {
+        flagBtn.style.color = "var(--warning)";
+        flagBtn.innerHTML = "🚩 تم التمييز بنجاح";
+      } else {
+        flagBtn.style.color = "";
+        flagBtn.innerHTML = "🚩 تمييز للمراجعة";
+      }
+
+      updatePaletteButtons();
+    }
+
+    function selectOption(index) {
+      currentExam.userAnswers[currentExam.currentIndex] = index;
+      playBeep("click");
+      renderCurrentQuestion();
+      renderPalette();
+    }
+
+    function toggleFlagCurrentQuestion() {
+      const idx = currentExam.currentIndex;
+      if (currentExam.flagged.has(idx)) {
+        currentExam.flagged.delete(idx);
+      } else {
+        currentExam.flagged.add(idx);
+      }
+      playBeep("click");
+      renderCurrentQuestion();
+      renderPalette();
+    }
+
+    function navigateQuestion(delta) {
+      const nextIdx = currentExam.currentIndex + delta;
+      if (nextIdx >= 0 && nextIdx < currentExam.questions.length) {
+        currentExam.currentIndex = nextIdx;
+        playBeep("click");
+        renderCurrentQuestion();
+      }
+    }
+
+    function renderPalette() {
+      const pal = document.getElementById("simPaletteContainer");
+      pal.innerHTML = "";
+      currentExam.questions.forEach((_, idx) => {
+        const btn = document.createElement("button");
+        btn.className = "pal-btn";
+        btn.textContent = idx + 1;
+        if (currentExam.userAnswers[idx] !== undefined) {
+          btn.classList.add("answered");
+        }
+        if (currentExam.flagged.has(idx)) {
+          btn.classList.add("flagged");
+        }
+        if (idx === currentExam.currentIndex) {
+          btn.classList.add("current");
+        }
+        btn.onclick = () => {
+          currentExam.currentIndex = idx;
+          playBeep("click");
+          renderCurrentQuestion();
+        };
+        pal.appendChild(btn);
+      });
+    }
+
+    function updatePaletteButtons() {
+      const buttons = document.querySelectorAll("#simPaletteContainer .pal-btn");
+      buttons.forEach((btn, idx) => {
+        btn.classList.toggle("current", idx === currentExam.currentIndex);
+      });
+    }
+
+    function submitExamPrompt() {
+      const total = currentExam.questions.length;
+      const answered = Object.keys(currentExam.userAnswers).length;
+      if (answered < total) {
+        if (!confirm(`لقد أجبت على ${answered} من أصل ${total} أسئلة.\nهل أنت متأكد من تسليم الاختبار الآن؟`)) {
+          return;
+        }
+      }
+      finishExam();
+    }
+
+    function finishExam() {
+      clearInterval(currentExam.timerInterval);
+      currentExam.active = false;
+
+      let score = 0;
+      const axesStats = {};
+      const newMissed = [];
+
+      currentExam.questions.forEach((q, idx) => {
+        const userChoice = currentExam.userAnswers[idx];
+        const isCorrect = userChoice === q.correct;
+
+        // Category stats
+        if (!axesStats[q.category]) {
+          axesStats[q.category] = { correct: 0, total: 0 };
+        }
+        axesStats[q.category].total++;
+
+        if (isCorrect) {
+          score++;
+          axesStats[q.category].correct++;
+        } else {
+          newMissed.push(q);
+        }
+      });
+
+      // Update global stats
+      appState.totalAttempts++;
+      appState.correctCount += score;
+      appState.totalAnswered += currentExam.questions.length;
+      appState.totalScore += score * 10;
+
+      // Add to weak points pool (unique by ID)
+      newMissed.forEach(item => {
+        if (!appState.weakPoints.some(w => w.id === item.id)) {
+          appState.weakPoints.push(item);
+        }
+      });
+
+      saveState();
+
+      // Show Result View
+      document.getElementById("simActiveBox").style.display = "none";
+      const resBox = document.getElementById("simResultBox");
+      resBox.style.display = "block";
+
+      const totalQ = currentExam.questions.length;
+      const pct = Math.round((score / totalQ) * 100);
+
+      document.getElementById("resultScoreCircle").style.setProperty("--percent", pct);
+      document.getElementById("resultPercentText").textContent = `${pct}%`;
+      document.getElementById("resultRatioText").textContent = `${score} / ${totalQ}`;
+
+      const heading = document.getElementById("resultHeading");
+      const msg = document.getElementById("resultMessage");
+
+      if (pct >= 85) {
+        heading.textContent = "تهانينا! اجتياز متميز 🌟";
+        msg.textContent = "درجة متفوقة تؤهلك بقوة لصدارة ترتيب المتقدمين في مسابقات الوظائف والتربية والتعليم.";
+        playBeep("complete");
+      } else if (pct >= 65) {
+        heading.textContent = "اجتياز ناجح ومبشر 👍";
+        msg.textContent = "أداء جيد يضمن لك النجاح، وتستطيع تعزيز درجاتك بالتركيز على المحاور التي حدثت فيها أخطاء.";
+        playBeep("correct");
+      } else {
+        heading.textContent = "تحتاج إلى مزيد من التدريب ⚠️";
+        msg.textContent = "لا تقلق! مسابقات التنظيم والإدارة تحتاج سرعة وتكرار تدريب. استخدم خريطة المذاكرة ونقاط الضعف.";
+        playBeep("wrong");
+      }
+
+      // Render Axes Breakdown
+      const bd = document.getElementById("resultAxesBreakdown");
+      bd.innerHTML = "";
+      Object.keys(axesStats).forEach(cat => {
+        const item = axesStats[cat];
+        const catPct = Math.round((item.correct / item.total) * 100);
+        const div = document.createElement("div");
+        div.className = "axis-item";
+        div.innerHTML = `
+          <div class="axis-label">
+            <span>${cat}</span>
+            <span>${item.correct} من ${item.total} (${catPct}%)</span>
+          </div>
+          <div class="axis-progress-track">
+            <div class="axis-progress-fill" style="width: ${catPct}%;"></div>
+          </div>
+        `;
+        bd.appendChild(div);
+      });
+
+      renderWeakPoints();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    /* ==========================================================================
+       WEAK POINTS ENGINE
+       ========================================================================== */
+    function renderWeakPoints() {
+      const container = document.getElementById("weakListContainer");
+      if (!container) return;
+
+      if (appState.weakPoints.length === 0) {
+        container.innerHTML = `
+          <div class="sim-container" style="text-align: center; padding: 40px 20px;">
+            <div style="font-size: 40px; margin-bottom: 10px;">🎉</div>
+            <h3 style="font-size: 20px; font-weight: 800; margin-bottom: 8px;">لا توجد نقاط ضعف مسجلة!</h3>
+            <p style="color: var(--text-muted);">رائع جداً! لم تسجل أي أخطاء حتى الآن، أو أنك قمت بحل جميع الأسئلة التي واجهت فيها صعوبة سابقاً بنجاح.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = "";
+      appState.weakPoints.forEach((q, idx) => {
+        const card = document.createElement("div");
+        card.className = "bank-card";
+        card.innerHTML = `
+          <div class="bank-card-header">
+            <span class="q-category-tag">${q.category}</span>
+            <button class="btn btn-secondary" style="padding: 4px 10px; font-size: 12px;" onclick="removeWeakPoint('${q.id}')">
+              تم الإتقان ✓
+            </button>
+          </div>
+          <div class="bank-card-q">${q.question}</div>
+          <div class="bank-options">
+            ${q.options.map((opt, i) => `
+              <div class="bank-opt ${i === q.correct ? 'is-correct' : ''}">
+                ${opt} ${i === q.correct ? ' (الإجابة الصحيحة ✓)' : ''}
+              </div>
+            `).join('')}
+          </div>
+          <div class="bank-explanation">
+            <b>💡 الشرح والتوضيح:</b> ${q.explanation}
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function removeWeakPoint(qid) {
+      appState.weakPoints = appState.weakPoints.filter(w => w.id !== qid);
+      saveState();
+      renderWeakPoints();
+      playBeep("correct");
+    }
+
+    function clearWeakPoints() {
+      if (confirm("هل تريد إفراغ قائمة نقاط الضعف بالكامل؟")) {
+        appState.weakPoints = [];
+        saveState();
+        renderWeakPoints();
+      }
+    }
+
+    function startWeakPointsExam() {
+      if (appState.weakPoints.length === 0) {
+        alert("لا توجد أسئلة في نقاط الضعف حالياً! ابدأ باختبار عام أولاً.");
+        return;
+      }
+      currentExam = {
+        active: true,
+        track: "weakpoints",
+        durationSec: 0,
+        remainingSec: 0,
+        timerInterval: null,
+        questions: [...appState.weakPoints],
+        currentIndex: 0,
+        userAnswers: {},
+        flagged: new Set()
+      };
+
+      switchTab('simulator');
+      document.getElementById("simIntroBox").style.display = "none";
+      document.getElementById("simResultBox").style.display = "none";
+      document.getElementById("simActiveBox").style.display = "block";
+      document.getElementById("simTrackName").textContent = "تدريب نقاط الضعف الشخصي 🎯";
+      document.getElementById("timerText").textContent = "تدريب حر";
+
+      renderPalette();
+      renderCurrentQuestion();
+    }
+
+    /* ==========================================================================
+       SMART ROADMAP ENGINE
+       ========================================================================== */
+    function setPlan(days) {
+      appState.currentPlanDays = days;
+      document.querySelectorAll(".plan-btn").forEach(btn => btn.classList.remove("active"));
+      event.target.classList.add("active");
+      renderRoadmap();
+      saveState();
+    }
+
+    function renderRoadmap() {
+      const container = document.getElementById("roadmapStepsContainer");
+      if (!container) return;
+
+      const steps = ROADMAP_DATA[appState.currentPlanDays] || ROADMAP_DATA[7];
+      container.innerHTML = "";
+
+      let completedCount = 0;
+      steps.forEach(step => {
+        const stepKey = `plan_${appState.currentPlanDays}_day_${step.day}`;
+        const isDone = !!appState.completedSteps[stepKey];
+        if (isDone) completedCount++;
+
+        const row = document.createElement("div");
+        row.className = `day-step ${isDone ? 'done' : ''}`;
+        row.innerHTML = `
+          <input type="checkbox" class="day-checkbox" ${isDone ? 'checked' : ''} onchange="toggleStep('${stepKey}')">
+          <div style="flex: 1;">
+            <div class="day-title" style="font-weight: 800; font-size: 16px; margin-bottom: 4px;">${step.title}</div>
+            <div style="font-size: 14px; color: var(--text-muted);">${step.desc}</div>
+          </div>
+        `;
+        container.appendChild(row);
+      });
+
+      const pct = Math.round((completedCount / steps.length) * 100);
+      document.getElementById("planProgressText").textContent = `الإنجاز: ${pct}% (${completedCount} من ${steps.length} مهام)`;
+    }
+
+    function toggleStep(stepKey) {
+      appState.completedSteps[stepKey] = !appState.completedSteps[stepKey];
+      playBeep("click");
+      renderRoadmap();
+      saveState();
+    }
+
+    /* ==========================================================================
+       QUESTION BANK BROWSER
+       ========================================================================== */
+    function renderBank(filtered = null) {
+      const container = document.getElementById("bankListContainer");
+      if (!container) return;
+
+      const list = filtered || QUESTIONS_DATA;
+      container.innerHTML = "";
+
+      if (list.length === 0) {
+        container.innerHTML = `<p style="text-align: center; color: var(--text-muted); padding: 30px;">لم يتم العثور على أي أسئلة مطابقة للبحث.</p>`;
+        return;
+      }
+
+      list.forEach(q => {
+        const card = document.createElement("div");
+        card.className = "bank-card";
+        card.innerHTML = `
+          <div class="bank-card-header">
+            <span class="q-category-tag">${q.category}</span>
+          </div>
+          <div class="bank-card-q">${q.question}</div>
+          ${q.hasDiagram ? `<div class="q-diagram">${q.diagramSvg}</div>` : ''}
+          <div class="bank-options">
+            ${q.options.map((opt, i) => `
+              <div class="bank-opt ${i === q.correct ? 'is-correct' : ''}">
+                ${opt} ${i === q.correct ? ' ✓' : ''}
+              </div>
+            `).join('')}
+          </div>
+          <div class="bank-explanation">
+            <b>💡 القاعدة والشرح:</b> ${q.explanation}
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function filterBank() {
+      const query = document.getElementById("bankSearchInput").value.trim().toLowerCase();
+      const cat = document.getElementById("bankCategorySelect").value;
+
+      const filtered = QUESTIONS_DATA.filter(q => {
+        const matchCat = cat === "all" || q.category === cat;
+        const matchText = query === "" || 
+          q.question.toLowerCase().includes(query) || 
+          q.explanation.toLowerCase().includes(query) ||
+          q.options.some(opt => opt.toLowerCase().includes(query));
+        return matchCat && matchText;
+      });
+
+      renderBank(filtered);
+    }
+
+    // Initialize application on load
+    window.addEventListener("DOMContentLoaded", () => {
+      loadState();
+    });
+  </script>
+</body>
+</html>
