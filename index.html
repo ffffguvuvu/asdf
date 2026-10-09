@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>منصة إجتـاز التعليمية | مسابقات التنظيم والإدارة</title>
+  <meta name="description" content="منصة إجتاز هي دليلك الشامل لاجتياز مسابقات التنظيم والإدارة والتربية والتعليم. نقدم شروحات مفصلة، اختبارات محاكاة، وبنوك أسئلة شاملة لكل التخصصات.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2310b981'/%3E%3Ctext x='32' y='44' font-size='36' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'%3Eا%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+
+  <!-- شاشة التحميل -->
+  <div id="loader" class="loader" aria-live="polite">
+    <div class="loader-box">
+      <div class="loader-logo">اجتـاز</div>
+      <div class="loader-spinner"></div>
+      <p class="loader-text">جاري تجهيز المنصة...</p>
+      <button id="loader-retry" class="btn btn-ghost btn-sm hidden">إعادة الاتصال</button>
+    </div>
+  </div>
+
+  <!-- شريط علوي: شريط اجتماعي -->
+  <div class="top-strip">
+    <div class="container top-strip-inner">
+      <div class="top-strip-social">
+        <a class="chip chip-wa" href="https://wa.me/0201126874320" target="_blank" rel="noopener">📱 تواصل عبر واتساب</a>
+        <a class="chip chip-tg" href="https://t.me/arbead1" target="_blank" rel="noopener">✈️ تابعنا على تليجرام</a>
+        <a class="chip chip-fb" href="https://www.facebook.com/share/18LZHrZcsh/" target="_blank" rel="noopener">👍 صفحتنا على فيسبوك</a>
+      </div>
+      <div class="top-strip-tagline">استعد بثقة • تدرب بذكاء • اجتاز</div>
+    </div>
+  </div>
+
+  <!-- الترويسة -->
+  <header class="header" id="header">
+    <div class="container header-inner">
+      <a class="brand" href="#home">
+        <span class="brand-mark">ا</span>
+        <span class="brand-text">
+          <strong>إجتـاز</strong>
+          <small>المنصة التعليمية</small>
+        </span>
+      </a>
+
+      <nav class="nav" id="nav">
+        <a href="#home" class="nav-link active">الرئيسية</a>
+        <a href="#featured" class="nav-link">الاختبارات</a>
+        <a href="#sections" class="nav-link">الأقسام</a>
+        <a href="#lessons" class="nav-link">الشروحات</a>
+        <a href="#leaders" class="nav-link">المتصدرون</a>
+        <a href="#about" class="nav-link">عن المنصة</a>
+      </nav>
+
+      <div class="header-actions">
+        <span class="points-badge" title="نقاطك">⭐ <b id="header-points">0</b> نقطة</span>
+        <button class="btn btn-ghost btn-sm" id="btn-search-open" aria-label="بحث">🔎 بحث</button>
+        <button class="btn btn-outline btn-sm" id="btn-app-download">📲 تنزيل التطبيق</button>
+        <div class="user-menu-wrap">
+          <button class="btn btn-primary btn-sm" id="btn-login-open">تسجيل الدخول</button>
+          <div class="user-menu" id="user-menu">
+            <div class="user-menu-head">⭐ <b id="menu-points">0</b> نقطة</div>
+            <button id="menu-speed">⚡ اختبار السرعة V3</button>
+            <button id="menu-session">📱 محاكاة: دخول من جهاز آخر</button>
+            <button id="menu-logout">تسجيل الخروج</button>
+          </div>
+        </div>
+        <button class="nav-toggle" id="nav-toggle" aria-label="القائمة">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="home">
+
+    <!-- البطل -->
+    <section class="hero">
+      <div class="hero-bg" aria-hidden="true">
+        <span class="orb orb-1"></span>
+        <span class="orb orb-2"></span>
+        <span class="orb orb-3"></span>
+      </div>
+      <div class="container hero-inner">
+        <div class="hero-copy reveal">
+          <div class="kicker">منصة التدريب (اجتاز )</div>
+          <h1>
+            طريقك نحو النجاح في
+            <span class="grad-text">مسابقة التنظيم والإدارة</span>
+          </h1>
+          <p class="hero-desc">
+            يتم تنزيل الاسئلة الحديثة والمتوقعة دائماً — طريقك نحو النجاح في المسابقة.
+            يتم تحديث الأسئلة دائما، كل الأسئلة الجديدة تجدها هنا، اشترك الان..
+            <span class="hero-note">(للعلم الملفات مجانية ..)</span>
+          </p>
+          <div class="hero-pills">
+            <span class="pill">✅ اختبارات إلكترونية</span>
+            <span class="pill">📘 شروحات منظمة</span>
+            <span class="pill">⏱️ محاكيات تدريبية</span>
+          </div>
+          <div class="hero-cta">
+            <a href="#featured" class="btn btn-primary btn-lg">تصفّح الاختبارات</a>
+            <button class="btn btn-outline btn-lg" id="btn-free-section">القسم المجاني</button>
+            <button class="btn btn-ghost btn-lg" id="btn-login-open-2">دخول المشتركين</button>
+          </div>
+          <div class="app-banner">
+            <div class="app-banner-text">
+              <strong>تجربة أسرع على الهاتف</strong>
+              <span>التطبيق متاح للتحميل — تجربة أخف وأسرع للمذاكرة من أي مكان</span>
+            </div>
+            <button class="btn btn-primary" id="btn-app-download-2">تنزيل التطبيق</button>
+          </div>
+        </div>
+
+        <div class="hero-card reveal" aria-hidden="true">
+          <div class="hero-card-glow"></div>
+          <div class="hero-stat"><b>+٤٠</b><span>سؤال في كل اختبار</span></div>
+          <div class="hero-stat"><b>١٢</b><span>قسمًا تدريبيًا</span></div>
+          <div class="hero-stat"><b>٩٠–١٠٠</b><span>دقيقة للمحاكي الشامل</span></div>
+          <div class="hero-stat"><b>٢٤/٧</b><span>متاح دائمًا للمذاكرة</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- تنويه هام -->
+    <section class="container">
+      <div class="notice-card reveal" id="notice-card">
+        <div class="notice-icon">معلومة مهمة قبل أن تبدأ</div>
+        <div class="notice-body">
+          <h4>تنويه هام</h4>
+          <p>
+            «يحتوي التطبيق على أسئلة في جميع تخصصات المسابقة، ويضم كافة الأسئلة المتوقعة وملخصات لجميع الشروحات،
+            بالإضافة إلى تنظيم الملازم والمذكرات الخاصة بالمسابقة.
+            <br>يوجد قسم مجاني وقسم للمشتركين
+            <br>للاشتراك، كلم المشرف واتساب <b>01126874320</b>
+            <br>هذا الموقع هو طريقك نحو النجاح في المسابقة، إن شاء الله.»
+          </p>
+          <div class="notice-actions">
+            <a class="btn btn-outline btn-sm" href="https://drive.google.com/drive/folders/1ovxXbpkVmy2Rk4V2U5XZvPUo0L-vmopR" target="_blank" rel="noopener">📂 ملفات المسابقة</a>
+            <button class="btn btn-primary btn-sm" id="btn-notice-dismiss">حسنًا، فهمت</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- الكاروسيل -->
+    <section class="section" id="featured">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <h2>اختبارات مختارة لك</h2>
+            <p class="section-sub">اختبارات ومحاكيات تختارها أنت — تتحرك تلقائيًا ويمكن سحبها باللمس</p>
+          </div>
+          <div class="carousel-controls">
+            <span class="carousel-counter" id="carousel-counter">1 / 4</span>
+            <button class="icon-btn" id="carousel-prev" aria-label="السابق">›</button>
+            <button class="icon-btn" id="carousel-next" aria-label="التالي">‹</button>
+          </div>
+        </div>
+        <div class="carousel" id="carousel">
+          <div class="carousel-track" id="carousel-track"><!-- بطاقات تُبنى بالجافاسكربت --></div>
+        </div>
+        <div class="carousel-dots" id="carousel-dots"></div>
+      </div>
+    </section>
+
+    <!-- مساحة إعلانية + أحدث التسريبات -->
+    <section class="section section-tight">
+      <div class="container ads-row">
+        <div class="ads-box reveal"><span>مساحة إعلانية</span></div>
+        <div class="leaks-box reveal">
+          <h3>⚡ أحدث التسريبات</h3>
+          <p>قائمة الاختبارات الهامة والمميزة المضافة حديثاً — تُحدَّث أولًا بأول.</p>
+          <a href="#featured" class="btn btn-primary btn-sm">استعرض الآن</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- بوابات الدخول الثلاث -->
+    <section class="section">
+      <div class="container gates">
+        <article class="gate-card reveal">
+          <div class="gate-badge">تصفح مجاني</div>
+          <h3>مكتبة الشروحات والدروس</h3>
+          <p>تصفح أقوى المقالات والقواعد والشروحات النصية الشاملة لجميع التخصصات مجاناً.</p>
+          <a href="#lessons" class="btn btn-primary">ابدأ مجانًا</a>
+        </article>
+        <article class="gate-card reveal">
+          <div class="gate-badge gate-badge-green">اختبارات مجانية • محتوى متاح للجميع</div>
+          <h3>القسم المجاني</h3>
+          <p>تصفح المحتوى والاختبارات المتاحة مجانًا بدون تسجيل.</p>
+          <button class="btn btn-primary" id="btn-free-section-2">الدخول للقسم المجاني</button>
+        </article>
+        <article class="gate-card gate-card-vip reveal">
+          <div class="gate-badge gate-badge-gold">المحتوى الكامل</div>
+          <h3>قسم المشتركين</h3>
+          <p>ادخل بحسابك للوصول الكامل للاختبارات والمحاكيات والمحتوى المخصص.</p>
+          <button class="btn btn-gold" id="btn-login-open-3">تسجيل دخول المشتركين</button>
+        </article>
+      </div>
+    </section>
+
+    <!-- الأقسام التدريبية -->
+    <section class="section" id="sections">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <h2>الأقسام التدريبية</h2>
+            <p class="section-sub">اختر قسمك وابدأ التدريب على الاختبارات والمحاور الخاصة به</p>
+          </div>
+        </div>
+        <div class="sections-grid" id="sections-grid"><!-- تُبنى بالجافاسكربت --></div>
+      </div>
+    </section>
+
+    <!-- لوحة التقدم -->
+    <section class="section section-alt" id="panel">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="kicker">لوحة تقدمك الشخصية</div>
+            <h2>مستواي 📊</h2>
+            <p class="section-sub">الإحصائيات مبنية على محاولاتك الفعلية منذ تفعيل نظام المتابعة.</p>
+          </div>
+          <button class="btn btn-outline btn-sm" id="btn-panel-refresh">🔄 تحديث</button>
+        </div>
+
+        <div class="panel-grid">
+          <div class="panel-card reveal">
+            <h3>أداء المحاور</h3>
+            <p class="muted">تتحدث تلقائيًا بعد كل محاولة.</p>
+            <div class="axes" id="axes-list"></div>
+            <button class="btn btn-primary btn-sm" id="btn-weakness">اختبر نقاط ضعفك</button>
+          </div>
+
+          <div class="panel-card reveal">
+            <h3>🕘 سجل المحاولات</h3>
+            <p class="muted">كل محاولاتك في مكان واحد — الدرجة والنسبة والتاريخ مع إمكانية إعادة الاختبار أو المحاكي.</p>
+            <div class="history-list" id="history-list"></div>
+            <button class="btn btn-outline btn-sm" id="btn-history-refresh">تحديث</button>
+          </div>
+
+          <div class="panel-card reveal">
+            <h3>🎯 اختبار نقاط الضعف</h3>
+            <p class="muted">تدريب مخصص حسب أخطائك — المنصة تجمع الأسئلة التي أخطأت فيها وتعيد تدريبك عليها تلقائيًا.</p>
+            <div class="weak-box">
+              <div class="weak-num" id="weak-count">12</div>
+              <div>سؤالًا بانتظارك في بنك نقاط الضعف</div>
+            </div>
+            <button class="btn btn-primary btn-sm" id="btn-weakness-2">ابدأ التدريب</button>
+          </div>
+
+          <div class="panel-card reveal">
+            <h3>🔎 البحث الشامل</h3>
+            <p class="muted">اختبارات • شروحات • محاكيات • ملفات • أسئلة — اكتب كلمة أو موضوعًا وسنبحث داخل محتوى المنصة، وليس في العناوين فقط.</p>
+            <div class="fake-search" id="fake-search-open">
+              <span>ابحث في محتوى اجتاز بالكامل...</span>
+              <button class="btn btn-primary btn-sm">بحث</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- خريطة المذاكرة -->
+    <section class="section" id="study-map">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="kicker">مسارك الشخصي جاهز للمزامنة</div>
+            <h2>خريطة المذاكرة الذكية</h2>
+            <p class="section-sub">خطة واحدة مرتبطة بحسابك، تكملها من أي جهاز وتعرف دائمًا أين وصلت.</p>
+          </div>
+        </div>
+
+        <div class="map-grid">
+          <div class="panel-card reveal">
+            <h3>أنشئ مسارك</h3>
+            <p class="muted">نقسم المحتوى على أيامك تلقائيًا — اختر تخصصك والمدة التي تناسبك، ويمكنك تعديل الخطة لاحقًا.</p>
+            <form id="map-form" class="map-form">
+              <label>
+                التخصص
+                <select id="map-section" required></select>
+              </label>
+              <label>
+                مدة الخطة بالأيام
+                <input type="number" id="map-days" min="3" max="120" value="14" required>
+              </label>
+              <button class="btn btn-primary" type="submit">إنشاء خريطتي وحفظها</button>
+            </form>
+          </div>
+
+          <div class="panel-card reveal map-summary">
+            <h3>خريطتك الحالية</h3>
+            <div class="progress-ring" id="progress-ring">
+              <div class="ring-inner"><b id="map-percent">0%</b><span>إنجاز</span></div>
+            </div>
+            <div class="map-stats">
+              <div><b id="map-done">0</b><span>مكتمل</span></div>
+              <div><b id="map-left">0</b><span>متبقي</span></div>
+              <div><b id="map-days-left">0</b><span>يوم</span></div>
+            </div>
+            <div class="map-actions">
+              <button class="btn btn-outline btn-sm" id="map-sync">مزامنة الآن</button>
+              <button class="btn btn-ghost btn-sm" id="map-edit">تعديل</button>
+              <button class="btn btn-ghost btn-sm" id="map-clear">مسح</button>
+            </div>
+            <p class="muted" id="map-status">لم تتم المزامنة بعد — أكمل من حيث توقفت كل محتوى التخصص.</p>
+            <div class="map-days-track" id="map-days-track">
+              <h4>مسار الأيام</h4>
+              <p class="muted">ابدأ من أول يوم غير مكتمل واستمر بالترتيب.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- الوصول السريع -->
+    <section class="section section-tight">
+      <div class="container">
+        <div class="tiles-grid" id="tiles-grid"></div>
+      </div>
+    </section>
+
+    <!-- الشروحات المجانية -->
+    <section class="section" id="lessons">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="kicker">محتوى مجاني مفتوح</div>
+            <h2>شروحات مجانية مختارة</h2>
+          </div>
+          <a class="btn btn-outline btn-sm" href="https://egtaz.online/" target="_blank" rel="noopener">عرض كل الشروحات</a>
+        </div>
+        <div class="lessons-grid" id="lessons-grid"></div>
+      </div>
+    </section>
+
+    <!-- المتصدرون -->
+    <section class="section section-alt" id="leaders">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="kicker">أفضل 5 متصدرين</div>
+            <h2>🏆 لوحة الشرف</h2>
+            <p class="section-sub">كل إجابة صحيحة = نقطة، وكل إعادة حقيقية للاختبار تُحتسب كمحاولة جديدة</p>
+          </div>
+          <button class="btn btn-primary btn-sm" id="btn-leader-name">اختر اسمك في المتصدرين</button>
+        </div>
+        <div class="leader-list" id="leader-list"></div>
+      </div>
+    </section>
+
+    <!-- آراء المشتركين -->
+    <section class="section" id="reviews">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="kicker">آراء المشتركين</div>
+            <h2>ماذا يقول طلابنا؟ ⭐</h2>
+          </div>
+          <button class="btn btn-primary btn-sm" id="btn-review-open">أضف تقييمك الآن</button>
+        </div>
+        <div class="reviews-grid" id="reviews-grid"></div>
+        <div class="center">
+          <button class="btn btn-outline" id="btn-more-reviews">عرض المزيد من الآراء</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- عن المنصة -->
+    <section class="section section-alt" id="about">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="kicker">تعرف على اجتاز</div>
+            <h2>كل ما تحتاجه للاستعداد… في مكان واحد</h2>
+            <p class="section-sub">نبذة سريعة عن المنصة، والتفاصيل الكاملة تظهر فقط لمن يريد قراءتها.</p>
+          </div>
+        </div>
+        <div class="about-grid reveal">
+          <details class="about-item" open>
+            <summary>عن منصة إجتـاز التعليمية</summary>
+            <p>منصة تعليمية متخصصة في مساعدة الخريجين والمعلمين على الاستعداد لمسابقات التنظيم والإدارة والتربية والتعليم، من خلال الشرح المبسط والتدريب العملي والاختبارات والمحاكيات.</p>
+          </details>
+          <details class="about-item">
+            <summary>ماذا تقدم المنصة للمتقدمين للمسابقات?</summary>
+            <p>نوفر في منصة إجتـاز مجموعة واسعة من بنوك الأسئلة التي تغطي كافة التخصصات المطلوبة في مسابقات التوظيف الحكومية. يشمل ذلك أسئلة في التخصص الأكاديمي، المواد التربوية، الجدارات السلوكية، اختبارات الذكاء (IQ)، اللغة العربية والإنجليزية العامة، الحاسب الآلي، والمعلومات العامة. يتم تحديث بنوك الأسئلة بشكل دوري لضمان مطابقتها لأحدث المعايير.</p>
+          </details>
+          <details class="about-item">
+            <summary>لماذا تختار منصة إجتـاز؟</summary>
+            <p>ما يميز منصتنا هو تركيزنا على الشرح التفصيلي للدروس قبل الاختبار، مما يتيح للمشترك فهم القاعدة أو المعلومة بدلاً من حفظها فقط. بالإضافة إلى توفير ملفات PDF تعليمية هامة للمراجعة النهائية. بفضل الله، ساعدت المنصة العديد من الطلاب في تحقيق نتائج متميزة والنجاح في اجتياز الامتحانات التنافسية.</p>
+          </details>
+          <div class="about-more">
+            <button class="btn btn-outline btn-sm" id="btn-about-more">عرض المزيد</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ملفات المسابقة -->
+    <section class="section section-tight" id="files">
+      <div class="container">
+        <div class="files-card reveal">
+          <div>
+            <div class="kicker">ملفات المسابقة</div>
+            <h3>أحدث الملفات — ملفات المسابقة كاملة هنا محدثة…</h3>
+            <p class="muted">نفس الملفات الحالية — بدون نسخ أو إضافة المحتوى مرتين.</p>
+          </div>
+          <a class="btn btn-primary" href="https://drive.google.com/drive/folders/1ovxXbpkVmy2Rk4V2U5XZvPUo0L-vmopR" target="_blank" rel="noopener">كل الملفات</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- يوتيوبر -->
+    <section class="section section-tight">
+      <div class="container">
+        <div class="yt-card reveal">
+          <div class="yt-live"><span class="dot"></span> بث مباشر · <span id="yt-timer">00:00</span></div>
+          <a class="btn btn-primary" href="https://youtube.com/@ahmedeadegtaz?si=ORnauyAxZoufyH02" target="_blank" rel="noopener">
+            ▶ قناة أحدث أسئلة المسابقة... يوتيوب
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- التذييل -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="brand brand-footer">
+          <span class="brand-mark">ا</span>
+          <span class="brand-text"><strong>إجتـاز</strong><small>المنصة التعليمية</small></span>
+        </div>
+        <p class="muted">منصة إجتـاز التعليمية — مساعدك الشامل لاجتياز مسابقات التنظيم والإدارة والتربية والتعليم.</p>
+        <div class="footer-social">
+          <a class="chip chip-wa" href="https://wa.me/0201126874320" target="_blank" rel="noopener">واتساب</a>
+          <a class="chip chip-tg" href="https://t.me/arbead1" target="_blank" rel="noopener">تليجرام</a>
+          <a class="chip chip-fb" href="https://www.facebook.com/share/18LZHrZcsh/" target="_blank" rel="noopener">فيسبوك</a>
+          <a class="chip chip-yt" href="https://youtube.com/@ahmedeadegtaz?si=ORnauyAxZoufyH02" target="_blank" rel="noopener">يوتيوب</a>
+        </div>
+      </div>
+      <div>
+        <h4>روابط سريعة</h4>
+        <ul class="footer-links">
+          <li><a href="#featured">الاختبارات والمحاكيات</a></li>
+          <li><a href="#sections">الأقسام التدريبية</a></li>
+          <li><a href="#lessons">الشروحات المجانية</a></li>
+          <li><a href="#leaders">لوحة المتصدرين</a></li>
+          <li><a href="#about">عن المنصة</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>منطقة المشتركين</h4>
+        <ul class="footer-links">
+          <li><a href="#" id="btn-login-open-4">تسجيل دخول آمن</a></li>
+          <li><a href="https://wa.me/0201126874320" target="_blank" rel="noopener">للاشتراك: واتساب 01126874320</a></li>
+          <li><a href="https://drive.google.com/drive/folders/1ovxXbpkVmy2Rk4V2U5XZvPUo0L-vmopR" target="_blank" rel="noopener">ملفات المسابقة</a></li>
+        </ul>
+        <p class="muted small">جلسة واحدة آمنة لكل جهاز</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <span>© <span id="year">2026</span> منصة إجتـاز التعليمية — جميع الحقوق محفوظة</span>
+        <span>استعد بثقة • تدرب بذكاء • اجتاز</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- شريط عائم للموبايل -->
+  <nav class="bottom-nav" id="bottom-nav">
+    <a href="#home" class="active">🏠<span>الرئيسية</span></a>
+    <a href="#featured">📝<span>اختبار</span></a>
+    <button id="btn-search-open-2">🔎<span>بحث</span></button>
+    <a href="#panel">📊<span>مستواي</span></a>
+    <button id="btn-login-open-5">👤<span>حسابي</span></button>
+  </nav>
+
+  <!-- ===================== النوافذ المنبثقة ===================== -->
+
+  <!-- منطقة المشتركين -->
+  <div class="modal" id="modal-login" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-card" role="dialog" aria-label="منطقة المشتركين">
+      <button class="modal-close" data-close aria-label="إغلاق">✕</button>
+      <div class="modal-head">
+        <h3>منطقة المشتركين</h3>
+        <p class="muted">جلسة واحدة آمنة لكل جهاز</p>
+      </div>
+      <form class="modal-body" id="login-form">
+        <label>اسم المستخدم أو رقم الهاتف
+          <input type="text" id="login-user" placeholder="أدخل بياناتك" required>
+        </label>
+        <label>كلمة المرور
+          <input type="password" id="login-pass" placeholder="••••••••" required>
+        </label>
+        <button class="btn btn-primary btn-block" type="submit">تسجيل دخول آمن</button>
+        <p class="muted center">ليس لديك حساب VIP؟ <a href="https://wa.me/0201126874320" target="_blank" rel="noopener">تواصل مع الإدارة للاشتراك</a></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- اكتشاف دخول آخر -->
+  <div class="modal" id="modal-session" aria-hidden="true">
+    <div class="modal-backdrop"></div>
+    <div class="modal-card modal-card-alert" role="alertdialog" aria-label="تم اكتشاف دخول آخر">
+      <div class="alert-icon">⚠️</div>
+      <h3>تم اكتشاف دخول آخر!</h3>
+      <p>عذراً، لا يمكن استخدام حساب الـ VIP من أكثر من جهاز في نفس الوقت. تم تسجيل دخول حسابك من جهاز آخر، لذلك تم إنهاء جلستك هنا لحماية خصوصيتك.</p>
+      <a class="btn btn-primary btn-block" href="#home" data-close>العودة للرئيسية</a>
+    </div>
+  </div>
+
+  <!-- تحديث هام -->
+  <div class="modal" id="modal-update" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-card" role="dialog" aria-label="تحديث هام">
+      <button class="modal-close" data-close aria-label="إغلاق">✕</button>
+      <div class="modal-head">
+        <div class="gate-badge gate-badge-gold">تحديث هام</div>
+        <h3>تحديث هام</h3>
+      </div>
+      <div class="modal-body">
+        <p>
+          مسابقة 8000 معلم لغة عربية أزهر.
+          <br>والحصة
+          <br>ومسابقة القران الكريم
+          <br><b>متوفرة بشكل كامل على منصة اجتاز</b>
+          <br>بالتوفيق للجميع...
+        </p>
+        <button class="btn btn-primary btn-block" data-close>حسناً، فهمت</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- التقييم -->
+  <div class="modal" id="modal-review" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-card" role="dialog" aria-label="أضف تقييمك">
+      <button class="modal-close" data-close aria-label="إغلاق">✕</button>
+      <div class="modal-head"><h3>أضف تقييمك للمنصة</h3></div>
+      <form class="modal-body" id="review-form">
+        <label>اسمك
+          <input type="text" id="review-name" placeholder="اسمك أو كنيتك" required>
+        </label>
+        <label>التقييم
+          <div class="star-picker" id="star-picker">
+            <span data-v="1">★</span><span data-v="2">★</span><span data-v="3">★</span><span data-v="4">★</span><span data-v="5">★</span>
+          </div>
+        </label>
+        <label>رأيك
+          <textarea id="review-text" rows="4" placeholder="اكتب رأيك في المنصة..." required></textarea>
+        </label>
+        <div class="row-actions">
+          <button class="btn btn-primary" type="submit">إرسال التقييم</button>
+          <button class="btn btn-ghost" type="button" data-close>إلغاء</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- اسم المتصدرين -->
+  <div class="modal" id="modal-leader-name" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-card" role="dialog" aria-label="اختر اسمك في المتصدرين">
+      <button class="modal-close" data-close aria-label="إغلاق">✕</button>
+      <div class="modal-head">
+        <h3>اختر اسمك في المتصدرين</h3>
+        <p class="muted">اكتب الاسم الذي تريد أن يظهر في قائمة أفضل المتسابقين. لن نعرض اسم المستخدم الخاص بتسجيل الدخول.</p>
+      </div>
+      <form class="modal-body" id="leader-name-form">
+        <label>اسمك المعروض
+          <input type="text" id="leader-name-input" placeholder="مثال: أحمد عيد" required>
+        </label>
+        <div class="row-actions">
+          <button class="btn btn-primary" type="submit">حفظ الاسم</button>
+          <button class="btn btn-ghost" type="button" data-close>لاحقًا</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- إبلاغ عن سؤال -->
+  <div class="modal" id="modal-report" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-card" role="dialog" aria-label="إبلاغ عن سؤال">
+      <button class="modal-close" data-close aria-label="إغلاق">✕</button>
+      <div class="modal-head">
+        <h3>إبلاغ عن سؤال</h3>
+        <p class="muted">بلاغك يصل للوحة الإدارة مع نص السؤال ومكانه لمراجعته بسرعة.</p>
+      </div>
+      <form class="modal-body" id="report-form">
+        <fieldset class="report-reasons">
+          <legend>سبب البلاغ</legend>
+          <label><input type="radio" name="reason" value="الإجابة الصحيحة بها مشكلة" required> الإجابة الصحيحة بها مشكلة</label>
+          <label><input type="radio" name="reason" value="السؤال أو الصياغة غير واضحة"> السؤال أو الصياغة غير واضحة</label>
+          <label><input type="radio" name="reason" value="السؤال مكرر"> السؤال مكرر</label>
+          <label><input type="radio" name="reason" value="الصورة لا تظهر أو غير واضحة"> الصورة لا تظهر أو غير واضحة</label>
+          <label><input type="radio" name="reason" value="خطأ إملائي أو تنسيقي"> خطأ إملائي أو تنسيقي</label>
+          <label><input type="radio" name="reason" value="سبب آخر"> سبب آخر</label>
+        </fieldset>
+        <label>ملاحظة اختيارية
+          <textarea id="report-note" rows="3" placeholder="تفاصيل إضافية (اختياري)"></textarea>
+        </label>
+        <button class="btn btn-primary btn-block" type="submit">إرسال البلاغ</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- القسم غير المشمول -->
+  <div class="modal" id="modal-locked" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-card" role="dialog" aria-label="قسم غير مشمول">
+      <button class="modal-close" data-close aria-label="إغلاق">✕</button>
+      <div class="modal-head">
+        <div class="alert-icon">🔒</div>
+        <h3>هذا القسم غير مشمول في اشتراكك الحالي</h3>
+      </div>
+      <div class="modal-body">
+        <p class="muted">الأقسام الموجودة في اشتراكك:</p>
+        <ul class="chip-row" id="locked-list">
+          <li class="chip">لغة عربية الحصة</li>
+          <li class="chip">مسابقة القرآن الكريم</li>
+          <li class="chip">لغة عربية الأزهر الشريف</li>
+        </ul>
+        <button class="btn btn-primary btn-block" data-close>حسنًا</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- البحث الشامل -->
+  <div class="modal modal-top" id="modal-search" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-card modal-card-search" role="dialog" aria-label="البحث الشامل">
+      <button class="modal-close" data-close aria-label="إغلاق">✕</button>
+      <div class="modal-head">
+        <h3>🔎 البحث الشامل</h3>
+        <p class="muted">اختبارات • شروحات • محاكيات • ملفات • أسئلة</p>
+      </div>
+      <div class="modal-body">
+        <input type="search" id="search-input" class="search-input" placeholder="اكتب كلمة أو موضوعًا وسنبحث داخل محتوى المنصة...">
+        <div class="search-results" id="search-results"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- محرك الاختبار -->
+  <div class="modal modal-full" id="modal-quiz" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-card modal-card-quiz" role="dialog" aria-label="اختبار">
+      <div class="quiz-top">
+        <div>
+          <div class="kicker" id="quiz-kind">اختبار</div>
+          <h3 id="quiz-title">اختبار</h3>
+        </div>
+        <div class="quiz-timer" id="quiz-timer">00:00</div>
+      </div>
+
+      <div class="quiz-body" id="quiz-body">
+        <div class="quiz-progress"><div class="quiz-progress-bar" id="quiz-progress-bar"></div></div>
+        <div class="quiz-meta">
+          <span id="quiz-index">السؤال 1 من 10</span>
+          <button class="btn btn-ghost btn-sm" id="btn-report-open">🚩 إبلاغ عن سؤال</button>
+        </div>
+        <div class="quiz-question" id="quiz-question">...</div>
+        <div class="quiz-options" id="quiz-options"></div>
+        <div class="quiz-nav">
+          <button class="btn btn-outline" id="quiz-prev">السابق</button>
+          <button class="btn btn-ghost" id="quiz-quit">انسحاب</button>
+          <button class="btn btn-primary" id="quiz-next">التالي</button>
+        </div>
+      </div>
+
+      <div class="quiz-result hidden" id="quiz-result">
+        <h3>نتيجة الاختبار</h3>
+        <div class="result-ring" id="result-ring"><div class="ring-inner"><b id="result-percent">0%</b><span>النسبة</span></div></div>
+        <p class="result-score" id="result-score">0 / 0</p>
+        <div class="row-actions center">
+          <button class="btn btn-primary" id="btn-result-review">مراجعة أسئلة الاختبار</button>
+          <button class="btn btn-outline" id="btn-result-retry">إعادة الاختبار</button>
+          <button class="btn btn-ghost" data-close>العودة للقائمة السابقة</button>
+        </div>
+        <div class="review-list hidden" id="review-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- تحميل مراجعة الاختبار -->
+  <div class="modal" id="modal-pdf" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-card" role="dialog" aria-label="تحميل مراجعة الاختبار">
+      <button class="modal-close" data-close aria-label="إغلاق">✕</button>
+      <div class="modal-head"><h3>تحميل مراجعة الاختبار</h3></div>
+      <div class="modal-body">
+        <p class="muted">عدد صفحات المراجعة: <b id="pdf-pages">...</b> — جاري تجهيز الصفحات وحساب العدد...</p>
+        <fieldset>
+          <legend>نوع التحميل</legend>
+          <label><input type="radio" name="pdftype" checked> ملف PDF</label>
+          <label><input type="radio" name="pdftype"> صور JPG</label>
+        </fieldset>
+        <fieldset>
+          <legend>الصفحات المطلوبة</legend>
+          <label><input type="radio" name="pdfrange" checked> الملف كاملًا</label>
+          <label><input type="radio" name="pdfrange"> نطاق صفحات</label>
+          <label><input type="radio" name="pdfrange"> أول عدد صفحات</label>
+        </fieldset>
+        <p class="muted small">عند اختيار أكثر من صورة سيتم جمعها تلقائيًا في ملف ZIP واحد لتسهيل التحميل على الهاتف والكمبيوتر.</p>
+        <button class="btn btn-primary btn-block" id="btn-pdf-download">تحميل الآن</button>
+        <p class="muted small center">سيتم تفعيل زر التحميل فور انتهاء تجهيز الصفحات.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- اختبار السرعة -->
+  <div class="modal" id="modal-speed" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-card" role="dialog" aria-label="اختبار السرعة">
+      <button class="modal-close" data-close aria-label="إغلاق">✕</button>
+      <div class="modal-head">
+        <h3>⚡ اختبار السرعة V3</h3>
+        <p class="muted">اضغط «ابدأ» ثم اضغط على المربع في أسرع وقت ممكن.</p>
+      </div>
+      <div class="modal-body center">
+        <div class="speed-box" id="speed-box">جاهز؟</div>
+        <button class="btn btn-primary" id="btn-speed-start">ابدأ</button>
+        <p class="muted" id="speed-result"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- تنبيه عام (Toast) -->
+  <div class="toast-wrap" id="toast-wrap"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
