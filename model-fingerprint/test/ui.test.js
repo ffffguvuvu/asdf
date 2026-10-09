@@ -135,6 +135,18 @@ t("الردود تُحفظ في localStorage", () => {
   const db = JSON.parse(w.localStorage.getItem("mfp.v2"));
   assert.ok(db.subjects[db.current].responses.obey.includes("القاهرة"));
 });
+t("🐞 [SEC-7] خطأ برمجي داخل load لا يُبتلع صامتًا فيُفقد الحفظ", () => {
+  const w4 = boot();
+  const warns = [];
+  w4.console.warn = (...a) => warns.push(a.join(" "));
+  w4.localStorage.setItem("mfp.v2", JSON.stringify({
+    current:"أ", subjects:{ "أ":{ responses:{ obey:"القاهرة" }, overrides:{} } } }));
+  w4.eval(read("app.js"));
+  assert.strictEqual(w4.document.querySelector('[data-in="obey"]').value, "القاهرة",
+                     "فُقدت الحالة المحفوظة (ابتلاع خطأ برمجي)");
+  assert.strictEqual(warns.length, 0, "ظهر تحذير غير متوقع: " + warns.join("|"));
+});
+
 t("إعادة التحميل تستعيد الحالة", () => {
   const saved = w.localStorage.getItem("mfp.v2");
   const w2 = boot();

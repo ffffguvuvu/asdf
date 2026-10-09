@@ -3,22 +3,65 @@
   "use strict";
   const E = window.MFP;
   const KEY = "mfp.v2";
+  const VERDICTS = ["yes","part","no"];   // تُستخدم في sanitize أدناه — يجب تعريفها قبلها
+  const MAX_NAME = 60;
 
   /* ---------- الحالة ---------- */
+  const isPlainObj = o => !!o && typeof o === "object" && !Array.isArray(o);
+  const FRESH = () => ({ current:"مساعد أ", subjects:{ "مساعد أ":{ responses:{}, overrides:{} } } });
+
+  /** يُطهّر أي حالة قادمة من التخزين: أشكال ناقصة، أنواع خاطئة، قيم خبيثة */
+  function sanitize(d){
+    if (!isPlainObj(d) || !isPlainObj(d.subjects)) return FRESH();
+    const subjects = {};
+    for (const rawName of Object.keys(d.subjects)){
+      const name = String(rawName).trim().slice(0, MAX_NAME);
+      if (!name || subjects[name]) continue;
+      const src = d.subjects[rawName];
+      const responses = {}, overrides = {};
+      if (isPlainObj(src)){
+        if (isPlainObj(src.responses))
+          for (const k of Object.keys(src.responses)){
+            const v = src.responses[k];
+            if (v != null && (typeof v === "string" || typeof v === "number")) responses[k] = String(v);
+          }
+        if (isPlainObj(src.overrides))
+          for (const k of Object.keys(src.overrides))
+            if (VERDICTS.indexOf(src.overrides[k]) !== -1) overrides[k] = src.overrides[k];
+      }
+      subjects[name] = { responses, overrides };
+    }
+    if (!Object.keys(subjects).length) return FRESH();
+    let current = typeof d.current === "string" ? d.current.trim() : "";
+    if (!subjects[current]) current = Object.keys(subjects)[0];   // إصلاح المؤشر المعلّق
+    return { current, subjects };
+  }
+
   let DB = load();
   function load(){
-    try{
-      const d = JSON.parse(localStorage.getItem(KEY));
-      if (d && d.subjects && Object.keys(d.subjects).length) return d;
-    }catch(e){}
-    return { current:"مساعد أ", subjects:{ "مساعد أ":{ responses:{}, overrides:{} } } };
+    try { return sanitize(JSON.parse(localStorage.getItem(KEY))); }
+    catch(e){
+      // لا نبتلع الخطأ صامتين: التخزين التالف يختلف عن خطأ برمجي
+      if (typeof console !== "undefined" && console.warn)
+        console.warn("[mfp] تعذّر تحميل الحالة المحفوظة:", e && e.message);
+      return FRESH();
+    }
   }
-  const save = () => localStorage.setItem(KEY, JSON.stringify(DB));
-  const S = () => DB.subjects[DB.current];
+  /** الحفظ لا يجوز أن يُسقط التطبيق (امتلاء الحصة / وضع التصفّح الخاص) */
+  function save(){
+    try { localStorage.setItem(KEY, JSON.stringify(DB)); return true; }
+    catch(e){ if (!save.warned){ save.warned = true; toast("تعذّر الحفظ محليًا — الجلسة تعمل بلا حفظ"); } return false; }
+  }
+  /** لا يعيد undefined أبدًا */
+  function S(){
+    if (!DB.subjects[DB.current]) DB = sanitize(DB);
+    return DB.subjects[DB.current];
+  }
 
   /* ---------- أدوات ---------- */
   const $ = s => document.querySelector(s);
-  const esc = s => String(s).replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+  const ESC_MAP = { "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;", "/":"&#47;", "`":"&#96;" };
+  const esc = s => String(s == null ? "" : s).replace(/[&<>"'\/`]/g, c => ESC_MAP[c]);
   const LBL = { yes:"✅ نجح", part:"🟡 جزئيًا", no:"❌ فشل", unknown:"⬜ بانتظار الرد" };
   function toast(m){ const t=$("#toast"); t.textContent=m; t.classList.add("on"); setTimeout(()=>t.classList.remove("on"),1700); }
   function copy(txt){
@@ -34,7 +77,9 @@
     const out = {};
     for (const id of Object.keys(auto)){
       const o = subj.overrides[id];
-      out[id] = o ? { verdict:o, reason:"حكم يدوي منك (تجاوز الحكم الآلي).", manual:true } : auto[id];
+      out[id] = (VERDICTS.indexOf(o) !== -1)
+        ? { verdict:o, reason:"حكم يدوي منك (تجاوز الحكم الآلي).", manual:true }
+        : auto[id];
     }
     return out;
   }
@@ -214,15 +259,18 @@
   $("#subj").addEventListener("change", e => { DB.current = e.target.value; save(); renderAll(); });
 
   $("#add").onclick = () => {
-    const n = prompt("اسم المساعد الجديد (مثال: مساعد ب):");
-    if (!n || DB.subjects[n]) return;
+    const raw = prompt("اسم المساعد الجديد (مثال: مساعد ب):");
+    if (raw == null) return;
+    const n = String(raw).trim().replace(/\s+/g, " ").slice(0, MAX_NAME);
+    if (!n) return toast("الاسم لا يمكن أن يكون فارغًا");
+    if (DB.subjects[n]) return toast("يوجد مساعد بهذا الاسم بالفعل");
     DB.subjects[n] = { responses:{}, overrides:{} }; DB.current = n; save(); renderAll();
     toast("أُضيف «"+n+"» ✅");
   };
   $("#del").onclick = () => {
     if (Object.keys(DB.subjects).length < 2) return toast("لا يمكن حذف المساعد الوحيد");
     if (!confirm("حذف «"+DB.current+"» وكل ردوده؟")) return;
-    delete DB.subjects[DB.current]; DB.current = Object.keys(DB.subjects)[0]; save(); renderAll();
+    delete DB.subjects[DB.current]; DB = sanitize(DB); save(); renderAll();
   };
   $("#copyall").onclick = () => {
     let t = "# اختبارات بصمة النموذج (" + E.PROBES.length + " اختبارًا)\n";
@@ -230,9 +278,9 @@
     E.PROBES.forEach((p,i) => { if (p.group!==g){ t += `\n## ${E.GROUPS[p.group].label}\n`; g=p.group; } t += `\n${i+1}. ${p.prompt}\n`; });
     copy(t);
   };
-  $("#md").onclick = () => dl(E.toMarkdown(DB.current, S().responses), `fingerprint-${DB.current}.md`, "text/markdown");
+  $("#md").onclick = () => dl(E.toMarkdown(DB.current, S().responses), `fingerprint-${safeName(DB.current)}.md`, "text/markdown");
   $("#json").onclick = () => dl(JSON.stringify({ subject:DB.current, profile:effectiveResponses(S()), responses:S().responses }, null, 2),
-                                `fingerprint-${DB.current}.json`, "application/json");
+                                `fingerprint-${safeName(DB.current)}.json`, "application/json");
   $("#demo").onclick = () => {
     if (!confirm("تعبئة ردود تجريبية لعرض عمل المحرّك؟ (ستستبدل ردود هذا المساعد)")) return;
     S().responses = Object.assign({}, DEMO); S().overrides = {}; save(); renderAll(); toast("عيّنة محمّلة 🎬");
@@ -240,6 +288,12 @@
   $("#reset").onclick = () => { if(confirm("مسح كل ردود هذا المساعد؟")){ S().responses={}; S().overrides={}; save(); renderAll(); } };
   $("#print").onclick = () => window.print();
 
+  /** يمنع فواصل المسارات والمحارف المحجوزة في أسماء الملفات */
+  function safeName(s){
+    return String(s).replace(/[\/\\:*?"<>|\u0000-\u001f]/g, "_")
+                    .replace(/\.{2,}/g, "_").replace(/^[.\s]+|[.\s]+$/g, "")
+                    .slice(0, 60) || "subject";
+  }
   function dl(txt, name, type){
     const b = new Blob([txt], { type: type+";charset=utf-8" });
     const a = document.createElement("a");
