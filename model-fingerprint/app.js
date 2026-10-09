@@ -150,6 +150,29 @@
     h += `<tr><td class="lbl">قطع المعرفة</td>${profs.map(([,p])=>`<td>${p.cutoffYear||"—"}</td>`).join("")}</tr>`;
     h += `<tr><td class="lbl">الإسهاب</td>${profs.map(([,p])=>`<td>${p.style?p.style.verbosity:"—"}</td>`).join("")}</tr>`;
     h += `</table>`;
+
+    /* ---- التطابق السلوكي: هل هما نفس المحرّك؟ ---- */
+    const pairs = [];
+    for (let i=0;i<names.length;i++) for (let j=i+1;j<names.length;j++) pairs.push([names[i],names[j]]);
+    if (pairs.length){
+      h += `<div class="gh" style="margin-top:18px"><h2>🧬 التطابق السلوكي</h2>
+            <span class="tag">هل هما المحرّك نفسه؟</span></div>
+            <table class="cmp"><tr><th>المقارنة</th><th>توافق الأحكام</th><th>تشابه الأسلوب</th><th>الإجمالي</th><th>الحكم</th></tr>`;
+      for (const [a,b] of pairs.slice(0,10)){
+        const s = E.similarity(DB.subjects[a].responses, DB.subjects[b].responses);
+        const pct = v => v===null ? "—" : Math.round(v*100)+"%";
+        const col = s.overall===null ? "var(--mut)" : s.overall>=.75 ? "var(--acc)" : s.overall>=.55 ? "var(--warn)" : "var(--bad)";
+        h += `<tr><td class="lbl">${esc(a)} ↔ ${esc(b)}</td>
+              <td>${pct(s.behavior)}${s.comparedProbes?` <span style="color:var(--mut);font-size:11px">(${s.agreed}/${s.comparedProbes})</span>`:""}</td>
+              <td>${pct(s.style)}</td>
+              <td style="color:${col};font-weight:900">${pct(s.overall)}</td>
+              <td style="color:${col}">${s.verdict}</td></tr>
+              <tr><td class="lbl" colspan="5" style="text-align:right;color:var(--mut);font-size:12px">${s.note}</td></tr>`;
+      }
+      h += `</table><div class="warnbox" style="margin-top:10px">
+            ⚠️ التطابق السلوكي يجيب عن سؤال «<b>هل هما نفس الشيء؟</b>» — ولا يُنتج <b>اسمًا</b>.
+            أي اسم يُستخرج من السلوك تخمينٌ لا دليل، وأداة تزعم غير ذلك تكون قد هلوست.</div>`;
+    }
     $("#compare").innerHTML = h;
   }
 

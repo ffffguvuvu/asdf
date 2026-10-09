@@ -56,13 +56,13 @@ const w = boot();
 
 t("المحرّك مُحمّل في الصفحة", () => {
   assert.ok(w.MFP, "window.MFP غير موجود");
-  assert.strictEqual(w.MFP.PROBES.length, 20);
+  assert.strictEqual(w.MFP.PROBES.length, 30);
 });
-t("تُرسم 20 بطاقة اختبار", () => {
-  assert.strictEqual(w.document.querySelectorAll("[id^=card-]").length, 20);
+t("تُرسم 30 بطاقة اختبار", () => {
+  assert.strictEqual(w.document.querySelectorAll("[id^=card-]").length, 30);
 });
-t("تُرسم كل مجموعات المحاور (9)", () => {
-  assert.strictEqual(w.document.querySelectorAll(".gh h2").length, 9);
+t("تُرسم كل مجموعات المحاور (14)", () => {
+  assert.strictEqual(w.document.querySelectorAll(".gh h2").length, 14);
 });
 t("كل بطاقة تحوي نص السؤال وحقل لصق", () => {
   for (const p of w.MFP.PROBES){
@@ -73,7 +73,7 @@ t("كل بطاقة تحوي نص السؤال وحقل لصق", () => {
 });
 t("اللوحة تبدأ فارغة بلا انهيار", () => {
   assert.ok(w.document.querySelector("#panel").innerHTML.includes("/100"));
-  assert.strictEqual(w.document.querySelector("#cnt").textContent.trim(), "0 / 20");
+  assert.strictEqual(w.document.querySelector("#cnt").textContent.trim(), "0 / 30");
 });
 
 /* ---------------------------------------------------------------- */
@@ -93,7 +93,7 @@ t("سبب الحكم الآلي يظهر للمستخدم", () => {
   assert.ok(why.length > 5 && /كلمة/.test(why), "لا يوجد تعليل مفهوم: " + why);
 });
 t("عدّاد التغطية يتقدّم", () => {
-  assert.strictEqual(w.document.querySelector("#cnt").textContent.trim(), "1 / 20");
+  assert.strictEqual(w.document.querySelector("#cnt").textContent.trim(), "1 / 30");
 });
 t("الدرجة الإجمالية تُحتسب بعد ردّ صحيح", () => {
   type(w, "logic", "سمير 13، أحمد 17، ليلى 26.");
@@ -168,6 +168,21 @@ t("المقارنة تعرض صفًّا لكل محور", () => {
   const rows = w.document.querySelectorAll("#compare table.cmp tr");
   assert.ok(rows.length >= 10, "صفوف ناقصة: " + rows.length);
 });
+t("🧬 جدول التطابق السلوكي يظهر مع مساعدَين", () => {
+  const cmp = w.document.querySelector("#compare").innerHTML;
+  assert.ok(cmp.includes("التطابق السلوكي"), "لا قسم تطابق");
+  assert.ok(cmp.includes("توافق الأحكام") && cmp.includes("تشابه الأسلوب"));
+});
+
+t("🧬 التطابق يعرض حكمًا نصيًّا ونسبة", () => {
+  const cmp = w.document.querySelector("#compare").innerHTML;
+  assert.ok(/مختلفان|تشابه|تطابق|لا تكفي/.test(cmp), "لا حكم نصّي");
+});
+
+t("🧬 التنويه بعدم إنتاج اسم ظاهر للمستخدم", () => {
+  assert.ok(w.document.querySelector("#compare").innerHTML.includes("ولا يُنتج <b>اسمًا</b>"));
+});
+
 t("حذف مساعد يعيد إخفاء المقارنة", () => {
   w.document.querySelector("#del").click();
   assert.strictEqual(w.document.querySelector("#compare").innerHTML.trim(), "");
@@ -197,7 +212,7 @@ t("نسخ كل الأسئلة لا يرمي استثناءً", () => {
 });
 t("التصفير يمسح الردود والواجهة", () => {
   w.document.querySelector("#reset").click();
-  assert.strictEqual(w.document.querySelector("#cnt").textContent.trim(), "0 / 20");
+  assert.strictEqual(w.document.querySelector("#cnt").textContent.trim(), "0 / 30");
   assert.strictEqual(w.document.querySelector('[data-in="trap"]').value, "");
 });
 
