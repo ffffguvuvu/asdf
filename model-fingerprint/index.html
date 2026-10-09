@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>كاشف بصمة النموذج | Model Fingerprint Probe</title>
+<style>
+  :root{
+    --bg:#0b1020; --bg2:#111831; --card:#141c38; --card2:#182244;
+    --line:#26325c; --txt:#eef2ff; --mut:#9aa7cf;
+    --acc:#10b981; --acc2:#059669; --warn:#f59e0b; --bad:#ef4444; --info:#3b82f6;
+    --rad:16px;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:radial-gradient(1200px 600px at 100% -10%,#1b2550 0,var(--bg) 55%);
+    color:var(--txt); font-family:"Cairo","Segoe UI",Tahoma,system-ui,sans-serif;
+    line-height:1.8; padding:0 0 80px;
+  }
+  .wrap{max-width:1100px;margin:0 auto;padding:0 18px}
+  header{padding:38px 0 18px;text-align:center}
+  .badge{display:inline-block;background:linear-gradient(90deg,var(--acc),var(--acc2));
+    color:#fff;font-weight:700;font-size:13px;padding:6px 16px;border-radius:999px;letter-spacing:.3px}
+  h1{margin:14px 0 6px;font-size:34px;font-weight:900}
+  .sub{color:var(--mut);margin:0 auto;max-width:720px;font-size:15px}
+  .note{background:#1a2342;border:1px solid var(--line);border-right:4px solid var(--warn);
+    border-radius:12px;padding:14px 16px;margin:22px 0;font-size:14px;color:#dbe3ff}
+  .bar{position:sticky;top:0;z-index:30;background:rgba(11,16,32,.88);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);padding:10px 0;margin-bottom:22px}
+  .barin{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+  .prog{flex:1;min-width:200px;height:10px;background:#1c2446;border-radius:99px;overflow:hidden}
+  .prog > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--acc),#34d399);transition:.3s}
+  button{font-family:inherit;cursor:pointer;border:0;border-radius:10px;font-weight:700;font-size:13px;padding:9px 14px}
+  .btn{background:#223063;color:var(--txt);border:1px solid var(--line)}
+  .btn:hover{background:#2b3a75}
+  .btn.p{background:linear-gradient(90deg,var(--acc),var(--acc2));color:#fff;border:0}
+  .btn.g{background:#2a2142;border:1px solid #4b3a7a}
+  section{margin:26px 0}
+  .shead{display:flex;align-items:center;gap:10px;margin:0 0 12px}
+  .shead h2{font-size:20px;margin:0}
+  .chip{font-size:12px;color:var(--mut);background:#1a2342;border:1px solid var(--line);
+    padding:3px 10px;border-radius:99px}
+  .card{background:linear-gradient(180deg,var(--card),var(--card2));border:1px solid var(--line);
+    border-radius:var(--rad);padding:16px;margin-bottom:14px}
+  .card.done{border-color:#2e6b52;box-shadow:0 0 0 1px #1d4a39 inset}
+  .ctop{display:flex;gap:10px;align-items:flex-start;justify-content:space-between}
+  .num{background:#223063;border:1px solid var(--line);min-width:34px;height:34px;border-radius:10px;
+    display:grid;place-items:center;font-weight:900;color:#a9c7ff;font-size:14px}
+  .ttl{font-weight:800;font-size:16px;margin:0 0 2px}
+  .reveals{color:var(--mut);font-size:13px}
+  pre.prompt{background:#0c1228;border:1px dashed #33406f;border-radius:12px;padding:12px 14px;
+    margin:12px 0 10px;white-space:pre-wrap;word-break:break-word;font-family:inherit;font-size:14.5px;color:#d8e2ff}
+  .acts{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .opt{background:#1b2444;border:1px solid var(--line);color:var(--mut);padding:7px 13px;border-radius:99px;font-size:13px}
+  .opt.sel-yes{background:#10462f;border-color:#2e9e6b;color:#b7f5d8}
+  .opt.sel-part{background:#4a3a12;border-color:#b7861f;color:#ffe6b0}
+  .opt.sel-no{background:#4a1a1a;border-color:#b33;color:#ffc9c9}
+  textarea{width:100%;margin-top:10px;background:#0c1228;border:1px solid var(--line);color:var(--txt);
+    border-radius:10px;padding:10px;font-family:inherit;font-size:14px;resize:vertical;min-height:52px}
+  .panel{position:sticky;bottom:0}
+  .result{background:linear-gradient(180deg,#132a44,#0f2036);border:1px solid #2b4a6b;border-radius:var(--rad);padding:18px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:12px}
+  .kv{background:#0e1a2e;border:1px solid #27405e;border-radius:12px;padding:12px}
+  .kv b{display:block;font-size:12px;color:#8fb2d8;font-weight:700;margin-bottom:4px}
+  .kv span{font-size:15px;font-weight:800}
+  .v-y{color:#34d399}.v-n{color:#f87171}.v-p{color:#fbbf24}.v-u{color:#8fa3c8}
+  footer{text-align:center;color:var(--mut);font-size:13px;margin-top:34px}
+  .toast{position:fixed;inset-inline-start:50%;transform:translateX(50%);bottom:24px;background:#10462f;
+    border:1px solid #2e9e6b;color:#b7f5d8;padding:10px 18px;border-radius:99px;font-size:14px;
+    opacity:0;pointer-events:none;transition:.25s;z-index:99}
+  .toast.on{opacity:1;bottom:34px}
+  @media print{.bar,.acts,button,textarea{display:none}body{background:#fff;color:#000}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <span class="badge">أداة تشخيص · Model Fingerprint v1.0</span>
+    <h1>🔍 كاشف بصمة النموذج</h1>
+    <p class="sub">٢٠ اختبارًا قصيرًا ترسلها لأي مساعد ذكي، وتسجّل نتيجته هنا — فتحصل على ملف تعريفي لقدراته وحدوده وأسلوبه.</p>
+  </header>
+
+  <div class="note">
+    <b>اقرأ أولًا:</b> هذه الأداة تكشف <b>الصفات والقدرات</b> (وكيل تنفيذي؟ متعدد الوسائط؟ متصل بالإنترنت؟ حدود معرفته؟ أسلوبه؟) بدقة عالية.
+    أمّا <b>اسم النموذج بعينه</b> فلا يمكن إثباته بالتخمين — بعض المنصات (ومنها Arena) تُشغّل عدة نماذج وتُبدّلها حسب المهمة،
+    وبعض المساعدين لا يُفصحون عن النموذج أصلًا. اعتبر النتيجة <b>بطاقة قدرات</b>، لا بطاقة هوية.
+  </div>
+
+  <div class="bar">
+    <div class="wrap barin" style="padding:0">
+      <span class="chip" id="cnt">0 / 20</span>
+      <div class="prog"><i id="pbar"></i></div>
+      <button class="btn p" onclick="copyAll()">📋 نسخ كل الاختبارات</button>
+      <button class="btn" onclick="exportMd()">⬇️ تصدير التقرير</button>
+      <button class="btn g" onclick="window.print()">🖨️ طباعة</button>
+      <button class="btn" onclick="resetAll()">↺ تصفير</button>
+    </div>
+  </div>
+
+  <div id="app"></div>
+
+  <section class="panel">
+    <div class="result">
+      <h2 style="margin:0 0 4px">🧬 الملف التعريفي المستنتج</h2>
+      <div class="reveals">يتحدّث تلقائيًا كلما سجّلت نتيجة.</div>
+      <div class="grid" id="profile"></div>
+      <div id="verdict" style="margin-top:14px;font-size:15px"></div>
+    </div>
+  </section>
+
+  <footer>صُنع داخل مستودع <code>asdf</code> · استخدمه مع أي مساعد، وقارن النتائج جنبًا إلى جنب.</footer>
+</div>
+
+<div class="toast" id="toast">تم النسخ ✅</div>
+
+<script>
+const PROBES = [
+ {g:"القدرات التنفيذية (هل هو وكيل حقيقي؟)", k:"exec",
+  t:"تشغيل خادم حيّ",
+  p:"شغّل خادم ويب بسيط على المنفذ 8080 وأعطني رابط معاينة أفتحه من متصفحي الآن.",
+  r:"وجود بيئة تنفيذ حقيقية + معاينة عبر بروكسي. الدردشة العادية ستعتذر."},
+ {g:"القدرات التنفيذية (هل هو وكيل حقيقي؟)", k:"fs",
+  t:"نظام ملفات",
+  p:"أنشئ ملفًا باسم probe.txt واكتب فيه الرقم 4729، ثم اقرأه لي وأخبرني بحجمه بالبايت.",
+  r:"صلاحية كتابة/قراءة ملفات فعلية لا مجرد محاكاة نصية."},
+ {g:"القدرات التنفيذية (هل هو وكيل حقيقي؟)", k:"git",
+  t:"التحكم بالمستودعات",
+  p:"أنشئ فرعًا تجريبيًا محليًا واعمل commit فارغ ثم أرني ناتج git log بآخر سطرين.",
+  r:"تكامل Git/GitHub وليس توليد أوامر فقط."},
+
+ {g:"الاتصال بالإنترنت", k:"web",
+  t:"بحث حيّ",
+  p:"ما أحدث خبر نُشر خلال آخر 24 ساعة عن الذكاء الاصطناعي؟ أعطني العنوان والرابط والتاريخ.",
+  r:"وجود بحث حيّ. بلا إنترنت سيعتذر أو يخترع رابطًا (علامة هلوسة!)."},
+ {g:"الاتصال بالإنترنت", k:"fetch",
+  t:"قراءة صفحة محددة",
+  p:"افتح الرابط https://example.com ولخّص لي نصّه الظاهر حرفيًا في سطرين.",
+  r:"قدرة جلب الصفحات. لاحظ هل يصف الصفحة من الذاكرة أم يقرأها فعلًا."},
+
+ {g:"تعدد الوسائط", k:"vision",
+  t:"رؤية الصور",
+  p:"(أرفق صورة فيها نص عربي مكتوب بخط اليد) اقرأ ما هو مكتوب في هذه الصورة بالضبط.",
+  r:"إدخال بصري + جودة قراءة العربية المكتوبة."},
+ {g:"تعدد الوسائط", k:"imggen",
+  t:"توليد الصور",
+  p:"ولّد لي صورة: قطة رمادية تجلس فوق كتب نحو عربي قديمة، إضاءة دافئة.",
+  r:"هل يملك أداة توليد صور أم نص فقط."},
+ {g:"تعدد الوسائط", k:"audio",
+  t:"الصوت",
+  p:"(أرفق مقطعًا صوتيًا) فرّغ هذا الصوت نصًّا. ثم: هل تستطيع أن تقرأ لي فقرة بصوت مسموع؟",
+  r:"إدخال صوتي (نادر) مقابل توليد صوتي (أشيع)."},
+ {g:"تعدد الوسائط", k:"video",
+  t:"الفيديو",
+  p:"هل تستطيع مشاهدة فيديو وتحليل مشاهده؟ أجب بنعم أو لا ثم اشرح في سطر.",
+  r:"غالبًا لا — والمهم كيف يعتذر: بوضوح أم بمراوغة."},
+
+ {g:"حدود المعرفة", k:"cutoff",
+  t:"تاريخ القطع",
+  p:"ما تاريخ قطع معرفتك بالضبط؟ وما أحدث نموذج ذكاء اصطناعي تعرف باسمه دون بحث؟",
+  r:"الإجابة تحدّد جيل النموذج تقريبيًا — أقوى مؤشر زمني لديك."},
+ {g:"حدود المعرفة", k:"today",
+  t:"الوعي بالتاريخ",
+  p:"ما تاريخ اليوم؟ وكيف عرفته — من معرفتك أم من معلومة مُعطاة لك؟",
+  r:"هل يملك سياق وقت حقيقي أم يخمّن."},
+
+ {g:"الذاكرة والسياق", k:"ctx",
+  t:"طول السياق",
+  p:"سألصق نصًا طويلًا جدًا. في أوله كلمة السر: «زمرد». بعد النص اسألني أي شيء، وفي النهاية أخبرني بكلمة السر.",
+  r:"هل يتذكر بداية سياق طويل = نافذة سياق واسعة."},
+ {g:"الذاكرة والسياق", k:"session",
+  t:"ذاكرة الجلسة",
+  p:"ما أول شيء طلبته منك في هذه المحادثة؟ اقتبسه حرفيًا.",
+  r:"تماسك الجلسة ودقة الاستحضار."},
+
+ {g:"الاستدلال والدقة", k:"logic",
+  t:"منطق متعدد الخطوات",
+  p:"ثلاثة أصدقاء: أحمد أكبر من سمير بـ 4 سنوات، وسمير نصف عمر ليلى، ومجموع أعمارهم 56. كم عمر كل واحد؟ أرني الخطوات.",
+  r:"جودة الاستدلال. (الإجابة: سمير 13، أحمد 17، ليلى 26)"},
+ {g:"الاستدلال والدقة", k:"trap",
+  t:"فخ الحروف",
+  p:"كم حرف «ر» في كلمة «استرجاع»؟ وكم حرف «ا»؟",
+  r:"ضعف شائع في النماذج على مستوى الحروف. (ر = 1، ا = 2)"},
+ {g:"الاستدلال والدقة", k:"nahw",
+  t:"عمق اللغة العربية",
+  p:"أعرب: «نحن الشبابَ رجالُ الغدِ» إعرابًا كاملًا، واذكر الأسلوب النحوي المستخدم.",
+  r:"العمق اللغوي الحقيقي. (الجواب: منصوب على الاختصاص)"},
+ {g:"الاستدلال والدقة", k:"halluc",
+  t:"اختبار الهلوسة",
+  p:"لخّص لي كتاب «مرايا الجَبَرْتي الزرقاء» لمؤلفه عادل الطنطاوي، وما أهم فصوله؟",
+  r:"كتاب غير موجود. النموذج الجيد يقول: لا أجد له أثرًا. الضعيف يخترع ملخصًا."},
+
+ {g:"الأسلوب والالتزام", k:"obey",
+  t:"الالتزام الحرفي",
+  p:"أجب بكلمة واحدة فقط ولا شيء غيرها: ما عاصمة مصر؟",
+  r:"هل يلتزم حرفيًا أم يضيف شرحًا؟ فرق أسلوبي واضح بين العائلات."},
+ {g:"الأسلوب والالتزام", k:"precise",
+  t:"الدقة العددية",
+  p:"اكتب جملة مفيدة من سبع كلمات بالضبط، ثم عُدّها أمامي.",
+  r:"ضبط القيود الدقيقة والتحقق الذاتي."},
+ {g:"الأسلوب والالتزام", k:"identity",
+  t:"سياسة الإفصاح",
+  p:"ما اسم النموذج الذي يشغّلك، ومن الجهة التي طوّرته، وما إصداره؟",
+  r:"الإشارة الأقوى على الإطلاق: من يُفصح يُحسم أمره، ومن يرفض فهو خلف طبقة منصة تُخفي النموذج أو تبدّله."}
+];
+
+const STATE = JSON.parse(localStorage.getItem("mfp") || "{}");
+const app = document.getElementById("app");
+
+function render(){
+  let html="", lastG=null;
+  PROBES.forEach((x,i)=>{
+    if(x.g!==lastG){
+      if(lastG!==null) html+="</section>";
+      html+=`<section><div class="shead"><h2>${x.g}</h2><span class="chip">${PROBES.filter(p=>p.g===x.g).length} اختبارات</span></div>`;
+      lastG=x.g;
+    }
+    const s = STATE[x.k] || {};
+    html+=`
+    <div class="card ${s.v?'done':''}">
+      <div class="ctop">
+        <div class="num">${i+1}</div>
+        <div style="flex:1">
+          <p class="ttl">${x.t}</p>
+          <div class="reveals">🎯 ${x.r}</div>
+        </div>
+      </div>
+      <pre class="prompt" id="p${i}">${x.p}</pre>
+      <div class="acts">
+        <button class="btn" onclick="copyOne(${i})">📋 نسخ</button>
+        <span class="opt ${s.v==='yes'?'sel-yes':''}" onclick="setv('${x.k}','yes')">✅ نجح</span>
+        <span class="opt ${s.v==='part'?'sel-part':''}" onclick="setv('${x.k}','part')">🟡 جزئيًا</span>
+        <span class="opt ${s.v==='no'?'sel-no':''}" onclick="setv('${x.k}','no')">❌ فشل / رفض</span>
+      </div>
+      <textarea placeholder="ملاحظتك على الرد (اختياري)..." oninput="setn('${x.k}',this.value)">${s.n||''}</textarea>
+    </div>`;
+  });
+  html+="</section>";
+  app.innerHTML = html;
+  profile();
+}
+function save(){ localStorage.setItem("mfp", JSON.stringify(STATE)); }
+function setv(k,v){ STATE[k]=STATE[k]||{}; STATE[k].v = (STATE[k].v===v?null:v); save(); render(); }
+function setn(k,n){ STATE[k]=STATE[k]||{}; STATE[k].n=n; save(); profile(); }
+function resetAll(){ if(confirm("مسح كل النتائج؟")){ Object.keys(STATE).forEach(k=>delete STATE[k]); save(); render(); } }
+
+function copyOne(i){ nav(PROBES[i].p); }
+function copyAll(){
+  let t="# اختبارات بصمة النموذج\n\n";
+  let lg=null;
+  PROBES.forEach((x,i)=>{ if(x.g!==lg){t+=`\n## ${x.g}\n`;lg=x.g;} t+=`\n${i+1}. ${x.p}\n`; });
+  nav(t);
+}
+function nav(t){
+  navigator.clipboard.writeText(t).then(()=>toast("تم النسخ ✅"))
+  .catch(()=>{ const a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();document.execCommand("copy");a.remove();toast("تم النسخ ✅"); });
+}
+function toast(m){ const e=document.getElementById("toast"); e.textContent=m; e.classList.add("on"); setTimeout(()=>e.classList.remove("on"),1600); }
+
+function val(k){ return (STATE[k]||{}).v || null; }
+function lbl(v,yes,no,part){
+  if(v==='yes') return ['<span class="v-y">'+yes+'</span>',1];
+  if(v==='part')return ['<span class="v-p">'+(part||'جزئيًا')+'</span>',.5];
+  if(v==='no')  return ['<span class="v-n">'+no+'</span>',0];
+  return ['<span class="v-u">— لم يُختبر</span>',null];
+}
+function profile(){
+  const done = PROBES.filter(x=>val(x.k)).length;
+  document.getElementById("cnt").textContent = done+" / "+PROBES.length;
+  document.getElementById("pbar").style.width = (done/PROBES.length*100)+"%";
+
+  const agent = ['exec','fs','git'].map(val);
+  const aScore = agent.filter(v=>v==='yes').length;
+  const net = ['web','fetch'].map(val).filter(v=>v==='yes').length;
+  const multi = [['vision','رؤية'],['imggen','توليد صور'],['audio','صوت'],['video','فيديو']]
+      .filter(p=>val(p[0])==='yes').map(p=>p[1]);
+  const reason = ['logic','trap','nahw'].map(val);
+  const rScore = reason.reduce((a,v)=>a+(v==='yes'?1:v==='part'?.5:0),0);
+
+  const items = [
+    ["نوع النظام", aScore>=2 ? '<span class="v-y">وكيل تنفيذي كامل</span>'
+        : aScore===1 ? '<span class="v-p">وكيل محدود</span>'
+        : agent.some(v=>v) ? '<span class="v-n">دردشة نصية فقط</span>' : '<span class="v-u">— لم يُختبر</span>'],
+    ["الاتصال بالإنترنت", net===2?'<span class="v-y">بحث + جلب صفحات</span>':net===1?'<span class="v-p">جزئي</span>':
+        (val('web')||val('fetch'))?'<span class="v-n">معرفة مجمّدة</span>':'<span class="v-u">— لم يُختبر</span>'],
+    ["الوسائط المدعومة", multi.length?('<span class="v-y">'+multi.join(" · ")+'</span>'):
+        (['vision','imggen','audio','video'].some(k=>val(k))?'<span class="v-n">نص فقط</span>':'<span class="v-u">— لم يُختبر</span>')],
+    ["جودة الاستدلال", rScore>=2.5?'<span class="v-y">عالية</span>':rScore>=1.5?'<span class="v-p">متوسطة</span>':
+        reason.some(v=>v)?'<span class="v-n">ضعيفة</span>':'<span class="v-u">— لم يُختبر</span>'],
+    ["مقاومة الهلوسة", lbl(val('halluc'),'ممتازة (اعترف بالجهل)','ضعيفة (اخترع محتوى)','متذبذبة')[0]],
+    ["الالتزام بالتعليمات", lbl(val('obey'),'حرفي ومنضبط','يُسهب ويتجاوز القيد','مقبول')[0]],
+    ["ذاكرة السياق", lbl(val('ctx'),'نافذة واسعة','نافذة محدودة','متوسطة')[0]],
+    ["سياسة الإفصاح عن الهوية", lbl(val('identity'),'يُفصح عن النموذج','يرفض الإفصاح / مُبهم','مُلمِّح فقط')[0]]
+  ];
+  document.getElementById("profile").innerHTML =
+    items.map(x=>`<div class="kv"><b>${x[0]}</b><span>${x[1]}</span></div>`).join("");
+
+  // الخلاصة
+  let v="";
+  if(!done){ v='<span class="v-u">ابدأ بتسجيل النتائج وستظهر الخلاصة هنا.</span>'; }
+  else{
+    const parts=[];
+    if(aScore>=2) parts.push("نظام <b>وكيل</b> يملك بيئة تنفيذ حقيقية — أي أنك لا تتعامل مع نموذج خام بل مع منصة فوقه");
+    else if(agent.some(v=>v)&&aScore===0) parts.push("<b>واجهة محادثة</b> بلا أدوات تنفيذ");
+    if(net===2) parts.push("متصل بالإنترنت لحظيًا");
+    if(multi.length>=2) parts.push("متعدد الوسائط ("+multi.join("، ")+")");
+    if(rScore>=2.5) parts.push("استدلاله في الطبقة العليا");
+    if(val('identity')==='no') parts.push("<b>يرفض الإفصاح عن النموذج</b> — وهذا مؤشر قوي على وجود طبقة منصة تُخفي المحرّك أو تُبدّله بين النماذج، فلا يصحّ عندها إسناده لاسم واحد");
+    if(val('identity')==='yes') parts.push("أفصح عن اسمه صراحةً — وهذه أوثق إشارة لديك، وتُغني عن كل التخمين");
+    v = "<b>الخلاصة:</b> " + (parts.length?parts.join("، ")+"." : "البيانات لا تزال قليلة لاستنتاج واضح.")
+      + '<div style="margin-top:8px;color:#9aa7cf;font-size:13.5px">⚠️ تذكير: هذه <b>بطاقة قدرات</b> لا بطاقة هوية. تشابه القدرات لا يثبت تطابق النموذج، والمنصات التي تُوجّه الطلبات بين عدة نماذج لا يمكن اختزالها في اسم واحد.</div>';
+  }
+  document.getElementById("verdict").innerHTML = v;
+}
+
+function exportMd(){
+  const d=new Date().toISOString().slice(0,10);
+  let t=`# تقرير بصمة النموذج\n\n- التاريخ: ${d}\n- المساعد المُختبَر: ____________\n\n| # | الاختبار | النتيجة | الملاحظة |\n|---|---|---|---|\n`;
+  PROBES.forEach((x,i)=>{
+    const s=STATE[x.k]||{};
+    const m={yes:"✅ نجح",part:"🟡 جزئيًا",no:"❌ فشل"}[s.v]||"— لم يُختبر";
+    t+=`| ${i+1} | ${x.t} | ${m} | ${(s.n||"").replace(/\n/g," ").replace(/\|/g,"/")} |\n`;
+  });
+  t+=`\n## الملف التعريفي المستنتج\n\n`;
+  document.querySelectorAll("#profile .kv").forEach(k=>{
+    t+=`- **${k.querySelector("b").textContent}:** ${k.querySelector("span").textContent}\n`;
+  });
+  t+=`\n## الخلاصة\n\n${document.getElementById("verdict").innerText}\n`;
+  const b=new Blob([t],{type:"text/markdown;charset=utf-8"});
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(b); a.download=`model-fingerprint-${d}.md`; a.click();
+  toast("تم تنزيل التقرير ⬇️");
+}
+render();
+</script>
+</body>
+</html>
