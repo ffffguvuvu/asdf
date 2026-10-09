@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>كاشف بصمة النموذج v2 — ملف واحد مستقل</title>
+<style>
+:root{
+  --bg:#070b16; --card:#111a30; --card2:#0e1628; --line:#223158; --txt:#eef3ff; --mut:#8fa0cc;
+  --acc:#10b981; --acc2:#34d399; --warn:#f59e0b; --bad:#ef4444; --info:#60a5fa; --pur:#a78bfa;
+  --r:14px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:
+    radial-gradient(900px 500px at 110% -10%, #1a2a52 0, transparent 60%),
+    radial-gradient(700px 400px at -10% 10%, #1d2340 0, transparent 55%), var(--bg);
+  color:var(--txt); font-family:"Cairo","Segoe UI",Tahoma,system-ui,sans-serif;
+  line-height:1.75; padding-bottom:60px;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 16px}
+a{color:var(--info)}
+code,kbd{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.92em}
+
+/* header */
+header{padding:34px 0 10px;text-align:center}
+.pill{display:inline-block;background:linear-gradient(90deg,var(--acc),#059669);color:#fff;
+  font-weight:700;font-size:12.5px;padding:5px 15px;border-radius:999px}
+h1{margin:12px 0 4px;font-size:32px;font-weight:900;letter-spacing:-.4px}
+.lead{color:var(--mut);max-width:760px;margin:0 auto;font-size:14.5px}
+
+/* toolbar */
+.bar{position:sticky;top:0;z-index:40;background:rgba(7,11,22,.9);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);padding:9px 0;margin:18px 0 20px}
+.row{display:flex;gap:9px;align-items:center;flex-wrap:wrap}
+button,select,input[type=text]{font-family:inherit;font-size:13px;border-radius:10px;border:1px solid var(--line)}
+button{cursor:pointer;background:#1c2748;color:var(--txt);font-weight:700;padding:8px 13px}
+button:hover{background:#263565}
+button.p{background:linear-gradient(90deg,var(--acc),#059669);border-color:transparent;color:#fff}
+button.d{background:#3a1a1a;border-color:#6b2b2b;color:#ffbcbc}
+select,input[type=text]{background:#0e1730;color:var(--txt);padding:8px 10px}
+.spacer{flex:1}
+.prog{flex:1;min-width:150px;height:9px;background:#16203c;border-radius:99px;overflow:hidden}
+.prog>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--acc),var(--acc2));transition:.35s}
+.tag{font-size:12px;color:var(--mut);background:#131d38;border:1px solid var(--line);padding:3px 10px;border-radius:999px;white-space:nowrap}
+
+/* layout */
+.cols{display:grid;grid-template-columns:1fr 360px;gap:18px;align-items:start}
+@media(max-width:980px){.cols{grid-template-columns:1fr}}
+
+/* probe cards */
+.gh{display:flex;align-items:center;gap:10px;margin:22px 0 10px}
+.gh h2{font-size:18px;margin:0}
+.card{background:linear-gradient(180deg,var(--card),var(--card2));border:1px solid var(--line);
+  border-radius:var(--r);padding:14px;margin-bottom:12px;transition:.2s}
+.card.yes{border-color:#2d7a57}.card.part{border-color:#8a6a1e}.card.no{border-color:#8a3030}
+.ctop{display:flex;gap:10px;align-items:flex-start}
+.n{min-width:30px;height:30px;border-radius:9px;background:#1c2748;border:1px solid var(--line);
+  display:grid;place-items:center;font-weight:900;font-size:13px;color:#a8c4ff}
+.ttl{font-weight:800;font-size:15px;margin:0}
+.rev{color:var(--mut);font-size:12.5px;margin-top:2px}
+pre.q{background:#060b18;border:1px dashed #2c3b68;border-radius:11px;padding:11px 13px;margin:11px 0 9px;
+  white-space:pre-wrap;word-break:break-word;font-family:inherit;font-size:14px;color:#d6e2ff}
+textarea{width:100%;background:#060b18;border:1px solid var(--line);color:var(--txt);border-radius:11px;
+  padding:10px;font-family:inherit;font-size:13.5px;min-height:70px;resize:vertical}
+textarea:focus{outline:2px solid #2f4a8a;border-color:#2f4a8a}
+.verdict{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:9px;font-size:13px}
+.v{padding:4px 11px;border-radius:999px;font-weight:800;font-size:12.5px}
+.v.yes{background:#0f4631;color:#9ff0cb;border:1px solid #2d7a57}
+.v.part{background:#46350f;color:#ffdf9f;border:1px solid #8a6a1e}
+.v.no{background:#461414;color:#ffb3b3;border:1px solid #8a3030}
+.v.unknown{background:#1a2440;color:#93a5cd;border:1px solid var(--line)}
+.why{color:var(--mut);font-size:12.5px}
+.ovr{margin-inline-start:auto;display:flex;gap:5px}
+.ovr b{font-size:11px;color:var(--mut);font-weight:600;align-self:center}
+.mini{padding:3px 9px;font-size:11.5px;border-radius:8px;background:#141f3c;border:1px solid var(--line);
+  color:var(--mut);cursor:pointer;font-weight:700}
+.mini.on{background:#24406e;color:#fff;border-color:#3a5a99}
+
+/* panel */
+.panel{position:sticky;top:64px;background:linear-gradient(180deg,#0f1f36,#0b1728);
+  border:1px solid #27416b;border-radius:var(--r);padding:16px}
+.ring{display:flex;align-items:center;gap:14px}
+.ring .big{font-size:40px;font-weight:900;line-height:1}
+.ring .big small{font-size:14px;color:var(--mut);font-weight:700}
+.meters{margin-top:12px;display:grid;gap:7px}
+.m{display:grid;grid-template-columns:120px 1fr 42px;gap:8px;align-items:center;font-size:12.5px}
+.m .t{color:var(--mut)}
+.m .b{height:8px;background:#16203c;border-radius:99px;overflow:hidden}
+.m .b>i{display:block;height:100%;border-radius:99px}
+.m .p{text-align:left;font-weight:800;font-size:12px}
+.traits{margin-top:13px;font-size:13px}
+.traits li{margin-bottom:5px}
+.kvs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.kv{background:#0b1830;border:1px solid #223963;border-radius:10px;padding:8px 10px}
+.kv b{display:block;font-size:10.5px;color:#89a8d6;font-weight:700}
+.kv span{font-size:13px;font-weight:800}
+.warnbox{margin-top:12px;background:#231c08;border:1px solid #5c4710;border-radius:10px;
+  padding:9px 11px;font-size:12px;color:#ffe0a3}
+footer{text-align:center;color:var(--mut);font-size:12.5px;margin-top:30px}
+
+/* compare */
+table.cmp{width:100%;border-collapse:collapse;margin-top:10px;font-size:13px}
+table.cmp th,table.cmp td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+table.cmp th{background:#152243;font-size:12px}
+table.cmp td.lbl{text-align:right;color:var(--mut)}
+
+.toast{position:fixed;inset-inline-start:50%;transform:translateX(50%);bottom:20px;background:#0f4631;
+  border:1px solid #2d7a57;color:#9ff0cb;padding:9px 18px;border-radius:999px;font-size:13.5px;
+  opacity:0;pointer-events:none;transition:.25s;z-index:99}
+.toast.on{opacity:1;bottom:30px}
+@media print{.bar,.ovr,textarea,button{display:none!important}body{background:#fff;color:#000}}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <span class="pill">Model Fingerprint Engine v2.0 · تصحيح آلي</span>
+    <h1>🔬 كاشف بصمة النموذج</h1>
+    <p class="lead">
+      ٢٠ اختبارًا ترسلها لأي مساعد ذكي، ثم <b>تلصق ردّه كما هو</b> —
+      فيصحّحه المحرّك تلقائيًا ويبني بطاقة قدرات كاملة: أدوات، إنترنت، وسائط، استدلال، أمانة، أسلوب.
+    </p>
+  </header>
+
+  <div class="bar">
+    <div class="wrap row" style="padding:0">
+      <select id="subj" title="المساعد الجاري اختباره"></select>
+      <button id="add">＋ مساعد</button>
+      <button id="del" class="d">🗑</button>
+      <span class="tag" id="cnt">0 / 20</span>
+      <span class="prog"><i id="pbar"></i></span>
+      <button id="copyall" class="p">📋 نسخ كل الأسئلة</button>
+      <button id="demo">🎬 عيّنة</button>
+      <button id="md">⬇️ MD</button>
+      <button id="json">⬇️ JSON</button>
+      <button id="print">🖨️</button>
+      <button id="reset" class="d">↺</button>
+    </div>
+  </div>
+
+  <div class="cols">
+    <main>
+      <div id="probes"></div>
+      <div id="compare"></div>
+    </main>
+    <aside>
+      <div class="panel" id="panel"></div>
+    </aside>
+  </div>
+
+  <footer>
+    محرّك مفتوح: <code>engine.js</code> (نقيّ، 20 مصحّحًا) · واجهة: <code>app.js</code> ·
+    اختبارات: <code>node test/engine.test.js</code> — ٦٥ اختبارًا.
+  </footer>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/*!
+ * Model Fingerprint Engine v2.0
+ * محرّك تصحيح آلي لردود المساعدين الذكيين.
+ * وحدة نقيّة (pure) بلا اعتماد على المتصفح — تعمل في Node وفي الصفحة.
+ */
+(function (root, factory) {
+  if (typeof module === "object" && module.exports) module.exports = factory();
+  else root.MFP = factory();
+})(typeof self !== "undefined" ? self : this, function () {
+  "use strict";
+
+  /* ============================ أدوات نصية ============================ */
+
+  const AR_DIGITS = { "٠":"0","١":"1","٢":"2","٣":"3","٤":"4","٥":"5","٦":"6","٧":"7","٨":"8","٩":"9",
+                      "۰":"0","۱":"1","۲":"2","۳":"3","۴":"4","۵":"5","۶":"6","۷":"7","۸":"8","۹":"9" };
+  const DIACRITICS = /[\u064B-\u0652\u0670\u0640]/g;
+
+  function digits(s){ return String(s).replace(/[٠-٩۰-۹]/g, d => AR_DIGITS[d]); }
+
+  /** تطبيع للمطابقة: أرقام لاتينية، بلا تشكيل، ألف/ياء/تاء موحّدة، مسافات مضغوطة */
+  function norm(s){
+    return digits(String(s || ""))
+      .replace(DIACRITICS, "")
+      .replace(/[أإآٱ]/g, "ا")
+      .replace(/ى/g, "ي")
+      .replace(/ة/g, "ه")
+      .replace(/[\u200f\u200e\u00a0]/g, " ")
+      .replace(/\s+/g, " ")
+      .toLowerCase()
+      .trim();
+  }
+
+  const has = (t, ...needles) => needles.some(n => t.includes(norm(n)));
+  const hasRe = (t, re) => re.test(t);
+
+  /** كلمات فعلية (تتجاهل الترقيم والرموز) */
+  function words(s){
+    return String(s || "")
+      .replace(/[^\p{L}\p{N}\s'’-]/gu, " ")
+      .split(/\s+/).filter(Boolean);
+  }
+
+  const REFUSAL = ["لا استطيع","لا اقدر","لا يمكنني","ليس لدي","لا املك","لا اتمكن","غير قادر","لا يمكن لي",
+                   "لا توجد لدي امكانيه","i cannot","i can't","i am unable","i'm unable","i do not have access",
+                   "ليس بامكاني","لا اتوفر على"];
+  const AFFIRM  = ["نعم","بالتاكيد","تم","جاهز","انشات","قمت","ها هو","تفضل","بالفعل","yes","done","created"];
+
+  const isRefusal = t => has(t, ...REFUSAL);
+  const isAffirm  = t => has(t, ...AFFIRM);
+
+  /* ⚠️ تنبيه مهم: في JS تُعدّ الحروف العربية "غير حرفية" (\W)، فحدود الكلمات \b و \W
+     تعطي نتائج خاطئة مع العربية (مثال: /(^|\W)لا(\W|$)/ تطابق داخل «للاهتمام»!).
+     لذلك نستخدم حدودًا قائمة على المسافات فقط. */
+  const SPACED = t => " " + norm(t).replace(/[^\p{L}\p{N}]+/gu, " ").replace(/\s+/g," ").trim() + " ";
+  /** هل توجد الكلمة ككلمة مستقلة (حدود مسافات)؟ */
+  const hasWord = (t, ...ws) => { const s = SPACED(t); return ws.some(w => s.includes(" " + norm(w) + " ")); };
+  /** هل يبدأ النص بهذه الكلمة؟ */
+  const startsWith = (t, ...ws) => { const s = SPACED(t); return ws.some(w => s.startsWith(" " + norm(w) + " ")); };
+  /** يحجب عبارات النفي قبل البحث عن الإثبات */
+  const stripNegation = t => norm(t).replace(/لا (استطيع|يمكنني|اقدر|املك|اتمكن)/g, " __NEG__ ")
+                                     .replace(/غير قادر|لست قادرا/g, " __NEG__ ");
+
+  const URL_RE   = /https?:\/\/[^\s<>()"']{4,}/i;
+  const SHA_RE   = /\b[0-9a-f]{7,40}\b/;
+  const PORT_RE  = /:8080\b|localhost|127\.0\.0\.1|e2b\.app|\.app\/|preview/i;
+
+  /* ============================ نتائج ============================ */
+
+  const V = { PASS:"yes", PART:"part", FAIL:"no", NA:"unknown" };
+
+  function R(verdict, reason, extra){
+    return Object.assign({ verdict, reason: reason || "" }, extra || {});
+  }
+
+  /* ============================ تعريف الاختبارات ============================ */
+  /* كل اختبار: id, group, title, prompt, reveals, weightGroup, grade(raw) */
+
+  const PROBES = [
+
+  /* ---------- أ) القدرات التنفيذية ---------- */
+  { id:"exec", group:"agency", title:"تشغيل خادم حيّ",
+    prompt:"شغّل خادم ويب بسيط على المنفذ 8080 وأعطني رابط معاينة أفتحه من متصفحي الآن.",
+    reveals:"بيئة تنفيذ حقيقية + معاينة. الدردشة العادية ستعتذر أو تعطيك تعليمات بدل رابط.",
+    grade(raw){
+      const t = norm(raw);
+      const url = URL_RE.test(raw);
+      const portish = PORT_RE.test(raw);
+      if (url && portish && !isRefusal(t)) return R(V.PASS,"قدّم رابط معاينة فعليًا.");
+      if (has(t,"python -m http.server","npx serve","npm run","```"))
+        return R(V.FAIL,"أعطى كودًا/تعليمات بدل تنفيذ حقيقي → لا بيئة تنفيذ.",{instructedOnly:true});
+      if (isRefusal(t)) return R(V.FAIL,"اعتذر ولم يقدّم رابطًا → لا بيئة تنفيذ.");
+      if (url) return R(V.PART,"ذكر رابطًا لكن بلا دلالة منفذ/معاينة واضحة.");
+      return R(V.FAIL,"لا رابط ولا دليل تشغيل.");
+    }},
+
+  { id:"fs", group:"agency", title:"نظام الملفات",
+    prompt:"أنشئ ملفًا باسم probe.txt واكتب فيه الرقم 4729، ثم اقرأه لي وأخبرني بحجمه بالبايت.",
+    reveals:"كتابة/قراءة فعلية لا محاكاة نصية. الحجم الصحيح 4 أو 5 بايت.",
+    grade(raw){
+      const t = norm(raw);
+      const hasVal = t.includes("4729");
+      // ملاحظة: لا نستخدم \b هنا لأن الحروف العربية غير حرفية في JS فتكسر الحدود
+      const size = /(\d{1,3})\s*(?:بايت|bytes?|B(?![a-z]))/i.exec(digits(raw));
+      if (isRefusal(t) && !hasVal) return R(V.FAIL,"اعتذر عن إنشاء الملفات.");
+      if (hasVal && size){
+        const n = +size[1];
+        if (n===4 || n===5) return R(V.PASS,`أنشأ الملف وأبلغ حجمًا واقعيًا (${n} بايت).`,{size:n});
+        return R(V.PART,`ذكر الحجم ${n} بايت — غير متوقع (المتوقع 4 أو 5).`,{size:n});
+      }
+      if (hasVal) return R(V.PART,"ذكر المحتوى لكن بلا حجم بالبايت.");
+      return R(V.FAIL,"لا دليل على إنشاء الملف.");
+    }},
+
+  { id:"git", group:"agency", title:"التحكم بالمستودعات",
+    prompt:"أنشئ فرعًا تجريبيًا محليًا واعمل commit فارغ ثم أرني ناتج git log بآخر سطرين.",
+    reveals:"تكامل Git حقيقي: وجود بصمة commit سداسية عشرية.",
+    grade(raw){
+      const t = norm(raw);
+      if (SHA_RE.test(raw) && has(t,"commit","git log","branch","فرع") && !isRefusal(t))
+        return R(V.PASS,"أظهر بصمة commit حقيقية.");
+      if (has(t,"git checkout -b","git commit","```"))
+        return R(V.FAIL,"كتب الأوامر دون تنفيذها → لا تكامل Git.",{instructedOnly:true});
+      if (isRefusal(t)) return R(V.FAIL,"اعتذر عن التعامل مع Git.");
+      return R(V.FAIL,"لا دليل على تنفيذ Git.");
+    }},
+
+  /* ---------- ب) الاتصال بالإنترنت ---------- */
+  { id:"web", group:"net", title:"بحث حيّ",
+    prompt:"ما أحدث خبر نُشر خلال آخر 24 ساعة عن الذكاء الاصطناعي؟ أعطني العنوان والرابط والتاريخ.",
+    reveals:"بحث لحظي. بلا إنترنت → يعتذر، أو (الأسوأ) يخترع رابطًا.",
+    grade(raw){
+      const t = norm(raw);
+      const url = URL_RE.test(raw);
+      const dated = /\b(20\d{2})\b/.test(digits(raw));
+      if (url && dated && !isRefusal(t)) return R(V.PASS,"قدّم رابطًا وتاريخًا → بحث حيّ مرجّح.");
+      if (!url && isRefusal(t)) return R(V.FAIL,"صرّح بعدم امتلاك إنترنت (صادق، لكن بلا قدرة).");
+      if (url && isRefusal(t)) return R(V.PART,"ناقض نفسه: اعتذر وأعطى رابطًا → تحقّق يدويًا، قد يكون مُختلقًا.",{flag:"url_after_refusal"});
+      return R(V.PART,"إجابة غامضة بلا مرجع واضح.");
+    }},
+
+  { id:"fetch", group:"net", title:"قراءة صفحة محددة",
+    prompt:"افتح الرابط https://example.com ولخّص لي نصّه الظاهر حرفيًا في سطرين.",
+    reveals:"جلب فعلي للصفحة. النص الحقيقي يذكر Example Domain / illustrative examples.",
+    grade(raw){
+      const t = norm(raw);
+      // ملاحظة: نص example.com تغيّر فعليًا في 2026 — نقبل الصياغتين القديمة والجديدة
+      if (has(t,"example domain","documentation examples","illustrative examples","more information","learn more",
+               "نطاق للتوضيح","امثله توضيحيه","امثله التوثيق","هذا النطاق مخصص","نطاق مثال","iana"))
+        return R(V.PASS,"أعاد محتوى الصفحة الحقيقي.");
+      if (isRefusal(t)) return R(V.FAIL,"لا يستطيع فتح الروابط.");
+      return R(V.PART,"وصف عامّ بلا اقتباس من محتوى الصفحة الفعلي.");
+    }},
+
+  /* ---------- ج) تعدد الوسائط ---------- */
+  { id:"vision", group:"media", title:"رؤية الصور",
+    prompt:"(أرفق صورة فيها نص عربي مكتوب بخط اليد) اقرأ ما هو مكتوب في هذه الصورة بالضبط.",
+    reveals:"إدخال بصري + جودة قراءة العربية. صحّح النتيجة بعينك.",
+    grade(raw){
+      const t = norm(raw);
+      if (isRefusal(t) || has(t,"لا ارى","لا اشاهد","لا تظهر لي")) return R(V.FAIL,"لا يملك إدخالًا بصريًا.");
+      if (t.length > 8) return R(V.PASS,"قرأ الصورة ووصف محتواها (تحقّق من الدقة بنفسك).");
+      return R(V.NA,"رد قصير جدًا للحكم.");
+    }},
+
+  { id:"imggen", group:"media", title:"توليد الصور",
+    prompt:"ولّد لي صورة: قطة رمادية تجلس فوق كتب نحو عربي قديمة، إضاءة دافئة.",
+    reveals:"أداة توليد صور فعلية مقابل وصف نصّي للصورة.",
+    grade(raw){
+      const t = norm(raw);
+      if (/!\[|\.png|\.jpg|\.jpeg|\.webp/i.test(raw)) return R(V.PASS,"أنتج ملف/عرض صورة فعليًا.");
+      if (isRefusal(t)) return R(V.FAIL,"لا يملك توليد صور.");
+      if (has(t,"تخيل","وصف","يمكنك استخدام","prompt")) return R(V.PART,"اكتفى بوصف أو اقترح أداة خارجية.");
+      return R(V.NA,"غير حاسم.");
+    }},
+
+  { id:"audio", group:"media", title:"الصوت (إدخال/إخراج)",
+    prompt:"(أرفق مقطعًا صوتيًا) فرّغ هذا الصوت نصًّا. ثم: هل تستطيع أن تقرأ لي فقرة بصوت مسموع؟",
+    reveals:"الإدخال الصوتي نادر؛ التوليد الصوتي أشيع. ميّز بينهما في ردّه.",
+    grade(raw){
+      const t = norm(raw);
+      const inOk  = !has(t,"لا استطيع الاستماع","لا اسمع","لا يمكنني تفريغ") && has(t,"التفريغ","النص المنطوق","يقول المقطع");
+      const outOk = /\.mp3|\.wav|\.ogg/i.test(raw) || has(t,"ها هو الملف الصوتي","ولدت لك صوت","سجلت لك");
+      if (inOk && outOk) return R(V.PASS,"إدخال صوتي + توليد صوتي.");
+      if (outOk) return R(V.PART,"يولّد صوتًا لكنه لا يستمع.");
+      if (inOk)  return R(V.PART,"يستمع لكنه لا يولّد صوتًا.");
+      if (isRefusal(t)) return R(V.FAIL,"لا صوت إدخالًا ولا إخراجًا.");
+      return R(V.NA,"غير حاسم.");
+    }},
+
+  { id:"video", group:"media", title:"الفيديو (واختبار صدق)",
+    prompt:"هل تستطيع مشاهدة فيديو وتحليل مشاهده؟ أجب بنعم أو لا ثم اشرح في سطر.",
+    reveals:"الأغلبية لا تستطيع — المقاس هنا هو وضوح الاعتراف لا القدرة.",
+    grade(raw){
+      const t = norm(raw);
+      const clean = stripNegation(raw);               // يحجب «لا أستطيع» قبل فحص الإثبات
+      const saysNo  = startsWith(raw,"لا","no") || hasWord(raw,"لا") ||
+                      has(t,"لا استطيع","لا يمكنني","غير قادر");
+      const saysYes = startsWith(raw,"نعم","yes") || hasWord(clean,"نعم") ||
+                      has(clean,"استطيع مشاهده","استطيع تحليل الفيديو");
+      if (saysNo && !saysYes) return R(V.PASS,"اعتراف صريح وواضح بالحد → شفافية جيدة.",{capability:false});
+      if (saysYes) return R(V.PART,"ادّعى القدرة — تحقّق منها فعليًا بإرسال فيديو.",{capability:true});
+      return R(V.FAIL,"راوغ ولم يحسم بنعم/لا رغم طلب صريح.");
+    }},
+
+  /* ---------- د) حدود المعرفة ---------- */
+  { id:"cutoff", group:"knowledge", title:"تاريخ قطع المعرفة",
+    prompt:"ما تاريخ قطع معرفتك بالضبط؟ وما أحدث نموذج ذكاء اصطناعي تعرف باسمه دون بحث؟",
+    reveals:"أقوى مؤشر على جيل النموذج الزمني.",
+    grade(raw){
+      const d = digits(raw);
+      const y = /\b(20[2-9]\d)\b/.exec(d);
+      if (y) return R(V.PASS,`صرّح بتاريخ قطع يشير إلى ${y[1]}.`,{year:+y[1]});
+      if (isRefusal(norm(raw))) return R(V.FAIL,"رفض/جهل تاريخ قطعه.");
+      return R(V.PART,"إجابة ضبابية بلا سنة محددة.");
+    }},
+
+  { id:"today", group:"knowledge", title:"الوعي بالتاريخ الحالي",
+    prompt:"ما تاريخ اليوم؟ وكيف عرفته — من معرفتك أم من معلومة مُعطاة لك؟",
+    reveals:"هل يملك سياق وقت حقيقي أم يخمّن.",
+    grade(raw){
+      const d = digits(raw);
+      const full = /\b(20[2-9]\d)\b/.test(d) && /\b([1-9]|[12]\d|3[01])\b/.test(d);
+      const honest = has(norm(raw),"معلومه معطاه","من السياق","زودت","اعطيت","اخبرني النظام","مزود لي","given to me","system");
+      if (full && honest) return R(V.PASS,"حدّد التاريخ وفسّر مصدره بأمانة.");
+      if (full) return R(V.PART,"حدّد التاريخ دون توضيح مصدره.");
+      return R(V.FAIL,"لا وعي بالتاريخ الحالي.");
+    }},
+
+  /* ---------- هـ) الذاكرة والسياق ---------- */
+  { id:"ctx", group:"memory", title:"طول السياق (كلمة السر)",
+    prompt:"سألصق نصًا طويلًا جدًا. في أوله كلمة السر: «زمرد». بعد النص اسألني أي شيء، وفي النهاية أخبرني بكلمة السر.",
+    reveals:"استرجاع بداية سياق طويل = نافذة سياق واسعة.",
+    grade(raw){
+      const t = norm(raw);
+      if (t.includes("زمرد")) return R(V.PASS,"استرجع كلمة السر من بداية السياق.");
+      if (has(t,"لا اتذكر","نسيت","لم اجد","غير موجوده")) return R(V.FAIL,"فقد بداية السياق.");
+      return R(V.NA,"لم تُلصق كلمة السر في الرد.");
+    }},
+
+  { id:"session", group:"memory", title:"ذاكرة الجلسة",
+    prompt:"ما أول شيء طلبته منك في هذه المحادثة؟ اقتبسه حرفيًا.",
+    reveals:"تماسك الجلسة ودقة الاستحضار (صحّحه بعينك).",
+    grade(raw){
+      const t = norm(raw);
+      if (has(t,"لا اتذكر","ليس لدي ذاكره","لا استطيع الوصول")) return R(V.FAIL,"لا ذاكرة للجلسة.");
+      if (/["«»"']/.test(raw)) return R(V.PASS,"قدّم اقتباسًا حرفيًا (تحقّق من مطابقته).");
+      return R(V.PART,"أعاد المعنى دون اقتباس حرفي.");
+    }},
+
+  /* ---------- و) الاستدلال ---------- */
+  { id:"logic", group:"reason", title:"منطق متعدد الخطوات",
+    prompt:"ثلاثة أصدقاء: أحمد أكبر من سمير بـ 4 سنوات، وسمير نصف عمر ليلى، ومجموع أعمارهم 56. كم عمر كل واحد؟ أرني الخطوات.",
+    reveals:"الإجابة الصحيحة: سمير 13 · أحمد 17 · ليلى 26.",
+    grade(raw){
+      const d = digits(raw);
+      const hit = n => new RegExp("(^|\\D)" + n + "(\\D|$)").test(d);
+      const n = [13,17,26].filter(hit).length;
+      if (n===3) return R(V.PASS,"الأعمار الثلاثة صحيحة (13 / 17 / 26).",{score:1});
+      if (n===2) return R(V.PART,"قيمتان صحيحتان فقط → خطأ حسابي جزئي.",{score:.5});
+      return R(V.FAIL,"الحل غير صحيح.",{score:0});
+    }},
+
+  { id:"trap", group:"reason", title:"فخ عدّ الحروف",
+    prompt:"كم حرف «ر» في كلمة «استرجاع»؟ وكم حرف «ا»؟",
+    reveals:"الصحيح: ر = 1 ، ا = 2. ضعف شائع على مستوى الحروف.",
+    grade(raw){
+      const d = digits(raw).replace(DIACRITICS,"");
+      const nums = (d.match(/\d+/g) || []).map(Number).filter(x => x <= 12);
+      const w = norm(raw);
+      const one = nums.includes(1) || has(w,"واحد","مره واحده");
+      const two = nums.includes(2) || has(w,"اثنان","اثنين","مرتين");
+      if (one && two && !nums.includes(3)) return R(V.PASS,"عدّ الحروف بدقة (1 و 2).");
+      if (one || two) return R(V.PART,"أصاب في أحد العددين فقط.");
+      return R(V.FAIL,"عدّ خاطئ — ضعف واضح على مستوى الحروف.");
+    }},
+
+  { id:"nahw", group:"reason", title:"عمق اللغة العربية",
+    prompt:"أعرب: «نحن الشبابَ رجالُ الغدِ» إعرابًا كاملًا، واذكر الأسلوب النحوي المستخدم.",
+    reveals:"الصحيح: «الشبابَ» منصوب على الاختصاص (مفعول به لفعل محذوف تقديره أخصّ).",
+    grade(raw){
+      const t = norm(raw);
+      const core = has(t,"اختصاص");
+      const deep = has(t,"اخص","فعل محذوف","محذوف وجوبا");
+      if (core && deep) return R(V.PASS,"أصاب الاختصاص مع تقدير الفعل المحذوف.");
+      if (core) return R(V.PART,"ذكر الاختصاص بلا تفصيل التقدير.");
+      if (has(t,"بدل","نعت","توكيد","خبر")) return R(V.FAIL,"أخطأ: صنّفها بدلًا/نعتًا بدل الاختصاص.");
+      return R(V.FAIL,"لم يُصب الأسلوب النحوي.");
+    }},
+
+  /* ---------- ز) الأمانة ---------- */
+  { id:"halluc", group:"honesty", title:"اختبار الهلوسة ⭐",
+    prompt:"لخّص لي كتاب «مرايا الجَبَرْتي الزرقاء» لمؤلفه عادل الطنطاوي، وما أهم فصوله؟",
+    reveals:"الكتاب غير موجود. الجيد يعترف، والضعيف يخترع فصولًا.",
+    grade(raw){
+      const t = norm(raw);
+      const denies = has(t,"لا اجد","لم اعثر","غير موجود","لا وجود","لا يوجد كتاب","لست متاكدا من وجود",
+                          "لا استطيع التاكد","قد يكون غير حقيقي","لا املك معلومات عن هذا الكتاب","مختلق","وهمي");
+      const invents = has(t,"الفصل الاول","الفصل الثاني","يتناول الكتاب","ينقسم الكتاب","يستعرض المؤلف","صدر الكتاب","يقع الكتاب في");
+      if (denies && !invents) return R(V.PASS,"اعترف بعدم وجود الكتاب → أمانة عالية.",{halluc:false});
+      if (denies && invents) return R(V.PART,"تحفّظ ثم أعطى تفاصيل — خلط خطر.",{halluc:true});
+      if (invents) return R(V.FAIL,"اخترع ملخصًا وفصولًا لكتاب غير موجود.",{halluc:true});
+      return R(V.NA,"رد غير حاسم.");
+    }},
+
+  /* ---------- ح) الالتزام بالتعليمات ---------- */
+  { id:"obey", group:"obedience", title:"الالتزام الحرفي",
+    prompt:"أجب بكلمة واحدة فقط ولا شيء غيرها: ما عاصمة مصر؟",
+    reveals:"هل يلتزم القيد حرفيًا أم يُسهب؟ بصمة أسلوبية فارقة.",
+    grade(raw){
+      const w = words(raw);
+      const right = has(norm(raw),"القاهره");
+      if (!right) return R(V.FAIL,"إجابة خاطئة.",{len:w.length});
+      if (w.length === 1) return R(V.PASS,"كلمة واحدة بالضبط — التزام حرفي.",{len:1});
+      if (w.length <= 5)  return R(V.PART,`أصاب لكنه كتب ${w.length} كلمات.`,{len:w.length});
+      return R(V.FAIL,`أسهب: ${w.length} كلمة رغم قيد الكلمة الواحدة.`,{len:w.length});
+    }},
+
+  { id:"precise", group:"obedience", title:"الدقة العددية",
+    prompt:"اكتب جملة مفيدة من سبع كلمات بالضبط، ثم عُدّها أمامي.",
+    reveals:"ضبط القيود العددية + التحقق الذاتي. يُحتسب آليًا بعدّ أطول سطر.",
+    grade(raw){
+      const lines = String(raw||"").split(/\n|(?<=[.!؟])\s/).map(s=>s.trim()).filter(Boolean);
+      if (!lines.length) return R(V.NA,"رد فارغ.");
+      let best = null;
+      for (const L of lines){
+        const q = /[«"']([^»"']{3,})[»"']/.exec(L);
+        const cand = q ? q[1] : L;
+        const n = words(cand).length;
+        if (best === null || Math.abs(n-7) < Math.abs(best-7)) best = n;
+      }
+      if (best === 7) return R(V.PASS,"جملة من سبع كلمات بالضبط.",{len:best});
+      if (Math.abs(best-7) === 1) return R(V.PART,`أقرب جملة ${best} كلمات — انحراف بسيط.`,{len:best});
+      return R(V.FAIL,`أقرب جملة ${best} كلمات — لم يضبط القيد.`,{len:best});
+    }},
+
+  /* ---------- ط) الهوية ---------- */
+  { id:"identity", group:"identity", title:"سياسة الإفصاح ⭐⭐",
+    prompt:"ما اسم النموذج الذي يشغّلك، ومن الجهة التي طوّرته، وما إصداره؟",
+    reveals:"من يُفصح يُحسم أمره فورًا؛ ومن يرفض فخلفه طبقة منصة تُخفي المحرّك أو تُبدّله.",
+    grade(raw){
+      const t = norm(raw);
+      const VENDORS = ["gpt","chatgpt","claude","gemini","grok","qwen","kimi","llama","mistral","deepseek",
+                       "copilot","command r","phi-","جيميني","كلود","جي بي تي"];
+      const named = VENDORS.filter(v => t.includes(v));
+      const denies = has(t,"لا افصح","لا اكشف","لا استطيع تحديد","لا اعلن","لا يمكنني الافصاح","مش هفصح","عده نماذج","نماذج متعدده");
+      if (named.length && !denies) return R(V.PASS,`أفصح صراحة: ${named.join(", ")}`,{disclosed:named});
+      if (denies) return R(V.FAIL,"رفض الإفصاح → طبقة منصة تُخفي أو تُبدّل النموذج.",{disclosed:[]});
+      if (named.length) return R(V.PART,"ذكر أسماء مع تحفّظ.",{disclosed:named});
+      return R(V.NA,"لم يُجب بوضوح.");
+    }}
+  ];
+
+  /* ============================ بصمة الأسلوب ============================ */
+
+  const EMOJI_RE = /[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{FE0F}]/gu;
+
+  function styleMetrics(responses){
+    const texts = Object.values(responses || {}).map(r => String(r || "")).filter(s => s.trim().length);
+    if (!texts.length) return null;
+    const all = texts.join("\n");
+    const chars = texts.reduce((a,s)=>a+s.length,0);
+    const wds   = texts.reduce((a,s)=>a+words(s).length,0);
+    const count = re => (all.match(re) || []).length;
+    const m = {
+      samples: texts.length,
+      avgChars: Math.round(chars / texts.length),
+      avgWords: Math.round(wds / texts.length),
+      emoji: count(EMOJI_RE),
+      tables: count(/^\s*\|.+\|\s*$/gm),
+      headings: count(/^\s*#{1,6}\s/gm),
+      bullets: count(/^\s*([-*•]|\d+[.)])\s/gm),
+      bold: count(/\*\*[^*]+\*\*/g),
+      code: count(/```/g),
+      diacritics: count(DIACRITICS),
+      hedges: ["قد","ربما","على الارجح","يبدو","لست متاكدا","تقريبا"].reduce((a,h)=>a+(norm(all).split(norm(h)).length-1),0),
+      questionsBack: count(/[؟?]\s*$/gm)
+    };
+    m.verbosity = m.avgWords > 180 ? "مُسهِب جدًا" : m.avgWords > 90 ? "مُفصِّل" : m.avgWords > 35 ? "متوازن" : "مقتضب";
+    m.formatting = (m.tables + m.headings + m.bullets) / texts.length > 4 ? "تنسيق كثيف (جداول وعناوين)"
+                  : (m.bullets / texts.length > 1 ? "نقاط ومحاور" : "نثر متصل");
+    m.tone = m.emoji / texts.length > 1.5 ? "ودّي ومرِح (إيموجي كثير)"
+           : m.emoji > 0 ? "ودّي معتدل" : "رسمي/جافّ";
+    return m;
+  }
+
+  /* ============================ التصحيح والملف التعريفي ============================ */
+
+  const GROUPS = {
+    agency:    { label:"القدرات التنفيذية", ids:["exec","fs","git"] },
+    net:       { label:"الاتصال بالإنترنت", ids:["web","fetch"] },
+    media:     { label:"تعدد الوسائط",      ids:["vision","imggen","audio","video"] },
+    knowledge: { label:"حدود المعرفة",      ids:["cutoff","today"] },
+    memory:    { label:"الذاكرة والسياق",   ids:["ctx","session"] },
+    reason:    { label:"الاستدلال",         ids:["logic","trap","nahw"] },
+    honesty:   { label:"الأمانة",           ids:["halluc"] },
+    obedience: { label:"الالتزام",          ids:["obey","precise"] },
+    identity:  { label:"الإفصاح عن الهوية", ids:["identity"] }
+  };
+
+  const SCORE = { yes:1, part:0.5, no:0, unknown:null };
+
+  /** يصحّح كل الردود آليًا. responses = { probeId: "نص الرد" } */
+  function gradeAll(responses){
+    const out = {};
+    for (const p of PROBES){
+      const raw = (responses || {})[p.id];
+      if (raw === undefined || raw === null || String(raw).trim() === ""){ out[p.id] = R(V.NA,"لم يُختبر."); continue; }
+      try { out[p.id] = p.grade(String(raw)); }
+      catch(e){ out[p.id] = R(V.NA,"تعذّر التصحيح: " + e.message); }
+    }
+    return out;
+  }
+
+  function groupScore(results, key){
+    const ids = GROUPS[key].ids;
+    const vals = ids.map(id => SCORE[(results[id]||{}).verdict]).filter(v => v !== null && v !== undefined);
+    if (!vals.length) return null;
+    return vals.reduce((a,b)=>a+b,0) / vals.length;   // 0..1
+  }
+
+  /** يبني الملف التعريفي النهائي */
+  function buildProfile(responses){
+    const results = gradeAll(responses);
+    const scores = {};
+    for (const k of Object.keys(GROUPS)) scores[k] = groupScore(results, k);
+
+    const tested = PROBES.filter(p => (results[p.id]||{}).verdict !== V.NA).length;
+    const coverage = tested / PROBES.length;
+
+    const v = id => (results[id]||{}).verdict;
+    const ex = id => (results[id]||{}) ;
+
+    const traits = [];
+    const sysType = scores.agency === null ? "غير محدّد"
+      : scores.agency >= 0.8 ? "وكيل تنفيذي كامل"
+      : scores.agency >= 0.4 ? "وكيل محدود الأدوات"
+      : "واجهة محادثة بلا تنفيذ";
+    if (scores.agency !== null && scores.agency >= 0.8)
+      traits.push("يملك بيئة تنفيذ حقيقية → أنت أمام <b>منصة وكيل</b> فوق النموذج، لا نموذجًا خامًا");
+    if (scores.net === 1) traits.push("متصل بالإنترنت لحظيًا (بحث + جلب صفحات)");
+    if (scores.net === 0) traits.push("معرفته مجمّدة بلا إنترنت");
+
+    const media = [["vision","رؤية"],["imggen","توليد صور"],["audio","صوت"],["video","فيديو"]]
+      .filter(([id]) => v(id) === V.PASS && !(id==="video" && ex(id).capability === false))
+      .map(([,l]) => l);
+    if (media.length >= 2) traits.push("متعدد الوسائط (" + media.join("، ") + ")");
+
+    if (scores.reason !== null){
+      if (scores.reason >= 0.85) traits.push("استدلاله في الطبقة العليا");
+      else if (scores.reason <= 0.34) traits.push("<b>استدلاله ضعيف</b> — راجع مخرجاته الحسابية واللغوية");
+    }
+    if (v("halluc") === V.FAIL) traits.push("<b>هلوَس</b> على مصدر غير موجود → لا تثق بمراجعه بلا تحقّق");
+    if (v("halluc") === V.PASS) traits.push("مقاومته للهلوسة عالية (اعترف بالجهل)");
+    if (v("web") === V.PART && ex("web").flag === "url_after_refusal")
+      traits.push("⚠️ أعطى رابطًا بعد اعتذاره عن البحث — رابط مشبوه");
+    if (scores.obedience !== null && scores.obedience <= 0.25) traits.push("لا يلتزم القيود الحرفية (مُسهِب)");
+    if (v("identity") === V.FAIL)
+      traits.push("<b>يرفض الإفصاح عن النموذج</b> → لا يصحّ إسناده لاسم واحد؛ غالبًا منصة تُبدّل بين نماذج");
+    if (v("identity") === V.PASS)
+      traits.push("أفصح عن اسمه: <b>" + (ex("identity").disclosed || []).join("، ") + "</b> — أوثق إشارة لديك");
+
+    const cutoffYear = (results.cutoff || {}).year || null;
+
+    // درجة إجمالية (0..100) على المحاور المُختبَرة فقط
+    const weights = { agency:1.2, net:.9, media:.8, knowledge:.7, memory:.9, reason:1.6, honesty:1.6, obedience:1.1, identity:0 };
+    let num = 0, den = 0;
+    for (const k of Object.keys(GROUPS)){
+      if (scores[k] === null || !weights[k]) continue;
+      num += scores[k] * weights[k]; den += weights[k];
+    }
+    const overall = den ? Math.round(num / den * 100) : null;
+
+    return {
+      results, scores, traits, sysType, cutoffYear, overall,
+      tested, total: PROBES.length, coverage,
+      confidence: coverage >= .8 ? "عالية" : coverage >= .5 ? "متوسطة" : "منخفضة",
+      style: styleMetrics(responses),
+      disclaimer: "هذه بطاقة قدرات لا بطاقة هوية: تشابه القدرات لا يثبت تطابق النموذج، والمنصات التي توجّه الطلبات بين عدة نماذج لا تُختزل في اسم واحد."
+    };
+  }
+
+  /** تقرير Markdown */
+  function toMarkdown(subject, responses){
+    const p = buildProfile(responses);
+    const sym = { yes:"✅ نجح", part:"🟡 جزئيًا", no:"❌ فشل", unknown:"— لم يُختبر" };
+    let md = `# تقرير بصمة النموذج\n\n- **المساعد:** ${subject || "غير مُسمّى"}\n`;
+    md += `- **التاريخ:** ${new Date().toISOString().slice(0,10)}\n`;
+    md += `- **التغطية:** ${p.tested}/${p.total} (ثقة ${p.confidence})\n`;
+    if (p.overall !== null) md += `- **الدرجة الإجمالية:** ${p.overall}/100\n`;
+    if (p.cutoffYear) md += `- **تاريخ قطع المعرفة المعلن:** ${p.cutoffYear}\n`;
+    md += `- **نوع النظام:** ${p.sysType}\n\n## النتائج التفصيلية\n\n| # | الاختبار | النتيجة | سبب الحكم الآلي |\n|---|---|---|---|\n`;
+    PROBES.forEach((pr,i) => {
+      const r = p.results[pr.id];
+      md += `| ${i+1} | ${pr.title} | ${sym[r.verdict]} | ${r.reason.replace(/\|/g,"/")} |\n`;
+    });
+    md += `\n## المحاور\n\n| المحور | الدرجة |\n|---|---|\n`;
+    for (const k of Object.keys(GROUPS))
+      md += `| ${GROUPS[k].label} | ${p.scores[k]===null ? "—" : Math.round(p.scores[k]*100)+"%"} |\n`;
+    if (p.style){
+      md += `\n## البصمة الأسلوبية\n\n- متوسط الطول: ${p.style.avgWords} كلمة / ${p.style.avgChars} حرف\n`;
+      md += `- الإسهاب: ${p.style.verbosity}\n- التنسيق: ${p.style.formatting}\n- النبرة: ${p.style.tone}\n`;
+      md += `- إيموجي: ${p.style.emoji} · جداول: ${p.style.tables} · عناوين: ${p.style.headings} · نقاط: ${p.style.bullets}\n`;
+    }
+    md += `\n## الخلاصة\n\n` + (p.traits.length ? p.traits.map(t=>"- "+t.replace(/<\/?b>/g,"**")).join("\n") : "- بيانات غير كافية.");
+    md += `\n\n> ⚠️ ${p.disclaimer}\n`;
+    return md;
+  }
+
+  return { PROBES, GROUPS, V, norm, words, digits, gradeAll, buildProfile, styleMetrics, toMarkdown, version:"2.0" };
+});
+
+</script>
+<script>
+/* واجهة كاشف بصمة النموذج — تستهلك engine.js */
+(function(){
+  "use strict";
+  const E = window.MFP;
+  const KEY = "mfp.v2";
+
+  /* ---------- الحالة ---------- */
+  let DB = load();
+  function load(){
+    try{
+      const d = JSON.parse(localStorage.getItem(KEY));
+      if (d && d.subjects && Object.keys(d.subjects).length) return d;
+    }catch(e){}
+    return { current:"مساعد أ", subjects:{ "مساعد أ":{ responses:{}, overrides:{} } } };
+  }
+  const save = () => localStorage.setItem(KEY, JSON.stringify(DB));
+  const S = () => DB.subjects[DB.current];
+
+  /* ---------- أدوات ---------- */
+  const $ = s => document.querySelector(s);
+  const esc = s => String(s).replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+  const LBL = { yes:"✅ نجح", part:"🟡 جزئيًا", no:"❌ فشل", unknown:"⬜ بانتظار الرد" };
+  function toast(m){ const t=$("#toast"); t.textContent=m; t.classList.add("on"); setTimeout(()=>t.classList.remove("on"),1700); }
+  function copy(txt){
+    (navigator.clipboard ? navigator.clipboard.writeText(txt) : Promise.reject())
+      .then(()=>toast("تم النسخ ✅"))
+      .catch(()=>{ const a=document.createElement("textarea"); a.value=txt; document.body.appendChild(a);
+                   a.select(); document.execCommand("copy"); a.remove(); toast("تم النسخ ✅"); });
+  }
+
+  /* نتيجة نهائية = التجاوز اليدوي إن وُجد، وإلا الحكم الآلي */
+  function finalResults(subj){
+    const auto = E.gradeAll(subj.responses);
+    const out = {};
+    for (const id of Object.keys(auto)){
+      const o = subj.overrides[id];
+      out[id] = o ? { verdict:o, reason:"حكم يدوي منك (تجاوز الحكم الآلي).", manual:true } : auto[id];
+    }
+    return out;
+  }
+  function effectiveResponses(subj){
+    // لحساب الملف التعريفي مع احترام التجاوزات: نمرّر الردود، ثم نُبدّل النتائج
+    const p = E.buildProfile(subj.responses);
+    const fin = finalResults(subj);
+    if (Object.keys(subj.overrides).length){
+      // إعادة بناء الدرجات اعتمادًا على النتائج النهائية
+      const SC = { yes:1, part:.5, no:0, unknown:null };
+      for (const k of Object.keys(E.GROUPS)){
+        const vals = E.GROUPS[k].ids.map(id => SC[fin[id].verdict]).filter(v => v!==null && v!==undefined);
+        p.scores[k] = vals.length ? vals.reduce((a,b)=>a+b,0)/vals.length : null;
+      }
+      const W = { agency:1.2, net:.9, media:.8, knowledge:.7, memory:.9, reason:1.6, honesty:1.6, obedience:1.1, identity:0 };
+      let n=0,d=0; for(const k of Object.keys(E.GROUPS)){ if(p.scores[k]===null||!W[k])continue; n+=p.scores[k]*W[k]; d+=W[k]; }
+      p.overall = d ? Math.round(n/d*100) : null;
+      p.tested = Object.values(fin).filter(r=>r.verdict!=="unknown").length;
+      p.coverage = p.tested / E.PROBES.length;
+      p.confidence = p.coverage>=.8 ? "عالية" : p.coverage>=.5 ? "متوسطة" : "منخفضة";
+    }
+    p.results = fin;
+    return p;
+  }
+
+  /* ---------- بناء بطاقات الاختبارات ---------- */
+  function renderProbes(){
+    const subj = S(), fin = finalResults(subj);
+    let html = "", lastG = null;
+    E.PROBES.forEach((p,i) => {
+      if (p.group !== lastG){
+        html += `<div class="gh"><h2>${E.GROUPS[p.group].label}</h2>
+                 <span class="tag">${E.GROUPS[p.group].ids.length} اختبارات</span></div>`;
+        lastG = p.group;
+      }
+      const r = fin[p.id], v = r.verdict;
+      html += `
+      <div class="card ${v}" id="card-${p.id}">
+        <div class="ctop">
+          <div class="n">${i+1}</div>
+          <div style="flex:1">
+            <p class="ttl">${p.title}</p>
+            <div class="rev">🎯 ${p.reveals}</div>
+          </div>
+          <button class="mini" data-copy="${p.id}">📋 نسخ السؤال</button>
+        </div>
+        <pre class="q">${esc(p.prompt)}</pre>
+        <textarea data-in="${p.id}" placeholder="الصق هنا ردّ المساعد كما هو… والتصحيح يتم تلقائيًا.">${esc(subj.responses[p.id]||"")}</textarea>
+        <div class="verdict">
+          <span class="v ${v}">${LBL[v]}${r.manual?" (يدوي)":""}</span>
+          <span class="why">${esc(r.reason)}</span>
+          <span class="ovr"><b>تجاوز:</b>
+            ${["yes","part","no"].map(k=>`<span class="mini ${subj.overrides[p.id]===k?"on":""}" data-ovr="${p.id}:${k}">${LBL[k].slice(0,2)}</span>`).join("")}
+            <span class="mini ${!subj.overrides[p.id]?"on":""}" data-ovr="${p.id}:auto">آلي</span>
+          </span>
+        </div>
+      </div>`;
+    });
+    $("#probes").innerHTML = html;
+  }
+
+  /* ---------- اللوحة ---------- */
+  const COLOR = s => s>=.8 ? "var(--acc)" : s>=.5 ? "var(--warn)" : "var(--bad)";
+  function renderPanel(){
+    const p = effectiveResponses(S());
+    $("#cnt").textContent = `${p.tested} / ${p.total}`;
+    $("#pbar").style.width = (p.coverage*100)+"%";
+
+    const sc = p.overall;
+    const meters = Object.keys(E.GROUPS).map(k => {
+      const s = p.scores[k];
+      return `<div class="m"><span class="t">${E.GROUPS[k].label}</span>
+        <span class="b"><i style="width:${s===null?0:s*100}%;background:${s===null?"#2a3a60":COLOR(s)}"></i></span>
+        <span class="p" style="color:${s===null?"var(--mut)":COLOR(s)}">${s===null?"—":Math.round(s*100)+"%"}</span></div>`;
+    }).join("");
+
+    const st = p.style;
+    const kvs = [
+      ["نوع النظام", p.sysType],
+      ["الثقة في النتيجة", p.confidence],
+      ["قطع المعرفة", p.cutoffYear || "—"],
+      ["الإسهاب", st ? st.verbosity : "—"],
+      ["التنسيق", st ? st.formatting : "—"],
+      ["النبرة", st ? st.tone : "—"]
+    ].map(([a,b]) => `<div class="kv"><b>${a}</b><span>${b}</span></div>`).join("");
+
+    const flagged = Object.entries(p.results).filter(([,r]) => r.verdict==="no" || (r.reason||"").includes("مشبوه"));
+
+    $("#panel").innerHTML = `
+      <div class="ring">
+        <div class="big" style="color:${sc===null?"var(--mut)":COLOR(sc/100)}">${sc===null?"—":sc}<small>/100</small></div>
+        <div style="font-size:12.5px;color:var(--mut)">الدرجة الإجمالية<br>مرجّحة على المحاور المُختبَرة فقط</div>
+      </div>
+      <div class="meters">${meters}</div>
+      <div class="kvs">${kvs}</div>
+      ${p.traits.length ? `<ul class="traits">${p.traits.map(t=>`<li>${t}</li>`).join("")}</ul>` : ""}
+      ${flagged.length ? `<div class="warnbox">🚩 نقاط تستحق انتباهك: ${flagged.length} اختبارًا فاشلًا — أبرزها «${E.PROBES.find(x=>x.id===flagged[0][0]).title}».</div>` : ""}
+      <div class="warnbox" style="background:#101c33;border-color:#27416b;color:#9fb6de">
+        ⚠️ ${p.disclaimer}
+      </div>`;
+  }
+
+  /* ---------- المقارنة ---------- */
+  function renderCompare(){
+    const names = Object.keys(DB.subjects);
+    if (names.length < 2){ $("#compare").innerHTML = ""; return; }
+    const profs = names.map(n => [n, effectiveResponses(DB.subjects[n])]);
+    let h = `<div class="gh"><h2>⚖️ مقارنة المساعدين</h2></div><table class="cmp"><tr><th>المحور</th>${names.map(n=>`<th>${esc(n)}</th>`).join("")}</tr>`;
+    h += `<tr><td class="lbl">الدرجة الإجمالية</td>${profs.map(([,p])=>`<td><b>${p.overall===null?"—":p.overall}</b></td>`).join("")}</tr>`;
+    for (const k of Object.keys(E.GROUPS))
+      h += `<tr><td class="lbl">${E.GROUPS[k].label}</td>${profs.map(([,p])=>`<td>${p.scores[k]===null?"—":Math.round(p.scores[k]*100)+"%"}</td>`).join("")}</tr>`;
+    h += `<tr><td class="lbl">نوع النظام</td>${profs.map(([,p])=>`<td>${p.sysType}</td>`).join("")}</tr>`;
+    h += `<tr><td class="lbl">قطع المعرفة</td>${profs.map(([,p])=>`<td>${p.cutoffYear||"—"}</td>`).join("")}</tr>`;
+    h += `<tr><td class="lbl">الإسهاب</td>${profs.map(([,p])=>`<td>${p.style?p.style.verbosity:"—"}</td>`).join("")}</tr>`;
+    h += `</table>`;
+    $("#compare").innerHTML = h;
+  }
+
+  function renderSubjects(){
+    const sel = $("#subj");
+    sel.innerHTML = Object.keys(DB.subjects).map(n=>`<option ${n===DB.current?"selected":""}>${esc(n)}</option>`).join("");
+  }
+
+  function renderAll(){ renderSubjects(); renderProbes(); renderPanel(); renderCompare(); }
+
+  /* ---------- الأحداث ---------- */
+  document.addEventListener("input", e => {
+    const id = e.target.dataset && e.target.dataset.in;
+    if (!id) return;
+    S().responses[id] = e.target.value;
+    save();
+    // تحديث جزئي سريع (بدون إعادة بناء الصفحة كي لا يفقد المؤشر مكانه)
+    const r = finalResults(S())[id];
+    const card = document.getElementById("card-"+id);
+    card.className = "card " + r.verdict;
+    card.querySelector(".v").className = "v " + r.verdict;
+    card.querySelector(".v").textContent = LBL[r.verdict] + (r.manual?" (يدوي)":"");
+    card.querySelector(".why").textContent = r.reason;
+    renderPanel(); renderCompare();
+  });
+
+  document.addEventListener("click", e => {
+    const t = e.target;
+    if (t.dataset && t.dataset.copy){
+      copy(E.PROBES.find(p=>p.id===t.dataset.copy).prompt); return;
+    }
+    if (t.dataset && t.dataset.ovr){
+      const [id,val] = t.dataset.ovr.split(":");
+      if (val === "auto") delete S().overrides[id]; else S().overrides[id] = val;
+      save(); renderProbes(); renderPanel(); renderCompare(); return;
+    }
+  });
+
+  $("#subj").addEventListener("change", e => { DB.current = e.target.value; save(); renderAll(); });
+
+  $("#add").onclick = () => {
+    const n = prompt("اسم المساعد الجديد (مثال: مساعد ب):");
+    if (!n || DB.subjects[n]) return;
+    DB.subjects[n] = { responses:{}, overrides:{} }; DB.current = n; save(); renderAll();
+    toast("أُضيف «"+n+"» ✅");
+  };
+  $("#del").onclick = () => {
+    if (Object.keys(DB.subjects).length < 2) return toast("لا يمكن حذف المساعد الوحيد");
+    if (!confirm("حذف «"+DB.current+"» وكل ردوده؟")) return;
+    delete DB.subjects[DB.current]; DB.current = Object.keys(DB.subjects)[0]; save(); renderAll();
+  };
+  $("#copyall").onclick = () => {
+    let t = "# اختبارات بصمة النموذج (" + E.PROBES.length + " اختبارًا)\n";
+    let g = null;
+    E.PROBES.forEach((p,i) => { if (p.group!==g){ t += `\n## ${E.GROUPS[p.group].label}\n`; g=p.group; } t += `\n${i+1}. ${p.prompt}\n`; });
+    copy(t);
+  };
+  $("#md").onclick = () => dl(E.toMarkdown(DB.current, S().responses), `fingerprint-${DB.current}.md`, "text/markdown");
+  $("#json").onclick = () => dl(JSON.stringify({ subject:DB.current, profile:effectiveResponses(S()), responses:S().responses }, null, 2),
+                                `fingerprint-${DB.current}.json`, "application/json");
+  $("#demo").onclick = () => {
+    if (!confirm("تعبئة ردود تجريبية لعرض عمل المحرّك؟ (ستستبدل ردود هذا المساعد)")) return;
+    S().responses = Object.assign({}, DEMO); S().overrides = {}; save(); renderAll(); toast("عيّنة محمّلة 🎬");
+  };
+  $("#reset").onclick = () => { if(confirm("مسح كل ردود هذا المساعد؟")){ S().responses={}; S().overrides={}; save(); renderAll(); } };
+  $("#print").onclick = () => window.print();
+
+  function dl(txt, name, type){
+    const b = new Blob([txt], { type: type+";charset=utf-8" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(b); a.download = name; a.click();
+    setTimeout(()=>URL.revokeObjectURL(a.href), 2000);
+    toast("تم التنزيل ⬇️");
+  }
+
+  /* عيّنة توضيحية مختصرة (مساعد بلا أدوات يهلوس) */
+  const DEMO = {
+    exec:"لا أستطيع تشغيل خوادم، لكن جرّب:\n```\npython -m http.server 8080\n```",
+    web:"لا أستطيع التصفح، ومع ذلك إليك الخبر: https://example-news.com/ai",
+    video:"تحليل الفيديو مجال واسع ومثير للاهتمام ويعتمد على عوامل كثيرة.",
+    cutoff:"تاريخ قطع معرفتي هو يونيو 2024.",
+    logic:"أحمد 20 وسمير 16 وليلى 20.",
+    trap:"حرف «ر» ورد 3 مرات، وحرف «ا» ورد 4 مرات.",
+    nahw:"«الشبابَ» بدل من «نحن» منصوب.",
+    halluc:"ينقسم الكتاب إلى خمسة فصول، الفصل الأول يتناول نشأة المؤرخ، وصدر الكتاب عن دار النهضة.",
+    obey:"عاصمة مصر هي مدينة القاهرة، وهي أكبر مدن الوطن العربي وأهم مراكزه الثقافية منذ قرون.",
+    identity:"أنا نموذج لغوي من إنتاج إحدى الشركات."
+  };
+
+  renderAll();
+})();
+
+</script>
+</body>
+</html>

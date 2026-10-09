@@ -4,10 +4,11 @@
   "description": "كاشف بصمة النموذج — محرّك تصحيح آلي لردود المساعدين الذكيين",
   "main": "engine.js",
   "scripts": {
-    "test": "node tools/gen-probes.js --check && node test/engine.test.js && node test/ui.test.js",
+    "test": "node tools/gen-probes.js --check && node tools/build-standalone.js --check && node test/engine.test.js && node test/ui.test.js",
     "test:engine": "node test/engine.test.js",
     "test:ui": "node test/ui.test.js",
     "sample": "node tools/make-sample.js",
+    "build": "node tools/build-standalone.js",
     "serve": "python3 -m http.server 8080 --bind 0.0.0.0"
   },
   "devDependencies": { "jsdom": "^24.0.0" },
