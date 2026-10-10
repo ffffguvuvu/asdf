@@ -15,7 +15,7 @@ PARTS = [
     "part00_intro.md", "part01_imla.md", "part02_aswat.md",
     "part03a_nahw.md", "part03b_nahw.md", "part04_sarf.md",
     "part05_balagha.md", "part06_arud.md", "part07_adab.md",
-    "part08_moajam.md", "part09_tadrees.md", "part10_appendix.md",
+    "part08_moajam.md", "part09_tadrees.md", "part09b_shawahid.md", "part10_appendix.md",
 ]
 
 CSS = r"""
