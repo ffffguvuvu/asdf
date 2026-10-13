@@ -27,6 +27,17 @@ PARTS = [
     "part08_moajam.md", "part09_tadrees.md", "part09b_shawahid.md", "part10_appendix.md",
 ]
 
+# ---- دعم مشاريع أخرى: python3 build_x.py <مجلد_الأجزاء> <اسم_الملف_الناتج_بدون_امتداد> ----
+import sys as _sys
+import glob as _glob
+if len(_sys.argv) >= 3:
+    PROJECT_DIR = os.path.abspath(_sys.argv[1])
+    _base = _sys.argv[2]
+    BUILD_DIR = PROJECT_DIR
+    PARTS = [os.path.basename(p) for p in sorted(_glob.glob(os.path.join(PROJECT_DIR, "part*.md")))]
+    OUT_MD = os.path.join(ROOT, _base + ".md")
+    OUT_DOCX = os.path.join(ROOT, _base + ".docx")
+
 BODY_FONT = "Arial"
 HEAD_FONT = "Arial"
 BODY_SIZE = 12
