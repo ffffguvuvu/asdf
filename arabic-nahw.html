@@ -1,0 +1,1969 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الأساليب النحوية في اللغة العربية — شرح شامل بالقواعد والأمثلة والإعراب</title>
+<meta name="description" content="مرجع شامل للأساليب النحوية في اللغة العربية: الاستفهام، النداء، الأمر، النهي، التمني، الترجي، التعجب، المدح والذم، الإغراء والتحذير، الاختصاص، الشرط، الاستثناء، النفي، التوكيد — مع القواعد والأمثلة والإعراب.">
+<style>
+:root{
+  --bg:#f7f5ef; --paper:#ffffff; --ink:#1d2330; --ink-soft:#4a5365; --line:#e3ded2;
+  --navy:#12395f; --navy-2:#1b5285; --gold:#b6863b; --gold-soft:#f3e7cf;
+  --green:#1f6b4f; --green-soft:#e6f3ec; --red:#8d2b2b; --red-soft:#fbeaea;
+  --violet:#4b3b8f; --violet-soft:#eeebfa;
+  --radius:14px; --shadow:0 1px 2px rgba(18,57,95,.06),0 8px 24px rgba(18,57,95,.07);
+  --mono:"Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --bg:#0f1319; --paper:#161c25; --ink:#e8ecf3; --ink-soft:#a6b0c0; --line:#2a3341;
+  --navy:#7fb6ea; --navy-2:#a8cdf0; --gold:#e0b569; --gold-soft:#3a2f1c;
+  --green:#7fd0aa; --green-soft:#17322a; --red:#f0a3a3; --red-soft:#3a1f1f;
+  --violet:#b8a9f0; --violet-soft:#241f3d;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Segoe UI","Traditional Arabic","Amiri","Times New Roman",Tahoma,Arial,sans-serif;
+  font-size:18px;line-height:1.95;
+}
+a{color:var(--navy-2)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 18px}
+
+/* ============ الرأس ============ */
+header.hero{
+  background:
+    radial-gradient(1200px 400px at 80% -20%,rgba(182,134,59,.28),transparent 60%),
+    linear-gradient(160deg,var(--navy) 0%,#0b2540 100%);
+  color:#fff;padding:46px 0 38px;border-bottom:5px solid var(--gold);
+}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.5;letter-spacing:.2px}
+header.hero p.sub{margin:0;color:#e7d9bd;font-size:1.02rem}
+header.hero .kicker{
+  display:inline-block;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);
+  color:#fff;border-radius:999px;padding:3px 14px;font-size:.82rem;margin-bottom:14px
+}
+.hero-grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.hero-grid span{
+  background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.22);border-radius:999px;
+  padding:4px 13px;font-size:.85rem
+}
+
+/* ============ الشريط العلوي ============ */
+.toolbar{
+  position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--paper) 92%,transparent);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
+}
+.toolbar .row{display:flex;gap:10px;align-items:center;padding:9px 0;flex-wrap:wrap}
+.search{
+  flex:1 1 260px;display:flex;align-items:center;gap:8px;background:var(--bg);
+  border:1px solid var(--line);border-radius:999px;padding:5px 14px
+}
+.search input{
+  border:0;outline:0;background:transparent;color:var(--ink);font:inherit;font-size:.95rem;width:100%
+}
+.btn{
+  border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;
+  padding:6px 14px;font:inherit;font-size:.87rem;cursor:pointer;white-space:nowrap
+}
+.btn:hover{border-color:var(--navy);color:var(--navy)}
+.btn.primary{background:var(--navy);color:#fff;border-color:var(--navy)}
+html[data-theme="dark"] .btn.primary{color:#0f1319}
+
+nav.chips{border-bottom:1px solid var(--line);background:var(--paper)}
+nav.chips .row{display:flex;gap:7px;overflow-x:auto;padding:8px 0;scrollbar-width:thin}
+nav.chips a{
+  white-space:nowrap;text-decoration:none;color:var(--ink-soft);border:1px solid var(--line);
+  border-radius:999px;padding:4px 13px;font-size:.86rem
+}
+nav.chips a:hover{background:var(--gold-soft);color:var(--navy);border-color:var(--gold)}
+
+/* ============ الأقسام ============ */
+main{padding:26px 0 60px}
+section{margin-bottom:34px;scroll-margin-top:110px}
+h2{
+  font-size:1.5rem;margin:0 0 6px;color:var(--navy);display:flex;align-items:center;gap:10px;line-height:1.5
+}
+h2 .num{
+  flex:0 0 auto;background:var(--gold-soft);color:var(--gold);border:1px solid var(--gold);
+  width:38px;height:38px;border-radius:11px;display:grid;place-items:center;font-size:1rem
+}
+h3{font-size:1.2rem;margin:22px 0 8px;color:var(--navy-2);line-height:1.6}
+h4{font-size:1.04rem;margin:16px 0 6px;color:var(--ink);line-height:1.6}
+.lede{color:var(--ink-soft);margin:0 0 16px}
+.topic{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px 22px;box-shadow:var(--shadow);margin-bottom:18px
+}
+.topic > h3:first-child{margin-top:0}
+ul,ol{margin:8px 0 8px;padding-inline-start:24px}
+li{margin:5px 0}
+b,strong{color:var(--navy)}
+html[data-theme="dark"] b,html[data-theme="dark"] strong{color:var(--navy-2)}
+.hl{background:linear-gradient(transparent 62%,var(--gold-soft) 62%);padding:0 2px;font-weight:600;color:inherit}
+.ayah{
+  background:var(--green-soft);border-inline-start:4px solid var(--green);border-radius:10px;
+  padding:10px 16px;margin:10px 0;color:var(--green);font-weight:600
+}
+.poem{
+  background:var(--violet-soft);border-inline-start:4px solid var(--violet);border-radius:10px;
+  padding:10px 16px;margin:10px 0;color:var(--violet);font-weight:600;line-height:2.1
+}
+.note{
+  background:var(--gold-soft);border-inline-start:4px solid var(--gold);border-radius:10px;
+  padding:10px 16px;margin:10px 0;font-size:.95rem
+}
+.warn{
+  background:var(--red-soft);border-inline-start:4px solid var(--red);border-radius:10px;
+  padding:10px 16px;margin:10px 0;font-size:.95rem
+}
+details.irab{
+  border:1px dashed var(--line);border-radius:10px;margin:9px 0;background:var(--bg);overflow:hidden
+}
+details.irab > summary{
+  cursor:pointer;padding:8px 14px;font-size:.9rem;color:var(--green);font-weight:600;list-style:none
+}
+details.irab > summary::-webkit-details-marker{display:none}
+details.irab > summary::before{content:"◂ "}
+details.irab[open] > summary::before{content:"▾ "}
+details.irab .body{padding:4px 16px 12px;border-top:1px dashed var(--line);font-size:.95rem}
+details.irab .body p{margin:5px 0}
+details.irab .body b{color:var(--green)}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.94rem;background:var(--paper)}
+caption{caption-side:top;text-align:start;font-weight:700;color:var(--navy);padding:6px 0}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:start;vertical-align:top}
+th{background:var(--navy);color:#fff;font-weight:600}
+html[data-theme="dark"] th{background:#20304a;color:#e8ecf3}
+tbody tr:nth-child(even){background:color-mix(in srgb,var(--bg) 60%,var(--paper))}
+.tbl-scroll{overflow-x:auto}
+.badges{display:flex;flex-wrap:wrap;gap:7px;margin:6px 0 10px}
+.badge{
+  font-size:.78rem;border-radius:999px;padding:2px 11px;border:1px solid var(--line);
+  background:var(--bg);color:var(--ink-soft)
+}
+.badge.g{background:var(--green-soft);color:var(--green);border-color:currentColor}
+.badge.r{background:var(--red-soft);color:var(--red);border-color:currentColor}
+.badge.v{background:var(--violet-soft);color:var(--violet);border-color:currentColor}
+.badge.y{background:var(--gold-soft);color:var(--gold);border-color:currentColor}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.box{border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:var(--bg)}
+.box h5{margin:0 0 6px;font-size:1rem;color:var(--navy)}
+.box p, .box ul{margin:6px 0;font-size:.94rem}
+.ex{border-inline-start:4px solid var(--navy-2);background:color-mix(in srgb,var(--bg) 55%,var(--paper));
+  border-radius:10px;padding:9px 15px;margin:9px 0}
+.ex .t{font-weight:700;color:var(--navy)}
+.quiz{border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:10px 0;background:var(--paper)}
+.quiz .q{font-weight:700;color:var(--navy)}
+.quiz details.irab{margin-top:8px}
+footer{background:#0b2540;color:#cfe0f0;padding:30px 0;border-top:5px solid var(--gold)}
+footer a{color:#ffd98a}
+footer h3{color:#fff;margin-top:0}
+.srclist{list-style:none;padding:0}
+.srclist li{border-bottom:1px dashed rgba(255,255,255,.18);padding:8px 0;font-size:.92rem}
+.hidden{display:none !important}
+#noResults{display:none;text-align:center;padding:26px;color:var(--ink-soft);font-size:1rem}
+.totop{
+  position:fixed;inset-inline-start:18px;bottom:18px;z-index:60;border-radius:50%;width:46px;height:46px;
+  display:grid;place-items:center;font-size:1.1rem;box-shadow:var(--shadow)
+}
+mark{background:#ffe9a8;color:#5a4400;border-radius:4px;padding:0 2px}
+@media (max-width:640px){
+  body{font-size:17px}
+  header.hero h1{font-size:1.5rem}
+  .topic{padding:16px 14px}
+}
+@media print{
+  .toolbar,nav.chips,.totop,.btn{display:none !important}
+  body{background:#fff;font-size:12pt}
+  .topic,details.irab{break-inside:avoid;box-shadow:none}
+  details.irab > .body{display:block !important}
+  header.hero{background:#fff !important;color:#000}
+  header.hero h1,header.hero p.sub{color:#000}
+  section{break-before:auto}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="kicker">مرجع جامع — النحو العربي</span>
+    <h1>الأساليب النحوية في اللغة العربية</h1>
+    <p class="sub">شرحٌ تفصيليّ لكل أسلوب: تعريفه، وأدواته، وقواعده، وشروطه، وأحكامه الإعرابية، وأمثلته من القرآن الكريم والشعر والنثر، مع نماذج إعرابية كاملة، وملحقٍ بقواعد النحو الأساسية.</p>
+    <div class="hero-grid">
+      <span>الإنشاء الطلبي وغير الطلبي</span>
+      <span>الأساليب الخبرية</span>
+      <span>النواسخ والتوابع</span>
+      <span>المرفوعات والمنصوبات والمجرورات</span>
+      <span>أغراض الاستفهام البلاغية</span>
+      <span>تمارين محلولة</span>
+    </div>
+  </div>
+</header>
+
+<div class="toolbar">
+  <div class="wrap row">
+    <label class="search">
+      <span aria-hidden="true">🔍</span>
+      <input id="q" type="search" placeholder="ابحث في الأساليب والقواعد… (مثال: التعجب، حبذا، الممنوع من الصرف)" autocomplete="off">
+    </label>
+    <button class="btn" id="clearBtn" type="button">تفريغ البحث</button>
+    <button class="btn" id="openAll" type="button">فتح كل نماذج الإعراب</button>
+    <button class="btn" id="closeAll" type="button">إغلاقها</button>
+    <button class="btn" id="themeBtn" type="button">🌙 ليلي</button>
+    <button class="btn primary" onclick="window.print()" type="button">طباعة / PDF</button>
+  </div>
+</div>
+
+<nav class="chips">
+  <div class="wrap row">
+    <a href="#madkhal">مدخل</a>
+    <a href="#amr">الأمر</a>
+    <a href="#nahi">النهي</a>
+    <a href="#istifham">الاستفهام</a>
+    <a href="#istifham-balagha">أغراض الاستفهام</a>
+    <a href="#nida">النداء</a>
+    <a href="#tamanni">التمني</a>
+    <a href="#tarajji">الترجي</a>
+    <a href="#ard">العرض والتحضيض</a>
+    <a href="#dua">الدعاء</a>
+    <a href="#istighatha">الاستغاثة</a>
+    <a href="#nadba">الندبة</a>
+    <a href="#ighra">الإغراء والتحذير</a>
+    <a href="#ikhtisas">الاختصاص</a>
+    <a href="#qasam">القسم</a>
+    <a href="#taajjub">التعجب</a>
+    <a href="#madh">المدح والذم</a>
+    <a href="#nafy">النفي</a>
+    <a href="#tawkid">التوكيد</a>
+    <a href="#istithna">الاستثناء</a>
+    <a href="#shart">الشرط</a>
+    <a href="#nawasikh">النواسخ</a>
+    <a href="#marfuat">المرفوعات</a>
+    <a href="#mansubat">المنصوبات</a>
+    <a href="#majrurat">المجرورات والتوابع</a>
+    <a href="#sarf">قواعد متفرقة</a>
+    <a href="#jadawil">جداول ملخّصة</a>
+    <a href="#tadribat">تمارين</a>
+    <a href="#masadir">المصادر</a>
+  </div>
+</nav>
+
+<main class="wrap" id="main">
+<div id="noResults">لا توجد نتائج مطابقة لبحثك… جرّب كلمة أخرى.</div>
+
+<!-- ===================== مدخل ===================== -->
+<section id="madkhal">
+  <h2><span class="num">٠</span> مدخل: ما هو الأسلوب النحوي؟ وكيف نقسّم الكلام؟</h2>
+  <p class="lede">قبل الدخول في الأساليب واحدًا واحدًا، لا بدّ من تصوّر الخريطة الكبرى التي تُوزَّع عليها هذه الأساليب.</p>
+
+  <article class="topic">
+    <h3>١) تعريف الأسلوب</h3>
+    <p><b>الأسلوب</b> في اللغة: الطريق والفنّ والوجه. وفي الاصطلاح: <span class="hl">هو التركيب اللغوي الذي يستخدمه المتكلّم لقصدٍ معيّن من أغراض الكلام</span>، كالسؤال، والطلب، والتمنّي، والنداء، والتعجّب، والمدح، والذمّ، والقَسَم، والنفي، والتوكيد…</p>
+    <p>فالأساليب إذن <b>تراكيب لها صيغ مخصوصة وأدوات معروفة ودلالات محدَّدة</b>، وليست مجرّد كلمات مفردة؛ ولذلك يُدرَس كلّ أسلوب من خلال: <b>الأداة</b> + <b>التركيب</b> + <b>الدلالة</b> + <b>الحكم الإعرابي</b>.</p>
+
+    <h3>٢) القسمة الكبرى: خبر وإنشاء</h3>
+    <div class="grid2">
+      <div class="box">
+        <h5>الأسلوب الخبري</h5>
+        <p>هو الكلام الذي <b>يصحّ أن يُقال لصاحبه: صادقٌ أو كاذب</b>؛ لأنه يحتمل التصديق والتكذيب، مثل: «العلمُ نورٌ»، «سافر أخوك»، «ما جاء أحدٌ».</p>
+        <p>ويقع في الأساليب الخبرية: <b>النفي</b>، و<b>التوكيد</b>، و<b>الاستثناء</b>، و<b>الشرط</b>، والقصر، والوصف…</p>
+      </div>
+      <div class="box">
+        <h5>الأسلوب الإنشائي</h5>
+        <p>هو الكلام الذي <b>لا يحتمل الصدق ولا الكذب</b>؛ لأنه لا يخبر عن شيء واقع حتى يُصدَّق أو يُكذَّب، مثل: «اضربْ»، «لا تكذبْ»، «هل تفهمُ؟»، «يا خالدُ»، «ليت الشبابَ يعودُ».</p>
+        <p>وينقسم قسمين: <b>إنشاء طلبيّ</b> (يستدعي مطلوبًا) و<b>إنشاء غير طلبيّ</b> (لا يستدعي مطلوبًا).</p>
+      </div>
+    </div>
+
+    <h3>٣) الإنشاء الطلبي: أساليبه</h3>
+    <p>الطلب في أصله خمسة: <b>الأمر</b>، <b>النهي</b>، <b>الاستفهام</b>، <b>التمنّي</b>، <b>النداء</b>. ثم أضاف البلاغيون والنحاة أساليب أخرى تُلحق بها: <b>الترجّي</b>، و<b>العرض</b>، و<b>التحضيض</b>، و<b>الدعاء</b>، و<b>الاستغاثة</b>، و<b>الندبة</b>، و<b>الإغراء والتحذير</b>، و<b>الاختصاص</b>، و<b>القَسَم</b>.</p>
+    <div class="note">
+      <b>قاعدة مفيدة:</b> يُعرَف الأسلوب الطلبي بأنك تستطيع أن تُصرّح بالفعل المحذوف في أوّله: «يا خالدُ» = أدعو خالدًا؛ «الصدقَ الصدقَ» = الزم الصدقَ؛ «إيّاك والكذب» = أحذّر إيّاك.
+    </div>
+
+    <h3>٤) الإنشاء غير الطلبي: أساليبه</h3>
+    <p>أشهرها: <b>التعجّب</b>، و<b>المدح والذمّ</b>، و<b>القَسَم</b>، و<b>صيغ العقود</b> (بعتُ، اشتريتُ، زوّجتُ، قبلتُ)، و<b>الرجاء</b>، والتحية، والتمنّي في بعض صوره.</p>
+
+    <h3>٥) الجدول الجامع للأساليب</h3>
+    <div class="tbl-scroll">
+    <table>
+      <caption>خريطة الأساليب النحوية في اللغة العربية</caption>
+      <thead>
+        <tr><th>القسم</th><th>الأسلوب</th><th>أداته/صيغته الأساسية</th><th>مثال</th></tr>
+      </thead>
+      <tbody>
+        <tr><td rowspan="12">إنشاء طلبيّ</td><td>الأمر</td><td>فعل الأمر، المضارع المقترن بلام الأمر، اسم فعل الأمر، المصدر النائب عن الفعل</td><td>اجتهدْ — لِتجتهدْ — هيّا — سمعًا وطاعةً</td></tr>
+        <tr><td>النهي</td><td>لا الناهية + مضارع مجزوم</td><td>لا تلعبْ بالنار</td></tr>
+        <tr><td>الاستفهام</td><td>هل، الهمزة، من، ما، ماذا، متى، أيّان، أين، أنّى، كيف، كم، أيّ</td><td>أين الكتابُ؟</td></tr>
+        <tr><td>النداء</td><td>يا، أيا، هيا، آ، أيْ، الهمزة، وا (للندبة)</td><td>يا طالبَ العلمِ اجتهدْ</td></tr>
+        <tr><td>التمنّي</td><td>ليت (الأصل)، وقد يُطلب بـ لو، هل، لعلّ</td><td>ليت الشبابَ يعودُ</td></tr>
+        <tr><td>الترجّي</td><td>لعلّ، عسى، حرى، اخلولق</td><td>لعلّ الفرجَ قريبٌ</td></tr>
+        <tr><td>العرض</td><td>ألا، أما، لو (طلب برفق)</td><td>ألا تزورُنا؟</td></tr>
+        <tr><td>التحضيض</td><td>هلّا، لولا، لوما، ألا (طلب بقوّة)</td><td>هلّا اجتهدتَ</td></tr>
+        <tr><td>الدعاء</td><td>صيغة الأمر أو النهي موجَّهة إلى الله</td><td>ربّنا اغفرْ لنا — لا تؤاخذْنا</td></tr>
+        <tr><td>الاستغاثة</td><td>يا + لام مفتوحة (المستغاث به) + لام مكسورة (المستغاث له)</td><td>يا للهِ للمسلمين</td></tr>
+        <tr><td>الندبة</td><td>وا (الأصل) أو يا</td><td>وا محمّداه!</td></tr>
+        <tr><td>الإغراء والتحذير</td><td>الاسم منصوبًا بفعل محذوف (الزم/احذر)، وإيّاك في التحذير</td><td>الصدقَ الصدقَ — إيّاك والكذبَ</td></tr>
+
+        <tr><td rowspan="5">إنشاء غير طلبيّ</td><td>التعجّب</td><td>ما أفعله — أفعلْ به — وصيغ سماعية</td><td>ما أجملَ الصدقَ! — أكرمْ بالصدقِ!</td></tr>
+        <tr><td>المدح والذمّ</td><td>نعم، حبّذا / بئس، ساء، لا حبّذا</td><td>نعم الخلقُ الصدقُ — بئس الخلقُ الكذبُ</td></tr>
+        <tr><td>القَسَم</td><td>الواو، الباء، التاء + المقسم به + جواب القسم</td><td>واللهِ لأجتهدَنّ</td></tr>
+        <tr><td>الاختصاص</td><td>ضمير + اسم منصوب (أخصّ/أعني)</td><td>نحن — العربَ — أكرمُ الأممِ</td></tr>
+        <tr><td>صيغ العقود</td><td>بعتُ، قبلتُ، زوّجتُ…</td><td>قبلتُ هذا النكاحَ</td></tr>
+
+        <tr><td rowspan="4">خبريّ</td><td>النفي</td><td>ما، لا، إنْ، لم، لمّا، لنْ، ليس، لات، غير</td><td>ما جاءَ أحدٌ</td></tr>
+        <tr><td>التوكيد</td><td>توكيد لفظي (التكرار) وتوكيد معنوي (نفس، عين، كل، جميع…)</td><td>جاء الأميرُ نفسُه</td></tr>
+        <tr><td>الاستثناء</td><td>إلا، غير، سوى، خلا، عدا، حاشا</td><td>حضر الطلابُ إلا خالدًا</td></tr>
+        <tr><td>الشرط</td><td>إن، من، ما، مهما، متى، أين… / لو، لولا، إذا، كلّما</td><td>إن تجتهدْ تنجحْ</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </article>
+</section>
+
+<!-- ===================== الأمر ===================== -->
+<section id="amr">
+  <h2><span class="num">١</span> أسلوب الأمر</h2>
+  <p class="lede">طلبُ فعلِ شيءٍ على وجه الاستعلاء والإلزام.</p>
+
+  <article class="topic">
+    <h3>تعريفه</h3>
+    <p><b>الأمر</b> إنشاءٌ طلبيّ يُطلب به من المخاطَب فعلُ شيءٍ على وجه <b>الإلزام</b> (لا التمنّي ولا العرض)، ويكون الطالب أعلى منزلةً من المطلوب منه في الأصل، فإن خرج عن ذلك سُمّي بما يناسب المقام.</p>
+
+    <h3>صيغه الأربع المشهورة، وما يقوم مقامها</h3>
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>الصيغة</th><th>البيان</th><th>مثال</th></tr></thead>
+      <tbody>
+        <tr><td>فعل الأمر</td><td>وهو الأصل، مبنيّ على ما يُجزم به مضارعه</td><td>اجتهدْ — اكتبْ — انظرْ</td></tr>
+        <tr><td>المضارع المقترن بلام الأمر</td><td>اللام الجازمة، والمضارع مجزوم بها</td><td>﴿لِيُنفِقْ ذو سَعَةٍ من سَعَتِه﴾ — لِتكتبْ درسك</td></tr>
+        <tr><td>اسم فعل الأمر</td><td>أسماء تدلّ على الأمر وتعمل عمله، لا تقبل علامات الفعل</td><td>هيّا، هاك، صهْ، آمين، رويدَك، حَيَّ على الصلاة</td></tr>
+        <tr><td>المصدر النائب عن فعل الأمر</td><td>مصدر منصوب ينوب عن الفعل المحذوف</td><td>سمعًا وطاعةً — صبرًا — إحسانًا إلى الفقير</td></tr>
+        <tr><td>المضارع الواقع جوابًا للطلب</td><td>يُجزم بلا أداة جازمة، ويُفهم منه الأمر بالسياق</td><td>﴿فأرسل معنا أخانا نكتلْ﴾ (نكتلْ: مجزوم لأنه جواب الطلب)</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>دلالتُه الأصلية وخروجُه إلى معانٍ أخرى (بلاغيًّا)</h3>
+    <p>الأصل في الأمر <b>الوجوب أو الاستحباب</b>، وقد يخرج إلى معانٍ تُفهم من السياق، أشهرها:</p>
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>المعنى</th><th>الشرح</th><th>المثال</th></tr></thead>
+      <tbody>
+        <tr><td>الدعاء</td><td>إذا كان الأمر موجَّهًا إلى الله سبحانه</td><td>﴿رَبَّنا آتِنا في الدنيا حسنةً﴾</td></tr>
+        <tr><td>الالتماس</td><td>إذا كان الطالب مساويًا للمطلوب منه في الرتبة</td><td>يا صاحبي، أعطِني القلمَ</td></tr>
+        <tr><td>النصح والإرشاد</td><td>طلبٌ يُقصد به الخير للمخاطب</td><td>﴿يا أيّها الذين آمنوا اتّقوا الله﴾ في حقّ المؤمن المطيع</td></tr>
+        <tr><td>التمنّي</td><td>إذا طُلب ما لا يُرجى حصوله</td><td>«قِفا يا صاحبيَّ على الطّلولِ» / «ألا أيّها الليلُ الطويلُ ألا انجلي»</td></tr>
+        <tr><td>التعجيز</td><td>طلبُ ما يعجز عنه المخاطب لإظهار العجز</td><td>﴿فأتوا بسورةٍ من مثله﴾</td></tr>
+        <tr><td>التسوية</td><td>إذا تساوى الفعل وتركه</td><td>﴿اصبروا أو لا تصبروا﴾ — «فانطلقْ أو اقعُدْ» في مقام التسوية</td></tr>
+        <tr><td>التخيير</td><td>بين أمرين</td><td>تزوّجْ فلانة أو أختها</td></tr>
+        <tr><td>التهديد</td><td>صورة أمر ومعناه وعيد</td><td>﴿اعملوا ما شئتم﴾</td></tr>
+        <tr><td>الإهانة والتحقير</td><td>كتحقير المذنب</td><td>﴿ذُقْ إنّك أنت العزيزُ الكريم﴾</td></tr>
+        <tr><td>الإغراء</td><td>حثّ المخاطب على أمر محمود</td><td>«الزمْ طريقَ الحقّ»</td></tr>
+        <tr><td>الامتنان</td><td>تعداد النعم</td><td>﴿فكُلوا مما رزقكم اللهُ﴾</td></tr>
+        <tr><td>الدلالة على العاقبة</td><td>بيان نتيجة الأمر</td><td>﴿فاعبدوه﴾ بعد بيان قدرته</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>إعراب فعل الأمر</h3>
+    <ul>
+      <li><b>يُبنى على السكون</b> إذا كان صحيح الآخر: اكتبْ.</li>
+      <li><b>يُبنى على حذف حرف العلة</b> إذا كان معتلّ الآخر: ادعُ، اسعَ، ارمِ.</li>
+      <li><b>يُبنى على حذف النون</b> إذا اتصل به <b>ألف الاثنين</b> أو <b>واو الجماعة</b> أو <b>ياء المخاطبة</b>: اكتبا، اكتبوا، اكتبي.</li>
+      <li><b>يُبنى على الفتح</b> إذا اتصلت به نون التوكيد: اكتبَنَّ.</li>
+    </ul>
+    <details class="irab" open>
+      <summary>نموذج إعراب كامل</summary>
+      <div class="body">
+        <p><b>«اجتهدْ يا طالبَ العلمِ تنجحْ»</b></p>
+        <p>اجتهدْ: فعل أمر مبنيّ على السكون، والفاعل ضمير مستتر وجوبًا تقديره «أنت». — يا: حرف نداء مبنيّ على السكون لا محلّ له من الإعراب. — طالبَ: منادًى منصوب وعلامة نصبه الفتحة وهو مضاف. — العلمِ: مضاف إليه مجرور. — تنجحْ: فعل مضارع مجزوم لأنه جواب الطلب (وعلامة جزمه السكون)، والفاعل ضمير مستتر تقديره «أنت».</p>
+      </div>
+    </details>
+    <div class="note"><b>فائدة:</b> إذا وقع المضارع بعد طلبٍ (أمر/نهي/استفهام/تمنٍّ/عرض/تحضيض) وكان جوابًا له، فإنه <b>يُجزم</b> بلا أداة جازمة؛ تقول: اجتهدْ تنجحْ — لا تكسلْ تندمْ — هلّا سعيتَ تفزْ.</div>
+  </article>
+</section>
+
+<!-- ===================== النهي ===================== -->
+<section id="nahi">
+  <h2><span class="num">٢</span> أسلوب النهي</h2>
+  <p class="lede">طلبُ الكفّ عن فعلِ شيءٍ على وجه الاستعلاء والإلزام.</p>
+
+  <article class="topic">
+    <h3>تعريفه وصيغته</h3>
+    <p><b>النهي</b> إنشاءٌ طلبيّ يُطلب به من المخاطَب <b>الامتناع عن فعل</b>، وصيغته القياسية واحدة: <span class="hl">«لا» الناهية + الفعل المضارع المجزوم بها</span>.</p>
+    <div class="ex"><span class="t">أمثلة:</span> لا تكذبْ. — ﴿لا تقربوا الزِّنى﴾ — ﴿ولا تَقْفُ ما ليس لك به علم﴾ — لا تهملْ واجبك.</div>
+    <p>وقد يُعبَّر عن النهي بصيغ أخرى كالنفي بـ(ليس) أو بلفظ التحريم ونحو ذلك، كما في قوله تعالى: ﴿وما كان لكم أن تؤذوا رسول الله﴾.</p>
+
+    <h3>دلالته الأصلية وخروجُه إلى معانٍ أخرى</h3>
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>المعنى</th><th>المثال</th></tr></thead>
+      <tbody>
+        <tr><td>الدعاء (إذا كان المنهيّ هو الله)</td><td>﴿ربّنا لا تؤاخذْنا إن نسينا أو أخطأنا﴾</td></tr>
+        <tr><td>الالتماس (من مساوٍ في الرتبة)</td><td>لا تصدّقْ ما يقول المرجفون، يا صديقي</td></tr>
+        <tr><td>النصح والإرشاد</td><td>لا تسرْ في هذا الطريق ليلًا</td></tr>
+        <tr><td>التمنّي</td><td>«يا ليلُ لا تنقضِ» / ﴿لا تُحرّكْ به لسانَك﴾ في بعض تخريجاته</td></tr>
+        <tr><td>التوبيخ والتقريع</td><td>لا تجتهدْ في قول الباطل، ولا تجتنبْ نصرة المظلوم</td></tr>
+        <tr><td>التحقير والتهديد</td><td>﴿لا تُطِعْ منهم آثمًا أو كفورًا﴾ تهديدًا للمعاندين</td></tr>
+        <tr><td>اليأس والتحسّر</td><td>لا تدعُ الحبَّ… فقد ولّى زمانُه</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>إعراب النهي</h3>
+    <ul>
+      <li><b>لا:</b> حرف نهي وجزم مبنيّ على السكون، لا محلّ له من الإعراب.</li>
+      <li><b>الفعل المضارع:</b> مجزوم بـ(لا)، وعلامة جزمه السكون / حذف حرف العلة / حذف النون.</li>
+    </ul>
+    <details class="irab" open>
+      <summary>نموذج إعراب</summary>
+      <div class="body">
+        <p><b>«لا تهملِ الواجبَ أيّها الطالبُ»</b></p>
+        <p>لا: حرف نهي وجزم. — تهمل: فعل مضارع مجزوم بلا وعلامة جزمه السكون، والفاعل ضمير مستتر وجوبًا تقديره «أنت». — الواجبَ: مفعول به منصوب. — أيُّ: منادًى مبنيّ على الضم في محل نصب، و(ها) حرف تنبيه. — الطالبُ: نعت مرفوع (أو بدل مرفوع).</p>
+      </div>
+    </details>
+    <details class="irab">
+      <summary>نموذج إعراب ثانٍ (معتلّ الآخر)</summary>
+      <div class="body">
+        <p><b>«لا تسعَ في الشرّ»</b></p>
+        <p>لا: حرف نهي وجزم. — تسعَ: فعل مضارع مجزوم بلا، وعلامة جزمه <b>حذف حرف العلة</b> (الألف)، والفاعل ضمير مستتر وجوبًا تقديره أنت. — في الشرّ: جار ومجرور.</p>
+      </div>
+    </details>
+    <div class="warn"><b>تنبيه:</b> فرِّق بين <b>لا الناهية</b> التي تجزم المضارع: «لا تكذبْ»، و<b>لا النافية</b> التي لا تجزم: «محمدٌ لا يكذبُ». الفرق أنّ الناهية دخلت على فعل المخاطب طلبًا للكفّ، والنافية أخبرت بنفي الصفة.</div>
+  </article>
+</section>
+
+<!-- ===================== الاستفهام ===================== -->
+<section id="istifham">
+  <h2><span class="num">٣</span> أسلوب الاستفهام</h2>
+  <p class="lede">طلبُ معرفةِ شيءٍ مجهولٍ بأداةٍ من أدواته.</p>
+
+  <article class="topic">
+    <h3>تعريفه وأدواته</h3>
+    <p><b>الاستفهام</b> إنشاءٌ طلبيّ يُطلب به العلم بشيء لم يكن معلومًا وقت الطلب. وأدواته نوعان: <b>حروف</b> و<b>أسماء</b>.</p>
+
+    <div class="grid2">
+      <div class="box">
+        <h5>أولًا: الحروف (وهي اثنان)</h5>
+        <ul>
+          <li><b>الهمزة (أ):</b> تكون لطلب التصوّر (التعيين)، ويُجاب عنها بـ(نعم/لا) أو بتعيين أحد الأمرين. مثال: أزيدٌ قائمٌ أم عمرٌو؟</li>
+          <li><b>هل:</b> لطلب التصديق فقط، ويُجاب عنها بـ(نعم/لا). مثال: هل حضرَ الضيفُ؟</li>
+        </ul>
+        <p class="note"><b>فائدة:</b> (هل) لا تدخل على الجملة الاسمية إلا إذا كان خبرها فعلًا، فتقول: هل أنت مسافرٌ؟ ولا تقول: هل أنت أخوك؟ — ولا تدخل على (الاسم بعدها فعل ماضٍ جامد معنوي… ) كما هو مقرَّر في مواضعه.</p>
+      </div>
+      <div class="box">
+        <h5>ثانيًا: الأسماء (وهي عشرة)</h5>
+        <ul>
+          <li><b>من:</b> للعاقل — من فتح البابَ؟</li>
+          <li><b>ما / ماذا:</b> لغير العاقل — ما هذا؟</li>
+          <li><b>متى / أيّان:</b> للزمان — متى السفرُ؟ أيّان يومُ الدين؟</li>
+          <li><b>أين / أنّى:</b> للمكان — أين الكتابُ؟</li>
+          <li><b>كيف:</b> للحال — كيف حالُك؟</li>
+          <li><b>كم:</b> للعدد — كم كتابًا قرأتَ؟</li>
+          <li><b>أيّ:</b> لجميع ما سبق بحسب ما تُضاف إليه — أيُّ الكتبِ أحبُّ إليك؟</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>إعراب أدوات الاستفهام</h3>
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>الأداة</th><th>إعرابها</th><th>مثال</th></tr></thead>
+      <tbody>
+        <tr><td>هل — الهمزة</td><td>حرف استفهام مبنيّ على السكون لا محلّ له من الإعراب</td><td>هل فهمتَ الدرسَ؟</td></tr>
+        <tr><td>من</td><td>اسم استفهام مبنيّ على السكون في محل: رفع مبتدأ / نصب مفعول به / جرّ بعد حرف الجر</td><td>من هذا؟ (مبتدأ) — مَن رأيتَ؟ (مفعول به) — عمَّن تسألُ؟ (مجرور)</td></tr>
+        <tr><td>ما / ماذا</td><td>في محل رفع مبتدأ، أو نصب مفعول به، أو نصب مفعول مطلق…</td><td>ما العلمُ؟ — ماذا تقرأُ؟</td></tr>
+        <tr><td>متى / أيّان</td><td>اسم استفهام مبنيّ على السكون في محل <b>نصب ظرف زمان</b></td><td>متى تعودُ؟</td></tr>
+        <tr><td>أين / أنّى</td><td>في محل <b>نصب ظرف مكان</b></td><td>أين تسكنُ؟</td></tr>
+        <tr><td>كيف</td><td>في محل <b>نصب حال</b></td><td>كيف جئتَ؟</td></tr>
+        <tr><td>كم الاستفهامية</td><td>تُعرب مبتدأ أو مفعولًا به أو ظرفًا، وتمييزها منصوب مفرد</td><td>كم كتابًا قرأتَ؟ (كتابًا: تمييز منصوب)</td></tr>
+        <tr><td>أيّ</td><td>معربة (مضافة غالبًا) في محلّ ما يقتضيه موقعها</td><td>أيُّ الكتبِ أنفعُ؟ (مبتدأ مرفوع)</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <details class="irab" open>
+      <summary>نماذج إعرابية كاملة</summary>
+      <div class="body">
+        <p><b>«هل أنجزتَ الواجبَ؟»</b> — هل: حرف استفهام مبنيّ على السكون لا محلّ له من الإعراب. أنجز: فعل ماضٍ مبنيّ على السكون لاتّصاله بالتاء. التاء: ضمير متصل مبنيّ في محل رفع فاعل. الواجبَ: مفعول به منصوب.</p>
+        <p><b>«متى يبدأُ الدرسُ؟»</b> — متى: اسم استفهام مبنيّ على السكون في محل نصب ظرف زمان متعلّق بـ(يبدأ). يبدأ: فعل مضارع مرفوع. الدرسُ: فاعل مرفوع.</p>
+        <p><b>«أين ولدتَ؟»</b> — أين: اسم استفهام في محل نصب ظرف مكان. ولدتَ: فعل ماضٍ + تاء الفاعل في محل رفع فاعل، والفعل مبنيّ على السكون.</p>
+        <p><b>«كيف حالُك؟»</b> — كيف: اسم استفهام مبنيّ في محل نصب حال (على رأي كثير من النحاة)، والتقدير: حالُك كيف؟ — أو خبر مقدَّم على تقدير: كيف حالُك.</p>
+        <p><b>«مَن ذا الذي يشفعُ عنده؟»</b> — مَن: اسم استفهام في محل رفع مبتدأ. ذا: اسم إشارة في محل رفع خبر (أو زائدة مع الموصول)، الذي: اسم موصول في محلّ رفع بدل أو نعت.</p>
+      </div>
+    </details>
+
+    <h3>أنواع الاستفهام من جهة القصد</h3>
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>النوع</th><th>البيان</th><th>مثال</th></tr></thead>
+      <tbody>
+        <tr><td>استفهام حقيقي (صريح)</td><td>طلبُ العلم بشيء مجهول فعلًا</td><td>أين محطةُ القطار؟</td></tr>
+        <tr><td>استفهام غير حقيقي (مجازي/بلاغي)</td><td>يُستعمل لغرض نفسي أو بلاغي، والمتكلم يعرف الجواب</td><td>﴿أَلَسْتُ بربّكم؟﴾ (تقرير)</td></tr>
+        <tr><td>استفهام إنكاري</td><td>إنكار ما وقع، ويكون بـ(الهمزة) غالبًا</td><td>﴿أَتَعبدونَ ما تنحتون؟﴾</td></tr>
+        <tr><td>استفهام تقريري</td><td>حمل المخاطب على الإقرار، ويكون بعد نفي</td><td>﴿أَلَمْ نشرحْ لك صدرَك؟﴾</td></tr>
+        <tr><td>استفهام تسوِيَويّ</td><td>تسوية بين أمرين</td><td>﴿سواءٌ عليهم أأنذرتَهم أم لم تُنذرهم﴾</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </article>
+</section>
+
+<!-- ===================== أغراض الاستفهام البلاغية ===================== -->
+<section id="istifham-balagha">
+  <h2><span class="num">٤</span> أغراض الاستفهام البلاغية (خروجُه عن معناه الأصلي)</h2>
+  <p class="lede">أكثر ما يقع الاستفهام في القرآن والشعر العربي لا يُراد به السؤال، بل يُراد به غرضٌ نفسيّ يُفهم من السياق.</p>
+
+  <article class="topic">
+    <h3>جدول الأغراض الشائعة وطريقة تحديد الغرض</h3>
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>الغرض البلاغي</th><th>كيف نكشفه؟</th><th>المثال</th></tr></thead>
+      <tbody>
+        <tr><td>النفي</td><td>إذا صحّ أن تحلّ أداة النفي محلّ أداة الاستفهام</td><td>﴿قل هل يستوي الذين يعلمون والذين لا يعلمون﴾ — «وهل نافعي أن تُرفعَ الحُجُبُ بيننا»</td></tr>
+        <tr><td>التقرير والتأكيد</td><td>إذا كان الاستفهام منفيًّا والجوابُ عليه بالإثبات</td><td>﴿أَلَمْ نشرحْ لك صدرَك﴾ — «ألستم خيرَ مَن ركبَ المطايا»</td></tr>
+        <tr><td>الإنكار</td><td>إذا كان المسؤول عنه فعلًا منكرًا أو ممتنعًا</td><td>﴿أَتَعبدونَ ما تنحتون﴾ — ﴿أقتُلُني والمشرفيُّ مضاجعي﴾</td></tr>
+        <tr><td>التوبيخ والتقريع</td><td>إذا كان الغرض عتابًا على فعل أو ترك</td><td>﴿أَعَجِلْتُم أمرَ ربّكم﴾ — ﴿لمَ تُؤذونني وقد تعلمون أنّي رسولُ الله﴾</td></tr>
+        <tr><td>التعجّب</td><td>إذا كان المسؤول عنه خارجًا عن العادة</td><td>﴿ما لي لا أرى الهُدهدَ أم كان من الغائبين﴾ — ﴿أَأَلِدُ وأنا عجوزٌ﴾</td></tr>
+        <tr><td>التمنّي</td><td>إذا صحّ أن تضع (ليت) مكان الأداة</td><td>﴿فهل لنا من شفعاءَ فيشفعوا لنا﴾</td></tr>
+        <tr><td>التسوية</td><td>إذا ذُكر معه (أم) وساوى بين أمرين</td><td>﴿سواءٌ عليهم أأنذرتَهم أم لم تُنذرهم﴾</td></tr>
+        <tr><td>التعظيم</td><td>إذا كان المسؤول عنه عظيم القدر</td><td>﴿مَن ذا الذي يشفعُ عنده إلا بإذنه﴾ — ﴿ما الحاقّة﴾</td></tr>
+        <tr><td>التحقير والاستهانة</td><td>إذا كان المسؤول عنه حقيرًا</td><td>﴿أَهذا الذي يذكرُ آلهتكم﴾ في مقام الاستهزاء</td></tr>
+        <tr><td>التهديد والوعيد</td><td>إذا تُوعِّد المخاطب بعاقبة فعله</td><td>﴿أتقولون على الله ما لا تعلمون﴾ — ﴿كيف كان عذابي ونُذُر﴾</td></tr>
+        <tr><td>التهويل والتخويف</td><td>لتضخيم الأمر في النفس</td><td>﴿الحاقّةُ * ما الحاقّةُ﴾ — ﴿القارعةُ * ما القارعةُ﴾</td></tr>
+        <tr><td>التشويق والإغراء</td><td>إذا عُقِّب الاستفهام بجوابٍ عظيم النفع</td><td>﴿هل أدلُّكم على تجارةٍ تُنجيكم من عذابٍ أليم﴾</td></tr>
+        <tr><td>الأمر</td><td>إذا أفاد الحثّ على فعل</td><td>﴿فهل أنتم مُنتهون﴾ بمعنى: انتهوا</td></tr>
+        <tr><td>النهي</td><td>إذا نهى عن فعل</td><td>﴿أتخشَونهم فاللهُ أحقُّ أن تخشَوْه﴾ أي: لا تخشَونهم</td></tr>
+        <tr><td>التحسّر والتحزّن</td><td>إذا كان المسؤول عنه فائتًا لا يُستدرَك</td><td>«خليليَّ فيما عشتُما هل رأيتُما / قتيلًا بكى من حُبِّ قاتلِه قبلي»</td></tr>
+        <tr><td>الاستبطاء</td><td>طلبُ تعجيل ما تأخّر</td><td>﴿وما يُكذِّبُه إلا كلُّ مُعتدٍّ أثيم﴾ في سياق الاستبطاء</td></tr>
+        <tr><td>التحضيض والعرض</td><td>حثٌّ برفق أو بقوّة</td><td>﴿ألا تحبّون أن يغفرَ اللهُ لكم﴾ (عرض)</td></tr>
+        <tr><td>التنديم والتبكيت</td><td>إظهار الندم على ما فات</td><td>﴿قال يا ليتني لم أُشركْ بربّي أحدًا﴾ في سياق التقرير عليه</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="note"><b>قاعدة تحديد الغرض:</b> اطرح السؤال: <b>هل المتكلّم يطلب الجواب حقًّا؟</b> فإن كان يعرفه فالاستفهام بلاغي؛ ثم انظر في جوابه المقدَّر: إن كان نفيًا فالغرض النفي، وإن كان إقرارًا فالتقرير، وإن كان استنكارًا فالإنكار… وهكذا.</div>
+  </article>
+</section>
+
+<!-- ===================== النداء ===================== -->
+<section id="nida">
+  <h2><span class="num">٥</span> أسلوب النداء</h2>
+  <p class="lede">طلبُ إقبالِ المنادى أو تنبيهِه بأداةٍ من أدوات النداء.</p>
+
+  <article class="topic">
+    <h3>أدوات النداء ودلالاتها</h3>
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>الأداة</th><th>الدلالة</th><th>مثال</th></tr></thead>
+      <tbody>
+        <tr><td>يا</td><td>للقريب والبعيد (وهي الأصل وأكثر الأدوات استعمالًا)</td><td>يا عبدَ اللهِ</td></tr>
+        <tr><td>الهمزة (أ)</td><td>للقريب خاصة</td><td>أخالدُ، أقبِلْ</td></tr>
+        <tr><td>أيْ — آ — أيا — هيا</td><td>للبعيد</td><td>أيا راكبًا، أنت في خطرٍ — هيا طالبُ العلمِ</td></tr>
+        <tr><td>وا</td><td>خاصة بالندبة (التفجّع)</td><td>وا محمّداه!</td></tr>
+        <tr><td>أيّها / أيّتها</td><td>تُستعمل للتنبيه قبل الاسم المعرَّف بـ(أل)</td><td>أيّها الناسُ، أيّتها النفسُ</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="note"><b>حذف الأداة:</b> يجوز حذف أداة النداء إذا كان المنادى معروفًا، كقول العرب: «يوسفُ، أقبِلْ» أي: يا يوسف. ولا تُحذف كثيرًا في المنادى المتعجَّب منه: «يا للعجبِ!».</div>
+
+    <h3>أنواع المنادى الخمسة وأحكامها الإعرابية</h3>
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>النوع</th><th>تعريفه</th><th>حكمه الإعرابي</th><th>مثال</th></tr></thead>
+      <tbody>
+        <tr><td><b>١) العَلَم المفرد</b></td><td>اسم عَلَم ليس مضافًا ولا شبيهًا بالمضاف، ولو دلّ على مثنًّى أو جمع</td><td><b>مبنيّ على ما يُرفع به في محل نصب</b>: الضم في المفرد، الألف في المثنى، الواو في جمع المذكر السالم، الضم في جمع المؤنث السالم</td><td>يا محمّدُ — يا محمّدان — يا محمّدون — يا فاطماتُ</td></tr>
+        <tr><td><b>٢) النكرة المقصودة</b></td><td>نكرة قُصد بها معيَّن، فصارت معرفةً بالنداء</td><td><b>مبنيّ على ما يُرفع به في محل نصب</b> (كالعلم المفرد)</td><td>يا رجلُ اتّقِ الله — يا مجتهدون اجتهدوا — يا معلمةُ</td></tr>
+        <tr><td><b>٣) النكرة غير المقصودة</b></td><td>نكرة لا يُقصد بها معيَّن، كنداء الأعمى</td><td><b>منصوب</b> (ويُنوَّن)</td><td>يا رجلًا خُذْ بيدي — يا غافلًا تنبَّهْ</td></tr>
+        <tr><td><b>٤) المضاف</b></td><td>اسم أُضيف إلى ما بعده، فيتمّ معناه بالمضاف إليه</td><td><b>منصوب</b> بلا تنوين</td><td>يا طالبَ العلمِ — يا أبا محمّدٍ — يا معلّماتِ الخيرِ</td></tr>
+        <tr><td><b>٥) الشبيه بالمضاف</b></td><td>ما اتصل به شيء يتمّم معناه (فاعل، مفعول، جار ومجرور)</td><td><b>منصوب</b> (ويُنوَّن)</td><td>يا طالعًا جبلًا — يا حسنًا خُلقُه — يا رفيقًا بالعبادِ</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h4>زيادات مهمّة</h4>
+    <ul>
+      <li><b>المنادى المعرَّف بـ(أل):</b> لا يُنادى مباشرة بـ(يا)، بل يتوسّط بينهما (أيّها/أيّتها) أو اسم إشارة أو ضمير، فتقول: يا أيّها الناس، يا هذا الرجل، يا أنت. وإذا نُودي بالله قلنا: «يا اللهُ» ثم شاع «اللهمَّ» والميم المشدَّدة عوضٌ عن «يا».</li>
+      <li><b>إعراب (أيّها):</b> أيُّ: منادًى مبنيّ على الضم في محل نصب، و(ها) حرف تنبيه، والاسم بعده: <b>نعت مرفوع</b> إن كان مشتقًّا، أو <b>بدل مرفوع</b> (عطف بيان) إن كان جامدًا.</li>
+      <li><b>المنادى المضاف إلى ياء المتكلِّم:</b> فيه أوجه: «يا عبدِي» بإثبات الياء، «يا عبدِ» بحذفها والاكتفاء بالكسرة (وهو الأفصح)، «يا عبدَا» بقلبها ألفًا، «يا عبديَ» بالفتح، «يا عبدِيّ» بقلبها ياء مشدَّدة، وقولهم في الترخيم: «يا عبْدُ».</li>
+      <li><b>تابع المنادى:</b> إن كان المنادى مبنيًّا على الضم وبعده معطوف مجرَّد من (أل) ولم يكن مضافًا، جاز فيه: البناء على الضم اتباعًا للمحل — «يا محمّدُ وخالدُ» — أو النصب على اللفظ — «يا محمّدُ وخالدًا».</li>
+      <li><b>الترخيم:</b> حذف آخر المنادى تخفيفًا، كقولك في «فاطمة»: يا فاطمَ؛ وفي «مازن»: يا مازِ.</li>
+    </ul>
+
+    <details class="irab" open>
+      <summary>نماذج إعرابية كاملة (لكل نوع من أنواع المنادى)</summary>
+      <div class="body">
+        <p><b>«يا محمّدُ، اجتهدْ»</b> — يا: حرف نداء مبنيّ على السكون لا محلّ له من الإعراب. محمّد: منادًى مبنيّ على الضم في محل نصب مفعول به لفعل النداء المحذوف (أدعو). اجتهدْ: فعل أمر + فاعل مستتر تقديره أنت.</p>
+        <p><b>«يا رجلُ، ساعدني»</b> — رجل: منادًى (نكرة مقصودة) مبنيّ على الضم في محل نصب.</p>
+        <p><b>«يا رجلًا، ساعدني»</b> — رجلًا: منادًى (نكرة غير مقصودة) منصوب وعلامة نصبه الفتحة.</p>
+        <p><b>«يا طالبَ العلمِ، اجتهدْ»</b> — طالبَ: منادًى منصوب وعلامة نصبه الفتحة، وهو مضاف. العلمِ: مضاف إليه مجرور.</p>
+        <p><b>«يا طالعًا جبلًا»</b> — طالعًا: منادًى (شبيه بالمضاف) منصوب وعلامة نصبه الفتحة، وهو اسم فاعل. جبلًا: مفعول به لاسم الفاعل منصوب.</p>
+        <p><b>«يا أبا بكرٍ»</b> — أبا: منادًى منصوب وعلامة نصبه <b>الألف</b> لأنه من الأسماء الخمسة، وهو مضاف. بكرٍ: مضاف إليه مجرور.</p>
+        <p><b>«يا أيّها الطلابُ»</b> — يا: حرف نداء. أيُّ: منادًى مبنيّ على الضم في محل نصب. ها: حرف تنبيه. الطلابُ: بدل مرفوع (لأنه جامد).</p>
+      </div>
+    </details>
+
+    <h3>من معاني النداء البلاغية</h3>
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>المعنى</th><th>المثال</th></tr></thead>
+      <tbody>
+        <tr><td>الإغراء والاستعطاف</td><td>﴿يا عباديَ الذين أسرفوا على أنفسهم لا تقنطوا من رحمة الله﴾</td></tr>
+        <tr><td>التحسّر والتوجّع</td><td>﴿يا حسرةً على العباد﴾</td></tr>
+        <tr><td>الزجر والتحذير</td><td>﴿يا أيّها الذين آمنوا قوا أنفسَكم وأهليكم نارًا﴾</td></tr>
+        <tr><td>التمنّي</td><td>«يا دارَ عبلةَ بالجواءِ تكلّمي» (الغرض: التمنّي)</td></tr>
+        <tr><td>التعجّب</td><td>«يا لعظمةِ اللهِ!» — «يا لَجمالِ هذا المساء»</td></tr>
+        <tr><td>التنبيه والإيقاظ</td><td>«يا هذا، تنبَّهْ»</td></tr>
+        <tr><td>التعظيم والتنزيه</td><td>«يا ربِّ، يا رحمنُ»</td></tr>
+        <tr><td>الاستغاثة</td><td>«يا للهِ للمسلمين»</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </article>
+</section>
+
+<!-- ===================== التمني ===================== -->
+<section id="tamanni">
+  <h2><span class="num">٦</span> أسلوب التمنّي</h2>
+  <p class="lede">طلبُ أمرٍ محبوبٍ لا يُرجى حصولُه (مستحيل أو بعيد).</p>
+  <article class="topic">
+    <h3>تعريفه وأدواته</h3>
+    <p><b>التمنّي</b> إنشاءٌ طلبيّ يُطلب به حصول أمر محبوب، لكنه <b>لا يُطمع في حصوله</b>، إمّا لاستحالته: «ليت الشبابَ يعودُ»، وإمّا لبعده وصعوبته: «ليت لي مالًا فأحجَّ».</p>
+    <ul>
+      <li><b>ليت:</b> الأداة الأصلية للتمنّي، وهي حرف مشبَّه بالفعل ينصب المبتدأ ويرفع الخبر.</li>
+      <li><b>لو:</b> تكون للتمنّي إذا لم يصحّ أن تكون شرطية، كقوله: «ولو أنّي أستطيعُ…».</li>
+      <li><b>هل:</b> تكون للتمنّي في مثل: ﴿فهل لنا من شفعاءَ فيشفعوا لنا﴾.</li>
+      <li><b>لعلّ وعسى:</b> تخرجان إلى التمنّي إذا كان المطلوب بعيدًا.</li>
+    </ul>
+
+    <h3>إعراب (ليت)</h3>
+    <p>ليت: حرف تمنٍّ ونصب مبنيّ على الفتح. والاسم بعدها: اسم (ليت) منصوب. والخبر: مرفوع.</p>
+    <details class="irab" open>
+      <summary>نماذج إعرابية</summary>
+      <div class="body">
+        <p><b>«ليت الشبابَ يعودُ»</b> — ليت: حرف تمنٍّ ونصب مبنيّ على الفتح لا محلّ له من الإعراب. الشبابَ: اسم ليت منصوب وعلامة نصبه الفتحة. يعودُ: فعل مضارع مرفوع، والفاعل ضمير مستتر تقديره هو، والجملة الفعلية في محل <b>رفع</b> خبر ليت.</p>
+        <p><b>«ليتني فزتُ بالجائزة»</b> — ليت: حرف تمنٍّ ونصب. والنون: للوقاية. والياء: ضمير متصل مبنيّ في محل نصب اسم ليت. فزتُ: فعل ماضٍ + تاء الفاعل في محل رفع فاعل، والجملة الفعلية في محل رفع خبر ليت.</p>
+        <p><b>«يا ليتَ لي مالًا فأحجَّ»</b> — ليت: حرف تمنٍّ ونصب. لي: جار ومجرور في محل رفع خبر ليت مقدَّم. مالًا: اسم ليت منصوب (مؤخّر). فأحجَّ: الفاء فاء السببية، وأحجَّ فعل مضارع منصوب بأن مضمرة بعد الفاء، وعلامة نصبه الفتحة.</p>
+      </div>
+    </details>
+  </article>
+</section>
+
+<!-- ===================== الترجي ===================== -->
+<section id="tarajji">
+  <h2><span class="num">٧</span> أسلوب الترجّي</h2>
+  <p class="lede">طلبُ أمرٍ محبوبٍ يُرجى حصولُه (ممكن الوقوع).</p>
+  <article class="topic">
+    <h3>تعريفه وأدواته</h3>
+    <p><b>الترجّي</b> انتظارُ أمر محبوب ممكن الحصول. وهو أضعف من التمنّي في الدلالة على الرغبة، وأقرب للواقع.</p>
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>الأداة</th><th>البيان والإعراب</th><th>مثال</th></tr></thead>
+      <tbody>
+        <tr><td>لعلّ</td><td>حرف ترجٍّ ونصب، ينصب الاسم ويرفع الخبر</td><td>﴿لعلّ اللهَ يُحدِثُ بعد ذلك أمرًا﴾</td></tr>
+        <tr><td>عسى</td><td>فعل ماضٍ ناقص جامد من أفعال الرجاء، يرفع الاسم وينصب الخبر، وخبره غالبًا جملة فعلية مسبوقة بـ(أن)</td><td>﴿عسى ربُّكم أن يرحمَكم﴾</td></tr>
+        <tr><td>حرى — اخلولق</td><td>فعلان جامدان للرجاء، يعملان عمل (عسى)</td><td>حرى المسلمُ أن ينجحَ — اخلولق الطالبُ أن يتفوّقَ</td></tr>
+        <tr><td>لعلّ للإشفاق</td><td>إذا كان المرجوّ مكروهًا صارت للإشفاق (الخوف)</td><td>«لعلّ العدوَّ قادمٌ»</td></tr>
+        <tr><td>لعلّ للاستفهام</td><td>إذا دخلت على جملة يُطلب بها الفهم</td><td>«لعلّك بخيرٍ؟»</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <details class="irab" open>
+      <summary>نموذج إعراب</summary>
+      <div class="body">
+        <p><b>«لعلّ الفرجَ قريبٌ»</b> — لعلّ: حرف ترجٍّ ونصب مبنيّ على الفتح لا محلّ له من الإعراب. الفرجَ: اسم لعلّ منصوب وعلامة نصبه الفتحة. قريبٌ: خبر لعلّ مرفوع وعلامة رفعه الضمة.</p>
+        <p><b>«عسى اللهُ أن يشفِيَني»</b> — عسى: فعل ماضٍ ناقص جامد مبنيّ على الفتح. اللهُ: اسم عسى مرفوع. أن: حرف مصدري ونصب. يشفِيَني: فعل مضارع منصوب بأن، والفاعل مستتر تقديره هو، والنون للوقاية، والياء في محل نصب مفعول به؛ والمصدر المؤوَّل (أن يشفيني) في محل <b>نصب</b> خبر عسى.</p>
+      </div>
+    </details>
+  </article>
+</section>
+
+<!-- ===================== العرض والتحضيض ===================== -->
+<section id="ard">
+  <h2><span class="num">٨</span> أسلوبا العرض والتحضيض</h2>
+  <p class="lede">طلبٌ برِفق (عرض) وطلبٌ بقوّة (تحضيض).</p>
+  <article class="topic">
+    <h3>التعريف</h3>
+    <p><b>العرض:</b> طلب الشيء برفق ولين وأدب. — <b>التحضيض:</b> طلب الشيء بقوّة وحثّ وشدة، ويكون معه لومٌ وتنديم إذا وقع على الماضي.</p>
+
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>الأداة</th><th>الاستعمال</th><th>المعنى</th><th>المثال</th></tr></thead>
+      <tbody>
+        <tr><td>ألا (بتخفيف اللام)</td><td>عرض أو تحضيض</td><td>طلب برفق أو بقوّة</td><td>﴿ألا تحبّون أن يغفرَ اللهُ لكم﴾</td></tr>
+        <tr><td>أما (بتخفيف الميم)</td><td>عرض</td><td>طلب برفق</td><td>أما تزورُنا فنُكرمَك</td></tr>
+        <tr><td>لو</td><td>عرض</td><td>طلب برفق</td><td>لو تزورُني فأَسرَّ بك</td></tr>
+        <tr><td>هلّا</td><td>تحضيض</td><td>طلب بقوّة</td><td>هلّا اجتهدتَ قبل الامتحان</td></tr>
+        <tr><td>لولا — لوما</td><td>تحضيض</td><td>طلب بقوّة</td><td>﴿لولا تستغفرونَ الله﴾ — ﴿لو ما تأتينا بالملائكة﴾</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>قاعدة الفرق بين الماضي والمضارع</h3>
+    <ul>
+      <li>إذا دخلت هذه الأدوات على <b>فعل مضارع</b>: أفادت العرض أو التحضيض (طلبًا).</li>
+      <li>إذا دخلت على <b>فعل ماضٍ</b>: أفادت <b>التوبيخ واللوم والتنديم</b> (تحضيضًا على فائت). مثال: «هلّا دافعتَ عن كرامتك»، «ألا بذلتَ جهدًا في دراستك».</li>
+      <li>إذا وقع بعدها اسمٌ (لا فعل)، خرجت عن العرض والتحضيض إلى معانٍ أُخر: (لولا/لوما) تصيران حرفَي شرط غير جازمين للامتناع لوجود، و(ألا/أما) تصيران للتنبيه والاستفتاح.</li>
+    </ul>
+    <div class="note"><b>ملاحظة إعرابية:</b> حروف العرض والتحضيض <b>لا محلّ لها من الإعراب</b>؛ لأنها لم تُحدث عملًا في ما بعدها، وإنّما أفادت المعنى. وإذا وقع الفعل المضارع بعد الفاء (فاء السببية) في جوابها نُصب: «هلّا تدرسُ فتنجحَ».</div>
+    <details class="irab" open>
+      <summary>نموذج إعراب</summary>
+      <div class="body">
+        <p><b>«هلّا ساعدتَ أخاك»</b> — هلّا: حرف تحضيض مبنيّ على السكون لا محلّ له من الإعراب. ساعدتَ: فعل ماضٍ مبنيّ على السكون لاتّصاله بالتاء، والتاء ضمير في محل رفع فاعل. أخاك: مفعول به منصوب وعلامة نصبه الألف لأنه من الأسماء الخمسة، والكاف ضمير في محل جرّ مضاف إليه.</p>
+      </div>
+    </details>
+  </article>
+</section>
+
+<!-- ===================== الدعاء ===================== -->
+<section id="dua">
+  <h2><span class="num">٩</span> أسلوب الدعاء</h2>
+  <p class="lede">طلبُ الأمر أو النهي من الله عزّ وجلّ.</p>
+  <article class="topic">
+    <h3>تعريفه</h3>
+    <p><b>الدعاء</b> هو أن يكون الطلب موجَّهًا إلى الله سبحانه، فيكون الأمر أو النهي بمعنى الدعاء لا الإلزام. وهو أشرف أساليب الطلب وأصدقها.</p>
+    <div class="ex"><span class="t">صيغه:</span> بصيغة الأمر: ﴿ربّنا آتِنا في الدنيا حسنةً﴾ — ﴿ربِّ زِدْني علمًا﴾ — «اللهمَّ اغفرْ لي». وبصيغة النهي: ﴿ربّنا لا تؤاخذْنا إن نسينا أو أخطأنا﴾ — ﴿لا تُزِغْ قلوبَنا بعد أن هديتَنا﴾.</div>
+    <p>ويظهر الدعاء أيضًا في النداء: «يا ربِّ»، وفي التمنّي إذا كان الطلب من الله، وفي الاستغاثة: «يا للهِ للمسلمين».</p>
+    <details class="irab" open>
+      <summary>نموذج إعراب</summary>
+      <div class="body">
+        <p><b>«اللهمَّ اغفرْ لي»</b> — اللهمَّ: لفظ الجلالة منادًى مبنيّ على الضم في محل نصب، والميم المشدَّدة عوض عن (يا). اغفرْ: فعل أمر مبنيّ على السكون، والفاعل ضمير مستتر وجوبًا تقديره أنت. لي: اللام حرف جرّ، والياء ضمير في محل جرّ.</p>
+      </div>
+    </details>
+  </article>
+</section>
+
+<!-- ===================== الاستغاثة ===================== -->
+<section id="istighatha">
+  <h2><span class="num">١٠</span> أسلوب الاستغاثة</h2>
+  <p class="lede">نداءُ مَن يُخلّص من شدّة، أو يُعين على دفعها.</p>
+  <article class="topic">
+    <h3>تعريفه وأركانه</h3>
+    <p><b>الاستغاثة:</b> هي نداءُ مَن يُستغاث به لتخليص المستغيث من شدّة واقعة، أو لإعانته على دفعها قبل وقوعها. وهي في الأصل نداءٌ موجَّه إلى مخلوق، فإن كان إلى الله فذلك <b>دعاء</b>.</p>
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>الركن</th><th>البيان والإعراب</th><th>المثال</th></tr></thead>
+      <tbody>
+        <tr><td>١) أداة الاستغاثة</td><td><b>يا</b> فقط، ولا يجوز حذفها ولا استبدالها</td><td>يا لَلْمسلمين</td></tr>
+        <tr><td>٢) المستغاث به</td><td>المنادى الذي تُطلب مساعدته، ويكون مجرورًا <b>بلام مفتوحة</b> (لام الاستغاثة)، ويُعرب: اسم مجرور لفظًا في محل نصب على الاستغاثة</td><td>يا <b>لَ</b>محمّدٍ</td></tr>
+        <tr><td>٣) المستغاث له</td><td>الذي يُنادَى من أجله، ويكون مجرورًا <b>بلام مكسورة</b></td><td>يا لَمحمّدٍ <b>لِ</b>المظلومِ</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="note"><b>لماذا فُتحت اللام؟</b> لأنّ المنادى في الاستغاثة واقع موقع المضمر (المخاطب)، واللام تُفتح مع المضمر كقولك: «لَه، لَك»، فلذلك فُتحت مع المستغاث به. أما لام المستغاث له فكُسرت لأنها لام جرّ أصلية لم يُقصد بها التمكّن في الخطاب.</div>
+
+    <details class="irab" open>
+      <summary>نماذج إعرابية</summary>
+      <div class="body">
+        <p><b>«يا للمسلمين»</b> (حين يُستغاث بهم)</p>
+        <p>يا: حرف نداء واستغاثة مبنيّ على السكون لا محلّ له من الإعراب. لَ: لام الاستغاثة، حرف جرّ مبنيّ على الفتح — (أي هي (يا) واللام في محلّ نصب). المسلمين: اسم مجرور باللام وعلامة جرّه الياء؛ والجارّ والمجرور في محل <b>نصب</b> على الاستغاثة (منادى).</p>
+        <p><b>«يا للهِ للمسلمين»</b> (قول عمر رضي الله عنه حين طُعن)</p>
+        <p>يا: حرف نداء واستغاثة. لَ: لام المستغاث به مفتوحة. اللهِ: لفظ الجلالة مجرور لفظًا في محل نصب على الاستغاثة. لِ: لام المستغاث له مكسورة. المسلمين: مجرور باللام. والمعنى: يا اللهُ، أغثِ المسلمين.</p>
+        <p><b>«يا لَلأغنياءِ للفقراء»</b> — يا: حرف نداء واستغاثة. لَ: حرف جرّ. الأغنياء: مجرور لفظًا في محل نصب على الاستغاثة (المستغاث به). لِلْفقراء: جارّ ومجرور (المستغاث له).</p>
+      </div>
+    </details>
+  </article>
+</section>
+
+<!-- ===================== الندبة ===================== -->
+<section id="nadba">
+  <h2><span class="num">١١</span> أسلوب الندبة</h2>
+  <p class="lede">نداءُ المتفجَّع عليه أو المتوجَّع منه.</p>
+  <article class="topic">
+    <h3>تعريفه وأركانه</h3>
+    <p><b>الندبة</b> نداءٌ ينشئه المتكلّم للتعبير عن <b>الأسى والحزن</b> إمّا على ميت (المتفجَّع عليه)، وإمّا من ألمٍ في نفسه (المتوجَّع منه)، مثل: «وا محمّداه!» — «وا رأساه!» — «وا قلباه!».</p>
+    <ul>
+      <li><b>الأداة:</b> <b>وا</b> وهي الخاصة بالندبة ولا تُستعمل في غيرها، وقد تُستعمل <b>يا</b> للندبة عند أمن اللبس.</li>
+      <li><b>المندوب:</b> وهو المتفجَّع عليه أو المتوجَّع منه، ويُعرب إعراب المنادى نفسه.</li>
+      <li><b>الألف (ألف الندبة):</b> تُلحق آخر المندوب غالبًا، وإن كان آخره ألفًا حُذفت، وإن كان فيه تنوين حُذف التنوين: «وا محمّداه» — «وا مصطفاه» — «وا كبداه».</li>
+      <li><b>هاء السكت:</b> تُلحق بعد ألف الندبة وقفًا: «وا محمّداهْ».</li>
+    </ul>
+    <div class="warn"><b>تنبيه:</b> لا يُندَب إلا المعروف المشهور ممن يليق به التفجّع، ولا يُندَب المجهول.</div>
+
+    <details class="irab" open>
+      <summary>نماذج إعرابية</summary>
+      <div class="body">
+        <p><b>«وا محمّداه!»</b> — وا: حرف نداء وندبة مبنيّ على السكون لا محلّ له من الإعراب. محمّد: منادًى مندوب مبنيّ على الضمّ المقدَّر (مَنَع من ظهوره اشتغالُ المحلّ بحركة تناسب الألف) في محل نصب. الألف: ألف الندبة حرف مبنيّ لا محلّ له من الإعراب. الهاء: هاء السكت حرف مبنيّ لا محلّ له من الإعراب.</p>
+        <p><b>«وا ناصرَ الحقِّ!»</b> — وا: حرف نداء وندبة. ناصرَ: منادًى مندوب منصوب وعلامة نصبه الفتحة لأنه مضاف. الحقِّ: مضاف إليه مجرور.</p>
+        <p><b>«وا حُسّرتاه!»</b> — وا: حرف نداء وندبة. حسرة: منادًى مندوب مبنيّ على الضمّ المقدَّم…، والألف للندبة، والهاء للسكت. ومعناها التوجّع والتفجّع.</p>
+      </div>
+    </details>
+  </article>
+</section>
+
+<!-- ===================== الإغراء والتحذير ===================== -->
+<section id="ighra">
+  <h2><span class="num">١٢</span> أسلوبا الإغراء والتحذير</h2>
+  <p class="lede">حثُّ المخاطب على أمر محمود (إغراء)، وتنبيهُه إلى أمر مذموم ليجتنبه (تحذير).</p>
+  <article class="topic">
+    <h3>التعريف والصيغ</h3>
+    <p><b>الإغراء:</b> حثّ المخاطب على أمر محمود ليفعله، ويُسمّى ذلك الأمر <b>المُغرى به</b>. — <b>التحذير:</b> تنبيه المخاطب إلى أمر مكروه ليتجنّبه، ويُسمّى <b>المحذَّر منه</b>.</p>
+
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>الصورة</th><th>الإغراء</th><th>التحذير</th><th>حكم الفعل المحذوف</th></tr></thead>
+      <tbody>
+        <tr><td><b>١) الإفراد</b></td><td>الصدقَ فإنه منجاة</td><td>الكذبَ فإنه مهلكة</td><td>يجوز حذفه ويجوز ذكره: (الزم الصدق) / (احذر الكذب)</td></tr>
+        <tr><td><b>٢) التكرار</b></td><td>الصدقَ الصدقَ</td><td>الكذبَ الكذبَ</td><td><b>يجب</b> حذفه، ويكون الاسم الثاني توكيدًا لفظيًّا</td></tr>
+        <tr><td><b>٣) العطف</b></td><td>الصدقَ والأمانةَ</td><td>الكذبَ والغِشَّ</td><td><b>يجب</b> حذفه، وما بعد الواو معطوف منصوب</td></tr>
+        <tr><td><b>٤) بـ(إيّاك)</b></td><td>— (خاصة بالتحذير)</td><td>إيّاك والكذبَ</td><td>يجب حذف الفعل، والتقدير: أحذِّرُك الكذبَ</td></tr>
+        <tr><td><b>٥) اسمٌ مختومٌ بكاف الخطاب</b></td><td>—</td><td>نفسَك والطمعَ — رأسَك والسيفَ</td><td>يجب حذف الفعل، والاسم منصوب على التحذير</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>إعراب المُغرى به والمحذَّر منه</h3>
+    <p>يُعرب الاسم <b>مفعولًا به منصوبًا لفعل محذوف</b> تقديره في الإغراء: (الزمْ، اتّخذْ، تحلَّ)، وفي التحذير: (احذرْ، اجتنبْ، توقَّ)، ويكون الفعل:</p>
+    <ul>
+      <li><b>محذوفًا جوازًا</b> في صورة الإفراد.</li>
+      <li><b>محذوفًا وجوبًا</b> في صور: التكرار، والعطف، وبعد (إيّاك)، والاسم المختوم بالكاف.</li>
+    </ul>
+    <p>أمّا <b>إيّاك</b> فتُعرب: ضميرًا منفصلًا (إيّا) مبنيًّا في محل نصب مفعول به لفعل محذوف وجوبًا تقديره (أحذِّر)، والكاف حرف خطاب لا محلّ له من الإعراب.</p>
+
+    <h4>أدلّة من القرآن والشعر</h4>
+    <div class="ayah">﴿فقال لهم رسولُ اللهِ ناقةَ اللهِ وسُقيَاها﴾ — «ناقةَ» منصوب على التحذير بفعل محذوف تقديره: احذروا.</div>
+    <div class="poem">«أخاكَ أخاكَ، إنّ مَن لا أخا له / كساعٍ إلى الهيجا بغير سلاحِ» — «أخاك» الأول: منصوب على الإغراء بفعل محذوف وجوبًا تقديره: الزمْ، والثاني توكيد لفظي.</div>
+    <div class="ayah">﴿إيّاكَ نعبدُ﴾ على قول من جعل (إيّاك) مفعولًا به لـ(نعبد) — وأما في التحذير فكقول النبي ﷺ: «إيّاكم والحسدَ».</div>
+
+    <details class="irab" open>
+      <summary>نماذج إعرابية</summary>
+      <div class="body">
+        <p><b>«الصدقَ الصدقَ»</b> — الصدقَ (الأول): مفعول به منصوب على الإغراء بفعل محذوف وجوبًا تقديره: الزمْ. الصدقَ (الثاني): توكيد لفظي منصوب.</p>
+        <p><b>«الكذبَ والغِشَّ»</b> — الكذبَ: مفعول به منصوب على التحذير بفعل محذوف وجوبًا تقديره: احذر. الواو: حرف عطف. الغِشَّ: معطوف منصوب وعلامة نصبه الفتحة.</p>
+        <p><b>«إيّاك والكذبَ»</b> — إيّا: ضمير منفصل مبنيّ على السكون في محل نصب مفعول به لفعل محذوف وجوبًا تقديره (أحذِّر). الكاف: حرف خطاب مبنيّ لا محلّ له من الإعراب. الواو: واو المعية. الكذبَ: مفعول به منصوب لفعل محذوف تقديره (احذر/اجتنب).</p>
+        <p><b>«الاجتهادَ فإنّه سبيلُ النجاح»</b> — الاجتهادَ: مفعول به منصوب على الإغراء بفعل محذوف جوازًا تقديره: الزمْ.</p>
+      </div>
+    </details>
+  </article>
+</section>
+
+<!-- ===================== الاختصاص ===================== -->
+<section id="ikhtisas">
+  <h2><span class="num">١٣</span> أسلوب الاختصاص</h2>
+  <p class="lede">ذكرُ اسمٍ ظاهر منصوب بعد ضميرٍ لتفسيره وتوضيح المقصود منه.</p>
+  <article class="topic">
+    <h3>تعريفه</h3>
+    <p><b>الاختصاص:</b> أسلوبٌ يُذكر فيه <b>ضمير</b> للمتكلّم غالبًا (أنا، نحن، نا، ي) أو للمخاطب أحيانًا (أنتَ، أنتم، ك)، ويُتبع باسم ظاهر منصوب يُسمّى <b>المختصّ</b>، يأتي <b>لتفسير الضمير</b> وبيان المقصود منه، ولو حُذف لَبقي الكلام تامًّا لكن مع احتمال.</p>
+    <div class="ex"><span class="t">أمثلة:</span> نحن — العربَ — أكرمُ الأممِ. | إنّنا — رجالَ المستقبلِ — نحملُ همَّ الأمةِ. | لنا — بني الإسلامِ — تاريخٌ عريقٌ. | بكم — أيّها العلماءُ — تنهضُ الأممُ.</div>
+
+    <h3>إعراب المختصّ وصوره</h3>
+    <p>يُعرب المختصّ: <b>مفعولًا به منصوبًا على الاختصاص بفعل محذوف وجوبًا</b> تقديره (أخصُّ / أعني / أقصد)، وفاعله ضمير مستتر وجوبًا يعود على الضمير قبله، والجملة المحذوفة <b>اعتراضية لا محلّ لها من الإعراب</b>.</p>
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>صورة المختصّ</th><th>المثال</th></tr></thead>
+      <tbody>
+        <tr><td>معرَّف بـ(أل)</td><td>نحن — الأطباءَ — نعالج المرضى</td></tr>
+        <tr><td>مضاف إلى معرفة</td><td>نحن — طلابَ العلمِ — نطلب المجد</td></tr>
+        <tr><td>اسم عَلَم</td><td>أنا — محمودًا — أقول الحقّ (تأتي في بعض التراكيب)</td></tr>
+        <tr><td>بـ(أيّها/أيّتها)</td><td>نحن — أيّها المعلمون — نُربّي الأجيال</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="warn"><b>تفريق مهمّ:</b> ليس كل اسم بعد ضمير مختصًّا؛ اشترط النحاة أن يكون <b>منصوبًا معرفةً ويمكن حذفه</b>، ويكون الاختصاص <b>مقصودًا</b> في السياق. فقوله: «نحن أبناءُ العروبة» ليس فيه اختصاص؛ لأن (أبناء) خبر مرفوع. أما «نحن — أبناءَ العروبة — نتحلّى بالأخلاق» ففيه اختصاص؛ لأنّ الخبر هو الجملة، والاسم جاء لتفسير الضمير.</div>
+
+    <details class="irab" open>
+      <summary>نموذج إعراب كامل</summary>
+      <div class="body">
+        <p><b>«نحن — الشبابَ — رجالُ الغدِّ»</b> (بالنصب على الاختصاص)</p>
+        <p>نحن: ضمير منفصل مبنيّ على الضم في محل رفع مبتدأ. الشبابَ: مفعول به منصوب على الاختصاص بفعل محذوف وجوبًا تقديره (أخصُّ)، وفاعله ضمير مستتر وجوبًا تقديره (نحن). رجالُ: خبر المبتدأ مرفوع وعلامة رفعه الضمة وهو مضاف. الغدِّ: مضاف إليه مجرور.</p>
+        <p><b>ملاحظة:</b> يجوز في هذه الجملة إعراب آخر مشهور: «الشبابُ» <b>بدل مطابق</b> مرفوع من الضمير (نحن)، وخبرُ المبتدأ هو «رجالُ الغدِّ». والوجهان صحيحان فصيحان، والمرجّح عند كثير من النحويين في مثل هذا التركيب هو البدل؛ لأنّ المعنى يتمّ دونه.</p>
+        <p><b>«إنّنا — رجالَ المستقبلِ — نحملُ همَّ الأمة»</b> — إنّ: حرف ناسخ. نا: ضمير في محل نصب اسم إنّ. رجالَ: مفعول به منصوب على الاختصاص بفعل محذوف وجوبًا تقديره (أخصّ). نحملُ: فعل مضارع مرفوع والفاعل مستتر تقديره نحن، والجملة في محل رفع خبر إنّ. همَّ: مفعول به منصوب وهو مضاف. الأمةِ: مضاف إليه مجرور.</p>
+      </div>
+    </details>
+  </article>
+</section>
+
+<!-- ===================== القسم ===================== -->
+<section id="qasam">
+  <h2><span class="num">١٤</span> أسلوب القَسَم</h2>
+  <p class="lede">توكيدُ الكلام بيمينٍ تُذكر فيها الواو أو الباء أو التاء.</p>
+  <article class="topic">
+    <h3>أركانه وأدواته</h3>
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>الركن</th><th>البيان</th><th>المثال</th></tr></thead>
+      <tbody>
+        <tr><td>أداة القسم</td><td>الواو (الأصل)، الباء (للمظهر)، التاء (الخاصة باسم الله)</td><td>واللهِ — باللهِ — تاللهِ</td></tr>
+        <tr><td>المقسَم به</td><td>اسم مجرور بأداة القسم، ويكون غالبًا من المعظَّمات</td><td>واللهِ — والقرآنِ — والفجرِ</td></tr>
+        <tr><td>جواب القسم</td><td>جملة تُذكر بعد القسم، ويُؤكَّد بها الكلام</td><td>واللهِ لأجتهدَنّ — ﴿والفجرِ وليالٍ عشرٍ﴾</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>أحكام جواب القسم</h3>
+    <ul>
+      <li>إذا كان جملة فعلية <b>مثبتة</b>، وجب توكيدها باللام والنون: «واللهِ لَأفعلَنّ الخير»، ﴿تاللهِ لَأكيدَنَّ أصنامَكم﴾.</li>
+      <li>إذا كان جملة فعلية <b>منفية</b>، اكتُفي باللام: «واللهِ لا أقول إلا الحقّ»، ﴿تاللهِ لا أُكلِّمُ…﴾.</li>
+      <li>إذا كان جملة اسمية، وجب توكيدها بـ(إنّ) واللام: «واللهِ إنّ الحقَّ لمنصورٌ».</li>
+      <li>إذا كان جملة اسمية منفية، اكتُفي باللام: «واللهِ لا إلهَ إلا الله».</li>
+      <li>يجوز حذف جواب القسم إذا دلّ عليه السياق، كما في: «واللهِ لو فعلتَ…» بحذف الجواب.</li>
+      <li>إذا اجتمع شرطٌ وقسمٌ وتقدّم القسم، فالجواب للقسم ويُحذف جواب الشرط: «واللهِ إن داهنتَ الظالمَ لتندمَنَّ» (جواب الشرط محذوف تقديره: عُوقبتَ).</li>
+    </ul>
+
+    <details class="irab" open>
+      <summary>نماذج إعرابية</summary>
+      <div class="body">
+        <p><b>«واللهِ لأجتهدَنَّ»</b> — الواو: حرف قسم وجرّ مبنيّ على الفتح لا محلّ له من الإعراب. اللهِ: لفظ الجلالة مجرور بالواو، والجارّ والمجرور متعلّقان بفعل القسم المحذوف تقديره (أُقسِم). اللام: اللام المزحلقة أو لام جواب القسم لا محلّ لها من الإعراب. أجتهدَنَّ: فعل مضارع مبنيّ على الفتح لاتّصاله بنون التوكيد، والفاعل ضمير مستتر وجوبًا تقديره أنا، والنون نون التوكيد حرف لا محلّ له من الإعراب.</p>
+        <p><b>«تاللهِ لا أُهملُ واجبي»</b> — التاء: حرف قسم وجرّ. اللهِ: مجرور. لا: حرف نفي. أهملُ: فعل مضارع مرفوع (لأنه منفي بـ(لا)، ولم يُؤكَّد بالنون لوجود النفي)، والفاعل مستتر تقديره أنا.</p>
+      </div>
+    </details>
+  </article>
+</section>
+
+<!-- ===================== التعجب ===================== -->
+<section id="taajjub">
+  <h2><span class="num">١٥</span> أسلوب التعجّب</h2>
+  <p class="lede">استعظامُ صفةٍ قويّةٍ برزت في شيءٍ ما.</p>
+
+  <article class="topic">
+    <h3>تعريفه</h3>
+    <p><b>التعجّب</b> انفعالٌ نفسيّ يحدث عند رؤية شيءٍ فيه مزيّة أو غرابة، ويُعبَّر عنه في العربية بصيغٍ <b>قياسية</b> محدَّدة، وصيغٍ <b>سماعية</b> تُفهم من السياق.</p>
+
+    <h3>القسم الأول: التعجّب القياسي (صيغتان)</h3>
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>الصيغة</th><th>مكوّناتها</th><th>إعرابها</th><th>مثال</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><b>ما أفعلَـه</b></td>
+          <td>(ما) التعجّبية + فعل التعجّب + المتعجَّب منه</td>
+          <td>ما: نكرة تامّة بمعنى (شيء) مبنيّة على السكون في محل رفع مبتدأ. الفعل: فعل ماضٍ جامد لإنشاء التعجّب مبنيّ على الفتح، والفاعل ضمير مستتر وجوبًا تقديره (هو). المتعجَّب منه: مفعول به منصوب. والجملة الفعلية في محل رفع خبر المبتدأ.</td>
+          <td>ما أجملَ الصدقَ! — ﴿فما أصبرَهم على النار﴾</td>
+        </tr>
+        <tr>
+          <td><b>أفعِلْ به</b></td>
+          <td>فعل التعجّب + الباء الزائدة + المتعجَّب منه</td>
+          <td>الفعل: فعل ماضٍ جاء على صورة الأمر لإنشاء التعجّب مبنيّ على الفتح (أو السكون على صورة الأمر). الباء: حرف جرّ زائد لا محلّ له من الإعراب. المتعجَّب منه: فاعل مجرور لفظًا مرفوع محلًّا.</td>
+          <td>أكرِمْ بالصدقِ! — ﴿أسمِعْ بهم وأبصِرْ﴾</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>شروط الفعل الذي يُتعجَّب منه قياسيًّا (سبعة شروط)</h3>
+    <ol>
+      <li><b>أن يكون ثلاثيًّا</b> (ثلاثة أحرف أصلية)، فلا يُتعجَّب من (استخرج، انطلق) مباشرةً؛ بل يُتوصَّل إليه بفعل مساعد: «ما أشدَّ انطلاقَه».</li>
+      <li><b>أن يكون تامًّا</b> غير ناقص، فلا يُتعجَّب من (كان وأخواتها) إلا بواسطة: «ما أكثرَ كونَه مجتهدًا».</li>
+      <li><b>أن يكون مثبتًا</b> غير منفي، فلا يُقال: «ما أعدمَ فهمَه» بل يُتوصَّل: «ما أشدَّ عدمَ فهمِه».</li>
+      <li><b>أن يكون متصرِّفًا</b> غير جامد، فلا يُتعجَّب من (نِعْم، بئس، عسى، ليس).</li>
+      <li><b>ألّا يكون مبنيًّا للمجهول</b> في الأصل، أي أن يُتعجَّب من المعلوم؛ فإن كان مجهولًا تُوصِّل إليه بالمصدر: «ما أقبحَ أن يُعاقَبَ البريءُ».</li>
+      <li><b>أن يكون معناه قابلًا للتفاضل (التفاوت)</b>، فلا يُتعجَّب من (مات، فَنِيَ)؛ لأن الموت لا يزيد ولا ينقص، بل تقول: «ما أسرعَ موتَه».</li>
+      <li><b>ألّا يكون وصفًا على وزن (أفعلَ) الذي مؤنثه (فعلاء)</b> — كألوان العيوب: أحمر، أعور، أعرج — فلا يُقال: «ما أحمرَ الوردَ»، بل: «ما أشدَّ حُمرةَ الوردِ».</li>
+    </ol>
+
+    <h3>أحكام التعجّب القياسي</h3>
+    <ul>
+      <li><b>لا يجوز تقديم معمول فعلي التعجّب</b> عليهما، فلا يُقال: «ما محمّدًا أعظمَ».</li>
+      <li><b>لا يُفصل</b> بين فعل التعجّب والمتعجَّب منه إلا بالظرف أو الجارّ والمجرور: «ما أروعَ ليلةَ تمامِ البدر».</li>
+      <li>يجوز <b>زيادة (كان)</b> بين (ما) وفعل التعجّب: «ما كان أكرمَ حاتمًا!».</li>
+      <li>يجوز <b>حذف المتعجَّب منه</b> إذا دلّ عليه دليل: «وما كان أصبرَه!» أي: على البلاء.</li>
+      <li>لا يُبنى من الفعل <b>اسم تفضيل</b> للتعجّب، ولا يُتعجَّب بـ(ما أفعل) إذا كان الفعل منفيًّا أو جامدًا كما سبق.</li>
+    </ul>
+
+    <h3>القسم الثاني: التعجّب السماعي (غير القياسي)</h3>
+    <p>وهو كل تركيب أُفاد الدهشة بالقرينة لا بالصيغة، سُمع عن العرب ولا يُقاس عليه، ومن صيغه:</p>
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>الصيغة</th><th>المثال</th></tr></thead>
+      <tbody>
+        <tr><td>للّهِ درُّه / لله دَرُّك</td><td>«للّهِ دَرُّه فارسًا!» — «للّهِ أنتَ وللّهِ دَرُّه»</td></tr>
+        <tr><td>سبحان الله</td><td>﴿سبحانَ اللهِ، هل كنتُ إلا بشرًا رسولًا﴾</td></tr>
+        <tr><td>التعجّب بالنداء</td><td>«يا لَجمالِ الطبيعةِ!» — «يا لك من رجلٍ!» — «يا له من داهيةٍ»</td></tr>
+        <tr><td>التعجّب بالاستفهام</td><td>﴿ما لي لا أرى الهُدهدَ﴾ — ﴿كيف تكفرون بالله﴾</td></tr>
+        <tr><td>التعجّب بلفظ (عَجَبًا / عجيب)</td><td>﴿واتّخذ سبيلَه في البحر عجبًا﴾ — ﴿إنّ هذا لشيءٌ عجيبٌ﴾</td></tr>
+        <tr><td>التعجّب بـ(فَعُلَ) و(فُعِلَ)</td><td>«شُنْعَ به وفَظُعَ منه!» — «عَظُمَ ذلك في نفسي!»</td></tr>
+        <tr><td>التعجّب بالاسم المصدر</td><td>«وَيْ، من شبابِ هذا الجيل!» — «ويحك!» — «كفى بالأخ سندًا!»</td></tr>
+        <tr><td>التعجّب بالأمر التعجّبي</td><td>«انظرْ إلى جمالِ السماء!» — «أُفٍّ لك!» — «قُتِلَ الإنسانُ ما أكفرَه»</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="note"><b>الإعراب في التعجّب السماعي:</b> لا إعراب ثابت له؛ بل تُعرب الجملة حسب موقعها، ويُفهم التعجّب من القرينة، وتُعرب كلّ مفردة على حسب ما يقتضيه تركيبها.</p>
+
+    <h4>أمثلة قرآنية وشعرية</h4>
+    <div class="ayah">﴿قُتِلَ الإنسانُ ما أكفرَه﴾ — ﴿فما أصبرَهم على النار﴾ (البقرة) — ﴿أسمِعْ بهم وأبصِرْ يومَ يأتونَنا﴾ (مريم).</div>
+    <div class="poem">«ما أحسنَ الجودَ في الدنيا وفي الدينِ / وأقبحَ البخلَ فيمن صيغَ من طينِ» — «ما أكثرَ الناسَ لا بل ما أقلَّهمُ / اللهُ يعلمُ أنّي لم أقلْ فَنِدا».</div>
+
+    <details class="irab" open>
+      <summary>نماذج إعرابية كاملة</summary>
+      <div class="body">
+        <p><b>«ما أجملَ الصدقَ!»</b> — ما: نكرة تامّة التعجّب مبنيّة على السكون في محل رفع مبتدأ. أجملَ: فعل ماضٍ جامد لإنشاء التعجّب مبنيّ على الفتح، والفاعل ضمير مستتر وجوبًا تقديره (هو). الصدقَ: مفعول به منصوب وعلامة نصبه الفتحة. والجملة الفعلية (أجمل الصدق) في محل رفع خبر المبتدأ (ما).</p>
+        <p><b>«أكرِمْ بالصدقِ!»</b> — أكرم: فعل ماضٍ جاء على صورة الأمر لإنشاء التعجّب مبنيّ على الفتح المقدَّر على آخره مَنَعه من الظهور الكسر المناسب لصيغة الأمر… (وعلى قول البصريين: مبنيّ على الفتح). الباء: حرف جرّ زائد لا محلّ له من الإعراب. الصدقِ: فاعل مجرور لفظًا مرفوع محلًّا وعلامة رفعه الضمة المقدَّرة.</p>
+        <p><b>«أسمِعْ بهم وأبصِرْ»</b> — أسمِعْ: فعل ماضٍ بصورة الأمر للتعجّب. بهم: الباء حرف جرّ زائد، والهاء ضمير في محل جرّ، والميم حرف جمع، والجميع في محلّ رفع فاعل. أبصِرْ: فعل ماضٍ بصورة الأمر للتعجّب، والفاعل ضمير مستتر تقديره هو.</p>
+        <p><b>«ما أشدَّ ازدحامَ الطريقِ!»</b> — هنا الفعل (ازدحم) غير ثلاثي، فتُوصِّل إليه بفعل مساعد ثلاثي (شدّ) مستوفٍ للشروط، وهو التعجّب القياسي، و(ازدحامَ) مفعول به منصوب.</p>
+      </div>
+    </details>
+  </article>
+</section>
+
+<!-- ===================== المدح والذم ===================== -->
+<section id="madh">
+  <h2><span class="num">١٦</span> أسلوب المدح والذمّ</h2>
+  <p class="lede">إظهارُ الإعجاب بشيءٍ وتقديرِه، أو استهجانِه واحتقارِه، بتركيبٍ خاص.</p>
+
+  <article class="topic">
+    <h3>أركانه الثلاثة</h3>
+    <ol>
+      <li><b>فعل المدح أو الذمّ:</b> المدح: (نِعْمَ، حبّذا)، والذمّ: (بِئْسَ، ساءَ، لا حبّذا).</li>
+      <li><b>الفاعل:</b> وله صور معلومة (بيانها أدناه).</li>
+      <li><b>المخصوص بالمدح أو الذمّ:</b> وهو الاسم الذي وُجِّه إليه المدح أو الذمّ.</li>
+    </ol>
+    <div class="ex"><span class="t">أمثلة:</span> نِعْمَ الخلقُ الصدقُ. | بِئْسَ الخلقُ الكذبُ. | حبّذا الإخلاصُ. | لا حبّذا النفاقُ. | ساءَ عملًا الخداعُ.</div>
+
+    <h3>القسم الأول: (نِعْمَ) و(بِئْسَ)</h3>
+    <p>فعلان <b>ماضيان جامدان</b> لإنشاء المدح والذمّ، ليس لهما مضارع ولا أمر ولا يُشتقّ منهما. ويجوز أن تلحقهما <b>تاء التأنيث</b> إذا كان الفاعل مؤنثًا: «نعمتِ المرأةُ فاطمةُ» — «بئستِ الخصلةُ الكذبُ».</p>
+
+    <h4>صور فاعل (نعم) و(بئس) — خمس صور</h4>
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>الصورة</th><th>البيان</th><th>المثال</th></tr></thead>
+      <tbody>
+        <tr><td>١) معرَّف بـ(أل)</td><td>الأكثر في الاستعمال</td><td>نعم الصديقُ الكتابُ</td></tr>
+        <tr><td>٢) مضاف إلى معرَّف بـ(أل)</td><td>المضاف نكرة لكنه مخصَّص بالإضافة</td><td>نعم صديقُ المرءِ الكتابُ</td></tr>
+        <tr><td>٣) ضمير مستتر يُفسَّر بنكرة بعده (تمييز)</td><td>الاسم المنصوب بعده يُعرب <b>تمييزًا</b></td><td>﴿نعم أجرًا العاملون﴾ / «نعم عملًا الإتقانُ» — (عملًا: تمييز منصوب)</td></tr>
+        <tr><td>٤) (ما) الموصولة أو (مَن) الموصولة</td><td>تعمل عمل الموصول</td><td>«نعم ما تفعلُه الصدقُ» — «بئس مَن يسُوءُ وطنَه المهملُ» — ﴿بئس ما كانوا يعملون﴾</td></tr>
+        <tr><td>٥) اسم إشارة</td><td>على القول بأن الإشارة فاعل</td><td>«نعم هذا الرجلُ» على بعض التخريجات</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h4>إعراب المخصوص بالمدح أو الذمّ</h4>
+    <ul>
+      <li>إذا جاء <b>بعد</b> الفعل وفاعله: يُعرب <b>مبتدأ مؤخّرًا</b>، والجملة الفعلية قبله في محل رفع <b>خبر مقدَّم</b>. ويجوز إعرابه <b>خبرًا لمبتدأ محذوف وجوبًا</b> تقديره (هو).</li>
+      <li>إذا جاء <b>متقدّمًا</b> على (نعم/بئس): يُعرب <b>مبتدأ</b>، والجملة الفعلية بعده في محل رفع خبر. مثال: «الصدقُ نعم الخلقُ».</li>
+      <li><b>شروط المخصوص:</b> أن يكون <b>معرفة</b>، أو <b>نكرة موصوفة</b>، أو <b>نكرة مضافة</b>. ويجوز حذفه إذا دلّ عليه دليل: ﴿نعم أجرُ العاملين﴾ أي: الجنة.</li>
+    </ul>
+
+    <h3>القسم الثاني: (حبّذا) و(لا حبّذا)</h3>
+    <ul>
+      <li><b>حبّذا</b> = حبَّ (فعل ماضٍ جامد للمدح) + (ذا) اسم إشارة مبنيّ على السكون في محل <b>رفع فاعل</b>.</li>
+      <li><b>لا حبّذا</b> = لا (نافية) + حبَّ (فعل ماضٍ جامد للذمّ) + (ذا) فاعل.</li>
+      <li><b>المخصوص بالمدح أو الذمّ</b> بعدها يُعرب دائمًا <b>مبتدأ مؤخّرًا</b>، والجملة قبله خبر مقدَّم.</li>
+      <li><b>لا يجوز تقديم المخصوص</b> على (حبّذا / لا حبّذا) أبدًا، فلا يُقال: «الصدقُ حبّذا»، بل: «حبّذا الصدقُ».</li>
+      <li>لا تتصل التاء بـ(حبّ) مطلقًا؛ لأن الفاعل (ذا) اسم إشارة مذكّر دائمًا، ولو كان المخصوص مؤنثًا: «حبّذا الفتاةُ الاجتهادُ».</li>
+    </ul>
+
+    <details class="irab" open>
+      <summary>نماذج إعرابية كاملة</summary>
+      <div class="body">
+        <p><b>«نِعْمَ الخلقُ الصدقُ»</b> — نعم: فعل ماضٍ جامد لإنشاء المدح مبنيّ على الفتح لا محلّ له من الإعراب. الخلقُ: فاعل نعم مرفوع وعلامة رفعه الضمة. الصدقُ: مخصوص بالمدح، مبتدأ مؤخّر مرفوع وعلامة رفعه الضمة، والجملة الفعلية (نعم الخلق) في محل رفع خبر مقدَّم. ويصحّ أن يُعرب: خبرًا لمبتدأ محذوف وجوبًا تقديره (هو).</p>
+        <p><b>«بِئْسَ العملُ الغِشُّ»</b> — بئس: فعل ماضٍ جامد لإنشاء الذمّ. العملُ: فاعل مرفوع. الغِشُّ: مخصوص بالذمّ مبتدأ مؤخّر مرفوع، والجملة قبله خبر مقدَّم.</p>
+        <p><b>«نعم عملًا الإتقانُ»</b> — نعم: فعل ماضٍ جامد للمدح. عملًا: تمييز منصوب، والفاعل ضمير مستتر وجوبًا تقديره (هو). الإتقانُ: مخصوص بالمدح مبتدأ مؤخّر مرفوع، والجملة قبله في محل رفع خبر مقدَّم.</p>
+        <p><b>«حبّذا الأمانةُ»</b> — حبَّ: فعل ماضٍ جامد لإنشاء المدح مبنيّ على الفتح. ذا: اسم إشارة مبنيّ على السكون في محل رفع فاعل. الأمانةُ: مخصوص بالمدح مبتدأ مؤخّر مرفوع، والجملة الفعلية قبله في محل رفع خبر مقدَّم.</p>
+        <p><b>«لا حبّذا الكذبُ»</b> — لا: حرف نفي. حبَّ: فعل ماضٍ جامد لإنشاء الذمّ. ذا: اسم إشارة في محل رفع فاعل. الكذبُ: مخصوص بالذمّ مبتدأ مؤخّر مرفوع.</p>
+        <p><b>«الصدقُ نعم الخلقُ»</b> (بتقديم المخصوص) — الصدقُ: مبتدأ مرفوع. نعم: فعل ماضٍ جامد للمدح. الخلقُ: فاعل مرفوع، والجملة الفعلية في محل رفع خبر المبتدأ.</p>
+      </div>
+    </details>
+
+    <div class="note"><b>تنبيه منبِّه:</b> من الأخطاء الشائعة أن يقول الطالب: «نعم قولُ الصدقِ» بحذف الفاعل؛ والصواب ذكر الفاعل: «نعم خلقُ المرءِ الصدقُ»، أو استخدام (حبّذا): «حبّذا قولُ الصدقِ».</div>
+  </article>
+</section>
+
+<!-- ===================== النفي ===================== -->
+<section id="nafy">
+  <h2><span class="num">١٧</span> أسلوب النفي</h2>
+  <p class="lede">نقضُ الحكم وإبعادُه عن الشيء بأداةٍ من أدوات النفي.</p>
+
+  <article class="topic">
+    <h3>أدوات النفي وأحكامها</h3>
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>الأداة</th><th>نوعها</th><th>عملها وأحكامها</th><th>مثال</th></tr></thead>
+      <tbody>
+        <tr><td><b>ما</b></td><td>حرف نفي</td><td>تنفي الماضي غالبًا، ولا عمل لها؛ وتُهمل أو تُعمل عمل (ليس) بشروط: أن يتقدّمها نفي آخر أو يكون اسمها وخبرها نكرتين…</td><td>﴿ما جاءَ أحدٌ﴾ — «ما هذا بشرًا» (عاملة عمل ليس)</td></tr>
+        <tr><td><b>لا</b></td><td>حرف نفي</td><td>تنفي المضارع بلا جزم (لا النافية)، وتعمل عمل (ليس) في الجملة الاسمية بشروط، وتنفي الجنس كليًّا في (لا النافية للجنس)</td><td>﴿لا يَسْخَرْ قومٌ من قومٍ﴾ — «لا رجلَ في الدار»</td></tr>
+        <tr><td><b>إنْ</b></td><td>حرف نفي</td><td>تنفي المضارع والماضي، وتُدخل على الجملة الاسمية بمعنى (ما) النافية</td><td>﴿إنْ أردنا إلا الحسنى﴾ — «إنْ هذا بشرًا»</td></tr>
+        <tr><td><b>لم</b></td><td>حرف نفي وجزم</td><td>تنفي المضارع وتجزمه، وتقلب معناه إلى الماضي المنقطع</td><td>﴿لم يَلِدْ ولم يُولَدْ﴾</td></tr>
+        <tr><td><b>لمّا</b></td><td>حرف نفي وجزم</td><td>تنفي المضارع وتجزمه، وتفيد نفي الماضي المتّصل بالحال (توقّع حدوثه)</td><td>﴿لمّا يأتِكم ما وُعِدتُم﴾ — «لمّا يفعلْ»</td></tr>
+        <tr><td><b>لنْ</b></td><td>حرف نفي ونصب</td><td>تنفي المضارع وتنصبه، وتفيد نفي المستقبل المطلق</td><td>﴿لن نُؤمنَ لك﴾</td></tr>
+        <tr><td><b>ليس</b></td><td>فعل ماضٍ ناقص جامد</td><td>ترفع الاسم وتنصب الخبر، وتنفي الحال</td><td>﴿ليس البرَّ أن تُولُّوا وجوهَكم﴾</td></tr>
+        <tr><td><b>لات</b></td><td>حرف نفي يعمل عمل ليس</td><td>تختصّ بنفي الحال، ويغلب أن يُحذف اسمها، وخبرها محذوف أيضًا</td><td>﴿ولاتَ حينَ مناصٍ﴾ أي: وليس الوقتُ وقتَ فرار</td></tr>
+        <tr><td><b>ما عدا / غير / سوى</b></td><td>أدوات نفي واستثناء</td><td>تفيد النفي مع الاستثناء (تُدرس في باب الاستثناء)</td><td>ما جاء غيرُ زيدٍ</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>تنبيهات هامّة</h3>
+    <ul>
+      <li><b>النفي لا يقتضي الجزم</b>: (لم، لمّا) تجزمان، (لن) تنصب، (ما، لا، إنْ) لا عمل لها في الفعل.</li>
+      <li><b>توكيد النفي</b>: يُؤكَّد النفي بـ(البتّة، أبدًا، قطُّ، عَوضُ، أصلًا، لا…ولا): «لا أبالي ولا أُبالي».</li>
+      <li><b>نفي النفي إثبات</b>: ﴿ما جعل اللهُ لكم من حرج﴾.</li>
+      <li><b>النفي الضمني</b>: يقع في (لولا/لوما) وفي (قد) مع المضارع المنفي، ويُكشف بالتعويض بأداة نفي.</li>
+    </ul>
+  </article>
+</section>
+
+<!-- ===================== التوكيد ===================== -->
+<section id="tawkid">
+  <h2><span class="num">١٨</span> أسلوب التوكيد</h2>
+  <p class="lede">تقويةُ المعنى ودفعُ الشكّ والتوهّم عن السامع.</p>
+
+  <article class="topic">
+    <h3>القسم الأول: التوكيد اللفظي</h3>
+    <p>وهو <b>تكرار اللفظ</b> بعينه: اسمًا، أو فعلًا، أو حرفًا، أو جملة. ويجب أن يكون المؤكَّد <b>معرفة</b> في التوكيد المعنوي، أما اللفظي فيكون في المعرفة والنكرة.</p>
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>المؤكَّد</th><th>المثال</th><th>الإعراب</th></tr></thead>
+      <tbody>
+        <tr><td>اسم</td><td>جاء محمّدٌ محمّدٌ / «الأمانةَ الأمانةَ»</td><td>الاسم الثاني: توكيد لفظي، تبَع الأولَ في الإعراب</td></tr>
+        <tr><td>فعل</td><td>حضرَ حضرَ المعلّمُ — «نعم نعم الصدقُ منجاة»</td><td>الفعل الثاني: توكيد لفظي مبنيّ كما بُني الأول</td></tr>
+        <tr><td>حرف</td><td>«لا لا أبوحُ بالسرّ» — «في في الحديقةِ أزهارٌ»</td><td>الحرف الثاني: توكيد لفظي مبنيّ لا محلّ له من الإعراب</td></tr>
+        <tr><td>ضمير</td><td>﴿اذهبْ أنتَ وأخوكَ﴾ — ﴿قال إنّي أنا أخوك﴾</td><td>الضمير الثاني: توكيد لفظي في محلّ رفع (حسب موقعه)</td></tr>
+        <tr><td>جملة كاملة</td><td>«كلا سوف تعلمون ثم كلا سوف تعلمون»</td><td>الجملة الثانية: توكيد لفظي للجملة الأولى، لا محلّ لها من الإعراب</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="note"><b>توكيد بالمرادف:</b> يجوز التوكيد بلفظ مرادف للمؤكَّد، كقولهم: «نعمْ جَيْرِ» (جير بمعنى نعم).</div>
+
+    <h3>القسم الثاني: التوكيد المعنوي</h3>
+    <p>ويكون بألفاظ مخصوصة تتبع المؤكَّد في الإعراب، ويشترط في المؤكَّد أن يكون <b>معرفة</b>، وأن تُضاف ألفاظ التوكيد إلى <b>ضمير يعود على المؤكَّد</b>.</p>
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>اللفظ</th><th>الغرض</th><th>المثال</th></tr></thead>
+      <tbody>
+        <tr><td><b>نفس — عين</b></td><td>رفع المجاز وإثبات الحقيقة</td><td>حضر الأميرُ نفسُه / رأيتُ الأميرَ عينَه / فاز المتسابقون أنفسُهم</td></tr>
+        <tr><td><b>كل — جميع</b></td><td>الشمول والإحاطة (لما له أفراد أو أجزاء)</td><td>حضر الطلابُ كلُّهم — قرأتُ الكتابَ كلَّه — انتصر الجيشُ جميعُه</td></tr>
+        <tr><td><b>عامة</b></td><td>الشمول</td><td>أكرمتُ الناسَ عامّتَهم</td></tr>
+        <tr><td><b>كلا — كلتا</b></td><td>توكيد المثنى (مذكّر/مؤنّث)</td><td>جاء الرجلان كلاهما — فازت الفتاتان كلتاهما</td></tr>
+        <tr><td><b>أجمع، جمعاء، أجمعون، جُمَع</b></td><td>بعد (كل) لتقوية التوكيد</td><td>﴿فسجد الملائكةُ كلُّهم أجمعون﴾</td></tr>
+        <tr><td><b>ألفاظ العدد من ٣ إلى ١٠</b> مضافةً إلى ضمير</td><td>توكيد العدد</td><td>فاز الأوائلُ ثلاثتُهم — جاء الطلابُ خمسَتُهم</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="warn"><b>احترس:</b> إذا لم تُسبَق (نفس/عين) بالمؤكَّد، أو لم تُضَف إلى ضميره، لم تكن توكيدًا بل تُعرب حسب موقعها: «أتعبَ نفسَه» (مفعول به)، و«كلتا الجنتين آتت أُكُلَها» (كلتا: مبتدأ). وإذا جاءت (جميعًا) دون ضمير فهي <b>حال</b> لا توكيد، كقولك: «حضر الضيوفُ جميعًا».</div>
+
+    <h3>أدوات التوكيد في الجملة (توكيد بالحرف والمعنى)</h3>
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>الأداة</th><th>المثال</th></tr></thead>
+      <tbody>
+        <tr><td>إنّ وأنّ (وما الكافّة معهما)</td><td>﴿إنّ اللهَ غفورٌ رحيمٌ﴾ — «إنّما المؤمنون إخوةٌ»</td></tr>
+        <tr><td>لام الابتداء</td><td>﴿وإنّ الساعةَ لآتيةٌ﴾ — «لمحمّدٌ خيرُ الخلقِ»</td></tr>
+        <tr><td>لام جواب القسم + نون التوكيد</td><td>﴿تاللهِ لأكيدَنَّ أصنامَكم﴾</td></tr>
+        <tr><td>(قد) مع الماضي والمضارع</td><td>﴿قد أفلحَ المؤمنون﴾ — «قد يجودُ البخيلُ»</td></tr>
+        <tr><td>المفعول المطلق المؤكِّد لفعله</td><td>﴿وكَلَّمَ اللهُ موسى تكليمًا﴾ — «ضربتُه ضربًا»</td></tr>
+        <tr><td>النون في فعل الأمر والمضارع بعد الطلب</td><td>«اكتبَنَّ درسَك» — «لتجتهدَنَّ»</td></tr>
+        <tr><td>ألفاظ القسم (لعمرُك، يمينُ الله)</td><td>«لَعمرُك ما أنصفتَ»</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <details class="irab" open>
+      <summary>نماذج إعرابية</summary>
+      <div class="body">
+        <p><b>«جاء الأستاذُ نفسُه»</b> — جاء: فعل ماضٍ مبنيّ على الفتح. الأستاذُ: فاعل مرفوع وعلامة رفعه الضمة. نفسُ: توكيد معنوي مرفوع وعلامة رفعه الضمة، وهو مضاف. والهاء: ضمير متصل مبنيّ في محل جرّ مضاف إليه.</p>
+        <p><b>«قرأتُ الكتابَ كلَّه»</b> — كلَّ: توكيد معنوي منصوب وعلامة نصبه الفتحة، وهو مضاف. والهاء: مضاف إليه.</p>
+        <p><b>«فاز المتسابقان كلاهما»</b> — كلاهما: كلا: توكيد معنوي مرفوع وعلامة رفعه الألف لأنه ملحق بالمثنى، وهو مضاف، و(هما) مضاف إليه.</p>
+        <p><b>«حضرَ حضرَ المعلّمُ»</b> — حضرَ (الأول): فعل ماضٍ مبنيّ على الفتح. حضرَ (الثاني): توكيد لفظي مبنيّ على الفتح. المعلّمُ: فاعل مرفوع.</p>
+      </div>
+    </details>
+  </article>
+</section>
+
+<!-- ===================== الاستثناء ===================== -->
+<section id="istithna">
+  <h2><span class="num">١٩</span> أسلوب الاستثناء</h2>
+  <p class="lede">إخراجُ المستثنى من حكمٍ عامٍّ واردٍ قبله.</p>
+
+  <article class="topic">
+    <h3>أركانه وأدواته</h3>
+    <p><b>أركان الاستثناء ثلاثة:</b> <b>المستثنى منه</b> + <b>أداة الاستثناء</b> + <b>المستثنى</b>.</p>
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>نوع الأداة</th><th>الأدوات</th></tr></thead>
+      <tbody>
+        <tr><td><b>حروف</b></td><td>إلا — خلا — عدا — حاشا (على قول)</td></tr>
+        <tr><td><b>أسماء</b></td><td>غير — سوى (وسُوَى وسواء على لغة)</td></tr>
+        <tr><td><b>أفعال</b></td><td>خلا — عدا — حاشا — ما خلا — ما عدا</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>أنواع الاستثناء</h3>
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>النوع</th><th>تعريفه</th><th>مثال</th></tr></thead>
+      <tbody>
+        <tr><td><b>تامّ مثبت</b></td><td>ذُكر فيه المستثنى منه، ولم يُسبق بنفي أو نهي أو استفهام</td><td>حضر المسافرون إلا زيدًا</td></tr>
+        <tr><td><b>تامّ منفي</b></td><td>ذُكر فيه المستثنى منه، وسُبق بنفي أو شبهه (نهي/استفهام)</td><td>ما حضر المسافرون إلا زيدًا / إلا زيدٌ</td></tr>
+        <tr><td><b>ناقص منفي (مفرَّغ)</b></td><td>حُذف فيه المستثنى منه، وسُبق بنفي؛ فيتفرّغ ما قبل الأداة للعمل في ما بعدها</td><td>ما جاء إلا زيدٌ / ما قرأتُ إلا كتابًا</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p>وينقسم الاستثناء أيضًا إلى <b>متّصل</b> (المستثنى من جنس المستثنى منه) و<b>منقطع</b> (من غير جنسه): ﴿فسجد الملائكةُ كلُّهم أجمعون * إلا إبليسَ﴾ فإبليس ليس من جنس الملائكة، والمستثنى المنقطع يُنصب وجوبًا.</p>
+
+    <h3>إعراب المستثنى بـ(إلا) — القاعدة الذهبية</h3>
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>الحالة</th><th>إعراب ما بعد (إلا)</th><th>مثال وإعراب</th></tr></thead>
+      <tbody>
+        <tr><td><b>تامّ مثبت</b> (أو منقطع)</td><td><b>يجب النصب</b> على الاستثناء</td><td>حضر الطلابُ إلا خالدًا — خالدًا: مستثنى منصوب</td></tr>
+        <tr><td><b>تامّ منفي</b></td><td><b>يجوز</b> النصب على الاستثناء، أو الإتباع على <b>البدل</b> (و(إلا) أداة حصر حينئذ)</td><td>ما حضر الطلابُ إلا خالدًا / إلا خالدٌ — خالدٌ: بدل من (الطلاب) مرفوع</td></tr>
+        <tr><td><b>ناقص منفي (مفرَّغ)</b></td><td>يُعرب الاسم <b>حسب موقعه من الجملة</b>، وتُعرب (إلا) <b>أداة حصر</b> لا محلّ لها من الإعراب</td><td>ما جاء إلا زيدٌ (فاعل) — ما رأيتُ إلا زيدًا (مفعول به) — ما مررتُ إلا بزيدٍ (جارّ ومجرور)</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="note"><b>حيلة التحقّق:</b> لتعرف أن الاستثناء مفرَّغ، احذف أداة النفي وأداة الاستثناء، فإن استقام المعنى فهو مفرَّغ. ولتحويل المفرَّغ إلى تامّ: أضِف (أحدًا) قبل الأداة إن كان المستثنى عاقلًا، و(شيئًا) إن كان غير عاقل: «ما جاء إلا زيدٌ» → «ما جاء أحدٌ إلا زيدٌ».</div>
+
+    <h3>إعراب المستثنى بـ(غير) و(سوى)</h3>
+    <ul>
+      <li>تُعرب (غير) و(سوى) الإعراب الذي يستحقّه المستثنى بـ(إلا) في الحالات الثلاث نفسها، ويأتي ما بعدهما <b>مضافًا إليه مجرورًا</b> دائمًا.</li>
+      <li>تامّ مثبت: «جاء الطلابُ غيرَ خالدٍ» — غيرَ: مستثنى منصوب، خالدٍ: مضاف إليه مجرور.</li>
+      <li>تامّ منفي: «ما جاء الطلابُ غيرَ/غيرُ خالدٍ» — النصب على الاستثناء أو الرفع على البدل.</li>
+      <li>ناقص منفي: «ما جاء غيرُ خالدٍ» — غيرُ: فاعل مرفوع، وهو مضاف.</li>
+    </ul>
+
+    <h3>إعراب المستثنى بـ(خلا، عدا، حاشا)</h3>
+    <ul>
+      <li>إذا لم تسبقها (ما): جاز فيها وجهان: <b>أفعالًا ماضية</b> والاسم بعدها <b>مفعول به منصوب</b>، أو <b>حروف جرّ</b> والاسم بعدها <b>مجرور</b>.</li>
+      <li>إذا سُبقت بـ(ما) المصدرية: تعيّن أن تكون <b>أفعالًا</b> والاسم بعدها منصوب على المفعولية: «حضر الطلابُ ما عدا خالدًا».</li>
+      <li>حاشا يُرجّح فيها أن تكون حرف جرّ فيجرّ ما بعدها: «حضر الطلابُ حاشا خالدٍ».</li>
+    </ul>
+
+    <details class="irab" open>
+      <summary>نماذج إعرابية كاملة</summary>
+      <div class="body">
+        <p><b>«حضر الطلابُ إلا خالدًا»</b> (تامّ مثبت) — حضر: فعل ماضٍ. الطلابُ: فاعل مرفوع. إلا: أداة استثناء حرف مبنيّ على السكون لا محلّ له من الإعراب. خالدًا: مستثنى منصوب وعلامة نصبه الفتحة.</p>
+        <p><b>«ما حضر الطلابُ إلا خالدٌ»</b> (تامّ منفي) — ما: حرف نفي. إلا: أداة حصر. خالدٌ: <b>بدل</b> من (الطلاب) مرفوع وعلامة رفعه الضمة.</p>
+        <p><b>«ما جاء إلا محمّدٌ»</b> (مفرَّغ) — ما: حرف نفي. إلا: أداة حصر لا محلّ لها من الإعراب. محمّدٌ: فاعل مرفوع وعلامة رفعه الضمة.</p>
+        <p><b>«ما مررتُ إلا بمحمّدٍ»</b> — إلا: أداة حصر. بمحمّدٍ: جارّ ومجرور متعلّقان بمحذوف تقديره (مررت)، والاسم مجرور.</p>
+        <p><b>«حضر المسافرون غيرَ قائدٍ»</b> — غيرَ: مستثنى منصوب وعلامة نصبه الفتحة، وهو مضاف. قائدٍ: مضاف إليه مجرور.</p>
+        <p><b>«حضر الضيوفُ ما عدا ضيفًا»</b> — ما: حرف مصدري (زائد). عدا: فعل ماضٍ مبنيّ على الفتح. ضيفًا: مفعول به منصوب، والفاعل ضمير مستتر تقديره هو.</p>
+        <p><b>«قرأتُ الكتابَ خلا فصلٍ»</b> — خلا: حرف جرّ مبنيّ لا محلّ له من الإعراب. فصلٍ: اسم مجرور، والجارّ والمجرور متعلّقان بمحذوف.</p>
+      </div>
+    </details>
+  </article>
+</section>
+
+<!-- ===================== الشرط ===================== -->
+<section id="shart">
+  <h2><span class="num">٢٠</span> أسلوب الشرط</h2>
+  <p class="lede">تلازمُ جملتين وارتباطُهما بأداةٍ تُسمّى أداة الشرط.</p>
+
+  <article class="topic">
+    <h3>أركانه الثلاثة</h3>
+    <ol>
+      <li><b>أداة الشرط</b> (التي تربط بين الجملتين).</li>
+      <li><b>جملة الشرط</b> = فعل الشرط (ويجب أن تكون جملة فعلية).</li>
+      <li><b>جملة الجواب</b> = جواب الشرط.</li>
+    </ol>
+
+    <h3>أدوات الشرط الجازمة (تجزم فعلين مضارعين)</h3>
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>الأداة</th><th>نوعها وإعرابها</th><th>مثال</th></tr></thead>
+      <tbody>
+        <tr><td><b>إنْ</b></td><td>حرف شرط جازم مبنيّ لا محلّ له من الإعراب</td><td>إن تجتهدْ تنجحْ</td></tr>
+        <tr><td><b>إذما</b></td><td>حرف شرط جازم</td><td>إذما تصاحبْ خيرًا تُصاحَبْ</td></tr>
+        <tr><td><b>مَن</b></td><td>اسم شرط جازم في محل رفع مبتدأ، أو نصب مفعول به مقدم</td><td>﴿مَن يعملْ سوءًا يُجزَ به﴾ — مَن تكرِمْ أكرِمْ</td></tr>
+        <tr><td><b>ما / مهما</b></td><td>اسم شرط جازم في محلّ نصب مفعول به أو رفع مبتدأ…</td><td>«ما تفعلْ من خيرٍ تجدْه»</td></tr>
+        <tr><td><b>متى / أيّان</b></td><td>ظرفا زمان، في محلّ نصب ظرفية</td><td>متى تزُرْني أُكرِمْك</td></tr>
+        <tr><td><b>أين / أنّى / أينما / حيثما</b></td><td>ظروف مكان، في محلّ نصب ظرفية</td><td>﴿أينما تكونوا يُدرِكْكم الموتُ﴾</td></tr>
+        <tr><td><b>كيفما</b></td><td>في محلّ نصب حال مقدَّمة</td><td>كيفما تعملْ أُعاملْك</td></tr>
+        <tr><td><b>أيّ</b></td><td>معربة، تُعرب حسب ما تُضاف إليه</td><td>أيَّ كتابٍ تقرأْ تستفدْ</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>أدوات الشرط غير الجازمة</h3>
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>الأداة</th><th>دلالتها</th><th>مثال</th></tr></thead>
+      <tbody>
+        <tr><td><b>إذا</b></td><td>ظرف لما يُستقبل من الزمان، لا تجزم، ولا يليها إلا فعل</td><td>﴿إذا جاءَ نصرُ اللهِ﴾ — إذا اجتهدتَ نجحتَ</td></tr>
+        <tr><td><b>لو</b></td><td>حرف امتناع لامتناع (للتخيُّض للماضي غالبًا)</td><td>لو اجتهدتَ لنجحتَ</td></tr>
+        <tr><td><b>لولا / لوما</b></td><td>حرفا امتناع لوجود، يدخلان على جملتين، ويأتي بعدها مبتدأ خبره محذوف وجوبًا تقديره (موجود)</td><td>لولا العلمُ لتأخّر المجتمعُ — العلمُ: مبتدأ مرفوع، والخبر محذوف</td></tr>
+        <tr><td><b>كلّما</b></td><td>ظرف زمان يفيد التكرار في الحالين</td><td>كلّما قرأتُ كتابًا اتّسعت معرفتي</td></tr>
+        <tr><td><b>لمّا</b></td><td>ظرف زمان للماضي بمعنى (حين)، يليها فعل ماضٍ وفعل ماضٍ</td><td>﴿ولمّا جاءَ أمرُنا نجّينا…﴾</td></tr>
+        <tr><td><b>أمّا</b></td><td>حرف شرط يفيد التفصيل، لا بدّ من (الفاء) في جوابه</td><td>﴿فأمّا اليتيمَ فلا تقهرْ﴾</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>أحكام الجواب (جواب الشرط)</h3>
+    <ul>
+      <li>إذا كان بالمضارع وكان الأداة <b>جازمة</b>: يجب <b>جزمه</b>؛ إلا إذا سُبق بـ(فاء، أو، وإذا) أو كانت الأداة غير جازمة.</li>
+      <li>إذا اقترن الجواب بـ<b>الفاء</b>: يبقى مرفوعًا ولا يُجزم: «إن تجتهدْ فتنجحُ» (تنجحُ: مرفوع، والجملة في محل جزم جواب الشرط).</li>
+      <li>إذا كان الجواب <b>جملة فعلية فعلها ماضٍ</b>: يكون في محلّ جزم على أنه جواب الشرط: «إن اجتهدتَ نجحتَ».</li>
+      <li>إذا كان الجواب <b>جملة اسمية</b>: اقترنت بالفاء، وتكون في محلّ جزم: «إن تسعَ فأنت سعيدٌ».</li>
+      <li>إذا كانت الأداة <b>غير جازمة</b>: فجملة الجواب لا محلّ لها من الإعراب.</li>
+      <li>إذا اجتمع <b>شرط وقسم</b> وتقدّم القسم: فالجواب للقسم، ويُحذف جواب الشرط: «واللهِ إن داهنتَ لتندمُنّ».</li>
+      <li>يجوز <b>حذف جواب الشرط</b> إذا دلّ عليه دليل، وخاصة بعد (لو): «ولو أنّي…» بحذف الجواب.</li>
+      <li>يجوز أن يكون <b>جواب الشرط ماضٍ</b> بإضافة (قد): "إن تسعَ فقد وصلتَ".</li>
+    </ul>
+
+    <details class="irab" open>
+      <summary>نماذج إعرابية كاملة</summary>
+      <div class="body">
+        <p><b>«إنْ تجتهدْ تنجحْ»</b> — إن: حرف شرط جازم مبنيّ على السكون لا محلّ له من الإعراب. تجتهدْ: فعل مضارع مجزوم لأنّ أداة الشرط جزمته، وعلامة جزمه السكون، والفاعل ضمير مستتر تقديره أنت، وهو فعل الشرط. تنجحْ: فعل مضارع مجزوم على أنه جواب الشرط، وعلامة جزمه السكون، والفاعل مستتر تقديره أنت.</p>
+        <p><b>«مَن يزرعْ خيرًا يحصدْ راحةً»</b> — مَن: اسم شرط جازم مبنيّ على السكون في محل رفع مبتدأ. يزرعْ: فعل مضارع مجزوم، والفاعل مستتر. خيرًا: مفعول به منصوب. يحصدْ: جواب الشرط مجزوم. راحةً: مفعول به منصوب. والجملة الشرطية وجوابها في محل رفع خبر المبتدأ (مَن).</p>
+        <p><b>«متى تدرسْ ترتفعْ درجاتُك»</b> — متى: اسم شرط جازم مبنيّ على السكون في محل نصب ظرف زمان. تدرسْ: فعل الشرط مجزوم. ترتفعْ: جواب الشرط مجزوم. درجاتُك: فاعل مرفوع، والكاف مضاف إليه.</p>
+        <p><b>«إن تسعَ فقد نجحتَ»</b> — إن: حرف شرط جازم. تسعَ: فعل مضارع مجزوم وعلامة جزمه حذف حرف العلة. الفاء: رابطة لجواب الشرط. قد: حرف تحقيق. نجحتَ: فعل ماضٍ + تاء الفاعل، والجملة في محلّ جزم جواب الشرط.</p>
+        <p><b>«لولا العلمُ لتأخّر المجتمعُ»</b> — لولا: حرف شرط غير جازم مبنيّ على السكون لا محلّ له من الإعراب (حرف امتناع لوجود). العلمُ: مبتدأ مرفوع، والخبر محذوف وجوبًا تقديره (موجود). اللام: رابطة لجواب الشرط. تأخّر: فعل ماضٍ مبنيّ على الفتح. المجتمعُ: فاعل مرفوع؛ وجملة الجواب لا محلّ لها من الإعراب.</p>
+        <p><b>«إذا اجتهدتَ نجحتَ»</b> — إذا: أداة شرط غير جازمة (ظرف مبنيّ على السكون في محلّ نصب) لا تجزم. اجتهدتَ: فعل ماضٍ في محلّ جزم فعل الشرط (على رأي)، أو جملة الشرط لا محلّ لها (على رأي آخر). نجحتَ: جواب الشرط لا محلّ له من الإعراب.</p>
+      </div>
+    </details>
+  </article>
+</section>
+
+<!-- ===================== النواسخ ===================== -->
+<section id="nawasikh">
+  <h2><span class="num">٢١</span> ملحق القواعد (١): النواسخ — ما يُغيّر حكم المبتدأ والخبر</h2>
+  <p class="lede">الناسخ: كلُّ عاملٍ يدخل على الجملة الاسمية فيُغيّر حكم المبتدأ والخبر الإعرابي.</p>
+
+  <article class="topic">
+    <h3>أولًا: كان وأخواتها (الأفعال الناقصة) — ١٣ فعلًا</h3>
+    <p><b>عملها:</b> ترفع المبتدأ ويُسمّى <b>اسمها</b>، وتنصب الخبر ويُسمّى <b>خبرها</b>. وسُمّيت ناقصة لأنها لا تكتفي بالمرفوع بعدها.</p>
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>المجموعة</th><th>الأفعال</th><th>الدلالة</th><th>مثال</th></tr></thead>
+      <tbody>
+        <tr><td>الاستمرار</td><td>كان، ظلّ، بات، أضحى، أصبح، أمسى</td><td>وقوع الخبر في وقت معيّن</td><td>كان الجوُّ جميلًا — ظلّ المطرُ منهمرًا</td></tr>
+        <tr><td>التحوّل</td><td>صار</td><td>تحوّل الاسم إلى الخبر</td><td>صار الماءُ ثلجًا</td></tr>
+        <tr><td>النفي</td><td>ليس</td><td>نفي الخبر عن الاسم في الحال</td><td>ليس التقدّمُ مستحيلًا</td></tr>
+        <tr><td>الاستمرار المقيَّد بـ(ما)</td><td>ما زال، ما برح، ما فتِئ، ما انفكّ</td><td>استمرار الخبر (وهي منفيّة بـما ولا تعمل إلا مع النفي)</td><td>ما زال الحرُّ شديدًا</td></tr>
+        <tr><td>المصدرية الظرفية</td><td>ما دام</td><td>مدة دوام الخبر، ولا تعمل إلا مسبوقة بـ(ما)</td><td>﴿ما دُمتُ حيًّا﴾</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <h4>أحكام مهمّة</h4>
+    <ul>
+      <li>قد تُزاد (كان) بين المبتدأ والخبر أو بعد (ما) التعجّبية: «ما كان أكرمَ حاتمًا».</li>
+      <li>يُشتقّ من (كان) المضارع (يكون) والأمر (كُنْ)، واسمها ضمير مستتر: «كُنْ صبورًا».</li>
+      <li><b>يجب تأخير الخبر</b> إذا كان الاسم والخبر معرفتين متساويتين أو كان الخبر محصورًا أو كان اسم كان ضميرًا متصلًا…</li>
+      <li><b>يجوز تقديم الخبر</b> على الاسم إذا لم يكن هناك مانع: «كان في الدار رجلٌ».</li>
+    </ul>
+    <details class="irab" open>
+      <summary>نموذج إعراب</summary>
+      <div class="body">
+        <p><b>«كان المجتهدُ ناجحًا»</b> — كان: فعل ماضٍ ناقص مبنيّ على الفتح. المجتهدُ: اسم كان مرفوع وعلامة رفعه الضمة. ناجحًا: خبر كان منصوب وعلامة نصبه الفتحة.</p>
+        <p><b>«ما زال الطالبان مجتهدَين»</b> — ما: نافية. زال: فعل ماضٍ ناقص مبنيّ على الفتح. الطالبان: اسم زال مرفوع وعلامة رفعه الألف لأنه مثنى. مجتهدَين: خبر زال منصوب وعلامة نصبه الياء لأنه مثنى.</p>
+      </div>
+    </details>
+
+    <h3>ثانيًا: إنّ وأخواتها (الحروف المشبَّهة بالفعل)</h3>
+    <p><b>عملها:</b> تنصب المبتدأ ويُسمّى <b>اسمها</b>، وترفع الخبر ويُسمّى <b>خبرها</b> — عكس كان.</p>
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>الحرف</th><th>معناه</th><th>مثال</th></tr></thead>
+      <tbody>
+        <tr><td>إنّ</td><td>التوكيد</td><td>﴿إنّ اللهَ غفورٌ رحيمٌ﴾</td></tr>
+        <tr><td>أنّ</td><td>المصدرية (والتوكيد)</td><td>﴿علمَ أنّ اللهَ شديدُ العقاب﴾</td></tr>
+        <tr><td>كأنّ</td><td>التشبيه</td><td>﴿كأنّهم حُمُرٌ مُستنفِرة﴾</td></tr>
+        <tr><td>لكنّ</td><td>الاستدراك</td><td>محمدٌ كريمٌ لكنّه بخيلٌ في المديح</td></tr>
+        <tr><td>ليت</td><td>التمنّي</td><td>ليت الشبابَ يعودُ</td></tr>
+        <tr><td>لعلّ</td><td>الترجّي (والإشفاق والاستفهام)</td><td>لعلّ الفرجَ قريبٌ</td></tr>
+        <tr><td>لا النافية للجنس</td><td>نفي الجنس على سبيل التنصيص</td><td>لا رجلَ في الدار</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <h4>أحكام مهمّة</h4>
+    <ul>
+      <li><b>ما الكافّة:</b> إذا دخلت (ما) على هذه الحروف أبطلت عملها إلا (ليت) فيجوز إعمالها وإهمالها: ﴿إنّما المؤمنون إخوة﴾ — (المؤمنون: مبتدأ مرفوع).</li>
+      <li><b>لا يُبتدأ بـ(لكنّ)</b>؛ لأنها للاستدراك بعد كلام سابق.</li>
+      <li>قد تُزاد <b>لام التوكيد</b> بعد (إنّ) وقبل الخبر: ﴿وإنّ الساعةَ لآتية﴾.</li>
+      <li>يجب تقديم الخبر إذا كان شبه جملة والاسم نكرة تامّة: «إنّ في المطالعةِ لفائدةً».</li>
+      <li>يجوز أن يكون خبرها جملة أو شبه جملة: ﴿إنّ اللهَ يأمرُ بالعدل﴾.</li>
+    </ul>
+    <details class="irab" open>
+      <summary>نموذج إعراب</summary>
+      <div class="body">
+        <p><b>«إنّ العلمَ نورٌ»</b> — إنّ: حرف ناسخ مبنيّ على الفتح لا محلّ له من الإعراب. العلمَ: اسم إنّ منصوب وعلامة نصبه الفتحة. نورٌ: خبر إنّ مرفوع وعلامة رفعه الضمة.</p>
+        <p><b>«كأنّ الجنديَّين أسدان»</b> — كأنّ: حرف ناسخ للتشبيه. الجنديَّين: اسم كأنّ منصوب وعلامة نصبه الياء لأنه مثنى. أسدان: خبر كأنّ مرفوع وعلامة رفعه الألف لأنه مثنى.</p>
+      </div>
+    </details>
+
+    <h3>ثالثًا: ظنّ وأخواتها (أفعال القلوب) — تنصب مفعولين</h3>
+    <p>تدخل على المبتدأ والخبر فينصبهما، ويُسمّى الأول <b>مفعولًا به أولًا</b> والثاني <b>مفعولًا به ثانيًا</b>. وأشهرها: <b>ظنّ، حسِبَ، خالَ، زعمَ، رأى، علِمَ، وجدَ، درى، تعلَّمْ</b>، وأفعال <b>التصيير</b>: جعلَ، صيَّرَ، اتّخذَ، تركَ، ردَّ، وهبَ.</p>
+    <div class="ex"><span class="t">أمثلة:</span> ظننتُ الاجتهادَ طريقَ النجاحِ. — ﴿إنّا رأيناه سخِرًا﴾ — «وجدتُ راحةَ الضميرِ نعمةً» — «جعلَ اللهُ الأرضَ مهدًا».</div>
+    <details class="irab" open>
+      <summary>نموذج إعراب</summary>
+      <div class="body">
+        <p><b>«ظنّ الطالبُ الامتحانَ سهلًا»</b> — ظنّ: فعل ماضٍ مبنيّ على الفتح. الطالبُ: فاعل مرفوع. الامتحانَ: مفعول به أول منصوب. سهلًا: مفعول به ثانٍ منصوب.</p>
+      </div>
+    </details>
+
+    <h3>رابعًا: كاد وأخواتها (أفعال المقاربة والرجاء والشروع)</h3>
+    <p>تعمل عمل كان (ترفع الاسم وتنصب الخبر)، ولكن <b>يجب أن يكون خبرها جملة فعلية فعلها مضارع</b>.</p>
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>المجموعة</th><th>الأفعال</th><th>الخصائص</th><th>مثال</th></tr></thead>
+      <tbody>
+        <tr><td>المقاربة</td><td>كاد، كرَبَ، أوشك</td><td>تقلّ (أن) مع كاد وكرب وتكثر مع أوشك</td><td>كاد المطرُ ينزل — أوشك الفجرُ أن يطلع</td></tr>
+        <tr><td>الرجاء</td><td>عسى، حرى، اخلولق</td><td>يجب اقتران خبرها بـ(أن) غالبًا</td><td>﴿عسى ربُّكم أن يرحمَكم﴾</td></tr>
+        <tr><td>الشروع</td><td>بدأ، أخذ، شرع، طفق، أنشأ، هبَّ</td><td>خبرها مضارع مقترن بـ(أن) أو مجرَّد</td><td>شرع الطالبُ يقرأُ — أخذت أُذاكرُ</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>خامسًا: لا النافية للجنس</h3>
+    <p>تُشبه (إنّ) في العمل: تنصب الاسم وترفع الخبر، وتنفي الخبر عن <b>جنس الاسم كله</b> نفيًا نصًّا لا احتمالًا.</p>
+    <h4>شروط عملها</h4>
+    <ol>
+      <li>أن يكون نفيها للجنس <b>نصًّا</b> لا احتمالًا (فلو نفت الواحد فقط كانت نافية للوحدة وعملت عمل ليس).</li>
+      <li>أن يكون اسمها وخبرها <b>نكرتين</b>.</li>
+      <li>ألّا يُفصل بينها وبين اسمها بفاصل.</li>
+      <li>ألّا يتقدّم خبرها على اسمها.</li>
+      <li>ألّا تُسبق بحرف جرّ.</li>
+    </ol>
+    <h4>أحوال اسمها</h4>
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>الحالة</th><th>الحكم</th><th>مثال</th></tr></thead>
+      <tbody>
+        <tr><td>مفرد أو جمع تكسير</td><td><b>مبنيّ على الفتح</b> في محل نصب</td><td>لا رجلَ في الدار — لا رجالَ في الدار</td></tr>
+        <tr><td>مثنى أو جمع مذكر سالم</td><td><b>مبنيّ على الياء</b> في محل نصب</td><td>لا رجلَين في الدار — لا مسلمِينَ متفرّقون</td></tr>
+        <tr><td>جمع مؤنث سالم</td><td><b>مبنيّ على الكسر</b> في محل نصب</td><td>لا مسلماتِ في الساحة</td></tr>
+        <tr><td>مضاف</td><td><b>معرب منصوب</b></td><td>لا ضعيفَ الهمّةِ محبوبٌ</td></tr>
+        <tr><td>شبيه بالمضاف</td><td><b>معرب منصوب</b></td><td>لا طالعًا جبلًا موجودٌ — لا بائعًا دينَه بدنياه رابحٌ</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="note"><b>إذا اختلّ شرط:</b> فإن كان اسمها معرفة أو فُصل بينهما فاصل، أُلغيت ووجب تكرارها وأُعرب ما بعدها مبتدأ: «لا الشمسُ ينبغي لها أن تُدرِكَ القمرَ ولا الليلُ سابقُ النهار» — وإذا سُبقت بحرف جرّ صار ما بعدها مجرورًا و(لا) زائدة: «جاء بلا زادٍ».</div>
+    <p><b>من ألفاظها الشائعة الملازمة لاسم لا المحذوف خبره:</b> لا شكّ، لا بأس، لا ريب، لا مفرّ، لا بُدّ، لا مهرب — وتُعرب: اسم لا مبنيّ على الفتح في محل نصب، والخبر محذوف تقديره (موجود).</p>
+    <h4>إعراب (لا سِيَّما)</h4>
+    <p>لا: نافية للجنس. سِيَّ: اسم لا منصوب بالفتحة (لأنه مضاف). ما: زائدة (أو موصولة/نكرة مبهمة). وما بعدها يجوز فيه: الرفع (خبر لمبتدأ محذوف)، أو النصب (تمييز)، أو الجرّ (مضاف إليه). مثال: «أُكرِم الناسَ ولا سيّما الفقيرُ / الفقيرَ / الفقيرِ».</p>
+    <details class="irab" open>
+      <summary>نماذج إعراب</summary>
+      <div class="body">
+        <p><b>«لا مهملَ ناجحٌ»</b> — لا: نافية للجنس حرف مبنيّ على السكون لا محلّ له من الإعراب. مهملَ: اسم لا مبنيّ على الفتح في محل نصب. ناجحٌ: خبر لا مرفوع.</p>
+        <p><b>«لا صاحبَ خيانةٍ مكرَّمٌ»</b> — صاحبَ: اسم لا منصوب وعلامة نصبه الفتحة؛ لأنه مضاف. خيانةٍ: مضاف إليه مجرور. مكرَّمٌ: خبر لا مرفوع.</p>
+        <p><b>«لا كريمًا خلقُه محرومٌ»</b> — كريمًا: اسم لا <b>منصوب</b> (شبيه بالمضاف)، وخلقُه فاعل لاسم الفاعل مرفوع. محرومٌ: خبر لا.</p>
+      </div>
+    </details>
+
+    <h3>سادسًا: ما ولا ولات وإنْ المشبَّهات بليس</h3>
+    <p>هي حروف نفي تعمل عمل (ليس): ترفع الاسم وتنصب الخبر، وبشروط:</p>
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>الأداة</th><th>شرط إعمالها</th><th>مثال</th></tr></thead>
+      <tbody>
+        <tr><td><b>ما</b></td><td>ألّا يقترن خبرها بـ(إلّا)، وألّا يتقدّم خبرها على اسمها، وأن يكون بين المبتدأ والخبر</td><td>«ما هذا بشرًا» — ما محمّدٌ مقصّرًا</td></tr>
+        <tr><td><b>لا</b></td><td>أن يكون اسمها وخبرها نكرتين، وألّا يتقدّم خبرها</td><td>«لا رجلٌ أفضلَ منك» (لا النافية للوحدة)</td></tr>
+        <tr><td><b>لات</b></td><td>تختصّ بنفي الحال، ويُحذف اسمها غالبًا</td><td>﴿ولاتَ حينَ مناصٍ﴾ أي: وليس الوقتُ وقتَ فرارٍ</td></tr>
+        <tr><td><b>إنْ</b></td><td>ألّا يقترن خبرها بـ(إلّا)، وألّا تتقدّم عليها (ما)</td><td>«إنْ أحدٌ خيرًا من أحدٍ إلّا بعافيةٍ» (نُصب خيرًا على لغة الإعمال)</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </article>
+</section>
+
+<!-- ===================== المرفوعات ===================== -->
+<section id="marfuat">
+  <h2><span class="num">٢٢</span> ملحق القواعد (٢): المرفوعات</h2>
+  <article class="topic">
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>المرفوع</th><th>تعريفه</th><th>مثال وإعراب</th></tr></thead>
+      <tbody>
+        <tr><td><b>الفاعل</b></td><td>من قام بالفعل أو اتّصف به، ويكون بعد فعل معلوم</td><td>﴿وجاءَ رجلٌ من أقصى المدينة﴾ — رجلٌ: فاعل مرفوع</td></tr>
+        <tr><td><b>نائب الفاعل</b></td><td>ما حلّ محلّ الفاعل بعد بناء الفعل للمجهول</td><td>﴿وغِيضَ الماءُ﴾ — الماءُ: نائب فاعل مرفوع</td></tr>
+        <tr><td><b>المبتدأ</b></td><td>الاسم المرفوع المتقدّم الذي يُخبر عنه</td><td>العلمُ نورٌ — العلمُ: مبتدأ مرفوع</td></tr>
+        <tr><td><b>الخبر</b></td><td>الاسم المرفوع المتمّم للمبتدأ (وقد يكون جملة أو شبه جملة)</td><td>نورٌ: خبر مرفوع — ﴿واللهُ يهدي من يشاء﴾ (جملة الخبر في محل رفع)</td></tr>
+        <tr><td><b>اسم كان وأخواتها</b></td><td>المرفوع بعدها</td><td>كان الجوُّ جميلًا</td></tr>
+        <tr><td><b>خبر إنّ وأخواتها</b></td><td>المرفوع بعدها</td><td>إنّ العلمَ نورٌ</td></tr>
+        <tr><td><b>الفاعل الذي ناب عن المفعول في المدح/الذم</b></td><td>فاعل (نعم/بئس)</td><td>نعم الخلقُ الصدقُ</td></tr>
+        <tr><td><b>المخصوص بالمدح/الذم</b></td><td>مبتدأ مؤخّر غالبًا</td><td>حبّذا الصدقُ</td></tr>
+        <tr><td><b>التوابع المرفوعة</b></td><td>نعت/بدل/عطف/توكيد يتبع المرفوع</td><td>جاء الطالبُ المجتهدُ</td></tr>
+        <tr><td><b>المفعول الذي لم يُسمَّ فاعله له</b></td><td>نحو (أُعطِيَ الفقيرُ ثوبًا) — الفقير: نائب فاعل، ثوبًا: مفعول به</td><td>﴿وأُوتِيَتْ من كلّ شيء﴾</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>أنواع الخبر</h3>
+    <ul>
+      <li><b>مفرد:</b> العلمُ نورٌ.</li>
+      <li><b>جملة اسمية أو فعلية:</b> «المؤمنُ أخلاقُه حسنةٌ» / «الطالبُ يقرأُ» — والجملة في محلّ رفع خبر.</li>
+      <li><b>شبه جملة (ظرف أو جار ومجرور):</b> «الكتابُ على الطاولة» — «الكتابُ في الحقيبة».</li>
+    </ul>
+    <h3>حذف المبتدأ والخبر</h3>
+    <ul>
+      <li><b>حذف الخبر وجوبًا:</b> بعد (لولا) الامتناعية: «لولا اللهُ لضللنا» (أي: موجود)، وبعد واو المعية: «كلُّ رجلٍ وضيعتُه».</li>
+      <li><b>حذف المبتدأ وجوبًا:</b> في جواب الاستفهام: «مَن عندك؟ زيدٌ» (أي: هو زيدٌ)، وفي المخصوص بالمدح على وجه (خبر لمبتدأ محذوف).</li>
+    </ul>
+  </article>
+</section>
+
+<!-- ===================== المنصوبات ===================== -->
+<section id="mansubat">
+  <h2><span class="num">٢٣</span> ملحق القواعد (٣): المنصوبات (المفاعيل ومُلحقاتها)</h2>
+  <article class="topic">
+    <h3>المفعولات الخمسة</h3>
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>النوع</th><th>تعريفه</th><th>مثال وإعراب</th></tr></thead>
+      <tbody>
+        <tr><td><b>المفعول به</b></td><td>ما وقع عليه فعل الفاعل، ويكون مفعولًا واحدًا أو اثنين أو ثلاثة</td><td>قرأتُ الكتابَ — أعطيتُ الفقيرَ ثوبًا — أعلمتُ زيدًا عمرًا فاضلًا</td></tr>
+        <tr><td><b>المفعول المطلق</b></td><td>مصدر منصوب من لفظ الفعل، يؤكّد عامله أو يبيّن نوعه أو عدده</td><td>﴿وكَلَّمَ اللهُ موسى تكليمًا﴾ — انطلق انطلاقَ السهمِ (بيان النوع) — دُقَّ دقّتين (بيان العدد)</td></tr>
+        <tr><td><b>المفعول فيه (الظرف)</b></td><td>اسم زمان أو مكان منصوب، تضمّن معنى (في)</td><td>سافرتُ ليلًا — جلستُ أمامَ المسجدِ — «صُمتَ رمضانَ»</td></tr>
+        <tr><td><b>المفعول لأجله (المفعول له)</b></td><td>مصدر قلبي منصوب يبيّن سبب حدوث الفعل قبله</td><td>﴿ولا تقتلوا أولادَكم خشيةَ إملاقٍ﴾ — قمتُ إجلالًا للمعلّمِ</td></tr>
+        <tr><td><b>المفعول معه</b></td><td>اسم منصوب بعد واو بمعنى (مع)</td><td>سِرتُ والنيلَ — «استوى الماءُ والخشبةَ»</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>نوائب المفعول المطلق</h3>
+    <p>ينوب عن المفعول المطلق: <b>مُرادفه</b> (قعدتُ جلوسًا)، و<b>صفته</b> (سرتُ سيرًا حسنًا)، و<b>(كل/بعض/أيّ) المضافة إليه</b> (أحبّه كلَّ الحبِّ، اجتهدَ أيَّ اجتهادٍ)، و<b>اسم الإشارة</b> (ضربتُه ذلك الضربَ)، و<b>آلته</b> (ضربتُه سوطًا)، و<b>العدد</b> (ضربتُه عشرين ضربةً)، و<b>ما/مَن/مهما الاستفهامية والشرطية الدالّة على المصدر</b> (ما صنعتَ؟ أيَّ فعلٍ فعلتَ؟)، و<b>ضمير المصدر</b>: «لم أُكافِئْها» أي: لم أُكافئ المكافأة، فالهاء نائب عن المفعول المطلق.</p>
+
+    <h3>الحال</h3>
+    <p><b>الحال:</b> اسم منصوب يبيّن هيئة صاحبه حين وقوع الفعل. و<b>صاحب الحال</b> هو الاسم الذي تبيّن الحال هيئته، ويكون معرفة في الغالب.</p>
+    <ul>
+      <li>تكون <b>مشتقّة</b> (اسم فاعل/مفعول/صفة مشبهة) غالبًا، وقد تكون <b>جامدة</b> مؤوَّلة بمشتقّ: «كرَّ عليه أسدًا» أي: مشبَّهًا بالأسد.</li>
+      <li>تكون <b>مفردة</b> أو <b>جملة</b> أو <b>شبه جملة</b>. والجمل بعد <b>المعارف</b> تكون أحوالًا، وبعد <b>النكرات</b> تكون نعوتًا.</li>
+      <li>تتعدّد الحال لصاحب واحد: «جاء زيدٌ راكبًا مسرورًا».</li>
+      <li>يجب تقديم الحال إذا كان صاحبها نكرة محضة أو محصورًا فيها أو كان في الحال ضمير يعود على ما قبله…</li>
+    </ul>
+    <div class="ex"><span class="t">أمثلة:</span> ﴿وجاءوا أباهم عِشاءً يبكون﴾ — «رجع الجيشُ منصورًا» — «شربتُ الماءَ صافيًا».</div>
+    <details class="irab" open>
+      <summary>نموذج إعراب</summary>
+      <div class="body">
+        <p><b>«رجع الجنديُّ منتصرًا»</b> — رجع: فعل ماضٍ. الجنديُّ: فاعل مرفوع. منتصرًا: حال منصوب وعلامة نصبه الفتحة، وصاحب الحال هو (الجندي).</p>
+        <p><b>﴿وجاءوا أباهم عِشاءً يبكون﴾</b> — جاءوا: فعل ماضٍ + واو الجماعة في محل رفع فاعل. أباهم: مفعول به منصوب وهو مضاف. عِشاءً: ظرف زمان منصوب. يبكون: فعل مضارع مرفوع، والواو فاعل، والجملة في محل <b>نصب حال</b>.</p>
+      </div>
+    </details>
+
+    <h3>التمييز</h3>
+    <p><b>التمييز:</b> اسم نكرة منصوب يرفع إبهام ما قبله. ونوعاه:</p>
+    <ul>
+      <li><b>تمييز الذات (الملفوظ):</b> يفسّر إبهام مفرد قبله (عدد، مساحة، وزن، كيل): «اشتريتُ عشرين كتابًا» — «عندي رطلٌ زيتًا» — ﴿أحدَ عشرَ كوكبًا﴾.</li>
+      <li><b>تمييز النسبة (الملحوظ):</b> يفسّر إبهام جملة قبله، وهو إمّا <b>مُحوَّل عن فاعل</b>: «طابَ محمّدٌ نفسًا»، أو <b>عن مفعول</b>: ﴿وفجّرنا الأرضَ عيونًا﴾، أو <b>عن مبتدأ</b>: ﴿أنا أكثرُ منك مالًا﴾، أو <b>غير محوَّل</b>: ﴿وحسنٌ أولئك مَعِيّةً﴾.</li>
+    </ul>
+    <div class="note"><b>الفرق بين الحال والتمييز:</b> الحال يبيّن <b>الهيئة</b> ويتغيّر بتغيّر الأحوال، والتمييز يبيّن <b>الحقيقة/الجنس</b> وليس هيئة. ولذلك صحّ: «جاء زيدٌ راكبًا» (حال) ولم يصحّ جعله تمييزًا، و«امتلأ الإناءُ ماءً» تمييز لأن الإبهام في النسبة لا في الهيئة.</div>
+
+    <h3>المنصوبات الأخرى</h3>
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>النوع</th><th>مثال</th></tr></thead>
+      <tbody>
+        <tr><td>خبر كان وأخواتها</td><td>كان الجوُّ جميلًا</td></tr>
+        <tr><td>اسم إنّ وأخواتها</td><td>إنّ العلمَ نورٌ</td></tr>
+        <tr><td>المستثنى في الاستثناء التامّ المثبت</td><td>حضر الطلابُ إلا خالدًا</td></tr>
+        <tr><td>المنادى (نكرة غير مقصودة، مضاف، شبيه بالمضاف)</td><td>يا رجلًا — يا طالبَ العلمِ</td></tr>
+        <tr><td>المفعولان في ظنّ وأخواتها</td><td>ظننتُ الامتحانَ سهلًا</td></tr>
+        <tr><td>الاسم المنصوب على الاختصاص / الإغراء / التحذير</td><td>نحن — الطلابَ — مجتهدون / الصدقَ الصدقَ / إيّاك والكذبَ</td></tr>
+        <tr><td>الاسم المنصوب على نزع الخافض</td><td>﴿واختارَ موسى قومَه سبعينَ رجلًا﴾ (أي: من قومه)</td></tr>
+        <tr><td>المنصوب على نزع الخافض (أعني/أخصّ ونحوه)</td><td>أعني زيدًا — «حسنٌ وجهَه»</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </article>
+</section>
+
+<!-- ===================== المجرورات والتوابع ===================== -->
+<section id="majrurat">
+  <h2><span class="num">٢٤</span> ملحق القواعد (٤): المجرورات والتوابع</h2>
+  <article class="topic">
+    <h3>المجرورات</h3>
+    <p>المجرور نوعان: <b>مجرور بحرف جرّ</b>، و<b>مجرور بالإضافة</b> (مضاف إليه).</p>
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>النوع</th><th>البيان</th><th>مثال</th></tr></thead>
+      <tbody>
+        <tr><td>المجرور بحرف الجرّ</td><td>حروف الجرّ: من، إلى، عن، على، في، الباء، الكاف، اللام، واو القسم، تاء القسم، رُبّ، منذ، مذ، حتى، كي، لعلّ…</td><td>﴿بسم اللهِ الرحمنِ الرحيم﴾ — سافرتُ بالقطار</td></tr>
+        <tr><td>المجرور بالإضافة</td><td>المضاف إليه مجرور دائمًا</td><td>كتابُ الطالبِ — بابُ المدرسةِ</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>التوابع الخمسة</h3>
+    <p><b>التوابع:</b> أسماء تتبع ما قبلها في الإعراب (رفعًا ونصبًا وجرًّا) وتُسمّى <b>المتبوع</b>.</p>
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>التابع</th><th>تعريفه</th><th>مثال وإعراب</th></tr></thead>
+      <tbody>
+        <tr><td><b>النعت (الصفة)</b></td><td>تابع يكمّل متبوعه ببيان صفة من صفاته (حقيقي)، أو صفة من صفات ما يتعلّق به (سببي)</td><td>جاء الطالبُ المجتهدُ — نعت مرفوع. ورأيتُ رجلًا كريمًا أبوه — كريمًا: نعت سببي منصوب</td></tr>
+        <tr><td><b>التوكيد</b></td><td>تابع يدفع الشكّ والتوهّم (لفظي/معنوي)</td><td>جاء الأميرُ نفسُه — توكيد معنوي مرفوع</td></tr>
+        <tr><td><b>عطف البيان</b></td><td>تابع <b>جامد</b> يوضّح متبوعه أو يخصّصه دون حرف عطف</td><td>أقسم باللهِ أبو حفصٍ عمرُ — عمرُ: عطف بيان مرفوع</td></tr>
+        <tr><td><b>عطف النسق</b></td><td>تابع يتوسّط بينه وبين متبوعه <b>حرف عطف</b></td><td>جاء محمّدٌ وعليٌّ — عليٌّ: معطوف مرفوع</td></tr>
+        <tr><td><b>البدل</b></td><td>تابع مقصود بالحكم بلا واسطة، وهو أربعة أنواع</td><td>﴿اهدِنا الصراطَ المستقيمَ صراطَ الذين…﴾</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h4>أنواع البدل</h4>
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>النوع</th><th>البيان</th><th>مثال</th></tr></thead>
+      <tbody>
+        <tr><td>بدل كل من كل (المطابق)</td><td>البدل هو المبدل منه نفسه</td><td>جاء الإمامُ عليٌّ — ﴿اهدنا الصراطَ المستقيم﴾</td></tr>
+        <tr><td>بدل بعض من كل</td><td>البدل جزء من المبدل منه، ولا بدّ من ضمير يربطه بالمبدل منه</td><td>أكلتُ الرغيفَ ثُلثَه — ﴿وللهِ على الناسِ حجُّ البيتِ مَن استطاع﴾</td></tr>
+        <tr><td>بدل اشتمال</td><td>البدل مما يشتمل عليه المبدل منه وليس جزءًا منه (بضمير رابط)</td><td>أعجبني محمّدٌ علمُه — ﴿يَسألونك عن الشهرِ الحرامِ قتالٍ فيه﴾</td></tr>
+        <tr><td>بدل الغلط/النسيان</td><td>يُذكر خطأً ثم يُصحَّح</td><td>مررتُ بمحمّدٍ — بل عليٍّ — …</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h4>حروف العطف ومعانيها</h4>
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>الحرف</th><th>معناه</th><th>مثال</th></tr></thead>
+      <tbody>
+        <tr><td>الواو</td><td>مطلق الجمع (دون ترتيب)</td><td>جاء زيدٌ وعمرٌو</td></tr>
+        <tr><td>الفاء</td><td>الترتيب مع التعقيب</td><td>دخل محمّدٌ فعليٌّ</td></tr>
+        <tr><td>ثُمّ</td><td>الترتيب مع التراخي</td><td>أكلتُ ثمّ شربتُ</td></tr>
+        <tr><td>حتى</td><td>الغاية والتدريج (يشترط أن يكون المعطوف ظاهرًا)</td><td>قدم الحجّاجُ حتى المشاةُ</td></tr>
+        <tr><td>أو</td><td>التخيير أو الإباحة أو الشكّ</td><td>تزوّجْ هندًا أو أختَها</td></tr>
+        <tr><td>أم</td><td>طلب التعيين (بعد همزة الاستفهام)</td><td>أزيدٌ عندك أم عمرٌو؟</td></tr>
+        <tr><td>بل</td><td>الإضراب</td><td>ما جاء زيدٌ بل عمرٌو</td></tr>
+        <tr><td>لكنْ</td><td>الاستدراك (بعد نفي أو نهي، والمعطوف مفرد)</td><td>ما جاء محمّدٌ لكنْ عليٌّ</td></tr>
+        <tr><td>لا</td><td>النفي للثاني بعد إثبات الأول (في الخبر أو الأمر)</td><td>جاء زيدٌ لا عمرٌو</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="note"><b>تنبيه:</b> إذا وقع بعد (بل) أو (لا) أو (لكن) <b>جملة</b>، فهي حروف ابتداء أو نفي، والجملة بعدها مستقلّة لا محلّ لها من الإعراب ولا تُعرب معطوفة.</div>
+  </article>
+</section>
+
+<!-- ===================== قواعد متفرقة ===================== -->
+<section id="sarf">
+  <h2><span class="num">٢٥</span> ملحق القواعد (٥): قواعد متفرّقة لا غنى عنها</h2>
+  <article class="topic">
+    <h3>١) الممنوع من الصرف</h3>
+    <p><b>تعريفه:</b> اسم معرب لا يلحقه التنوين، ويُجرّ <b>بالفتحة نيابة عن الكسرة</b> — إلا إذا أُضيف أو دخلت عليه (أل) فيُجرّ بالكسرة.</p>
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>العلّة</th><th>البيان</th><th>مثال</th></tr></thead>
+      <tbody>
+        <tr><td>العَلَمية + التأنيث</td><td>علم مؤنّث (تاء أو معنوي)</td><td>فاطمةُ — زينبُ — مكّةُ: سافرت إلى مكّةَ</td></tr>
+        <tr><td>العَلَمية + العُجمة</td><td>علم أعجمي</td><td>إبراهيمُ — يوسفُ — لندنُ</td></tr>
+        <tr><td>العَلَمية + التركيب المزجي</td><td>علم مركّب تركيبًا مزجيًّا</td><td>بعلبكُّ — حضرموتُ</td></tr>
+        <tr><td>العَلَمية + زيادة الألف والنون</td><td>علم مختوم بألف ونون زائدتين</td><td>عثمانُ — سلمانُ — مروانُ</td></tr>
+        <tr><td>العَلَمية + وزن الفعل</td><td>علم على وزن يختصّ بالفعل</td><td>أحمدُ — يزيدُ — تغلبُ</td></tr>
+        <tr><td>الوصفية + وزن (أفعل)</td><td>صفة على وزن أفعل</td><td>أحمرُ — أفضلُ — أكبرُ</td></tr>
+        <tr><td>الوصفية + الألف والنون الزائدتان</td><td>صفة مختومة بألف ونون</td><td>عطشانُ — سكرانُ</td></tr>
+        <tr><td>الوصفية + العَدل</td><td>أسماء معدولة</td><td>فُعَل ومَفعَل: عُمَرُ — مَثنى — ثُلاثُ — أُخَرُ</td></tr>
+        <tr><td>الجمع (صيغة منتهى الجموع)</td><td>كل جمع بعد ألفه حرفان أو ثلاثة وسطها ساكن</td><td>مساجدُ — مصابيحُ — دراهمُ</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="ex"><span class="t">أمثلة إعرابية:</span> صلّيتُ في مساجدَ كثيرةٍ (مساجدَ: مجرور بالفتحة نيابة عن الكسرة لأنه ممنوع من الصرف). — مررتُ بأحمدَ ومحمّدٍ (أحمدَ: ممنوع من الصرف). — سافرتُ إلى مصرَ (مصرَ: ممنوع للعلمية والتأنيث).</div>
+    <div class="note"><b>تنبيه:</b> إذا أُضيف الممنوع من الصرف أو دخلت عليه (أل) جُرّ بالكسرة: «صلّيتُ في مساجدِ المدينةِ» — «في المساجدِ».</div>
+
+    <h3>٢) الأسماء الخمسة (الستة)</h3>
+    <p>هي: <b>أبو، أخو، حَمُو، فو، ذو</b> (ويُضاف إليها: <b>هَنُو</b> على لغة). تُرفع بالواو، وتُنصب بالألف، وتُجرّ بالياء.</p>
+    <ul>
+      <li><b>شروط إعرابها بالحروف:</b> أن تكون <b>مفردة</b>، <b>مضافة</b>، إضافتها إلى <b>غير ياء المتكلّم</b>، وأن تكون <b>مكبَّرة</b>.</li>
+      <li>مثال: جاء أبوك (فاعل مرفوع بالواو) — رأيتُ أخاك (مفعول به منصوب بالألف) — سلّمتُ على حَميك (مجرور بالياء).</li>
+    </ul>
+
+    <h3>٣) الأفعال الخمسة</h3>
+    <p>هي كل فعل مضارع اتصل به: <b>ألف الاثنين</b> أو <b>واو الجماعة</b> أو <b>ياء المخاطبة</b>.</p>
+    <ul>
+      <li><b>ترفع بثبوت النون:</b> يكتبانِ — يكتبونَ — تكتبينَ.</li>
+      <li><b>تنصب وتُجزم بحذف النون:</b> لن يكتبا — لم يكتبوا — لا تكتبي.</li>
+    </ul>
+
+    <h3>٤) المثنى وجمع المذكر السالم</h3>
+    <ul>
+      <li><b>المثنى:</b> يُرفع بالألف، ويُنصب ويُجرّ بالياء.</li>
+      <li><b>جمع المذكر السالم:</b> يُرفع بالواو، ويُنصب ويُجرّ بالياء.</li>
+      <li><b>جمع المؤنث السالم:</b> يُرفع بالضمة، ويُنصب بالكسرة نيابة عن الفتحة، ويُجرّ بالكسرة.</li>
+      <li><b>جمع التكسير:</b> يُرفع بالضمة، ويُنصب بالفتحة، ويُجرّ بالكسرة.</li>
+    </ul>
+
+    <h3>٥) المبنيّ والمعرب</h3>
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>النوع</th><th>البيان</th><th>أمثلة</th></tr></thead>
+      <tbody>
+        <tr><td>المبنيّ من الأسماء</td><td>الضمائر، أسماء الإشارة (إلا المثنى)، الأسماء الموصولة (إلا المثنى)، أسماء الاستفهام (إلا أيّ)، أسماء الشرط (إلا أيّ)، أسماء الأفعال، الظروف المبنية، المركّبات (أحد عشر…)، الأصوات</td><td>هو، هذه، الذي، مَن، الآن، حيثُ، صهْ</td></tr>
+        <tr><td>المبنيّ من الأفعال</td><td>الماضي (إلا مع الضمير المرفوع المتحرّك)، والأمر، والمضارع المتصل بنون النساء أو نون التوكيد</td><td>كتبَ، اكتبْ، يكتبْنَ، ليكتبَنَّ</td></tr>
+        <tr><td>المعرَب</td><td>الاسم المضارع (المتمكّن) أصلًا في الإعراب، والمضارع غير المتصل بنوني النساء والتوكيد</td><td>محمّدٌ، يكتبُ</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>٦) علامات الإعراب الأصلية والفرعية (خلاصة)</h3>
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>الحالة</th><th>العلامة الأصلية</th><th>النيابة</th></tr></thead>
+      <tbody>
+        <tr><td>الرفع</td><td>الضمّة</td><td>الواو (جمع المذكر السالم، الأسماء الخمسة)، الألف (المثنى)، ثبوت النون (الأفعال الخمسة)</td></tr>
+        <tr><td>النصب</td><td>الفتحة</td><td>الألف (الأسماء الخمسة)، الياء (المثنى، جمع المذكر السالم)، الكسرة (جمع المؤنث السالم)، حذف النون (الأفعال الخمسة)</td></tr>
+        <tr><td>الجرّ</td><td>الكسرة</td><td>الياء (المثنى، جمع المذكر السالم، الأسماء الخمسة)، الفتحة (الممنوع من الصرف)</td></tr>
+        <tr><td>الجزم</td><td>السكون</td><td>حذف حرف العلة، حذف النون</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>٧) الجمل التي لها محلّ من الإعراب والتي لا محلّ لها</h3>
+    <div class="grid2">
+      <div class="box">
+        <h5>جمل لها محلّ من الإعراب (٧ مواضع)</h5>
+        <ol>
+          <li>الخبر: «زيدٌ يقرأُ» (فعلية في محل رفع).</li>
+          <li>الحال: ﴿وجاءوا أباهم عِشاءً يبكون﴾ (في محل نصب).</li>
+          <li>النعت: «رأيتُ طالبًا يكتبُ» (في محل نصب).</li>
+          <li>المفعول به: ﴿قال إنّي عبدُ الله﴾ (في محل نصب).</li>
+          <li>المضاف إليه: «يومَ يقومُ الناسُ» (في محل جرّ).</li>
+          <li>جواب الشرط الجازم المقترن بالفاء: «إن تسعَ فأنت سعيدٌ» (في محل جزم).</li>
+          <li>التابع لجملة لها محلّ: «زيدٌ يقول الحقَّ ويصدُقُ» (عطف).</li>
+        </ol>
+      </div>
+      <div class="box">
+        <h5>جمل لا محلّ لها من الإعراب (أشهرها)</h5>
+        <ul>
+          <li>الابتدائية (في أوّل الكلام): «العلمُ نورٌ».</li>
+          <li>جواب الشرط غير الجازم: «إذا جاءَ نصرُ اللهِ».</li>
+          <li>جواب القسم: «واللهِ لأجتهدَنّ».</li>
+          <li>الجملة المعترضة: «زيدٌ — أكرمَه اللهُ — فاضلٌ».</li>
+          <li>الجملة التفسيرية: «أوحى إليه: أن أخرجْ».</li>
+          <li>الجملة المفسِّرة بعد (أي): «أي: اخرجْ».</li>
+          <li>جملة صلة الموصول: «جاء الذي يكتبُ».</li>
+          <li>الجملة الواقعة جوابًا لنفي أو استفهام.</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ===================== جداول ملخّصة ===================== -->
+<section id="jadawil">
+  <h2><span class="num">٢٦</span> جداول مرجعية سريعة (مراجعة قبل الامتحان)</h2>
+  <article class="topic">
+    <h3>الجدول الأول: كل أسلوب في سطر واحد</h3>
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>الأسلوب</th><th>أدواته</th><th>حكمه الإعرابي المختصر</th></tr></thead>
+      <tbody>
+        <tr><td>الأمر</td><td>فعل الأمر / لام الأمر + مضارع / اسم فعل الأمر / المصدر</td><td>فعل الأمر مبنيّ، والمضارع بعد لام الأمر مجزوم</td></tr>
+        <tr><td>النهي</td><td>لا الناهية</td><td>المضارع مجزوم بحذف حرف العلة أو السكون أو حذف النون</td></tr>
+        <tr><td>الاستفهام</td><td>هل، أ، من، ما، ماذا، متى، أيّان، أين، أنّى، كيف، كم، أيّ</td><td>الحروف لا محلّ لها، والأسماء في محلّ رفع/نصب/جرّ حسب موقعها</td></tr>
+        <tr><td>النداء</td><td>يا، أ، أيا، هيا، آ، أيْ، وا</td><td>المفرد العلم والنكرة المقصودة: مبنيّ على ما يُرفع به في محل نصب — والباقي: منصوب</td></tr>
+        <tr><td>التمنّي</td><td>ليت (ولو، هل، لعلّ)</td><td>ليت: حرف نصب، الاسم منصوب والخبر مرفوع</td></tr>
+        <tr><td>الترجّي</td><td>لعلّ، عسى، حرى، اخلولق</td><td>لعلّ: اسم منصوب وخبر مرفوع — عسى: اسم مرفوع وخبر منصوب</td></tr>
+        <tr><td>العرض</td><td>ألا، أما، لو</td><td>لا محلّ لها من الإعراب + جواب الفاء منصوب</td></tr>
+        <tr><td>التحضيض</td><td>هلّا، لولا، لوما، ألا</td><td>لا محلّ لها من الإعراب</td></tr>
+        <tr><td>الاستغاثة</td><td>يا + لام مفتوحة/مكسورة</td><td>المستغاث به: مجرور لفظًا منصوب محلًّا على الاستغاثة</td></tr>
+        <tr><td>الندبة</td><td>وا (ويا)</td><td>المندوب يُعرب إعراب المنادى</td></tr>
+        <tr><td>الإغراء</td><td>الاسم منصوبًا (الزم)</td><td>مفعول به منصوب لفعل محذوف جوازًا/وجوبًا</td></tr>
+        <tr><td>التحذير</td><td>الاسم منصوبًا (احذر)، إيّاك</td><td>مفعول به منصوب لفعل محذوف، وإيّا في محل نصب</td></tr>
+        <tr><td>الاختصاص</td><td>ضمير + اسم منصوب (أخصّ)</td><td>مفعول به منصوب على الاختصاص بفعل محذوف وجوبًا</td></tr>
+        <tr><td>التعجّب (قياسي)</td><td>ما أفعلَ — أفعِلْ بـ</td><td>ما: مبتدأ، الفعل: ماضٍ جامد، المتعجَّب منه: مفعول به / والباء زائدة والاسم فاعل</td></tr>
+        <tr><td>المدح والذمّ</td><td>نعم، حبّذا / بئس، ساء، لا حبّذا</td><td>المخصوص: مبتدأ مؤخّر (أو خبر لمبتدأ محذوف)</td></tr>
+        <tr><td>القَسَم</td><td>واو/باء/تاء القسم</td><td>المقسَم به مجرور، والجواب يُؤكَّد باللام والنون</td></tr>
+        <tr><td>النفي</td><td>ما، لا، إنْ، لم، لمّا، لنْ، ليس، لات</td><td>لم/لمّا تجزمان، لنْ تنصب، ما/لا/إنْ لا عمل لها في الفعل</td></tr>
+        <tr><td>الاستثناء</td><td>إلا، غير، سوى، خلا، عدا، حاشا</td><td>تامّ مثبت: نصب — تامّ منفي: نصب أو بدل — مفرَّغ: حسب الموقع</td></tr>
+        <tr><td>الشرط</td><td>إن، من، ما، مهما، متى، أين، أيّ… / لو، إذا، لولا، كلّما</td><td>الجازمة تجزم فعلين، وغير الجازمة لا تجزم</td></tr>
+        <tr><td>التوكيد</td><td>التكرار / نفس، عين، كل، جميع، كلا، كلتا</td><td>تابع يتبع المؤكَّد في الإعراب</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>الجدول الثاني: أخطاء شائعة وصوابها</h3>
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>الخطأ</th><th>الصواب</th><th>السبب</th></tr></thead>
+      <tbody>
+        <tr><td>نعم قولُ الصدقِ</td><td>نعم خلقُ المرءِ الصدقُ / حبّذا قولُ الصدقِ</td><td>لا بدّ لـ(نعم) من فاعل</td></tr>
+        <tr><td>الصدقُ حبّذا</td><td>حبّذا الصدقُ</td><td>لا يجوز تقديم المخصوص على حبّذا</td></tr>
+        <tr><td>ما أجملُ السماءَ</td><td>ما أجملَ السماءَ</td><td>فعل التعجّب مبنيّ على الفتح لا يُرفع</td></tr>
+        <tr><td>ما أحمرَ الوردَ</td><td>ما أشدَّ حُمرةَ الوردِ</td><td>لا يُتعجَّب من وزن (أفعل) الذي مؤنثه فعلاء</td></tr>
+        <tr><td>جاء الطلابُ إلا خالدٌ (في التامّ المثبت)</td><td>جاء الطلابُ إلا خالدًا</td><td>التامّ المثبت يجب فيه النصب</td></tr>
+        <tr><td>يا رجلٌ</td><td>يا رجلُ (إن قصدتَ معيَّنًا) / يا رجلًا (إن لم تقصد)</td><td>حكم النكرة المقصودة البناء على الضم</td></tr>
+        <tr><td>إيّاك والكذبُ</td><td>إيّاك والكذبَ</td><td>المحذَّر منه منصوب على التحذير</td></tr>
+        <tr><td>كان المعلّمَ مجتهدًا</td><td>كان المعلّمُ مجتهدًا</td><td>كان ترفع الاسم وتنصب الخبر</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </article>
+</section>
+
+<!-- ===================== تمارين ===================== -->
+<section id="tadribat">
+  <h2><span class="num">٢٧</span> تمارين تطبيقية محلولة</h2>
+  <article class="topic">
+    <h3>التمرين الأول: عيّن الأسلوب وغرضه</h3>
+    <div class="quiz">
+      <p class="q">١) ﴿فما أصبرَهم على النار﴾</p>
+      <details class="irab"><summary>الإجابة</summary><div class="body">أسلوب تعجّب قياسي بصيغة (ما أفعله)، غرضه التعجّب من عظيم صبرهم مع شدة العذاب. ما: نكرة تامّة مبتدأ — أصبرَ: فعل ماضٍ جامد للتعجّب — هم: ضمير في محل نصب مفعول به — والجملة خبر.</div></details>
+    </div>
+    <div class="quiz">
+      <p class="q">٢) ﴿أَلَمْ نشرحْ لك صدرَك﴾</p>
+      <details class="irab"><summary>الإجابة</summary><div class="body">استفهام خرج إلى <b>التقرير والتأكيد</b>؛ لأن الاستفهام منفيّ والجواب عنه بالإثبات.</div></details>
+    </div>
+    <div class="quiz">
+      <p class="q">٣) «يا دارَ عبلةَ بالجواءِ تكلّمي»</p>
+      <details class="irab"><summary>الإجابة</summary><div class="body">أسلوب نداء غرضه البلاغي <b>التمنّي</b>؛ لأن الدار لا تتكلّم، فطلبتُ الكلام ممّا لا يقبل الطلب. الإعراب: يا: حرف نداء — دارَ: منادًى منصوب وهو مضاف — عبلةَ: مضاف إليه مجرور (ممنوع من الصرف للعلمية والتأنيث فجُرّ بالفتحة، وهو هنا مضاف إليه مجرور بالفتحة نيابةً عن الكسرة).</div></details>
+    </div>
+    <div class="quiz">
+      <p class="q">٤) «الصدقَ الصدقَ فإنّه منجاةٌ»</p>
+      <details class="irab"><summary>الإجابة</summary><div class="body">أسلوب <b>إغراء</b>. الصدقَ (الأول): مفعول به منصوب على الإغراء بفعل محذوف وجوبًا تقديره (الزمْ). الصدقَ (الثاني): توكيد لفظي منصوب.</div></details>
+    </div>
+    <div class="quiz">
+      <p class="q">٥) «إيّاك والكذبَ»</p>
+      <details class="irab"><summary>الإجابة</summary><div class="body">أسلوب <b>تحذير</b>. إيّا: ضمير منفصل في محل نصب مفعول به لفعل محذوف وجوبًا تقديره (أحذِّر)، والكاف حرف خطاب. الكذبَ: مفعول به منصوب لفعل محذوف تقديره (اجتنبْ).</div></details>
+    </div>
+    <div class="quiz">
+      <p class="q">٦) «نحن — الطلابَ — نحبُّ العلم»</p>
+      <details class="irab"><summary>الإجابة</summary><div class="body">أسلوب <b>اختصاص</b>. نحن: ضمير في محل رفع مبتدأ. الطلابَ: مفعول به منصوب على الاختصاص بفعل محذوف وجوبًا تقديره (أخصّ). نحبُّ العلم: الجملة الفعلية في محل رفع خبر المبتدأ.</div></details>
+    </div>
+
+    <h3>التمرين الثاني: أعرب ما تحته خطّ</h3>
+    <div class="quiz">
+      <p class="q">١) «حضر الضيوفُ <u>ما عدا ضيفًا</u>»</p>
+      <details class="irab"><summary>الإجابة</summary><div class="body">ما: حرف مصدري زائد — عدا: فعل ماضٍ مبنيّ على الفتح — ضيفًا: مفعول به منصوب، والفاعل ضمير مستتر تقديره هو. (والجملة في محل نصب حال أو استثناء على الوجهين).</div></details>
+    </div>
+    <div class="quiz">
+      <p class="q">٢) «ما جاء <u>إلا محمّدٌ</u>»</p>
+      <details class="irab"><summary>الإجابة</summary><div class="body">إلا: أداة حصر لا محلّ لها من الإعراب (الاستثناء مفرَّغ) — محمّدٌ: فاعل مرفوع وعلامة رفعه الضمة.</div></details>
+    </div>
+    <div class="quiz">
+      <p class="q">٣) «<u>حبّذا</u> الإخلاصُ»</p>
+      <details class="irab"><summary>الإجابة</summary><div class="body">حبَّ: فعل ماضٍ جامد لإنشاء المدح — ذا: اسم إشارة مبنيّ على السكون في محل رفع فاعل — الإخلاصُ: مخصوص بالمدح مبتدأ مؤخّر مرفوع، والجملة قبله في محل رفع خبر مقدّم.</div></details>
+    </div>
+    <div class="quiz">
+      <p class="q">٤) «إن تجتهدْ <u>فتنجحُ</u>»</p>
+      <details class="irab"><summary>الإجابة</summary><div class="body">الفاء: حرف ربط لجواب الشرط — تنجحُ: فعل مضارع مرفوع وعلامة رفعه الضمة، والفاعل مستتر تقديره أنت؛ والجملة في محل جزم جواب الشرط (لأنها اقترنت بالفاء).</div></details>
+    </div>
+    <div class="quiz">
+      <p class="q">٥) «لا <u>رجلَ</u> في الدار»</p>
+      <details class="irab"><summary>الإجابة</summary><div class="body">رجلَ: اسم (لا) النافية للجنس مبنيّ على الفتح في محل نصب؛ لأنه مفرد. وفي الدار: جارّ ومجرور خبر لا.</div></details>
+    </div>
+
+    <h3>التمرين الثالث: صوِّب الخطأ</h3>
+    <ol>
+      <li>ما أجملُ السماءَ! → الصواب: <b>ما أجملَ السماءَ!</b></li>
+      <li>نعم الصدقُ → الصواب: <b>حبّذا الصدقُ</b> أو <b>نعم الخلقُ الصدقُ</b>.</li>
+      <li>أكرمْ بالصدقَ → الصواب: <b>أكرِمْ بالصدقِ</b> (لأنه فاعل مجرور لفظًا).</li>
+      <li>جاء الطلابُ إلا خالدٌ (تامّ مثبت) → الصواب: <b>إلا خالدًا</b>.</li>
+      <li>لولا العلمَ لتأخّر المجتمعُ → الصواب: <b>لولا العلمُ</b> (مبتدأ مرفوع وخبره محذوف).</li>
+      <li>إنّ محمدٌ مجتهدٌ → الصواب: <b>إنّ محمدًا مجتهدٌ</b>.</li>
+    </ol>
+  </article>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <h3>📚 المصادر والمراجع</h3>
+    <p style="font-size:.92rem;color:#cfe0f0">جُمعت مادّة هذا الملفّ من مصادر النحو والبلاغة العربية المتنوّعة على الشبكة (مواقع تعليمية ولغوية وموسوعية)، مع الاعتماد على أمّهات كتب النحو في القواعد المقرّرة (الآجرّومية، ألفيّة ابن مالك وشروحها، جامع الدروس العربية للغلاييني، النحو الوافي لعبّاس حسن، وبلاغة الأساليب في دلائل الإعجاز والمثل السائر). وفيما يلي أهمّ الروابط التي رُوجعت:</p>
+    <ul class="srclist">
+      <li><a href="https://mawdoo3.com/%D9%85%D8%A7_%D9%87%D9%8A_%D8%A7%D9%84%D8%A3%D8%B3%D8%A7%D9%84%D9%8A%D8%A8_%D8%A7%D9%84%D9%86%D8%AD%D9%88%D9%8A%D8%A9%D8%9F" target="_blank" rel="noopener">موضوع (mawdoo3): ما هي الأساليب النحوية؟ — أركان أسلوب المدح والذم — أسلوب الاختصاص — أمثلة على أسلوب التعجب</a></li>
+      <li><a href="https://www.faouaid.com/2020/03/aghrad-istifham.html" target="_blank" rel="noopener">فَوَائِد: أغراض الاستفهام البلاغية — التعريفات والأمثلة</a></li>
+      <li><a href="https://www.faouaid.com/2020/03/ard-wa-tahrid.html" target="_blank" rel="noopener">فَوَائِد: العرض والتحضيض — التعاريف والأمثلة</a></li>
+      <li><a href="https://www.faouaid.com/2020/10/LA-nafiah-lil-jins.html" target="_blank" rel="noopener">فَوَائِد: لا النافية للجنس — العمل والشروط والإعراب</a></li>
+      <li><a href="https://ar.wikipedia.org/wiki/%D8%AD%D8%B1%D9%88%D9%81_%D8%A7%D9%84%D8%B9%D8%B1%D8%B6_%D9%88%D8%A7%D9%84%D8%AA%D8%AD%D8%B6%D9%8A%D8%B6" target="_blank" rel="noopener">ويكيبيديا: حروف العرض والتحضيض</a></li>
+      <li><a href="https://ar.wikipedia.org/wiki/%D8%A3%D8%B3%D9%84%D9%88%D8%A8_%D8%A7%D9%84%D8%AA%D8%AD%D8%B0%D9%8A%D8%B1_%D9%88%D8%A7%D9%84%D8%A5%D8%BA%D8%B1%D8%A7%D8%A1" target="_blank" rel="noopener">ويكيبيديا: أسلوب التحذير والإغراء</a></li>
+      <li><a href="https://ar.wikipedia.org/wiki/%D8%A5%D9%86_%D9%88%D8%A3%D8%AE%D9%88%D8%A7%D8%AA%D9%87%D8%A7" target="_blank" rel="noopener">ويكيبيديا: إنّ وأخواتها — الأحرف الناسخة</a></li>
+      <li><a href="https://www.alnahw.com/n7oo/%D8%A3%D8%B3%D9%84%D9%88%D8%A8%D8%A7-%D8%A7%D9%84%D8%A5%D8%BA%D8%B1%D8%A7%D8%A1-%D9%88%D8%A7%D9%84%D8%AA%D9%91%D9%8E%D8%AD%D8%B0%D9%8A%D8%B1/" target="_blank" rel="noopener">موقع نحو دوت كوم: الشرح المكتوب لدرس أسلوبا الإغراء والتحذير — والاستثناء</a></li>
+      <li><a href="https://learning.aljazeera.net/en/generallanguage/%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D8%AB%D9%86%D8%A7%D8%A1-1-2" target="_blank" rel="noopener">الجزيرة تعلّم: الاستثناء — الأدوات والإعراب (مع متن الآجرّومية)</a></li>
+      <li><a href="https://mnahel.com/ar/home/article/%D8%A3%D8%B3%D9%84%D9%88%D8%A8-%D8%A7%D9%84%D8%AA%D8%B9%D8%AC%D8%A8-%D9%84%D9%84%D8%A3%D8%B7%D9%81%D8%A7%D9%84" target="_blank" rel="noopener">مناهل: أسلوب التعجب القياسي والسماعي + أحكامه</a></li>
+      <li><a href="https://mnahel.com/ar/home/article/%D8%A3%D8%B3%D9%84%D9%88%D8%A8-%D8%A7%D9%84%D8%A7%D8%AE%D8%AA%D8%B5%D8%A7%D8%B5" target="_blank" rel="noopener">مناهل: أسلوب الاختصاص والمختصّ في النحو</a></li>
+      <li><a href="https://mnahel.com/ar/home/article/%D8%B4%D8%B1%D8%AD-%D8%A3%D8%B3%D9%84%D9%88%D8%A8-%D8%A7%D9%84%D8%B4%D8%B1%D8%B7" target="_blank" rel="noopener">مناهل: أسلوب الشرط — الأنواع والأدوات والإعراب</a></li>
+      <li><a href="https://mnahel.com/ar/home/article/%D8%A3%D8%B1%D9%83%D8%A7%D9%86-%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D8%AB%D9%86%D8%A7%D8%A1" target="_blank" rel="noopener">مناهل: الاستثناء — الأركان والأدوات والأحكام</a></li>
+      <li><a href="https://mnahel.com/ar/home/article/%D8%A7%D9%84%D9%85%D9%81%D8%B9%D9%88%D9%84-%D8%A7%D9%84%D9%85%D8%B7%D9%84%D9%82" target="_blank" rel="noopener">مناهل: المفعول المطلق ونوائبه</a></li>
+      <li><a href="https://www.annajah.net/%D8%A3%D8%B3%D9%84%D9%88%D8%A8-%D8%A7%D9%84%D8%B4%D8%B1%D8%B7-article-42040" target="_blank" rel="noopener">النجاح: أسلوب الشرط وأركانه وأدواته — وأدوات الشرط الجازمة وغير الجازمة وإعرابها</a></li>
+      <li><a href="https://www.almrsal.com/post/1330602" target="_blank" rel="noopener">المرسال: الأسلوب الذي يدلّ على التعجب + تدريبات مع الإجابة</a></li>
+      <li><a href="https://www.almrsal.com/post/542634" target="_blank" rel="noopener">المرسال: شرح درس أسلوب الاختصاص</a></li>
+      <li><a href="https://www.almrsal.com/post/999881" target="_blank" rel="noopener">المرسال: أمثلة على أسلوب الإغراء والتحذير وإعرابهما</a></li>
+      <li><a href="https://alwatnalakbr.com/%D8%A3%D8%B3%D9%84%D9%88%D8%A8-%D8%A7%D9%84%D9%86%D8%AF%D8%A8%D8%A9-%D9%88-%D8%A3%D8%B3%D9%84%D9%88%D8%A8-%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D8%BA%D8%A7%D8%AB%D8%A9/" target="_blank" rel="noopener">الوطن الأكبر: أسلوب الندبة وأسلوب الاستغاثة — باختصار</a></li>
+      <li><a href="https://loghate.com/s/%D8%A3%D8%B3%D9%84%D9%88%D8%A8-%D8%A7%D9%84%D9%86%D8%AF%D8%A8%D8%A9" target="_blank" rel="noopener">لغتي: أسلوب الندبة — الأركان والصور والإعراب</a></li>
+      <li><a href="https://loghate.com/s/%D9%85%D8%A7-%D9%87%D9%8A-%D8%A3%D9%86%D9%88%D8%A7%D8%B9-%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D8%AB%D9%86%D8%A7%D8%A1" target="_blank" rel="noopener">لغتي: أنواع الاستثناء — وإعراب جواب الشرط — والتوكيد في اللغة العربية</a></li>
+      <li><a href="https://bahethoarabia.com/twkid/" target="_blank" rel="noopener">باحثو اللغة العربية: التوكيد — أنواعه اللفظية والمعنوية وأحكامه</a></li>
+      <li><a href="https://www.alukah.net/literature_language/0/139592/" target="_blank" rel="noopener">الألوكة: لا النافية للجنس وشروط عملها</a></li>
+      <li><a href="https://www.alukah.net/literature_language/0/130425/" target="_blank" rel="noopener">الألوكة: عطف البيان في اللغة</a></li>
+      <li><a href="https://www.alukah.net/literature_language/0/170006/" target="_blank" rel="noopener">الألوكة: التوكيد (ويُسمّى التأكيد)</a></li>
+      <li><a href="https://www.baianat.com/ar/books/arabic-content-writing-guide/grammar-and-morphology" target="_blank" rel="noopener">بيانات: قواعد النحو والصرف — الممنوع من الصرف، النعت، العطف، الجملة ومكانها من الإعراب</a></li>
+      <li><a href="https://www.twinkl.com/teaching-wiki/aslwb-altjb" target="_blank" rel="noopener">توينكل: أسلوب التعجب — تعريفه وصيغه وشروطه</a></li>
+      <li><a href="https://www.twinkl.com.om/teaching-wiki/alasalyb-alnhwyt-fy-allght-alrbyt" target="_blank" rel="noopener">توينكل: الأساليب النحوية في اللغة العربية</a></li>
+      <li><a href="https://mekkawyacademy.com/50002-2/" target="_blank" rel="noopener">أكاديمية مكاوي: لا النافية للجنس وشروط عملها — وأسلوب الاختصاص</a></li>
+      <li><a href="https://www.mondedelanguearabe.com/2022/07/blog-post_37.html" target="_blank" rel="noopener">عالم اللغة العربية: الأساليب — تعريفها وأنواعها وخصائصها ووظائفها</a></li>
+      <li><a href="https://www.edarabia.com/ar/%D8%A7%D9%86%D9%88%D8%A7%D8%B9-%D8%A7%D9%84%D8%A3%D8%B3%D8%A7%D9%84%D9%8A%D8%A8-%D8%A7%D9%84%D9%86%D8%AD%D9%88%D9%8A%D8%A9-%D9%88%D8%AA%D9%81%D8%B1%D8%B9%D8%A7%D8%AA%D9%87%D8%A7/" target="_blank" rel="noopener">إدراك (edarabia): أنواع الأساليب النحوية وتفرّعاتها</a></li>
+      <li><a href="https://www.ikhtibaraty.com/2025/12/interrogative-style.html" target="_blank" rel="noopener">اختباراتي: أسلوب الاستفهام في البلاغة العربية — أدواته وأسراره البلاغية</a></li>
+      <li><a href="https://www.topacademy-dz.com/Courses/ReadCourse/1/6/3710/" target="_blank" rel="noopener">توب أكاديمي: المدح والذم — ملخّص الدرس ونماذج الإعراب</a></li>
+      <li><a href="https://www.modars1.com/t32891-topic" target="_blank" rel="noopener">مدرستي: شرح درس الإغراء والتحذير (نحو ٢ ثانوي)</a></li>
+      <li><a href="https://www.startimes.com/?t=8918786" target="_blank" rel="noopener">ستار تايمز: الاستثناء — تعريفه وأركانه وأدواته وأحكامه التفصيلية</a></li>
+    </ul>
+    <p style="font-size:.88rem;color:#9fb6cc;margin-top:18px">© ملفّ تعليميّ شامل — يُسمح بطبعته وتوزيعه لأغراض الدراسة. آخر تحديث: ١٥ أكتوبر ٢٠٢٦.</p>
+  </div>
+</footer>
+
+<button class="btn totop" id="totop" title="إلى الأعلى" type="button">↑</button>
+
+<script>
+(function(){
+  "use strict";
+  var root = document.documentElement;
+  var KEY = "nahw-theme";
+
+  /* ---------- الوضع الليلي ---------- */
+  var themeBtn = document.getElementById("themeBtn");
+  function applyTheme(t){
+    if(t === "dark"){ root.setAttribute("data-theme","dark"); themeBtn.textContent = "☀️ نهاري"; }
+    else { root.removeAttribute("data-theme"); themeBtn.textContent = "🌙 ليلي"; }
+  }
+  var saved = null;
+  try{ saved = localStorage.getItem(KEY); }catch(e){}
+  applyTheme(saved || "light");
+  themeBtn.addEventListener("click", function(){
+    var dark = root.getAttribute("data-theme") === "dark";
+    var next = dark ? "light" : "dark";
+    applyTheme(next);
+    try{ localStorage.setItem(KEY, next); }catch(e){}
+  });
+
+  /* ---------- فتح/إغلاق كل نماذج الإعراب ---------- */
+  var allDetails = function(){ return document.querySelectorAll("details.irab"); };
+  document.getElementById("openAll").addEventListener("click", function(){
+    allDetails().forEach(function(d){ d.open = true; });
+  });
+  document.getElementById("closeAll").addEventListener("click", function(){
+    allDetails().forEach(function(d){ d.open = false; });
+  });
+
+  /* ---------- البحث ---------- */
+  var input = document.getElementById("q");
+  var clearBtn = document.getElementById("clearBtn");
+  var noResults = document.getElementById("noResults");
+  var todos = Array.prototype.slice.call(document.querySelectorAll("#main .topic, #main .quiz"));
+  // نحفظ النصّ الأصلي لاستعادة التظليل
+  todos.forEach(function(el){ el.dataset.orig = el.innerHTML; });
+
+  function normalize(s){
+    return (s || "")
+      .replace(/[\u064B-\u0652\u0670\u0640]/g, "")   // إزالة التشكيل والتطويل
+      .replace(/[أإآٱ]/g, "ا").replace(/ى/g, "ي").replace(/ؤ/g,"و").replace(/ئ/g,"ي")
+      .replace(/ة/g, "ه")
+      .toLowerCase();
+  }
+  var normalCache = todos.map(function(el){ return normalize(el.dataset.orig.replace(/<[^>]*>/g," ")); });
+
+  function runSearch(){
+    var q = normalize(input.value.trim());
+    if(!q){
+      todos.forEach(function(el){ el.classList.remove("hidden"); });
+      noResults.style.display = "none";
+      return;
+    }
+    var found = 0;
+    todos.forEach(function(el, i){
+      if(normalCache[i].indexOf(q) !== -1){ el.classList.remove("hidden"); found++; }
+      else { el.classList.add("hidden"); }
+    });
+    noResults.style.display = found ? "none" : "block";
+  }
+  var t = null;
+  input.addEventListener("input", function(){
+    clearTimeout(t); t = setTimeout(runSearch, 180);
+  });
+  clearBtn.addEventListener("click", function(){
+    input.value = ""; runSearch(); input.focus();
+  });
+  input.addEventListener("keydown", function(e){ if(e.key === "Escape"){ input.value=""; runSearch(); } });
+
+  /* ---------- قبل الطباعة: افتح كل نماذج الإعراب ---------- */
+  window.addEventListener("beforeprint", function(){
+    allDetails().forEach(function(d){ d.open = true; });
+  });
+
+  /* ---------- زرّ الصعود ---------- */
+  document.getElementById("totop").addEventListener("click", function(){
+    window.scrollTo({top:0, behavior:"smooth"});
+  });
+})();
+</script>
+</body>
+</html>
