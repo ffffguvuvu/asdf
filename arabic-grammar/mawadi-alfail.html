@@ -1,0 +1,1458 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مواضع الفاعل في العربية — بحث تفصيلي في كتب النحو | التقديم والتأخير والأدوات والأساليب</title>
+<meta name="description" content="بحث نحوي شامل: جميع مواضع وقوع الفاعل — بعد الأفعال، وبعد الأدوات، وفي الأساليب النحوية، وبعد المشتقات — مع التقديم والتأخير ووجوب تقديمه أو تأخيره، وتفسير العلة في كل موضع، وأمثلة معربة وتدريبات.">
+<style>
+:root{
+  --bg:#f7f5ef; --bg-soft:#efece2; --card:#ffffff;
+  --ink:#1b242e; --ink-soft:#3c4a58; --muted:#66798a; --line:#ded8ca;
+  --accent:#0d7a6f; --accent-2:#0a5c54; --accent-soft:#e6f5f2;
+  --gold:#a4680f; --gold-soft:#fdf2de;
+  --red:#a5342c; --red-soft:#fdeeea;
+  --blue:#1f5fa8; --blue-soft:#eaf1fb;
+  --violet:#6b3fa0; --violet-soft:#f3edfb;
+  --shadow:0 1px 2px rgba(27,36,46,.06), 0 8px 24px rgba(27,36,46,.06);
+  --radius:14px;
+  --serif:"Traditional Arabic","Scheherazade New","Noto Naskh Arabic","Amiri","Times New Roman",serif;
+  --sans:"Segoe UI","Noto Kufi Arabic","Cairo",Tahoma,Arial,sans-serif;
+}
+html[data-theme="dark"]{
+  --bg:#0d151f; --bg-soft:#121d28; --card:#15212c;
+  --ink:#e8eef4; --ink-soft:#c3d0dc; --muted:#93a6b6; --line:#27384a;
+  --accent:#35cfbd; --accent-2:#7fe3d6; --accent-soft:#12312e;
+  --gold:#e0ac52; --gold-soft:#2c2415;
+  --red:#f08a80; --red-soft:#311d1b;
+  --blue:#7db4f0; --blue-soft:#132234;
+  --violet:#c0a3ec; --violet-soft:#221a33;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 26px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.95;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:1200px;margin:0 auto;padding:0 18px}
+
+header.site{background:linear-gradient(135deg,var(--accent-2),var(--accent));color:#fff;padding:26px 0 30px;position:relative;overflow:hidden}
+header.site::after{content:"";position:absolute;inset:auto -60px -80px auto;width:280px;height:280px;background:rgba(255,255,255,.08);border-radius:50%}
+header.site h1{margin:0 0 8px;font-family:var(--serif);font-size:clamp(24px,3.6vw,40px);line-height:1.5}
+header.site p{margin:0;opacity:.93;font-size:16px}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.badge{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);padding:4px 12px;border-radius:999px;font-size:13.5px}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;position:relative;z-index:2}
+.btn{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.34);color:#fff;padding:7px 14px;border-radius:10px;font-family:var(--sans);font-size:14.5px;cursor:pointer;transition:.18s}
+.btn:hover{background:rgba(255,255,255,.26)}
+
+.layout{display:grid;grid-template-columns:300px 1fr;gap:26px;align-items:start;padding:26px 0 60px}
+@media (max-width:1050px){.layout{grid-template-columns:1fr}}
+nav.toc{position:sticky;top:16px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 14px;max-height:calc(100vh - 40px);overflow:auto}
+@media (max-width:1050px){nav.toc{position:static;max-height:none}}
+nav.toc h2{font-size:15px;margin:0 0 10px;color:var(--muted);font-weight:600}
+nav.toc ol,nav.toc ul{list-style:none;margin:0;padding:0}
+nav.toc a{display:block;padding:6px 10px;border-radius:9px;color:var(--ink-soft);font-size:15px;border-right:3px solid transparent}
+nav.toc a:hover{background:var(--bg-soft);text-decoration:none}
+nav.toc a.active{background:var(--accent-soft);color:var(--accent);border-right-color:var(--accent);font-weight:600}
+nav.toc .grp{margin:12px 0 6px;font-size:13.5px;color:var(--muted);font-weight:700;padding-right:8px}
+nav.toc ul.sub a{font-size:14px;padding:4px 8px;color:var(--muted)}
+
+main{min-width:0}
+section.part{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px 24px 12px;margin-bottom:26px;scroll-margin-top:14px}
+@media (max-width:600px){section.part{padding:18px 14px 8px}}
+section.part > h2{font-family:var(--serif);font-size:clamp(22px,2.6vw,31px);margin:0 0 6px;padding-bottom:12px;border-bottom:2px solid var(--accent-soft);color:var(--accent-2)}
+html[data-theme="dark"] section.part > h2{color:var(--accent)}
+.part-no{display:inline-block;background:var(--accent);color:#fff;font-size:14px;padding:2px 12px;border-radius:999px;margin-bottom:10px}
+h3.topic{font-size:21px;margin:30px 0 10px;color:var(--ink);scroll-margin-top:14px;border-right:5px solid var(--gold);padding-right:12px}
+h4{font-size:18px;margin:20px 0 8px;color:var(--ink)}
+h5{font-size:16.5px;margin:16px 0 6px;color:var(--ink-soft)}
+p{margin:10px 0}
+ul,ol{margin:10px 0;padding-right:24px}
+li{margin:6px 0}
+.lead{font-size:18px;color:var(--ink-soft)}
+code{font-family:var(--sans);background:var(--bg-soft);border:1px solid var(--line);padding:1px 7px;border-radius:7px;font-size:15px}
+.ar{font-family:var(--serif);font-size:22px;line-height:2.2}
+.hl{color:var(--accent);font-weight:700}
+.hl2{color:var(--gold);font-weight:700}
+.hl3{color:var(--red);font-weight:700}
+mark{background:var(--gold-soft);color:inherit;padding:0 4px;border-radius:5px}
+
+.box{border-radius:12px;padding:14px 16px;margin:16px 0;border:1px solid var(--line);background:var(--bg-soft)}
+.box .ttl{font-weight:700;display:block;margin-bottom:6px}
+.rule{background:var(--accent-soft);border-color:transparent;border-right:5px solid var(--accent)}
+.rule .ttl{color:var(--accent-2)}
+html[data-theme="dark"] .rule .ttl{color:var(--accent)}
+.note{background:var(--gold-soft);border-color:transparent;border-right:5px solid var(--gold)}
+.note .ttl{color:var(--gold)}
+.warn{background:var(--red-soft);border-color:transparent;border-right:5px solid var(--red)}
+.warn .ttl{color:var(--red)}
+.info{background:var(--blue-soft);border-color:transparent;border-right:5px solid var(--blue)}
+.info .ttl{color:var(--blue)}
+.ex{background:var(--violet-soft);border-color:transparent;border-right:5px solid var(--violet)}
+.ex .ttl{color:var(--violet)}
+.why{background:linear-gradient(180deg,var(--violet-soft),var(--accent-soft));border-color:transparent;border-right:5px solid var(--violet)}
+.why .ttl{color:var(--violet)}
+.tip{background:var(--card);border-style:dashed}
+
+.exlist{list-style:none;padding:0;margin:10px 0}
+.exlist li{padding:8px 12px;border-radius:10px;background:var(--bg-soft);margin:8px 0}
+.exlist .why2{display:block;color:var(--muted);font-size:15px}
+.exlist .ar{font-size:21px}
+
+.tw{overflow-x:auto;margin:16px 0;border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:16px;background:var(--card)}
+caption{caption-side:top;text-align:right;padding:10px 12px;font-weight:700;color:var(--accent-2);background:var(--accent-soft);font-size:16px}
+html[data-theme="dark"] caption{color:var(--accent)}
+th,td{padding:9px 12px;border:1px solid var(--line);text-align:right;vertical-align:top}
+th{background:var(--bg-soft);font-weight:700}
+tbody tr:nth-child(even){background:color-mix(in srgb,var(--bg-soft) 45%,var(--card))}
+td .ar{font-size:20px}
+.tbl-note{font-size:14.5px;color:var(--muted);margin-top:-6px}
+
+details.qa{border:1px solid var(--line);border-radius:12px;margin:10px 0;background:var(--bg-soft);overflow:hidden}
+details.qa > summary{cursor:pointer;padding:11px 14px;font-weight:600;list-style:none;display:flex;gap:8px;align-items:flex-start}
+details.qa > summary::-webkit-details-marker{display:none}
+details.qa > summary::before{content:"؟";flex:0 0 auto;width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;font-size:14px;display:grid;place-items:center;margin-top:5px}
+details.qa[open] > summary{background:var(--accent-soft)}
+details.qa .body{padding:6px 16px 14px;border-top:1px dashed var(--line);background:var(--card)}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:700px){.grid2{grid-template-columns:1fr}}
+.pill{display:inline-block;background:var(--accent-soft);color:var(--accent-2);border-radius:999px;padding:1px 11px;font-size:14px;margin:0 4px 4px 0;font-weight:600}
+html[data-theme="dark"] .pill{color:var(--accent)}
+hr{border:none;border-top:1px dashed var(--line);margin:22px 0}
+.up{position:fixed;inset:auto 18px 18px auto;background:var(--accent);color:#fff;border:none;width:44px;height:44px;border-radius:50%;cursor:pointer;font-size:20px;box-shadow:var(--shadow);display:none}
+.up.show{display:block}
+footer.site{background:var(--bg-soft);border-top:1px solid var(--line);padding:22px 0;color:var(--muted);font-size:15px;text-align:center}
+.searchbar{display:flex;gap:8px;margin-bottom:10px}
+.searchbar input{flex:1;padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px}
+.hit{background:var(--gold-soft);outline:2px solid var(--gold);border-radius:4px}
+.steps{counter-reset:st;list-style:none;padding:0}
+.steps li{counter-increment:st;position:relative;padding-right:38px;margin:10px 0}
+.steps li::before{content:counter(st);position:absolute;right:0;top:4px;width:26px;height:26px;border-radius:50%;background:var(--accent);color:#fff;font-size:14px;display:grid;place-items:center}
+.src{font-size:14.5px;color:var(--muted)}
+@media print{
+  header.site,nav.toc,.toolbar,.up,footer.site{display:none !important}
+  body{background:#fff;font-size:12pt}
+  .layout{display:block;padding:0}
+  section.part{box-shadow:none;border:none;padding:0;margin-bottom:24px}
+  details.qa > .body{display:block !important}
+  a{color:#000;text-decoration:none}
+}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <h1>مواضع الفاعل في العربية — بحث تفصيلي</h1>
+    <p>أين يقع الفاعل؟ بعد الأفعال · بعد الأدوات · في الأساليب · بعد المشتقّات · والتقديم والتأخير — مع تفسير العلة في كل موضع</p>
+    <div class="badges">
+      <span class="badge">٣٠+ موضعًا للفاعل</span>
+      <span class="badge">تعليل كل قاعدة</span>
+      <span class="badge">أمثلة معربة</span>
+      <span class="badge">جداول جامعة</span>
+      <span class="badge">تدريبات بحلول</span>
+    </div>
+    <div class="toolbar">
+      <button class="btn" id="themeBtn" type="button">🌙 الوضع الليلي</button>
+      <button class="btn" id="collapseBtn" type="button">فتح كل الأجوبة</button>
+      <button class="btn" id="printBtn" type="button">🖨️ طباعة / PDF</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+<div class="layout">
+
+  <!-- ================= الفهرس ================= -->
+  <nav class="toc" id="toc">
+    <h2>فهرس البحث</h2>
+    <div class="searchbar"><input id="searchInput" type="search" placeholder="ابحث في البحث…"></div>
+    <div class="grp">تمهيد</div>
+    <ol><li><a href="#intro">منهج البحث ومصادره</a></li></ol>
+    <div class="grp">الفصول</div>
+    <ol>
+      <li><a href="#f1">١) تعريف الفاعل وحكمه ولماذا رُفع</a></li>
+      <li><a href="#f2">٢) أنواع الفاعل وصوره</a></li>
+      <li><a href="#f3">٣) مواضع الفاعل بعد الأفعال</a></li>
+      <li><a href="#f4">٤) مواضع الفاعل بعد المشتقّات</a></li>
+      <li><a href="#f5">٥) مواضع الفاعل بعد الأدوات</a></li>
+      <li><a href="#f6">٦) الفاعل في الأساليب النحوية</a></li>
+      <li><a href="#f7">٧) التقديم والتأخير (وجوبًا وجوازًا)</a></li>
+    </ol>
+    <div class="grp">ملاحق</div>
+    <ol>
+      <li><a href="#m1">مطابقة الفعل للفاعل</a></li>
+      <li><a href="#m2">نائب الفاعل ومواضع نيابته</a></li>
+      <li><a href="#m3">خلاصة العلل («لماذا؟» في صفحة)</a></li>
+      <li><a href="#m4">التدريبات الشاملة والحلول</a></li>
+      <li><a href="#m5">المصادر والمراجع</a></li>
+    </ol>
+    <div class="grp">روابط</div>
+    <ol><li><a href="index.html">↩ الملف الأول: الأساليب واللازم والمتعدي وإسناد الفعل وإعمال المشتق</a></li></ol>
+  </nav>
+
+  <main>
+
+  <!-- ================= تمهيد ================= -->
+  <section class="part" id="intro">
+    <h2>تمهيد: منهج هذا البحث ومصادره</h2>
+    <p class="lead">
+      سؤالك — كما فهمتُه — هو: <mark>أين يقع الفاعل في الكلام العربي؟</mark> لا في الجملة الفعلية البسيطة فقط، بل في كل تركيب:
+      بعد الفعل، وبعد الأدوات، وفي الأساليب، وبعد المشتقّات، ومع التقديم والتأخير؛ <strong>ولماذا</strong> وقع في هذا الموضع لا غيره.
+    </p>
+    <div class="box rule">
+      <span class="ttl">منهج البحث</span>
+      <ol class="steps">
+        <li>حرّرت تعريف الفاعل كما في كتب النحو المعتمدة، وبيّنت <strong>علّة رفعه</strong>؛ لأن فهم العلّة يفسّر كل ما بعده.</li>
+        <li>استقرأت <strong>مواضع الفاعل</strong> وقسّمتها أربعة أقسام: ما قبله فعل، أو شبه فعل (مشتق)، أو أداة، أو أسلوب.</li>
+        <li>أضفت باب <strong>التقديم والتأخير</strong>؛ لأنه هو الذي يحدّد الموضع النهائي للفاعل (متقدّمًا أو متأخرًا)، مع بيان حكم كل حالة: واجب/جائز، والعلّة.</li>
+        <li>ختمت بملاحق: مطابقة الفعل للفاعل (تذكيرًا وتأنيثًا)، نائب الفاعل، وخلاصة العلل.</li>
+      </ol>
+    </div>
+    <div class="box info">
+      <span class="ttl">المصادر التي روجعت (بحثتُ فيها في كتب النحو وشروح الألفية)</span>
+      <ul>
+        <li>شرح ابن عقيل على ألفية ابن مالك (ومنه: منحة الجليل لمحيي الدين عبد الحميد) — باب الفاعل، وباب المفعول به، وباب ما لا ينصرف.</li>
+        <li>الإنصاف في مسائل الخلاف بين النحويين البصريين والكوفيين — لابن الأنباري (مسألة تقديم معمول الفعل عليه، ومسألة الجمع بين الفاعل ونائبه).</li>
+        <li>شرح ألفية ابن مالك للعثيمين — باب الفاعل وباب المفعول به (نصّ صريح في مسألة اللبس والحصر).</li>
+        <li>أوضح المسالك إلى ألفية ابن مالك، وشرح الأشموني وحاشية الصبان، ومغني اللبيب.</li>
+        <li>النحو الوافي لعباس حسن، وجامع الدروس العربية للغلاييني (تفصيل المواضع والأحكام).</li>
+        <li>مقرّرات جامعية وموسوعات نحوية (الدرر السنية — أحكام الفاعل، ووكيبيديا العربية — الفاعل) للمقارنة والاستيثاق.</li>
+      </ul>
+      <p class="src">ملاحظة أمانة علمية: المسائل المذكورة هي المشهور عند جمهور النحويين، وأذكر الخلاف — حيث وقع — صراحةً (كخلاف البصريين والكوفيين في تقديم الفاعل على فعله).</p>
+    </div>
+    <div class="box note">
+      <span class="ttl">خلاصة سريعة في ثلاث جمل</span>
+      <ul>
+        <li><strong>الأصل:</strong> «فعل + فاعل + مفعول» — فالفاعل بعد فعله مباشرةً رتبةً، مرفوع دائمًا.</li>
+        <li><strong>الاستثناء:</strong> قد يجب تأخيره عن المفعول، وقد يجب تقديمه، وقد يجوز الوجهان — ولكل حالة علّةٌ معلومة.</li>
+        <li><strong>المعيار:</strong> الفاعل يُعرف بـ«النيابة» أي بموقعه وبالحديث عنه؛ فإذا وقع الاسم المرفوع <em>قبل</em> الفعل لم يُعرب فاعلًا بل مبتدأً.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================= الفصل الأول ================= -->
+  <section class="part" id="f1">
+    <span class="part-no">الفصل الأول</span>
+    <h2>تعريف الفاعل وحكمه، ولماذا رُفع؟</h2>
+
+    <h3 class="topic" id="f1-def">١) التعريف الجامع</h3>
+    <div class="box rule">
+      <span class="ttl">التعريف</span>
+      <p><strong>الفاعل</strong>: اسمٌ صريح أو مؤوَّل بالصريح، <strong>أسند إليه فعلٌ مبنيٌّ للمعلوم أو شبهه</strong>، وهو <strong>مرفوعٌ</strong> أبدًا، و<strong>متأخِّرٌ عن عامله</strong> (رتبةً) أبدًا.</p>
+      <p>وقال ابن مالك: <span class="ar">«الفاعلُ الذي كَمرفوعي أتى ... زيدٌ منيرًا وجهُه نِعْمَ الفتى»</span> — أي: كالمبتدأ في الرفع؛ ومن ثم قيل: <em>الفاعل مرفوع كالمبتدأ</em>، وهو ركن تتكوّن به الجملة الفعلية لا يُستغنى عنه.</p>
+    </div>
+    <div class="box why">
+      <span class="ttl">لماذا هذا التعريف بهذه القيود؟</span>
+      <ul>
+        <li><strong>«أسند إليه فعل مبني للمعلوم»:</strong> لنُخرج <strong>نائب الفاعل</strong>؛ فإنه يُسند إليه الفعل المبني للمجهول، فهو شبيه الفاعل لا فاعل حقيقي.</li>
+        <li><strong>«متأخر عن عامله رتبةً»:</strong> لنُخرج <strong>المبتدأ</strong>؛ فالاسم المرفوع قبل الفعل مبتدأ، والفاعل ضمير مستتر بعده.</li>
+        <li><strong>«صريح أو مؤوَّل»:</strong> لأن الفاعل قد يكون اسمًا ظاهرًا، وقد يكون <strong>مصدرًا مؤوَّلًا</strong> من «أنْ + الفعل» أو «ما + الفعل»: <span class="ar">يسعدني أنْ تنجحَ</span>.</li>
+      </ul>
+    </div>
+
+    <h3 class="topic" id="f1-why">٢) لماذا رُفع الفاعل؟ (تفسير العلة)</h3>
+    <div class="box why">
+      <span class="ttl">التعليل المركّب — يُفسّر لك كثيرًا من مسائل الباب</span>
+      <ol class="steps">
+        <li><strong>لأنه عُمْدة:</strong> الجملة الفعلية قائمة على ركنين: الفعل والفاعل؛ والفاعل عمدة لا يُستغنى عنه، فجُعل للعُمَد أعلى الحالات الإعرابية وهي <strong>الرفع</strong>، وللفضلات النصب: فالمفعول به فضلة يُستغنى عنه في أصل التركيب، فنُصب.</li>
+        <li><strong>للتفريق بين الواقع منه والفاعل فيه:</strong> العربية لا تُلزم ترتيبًا ثابتًا (فالمفعول قد يتقدم)، فكانت <strong>حركة الآخر</strong> هي علامة فارقة بين من فعل ومن وقع عليه الفعل: «ضربَ موسى عيسى» — الرفع للفاعل والنصب للمفعول يفصل بينهما حين يتشابه الاسمان.</li>
+        <li><strong>لأن الرفع من أنسب المواضع للمسند إليه:</strong> قالوا: الرفع «عالٍ» فناسبَ الفاعلَ الذي هو مصدر الحدث، وقالوا: «إنما رُفِع الفاعل لأن الرفع في المعنى للفعل» — أي أن الفعل يعطي فاعله قوّته وعلوّ رتبته.</li>
+        <li><strong>لأنه الأصل في الإسناد:</strong> الفاعل هو الذي أُسند إليه الحدث أولًا، ثم كان المفعول ثانيًا؛ فأخذ الأول الرفع وأخذ الثاني النصب.</li>
+      </ol>
+    </div>
+    <div class="box note">
+      <span class="ttl">فائدة عملية</span>
+      <p>من هذه العلّة الثانية (التفريق) تفهم <strong>لماذا</strong> نبّه النحاة على أن الفاعل لا يجوز أن يتقدّم على فعله؛ فإن تقدَّم لم تكن فيه علامة الفاعلية فضلًا عن التباسه بالمبتدأ، ولأنه معمول لا يتقدّم على عامله.</p>
+    </div>
+
+    <h3 class="topic" id="f1-marks">٣) علامات رفع الفاعل (بالتفصيل)</h3>
+    <div class="tw">
+      <table>
+        <caption>علامات إعراب الفاعل — ظاهرة ومقدَّرة ومحلية</caption>
+        <thead><tr><th>الحالة</th><th>العلامة</th><th>المثال</th><th>نوع الرفع</th></tr></thead>
+        <tbody>
+          <tr><td>مفرد / جمع تكسير / جمع مؤنث سالم</td><td>الضمة</td><td class="ar">حضرَ الطالبُ · اجتهدَ العمّالُ · نجحَتِ الطالباتُ</td><td>رفع ظاهر</td></tr>
+          <tr><td>مثنى</td><td>الألف</td><td class="ar">نجحَ الطالبانِ</td><td>رفع ظاهر (فرعيّ)</td></tr>
+          <tr><td>جمع مذكر سالم</td><td>الواو</td><td class="ar">اجتهدَ المعلمونَ</td><td>رفع ظاهر (فرعيّ)</td></tr>
+          <tr><td>الأسماء الخمسة</td><td>الواو</td><td class="ar">حضرَ أخوكَ وأبوكَ</td><td>رفع ظاهر (فرعيّ)</td></tr>
+          <tr><td>منقوص (آخره ياء)</td><td>ضمة مقدرة</td><td class="ar">حضرَ القاضي / جاءَ الراعي</td><td>رفع مقدَّر على الياء</td></tr>
+          <tr><td>مقصور (آخره ألف)</td><td>ضمة مقدرة</td><td class="ar">فازَ الفتى</td><td>رفع مقدَّر على الألف (تعذُّر)</td></tr>
+          <tr><td>الممنوع من الصرف (للعلمية أو صيغة منتهى الجموع…)</td><td>الضمة الظاهرة (وإنما يُمنع من التنوين ومن جرّ الفتحة)</td><td class="ar">حضرَ أحمدُ · سافرَ عثمانُ</td><td>رفع ظاهر</td></tr>
+          <tr><td>المضاف إلى ياء المتكلم</td><td>ضمة مقدرة</td><td class="ar">حضرَ ابني · جاءَ صديقي</td><td>مقدَّر (اشتغال المحل بالحركة المناسبة)</td></tr>
+          <tr><td>الاسم المبنية (ضمير، إشارة، موصول، اسم شرط…)</td><td>—</td><td class="ar">حضرَ هذا · نجحَ الذي أحبُّه · كتبتُ</td><td><strong>مبني في محل رفع فاعل</strong></td></tr>
+        </tbody>
+      </table>
+      <p class="tbl-note">تنبيه: «في محل رفع» تُطلق على المبنيّ (لأن الحركة لا تظهر في المبني)، و«رفع مقدَّر» تُطلق على المعرب الذي لا تظهر عليه الحركة لمانع.</p>
+    </div>
+
+    <h3 class="topic" id="f1-jarr">٤) موضع عجيب: فاعلٌ <em>مجرورٌ لفظًا</em> مرفوعٌ محلًّا</h3>
+    <div class="box rule">
+      <span class="ttl">القاعدة</span>
+      <p>قد يكون الفاعل مجرورًا <strong>لفظًا</strong> (بجرّ ظاهر) ومرفوعًا <strong>محلًّا</strong> (في التقدير)، وذلك في ثلاثة مواضع:</p>
+      <ol>
+        <li><strong>بعد «كفى» مع الباء الزائدة</strong> (كثير جائز): <span class="ar">وَكَفَى بِاللَّهِ شَهِيدًا · كفى باللهِ وكيلًا</span>.</li>
+        <li><strong>في فعل التعجب «أفعِلْ به» مع الباء الزائدة</strong> (<mark>واجب</mark> عند سيبويه وجمهور البصريين): <span class="ar">أحسِنْ بالصدقِ! · أَسْمِعْ بِهِمْ وَأَبْصِرْ</span>.</li>
+        <li><strong>بإضافة المصدر إلى فاعله</strong> (جرّ بالإضافة لا بحرف): <span class="ar">وَلَوْلَا دَفْعُ اللَّهِ النَّاسَ · عجبتُ من ضربِ زيدٍ عمرًا؛ فـ«زيدٍ» فاعل مجرور بالإضافة في محل رفع</span>.</li>
+        <li>ويضاف إليها: جرّه بـ«مِن» الزائدة: <span class="ar">ما جاءَنا مِن بشيرٍ</span> — فـ«بشيرٍ» فاعل مجرور لفظًا مرفوع محلًّا.</li>
+      </ol>
+    </div>
+    <div class="box why">
+      <span class="ttl">لماذا جُرّ الفاعل هنا؟ ولِمَ بقي مرفوع المحل؟</span>
+      <ul>
+        <li><strong>أما الجرّ:</strong> فلأن حرف الجر الزائد (الباء، من) أو الإضافة عاملٌ لَفظيّ قوي دخل على الاسم فجرّه لفظًا، ووجبَ جرّه في «أفعِلْ به» لئلا يلتبس فعل التعجب (وهو ماضٍ جاء على صورة الأمر) بفعل الأمر الحقيقي المتعدّي؛ فالباء تُلزمك ألّا تقول: «أحسِنِ الصدقَ» (فتظنّه أمرًا من الإحسان) بل «أحسِنْ بالصدقِ».</li>
+        <li><strong>وأما بقاء الرفع في المحل:</strong> فلأن الإعراب قسمان: لفظيّ ومحليّ؛ والحرف الزائد لا يُحدث في الاسم معنى جديدًا يستدعي النصب أو الجر الحقيقي؛ فبقي الاسم على خصائص الفاعلية رفعًا، وهو مرفوع في التقدير و«اشتغل» محله بحركة حرف الجر.</li>
+        <li><strong>وللحرف الزائد أثر آخر:</strong> يُعرب به فيقال: «فاعل مرفوع، وعلامة رفعه ضمة مقدَّرة منع من ظهورها اشتغال المحل بحركة حرف الجر الزائد».</li>
+      </ul>
+    </div>
+    <div class="box ex">
+      <span class="ttl">إعراب نموذجي</span>
+      <p class="ar">وَكَفَى <span class="hl3">بِـ</span><span class="hl">اللَّهِ</span> شَهِيدًا.</p>
+      <p>«كفى»: فعل ماضٍ مبني على الفتح المقدَّر (منع من ظهوره التعذُّر). «الباء»: حرف جر زائد. «اللهِ»: لفظ الجلالة <strong>فاعل مرفوع</strong> وعلامة رفعه ضمة مقدَّرة منع من ظهورها اشتغال المحل بحركة حرف الجر الزائد — أو: مجرور لفظًا مرفوع محلًّا على الفاعلية. «شهيدًا»: تمييز منصوب.</p>
+      <p class="ar">أَسْمِعْ <span class="hl3">بِـ</span><span class="hl">هِم</span> وَأَبْصِرْ.</p>
+      <p>«أسمِعْ»: فعل ماضٍ جاء على صورة الأمر للتعجب، مبني على الفتح. «الباء»: حرف جر زائد. «هم»: ضمير متصل في محلّ رفع فاعل. «وأبصِرْ»: معطوف عليه، والفاعل ضمير مستتر وجوبًا تقديره (هو).</p>
+    </div>
+    <div class="box warn">
+      <span class="ttl">لا تخطئ</span>
+      <p>قولك «الفاعل مجرور» اختصارٌ مجازيّ؛ فالأصوب: «مجرور لفظًا مرفوع محلًّا». والرفع حكمه الأصلي في كل حال، ولا يكون الفاعل منصوبًا أبدًا؛ لأن النصب وظيفة المفعول.</p>
+    </div>
+
+    <h3 class="topic" id="f1-not">٥) مواضعُ يظنّها الطالب فاعلًا وليست فاعلًا</h3>
+    <div class="tw">
+      <table>
+        <thead><tr><th>التركيب</th><th>الإعراب الصحيح</th><th>لماذا ليس فاعلًا؟</th></tr></thead>
+        <tbody>
+          <tr><td class="ar"><strong>زيدٌ</strong> قامَ</td><td>مبتدأ مرفوع، والجملة الفعلية خبره، والفاعل ضمير مستتر (هو)</td><td>لأن الفاعل لا يتقدّم على فعله؛ فتقدّمه يسلبه وظيفة الفاعلية</td></tr>
+          <tr><td class="ar">كانَ <strong>الطالبُ</strong> مجتهدًا</td><td>اسم «كان» مرفوع، وليس فاعلًا</td><td>لأن «كان» فعل ناقص يحتاج اسمًا وخبرًا لا فاعلًا ومفعولًا</td></tr>
+          <tr><td class="ar">كُتِبَ <strong>الدرسُ</strong></td><td>نائب فاعل مرفوع</td><td>لأن الفعل مبني للمجهول، والمرفوع بعده نائب عن الفاعل لا فاعل</td></tr>
+          <tr><td class="ar">كادَ <strong>زيدٌ</strong> يبكي</td><td>اسم «كاد» مرفوع (وهي من أفعال المقاربة الناقصة)</td><td>لأفعال المقاربة ليست تامّة، فخبرها جملة لا مفعول</td></tr>
+          <tr><td class="ar">نِعْمَ الرجلُ <strong>زيدٌ</strong></td><td>«زيدٌ» مخصوص بالمدح: مبتدأ مؤخر</td><td>لأن الفاعل قائم بالفعل قبلَه وهو «الرجلُ»</td></tr>
+          <tr><td class="ar">إنّ <strong>محمدًا</strong> مجتهدٌ</td><td>اسم «إنّ» منصوب</td><td>«إنّ» وأخواتها عوامل تدخل على الجملة الاسمية، فلا فاعل لها</td></tr>
+          <tr><td class="ar">يا <strong>طالبُ</strong></td><td>منادى مبني على الضم في محل نصب</td><td>النداء أسلوب طلبي لا فعلي، ومعموله منادى</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ================= الفصل الثاني ================= -->
+  <section class="part" id="f2">
+    <span class="part-no">الفصل الثاني</span>
+    <h2>أنواع الفاعل وصوره (من جهة اللفظ)</h2>
+    <p class="lead">للفاعل صور ستٌّ في العربية؛ ولكل صورة موضعها الذي تقع فيه:</p>
+
+    <h3 class="topic" id="f2-1">١) الاسم الظاهر الصريح</h3>
+    <div class="box rule">
+      <span class="ttl">القاعدة</span>
+      <p>الأصل في الفاعل أن يكون اسمًا ظاهرًا يلي فعله: <span class="ar">قامَ زيدٌ · اجتهدَ الطالبانِ · فازَ المعلمونَ</span>، ويأتي على صور: مفردًا، ومثنّى، وجمعًا (مذكرًا سالمًا، ومؤنثًا سالمًا، وتكسيرًا)، ومعرَّفًا ومنكَّرًا، ومضافًا، ومن الأسماء الخمسة.</p>
+    </div>
+    <div class="box why">
+      <span class="ttl">لماذا لا يُثنّى الفعل ولا يُجمع مع فاعله الظاهر؟</span>
+      <p>لأن الفعل في الأصل يدلّ على <strong>الحدَث</strong> لا على عدد الأحداث، وعددُه يؤخذ من فاعله؛ فتقول: «نجحَ الطالبانِ، نجحَ الطلابُ» فيبقى الفعل مفردًا. <em>واستثناءان:</em></p>
+      <ul>
+        <li><strong>علامة التأنيث (التاء):</strong> تبقى في الفعل إن كان الفاعل مؤنثًا: «نجحَتِ الطالبةُ».</li>
+        <li><strong>الضمائر البارزة:</strong> إذا كان الفاعل ضميرًا ظاهرًا وجب ظهوره: «نجحوا، نجحتا، نجحْنَ».</li>
+        <li><strong>مسألة «أكلوني البراغيث»:</strong> هذه لغة طيّء (وأزد شنوءة): يجعلون الواو والألف والنون <em>علامة</em> على الجماعة لا ضميرًا، والفاعل يبقى ظاهرًا بعدها. والجمهور: الواو فاعلٌ، و«البراغيث» بدل أو مبتدأ مؤخر — والأشهر إعرابًا عند البصريين: فاعل مرفوع وبعده بدل.</li>
+      </ul>
+    </div>
+
+    <h3 class="topic" id="f2-2">٢) الضمير المتصل (البارز)</h3>
+    <div class="tw">
+      <table>
+        <caption>ضمائر الرفع المتصلة التي تكون فاعلًا</caption>
+        <thead><tr><th>الضمير</th><th>يكون فاعلًا مع</th><th>المثال</th><th>الإعراب</th></tr></thead>
+        <tbody>
+          <tr><td>تاء الفاعل (تُ / تَ / تِ)</td><td>الماضي</td><td class="ar">كتبتُ · كتبتَ · كتبتِ</td><td>التاء: ضمير متصل مبني في محل رفع فاعل</td></tr>
+          <tr><td>نا الفاعلين</td><td>الماضي (والمضارع إن كان منصوبًا/مجزومًا)</td><td class="ar">كتبنا · لن نكتبَها</td><td>ضمير متصل مبني في محل رفع فاعل</td></tr>
+          <tr><td>ألف الاثنين</td><td>الماضي والمضارع والأمر</td><td class="ar">كتبا · يكتبانِ · اكتبا</td><td>ضمير متصل مبني على السكون في محل رفع فاعل</td></tr>
+          <tr><td>واو الجماعة</td><td>الماضي والمضارع والأمر</td><td class="ar">كتبوا · يكتبونَ · اكتبوا</td><td>في محل رفع فاعل، والفعل مبني على الضم مع الماضي</td></tr>
+          <tr><td>نون النسوة</td><td>الماضي والمضارع والأمر</td><td class="ar">كتبْنَ · يكتبْنَ · اكتبْنَ</td><td>في محل رفع فاعل، والفعل مبني على السكون</td></tr>
+          <tr><td>ياء المخاطبة</td><td>المضارع والأمر</td><td class="ar">تكتبينَ · اكتبي</td><td>في محل رفع فاعل</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="box why">
+      <span class="ttl">لماذا كانت هذه الضمائر فاعلًا لا مجرد علامة؟</span>
+      <p>لأنها <strong>أسماء</strong> في حقيقة وضعها: «التاء» اسم يدل على المتكلم، و«الواو» اسم يدل على جماعة الغائبين… ولذلك صحّ أن يُسند إليها الفعل؛ فهي كالاسم الظاهر، غير أنها مبنية لا تُظهر حركة إعراب فقيل: «في محل رفع».</p>
+    </div>
+
+    <h3 class="topic" id="f2-3">٣) الضمير المنفصل فاعلًا</h3>
+    <div class="box rule">
+      <span class="ttl">القاعدة</span>
+      <p>قد يكون الفاعل ضميرًا <strong>منفصلًا</strong> إذا تعيّن موضعه بـ<strong>الحصر</strong>؛ لأن الاسم المحصور يجب أن يأتي بعد أداة الحصر («إلا»، «إنما») في صيغه المنفصلة:</p>
+      <p class="ar">ما نجحَ إلا أنتَ · ما قامَ إلا أنا · إنَّما قامَ نحنُ</p>
+      <p>الإعراب: «أنتَ / أنا / نحنُ»: ضمير منفصل مبني في محل <strong>رفع فاعل</strong>، و«إلا» أداة حصر، و«إنما» أداة حصر.</p>
+    </div>
+    <div class="box why">
+      <span class="ttl">لماذا لا يُعرب ضميرًا بارزًا متصلًا هنا؟</span>
+      <p>لأن <strong>الحصر</strong> يمنع اتصال الضمير بالفعل؛ إذ لا يمكن أن تقول: «ما نجحتُ إلا» بمعنى الحصر على المتكلم بوصل الضمير بالفعل مع وجود أداة الحصر في الموضع نفسه؛ فإذا أردت الحصر على «أنا» أتيت بالضمير المنفصل بعد «إلا» بنصّه، وأُعرب فاعلًا، وبقيت الجملة على بنائها للمعلوم.</p>
+    </div>
+
+    <h3 class="topic" id="f2-4">٤) الضمير المستتر (وجوبًا وجوازًا)</h3>
+    <div class="tw">
+      <table>
+        <caption>مواضع استتار الضمير — الوجوب والجواز</caption>
+        <thead><tr><th>الحالة</th><th>الحكم</th><th>المثال</th><th>التقدير</th></tr></thead>
+        <tbody>
+          <tr><td>فعل الأمر للمخاطب</td><td>مستتر <strong>وجوبًا</strong></td><td class="ar">اكتبْ · ساعِدْ أخاك</td><td>أنتَ</td></tr>
+          <tr><td>المضارع المبدوء بالهمزة</td><td>مستتر <strong>وجوبًا</strong></td><td class="ar">أكتبُ · أُخْلِصُ</td><td>أنا</td></tr>
+          <tr><td>المضارع المبدوء بالنون</td><td>مستتر <strong>وجوبًا</strong></td><td class="ar">نكتبُ · نُسافِرُ</td><td>نحن</td></tr>
+          <tr><td>اسم فعل الأمر</td><td>مستتر <strong>وجوبًا</strong></td><td class="ar">صهْ · مهْ · عليكَ · هلمَّ</td><td>أنتَ</td></tr>
+          <tr><td>اسم فعل المضارع</td><td>مستتر <strong>وجوبًا</strong></td><td class="ar">أُفٍّ (أتَضجّرُ) · وَيْ (أتعجّبُ)</td><td>أنا</td></tr>
+          <tr><td>فعل التعجب «ما أفعله»</td><td>مستتر <strong>وجوبًا</strong></td><td class="ar">ما أحسنَ الصدقَ!</td><td>هو</td></tr>
+          <tr><td>«أفعِلْ به» التعجبية</td><td>مستتر <strong>وجوبًا</strong></td><td class="ar">أحسِنْ بالصدقِ!</td><td>هو</td></tr>
+          <tr><td>أفعال الاستثناء: خلا، عدا، حاشا</td><td>مستتر <strong>وجوبًا</strong></td><td class="ar">جاءَ القومُ ما خلا سعيدًا / عدا / حاشا</td><td>هو (عائد على البعض المفهوم)</td></tr>
+          <tr><td>فعل القسم المحذوف</td><td>مستتر <strong>وجوبًا</strong></td><td class="ar">واللهِ لأجتهدنَّ (أُقسِمُ)</td><td>أنا</td></tr>
+          <tr><td>الفعل المحذوف في الإغراء والتحذير والاختصاص</td><td>مستتر <strong>وجوبًا</strong></td><td class="ar">الصدقَ الصدقَ! (الزَمْ) · نحن العربَ (أخُصُّ)</td><td>أنتَ / أنا</td></tr>
+          <tr><td>الماضي المنسوب للغائب</td><td>مستتر <strong>جوازًا</strong></td><td class="ar">محمدٌ كتبَ</td><td>هو (يجوز: كتبَ محمدٌ)</td></tr>
+          <tr><td>المضارع المبدوء بالياء/التاء للغائب</td><td>مستتر <strong>جوازًا</strong></td><td class="ar">الطالبُ يدرسُ · الفتاةُ تدرسُ</td><td>هو / هي</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="box why">
+      <span class="ttl">لماذا وجب الاستتار في هذه المواضع؟</span>
+      <ul>
+        <li><strong>في الأمر والمضارع المبدوء بأو ن:</strong> لأن الفاعل مُتعيَّن من صيغة الفعل نفسها (الهمزة للمتكلم، النون للجماعة، الأمر للمخاطب)، فلا يمكن حلول اسم ظاهر محلّه؛ فلو قلت «اكتبْ محمدٌ» لبقي الفاعل «أنت» ولصار «محمدٌ» منادى أو مفعولًا أو غيره. فالمعنى: <mark>الاستتار الوجوبي حيث لا يقوم مقامه ظاهر</mark>.</li>
+        <li><strong>في «ما أفعله»:</strong> لأن الفاعل ضمير يعود على «ما» التعجبية (شيءٌ أعجَبَنِي) ولا يظهر في اللفظ؛ ولو أُظهر لقيل: «ما أحسنَ هو الصدقَ» وهو فاسد.</li>
+        <li><strong>في «أفعِلْ به»:</strong> لئلا يظنّ فعل التعجب أمرًا، وانتقل الفاعل إلى الاسم الظاهر المجرور بالباء الزائدة.</li>
+        <li><strong>في أفعال الاستثناء (خلا/عدا/حاشا):</strong> لأن الفاعل ضمير يعود على «البعض» المفهوم من المستثنى منه: «جاء القومُ ما خلا البعضُ سعيدًا» ثم استُتر الضمير لدلالة الحال عليه.</li>
+      </ul>
+    </div>
+
+    <h3 class="topic" id="f2-5">٥) المصدر المؤوَّل فاعلًا</h3>
+    <div class="box rule">
+      <span class="ttl">القاعدة</span>
+      <p>يكون الفاعل <strong>مصدرًا مؤوَّلًا</strong> من: «أنْ + المضارع» أو «ما + الماضي» أو «أنّ + اسمها وخبرها»، ويكون المصدر المؤوَّل <strong>في محل رفع فاعل</strong> إذا وقع بعد فعل يحتاج فاعلًا ومناسبًا له المعنى.</p>
+    </div>
+    <ul class="exlist">
+      <li><span class="ar">يسعدُني <span class="hl">أن تنجحَ</span>.</span><span class="why2">«أن» مصدرية ناصبة، «تنجحَ» مضارع منصوب، والفاعل مستتر تقديره (أنت)، والمصدر المؤوَّل «أن تنجح» في محل <strong>رفع فاعل</strong> لـ«يسعد»، والتقدير: يسعدني نجاحُك.</span></li>
+      <li><span class="ar">يُطرِبُني <span class="hl">ما قُلتَه</span> من شِعرٍ.</span><span class="why2">«ما» مصدرية، والمصدر المؤوَّل «ما قلتَه» في محل رفع فاعل، والتقدير: يُطرِبني قولُك.</span></li>
+      <li><span class="ar">يُعجِبُني <span class="hl">أنّك مجتهدٌ</span>.</span><span class="why2">«أنّ» ومعمولاها مصدر مؤوَّل في محل رفع فاعل، والتقدير: يُعجبني اجتهادُك.</span></li>
+    </ul>
+    <div class="box why">
+      <span class="ttl">لماذا يُعدّ المصدر المؤوَّل فاعلًا وهو ليس لفظًا واحدًا؟</span>
+      <p>لأنه <strong>مؤوَّل بالصريح</strong>: يقدَّر بمصدر صريح يقع فاعلًا («أن تنجح = نجاح»)؛ والمعنى هو المعنى، والإعراب تابع للموقع والمعنى لا للصورة؛ فما صحّ أن يحلّ محلّه اسم مفرد صريح أُعطي حكم الاسم المفرد.</p>
+    </div>
+
+    <h3 class="topic" id="f2-6">٦) الأسماء المبنية فاعلًا (إشارة، موصول، شرط…)</h3>
+    <ul class="exlist">
+      <li><span class="ar">حضرَ <span class="hl">هذا</span>.</span><span class="why2">اسم إشارة مبني على السكون في محل رفع فاعل.</span></li>
+      <li><span class="ar">نجحَ <span class="hl">الذي أحبُّه</span>.</span><span class="why2">«الذي»: اسم موصول مبني على السكون في محل رفع فاعل، والجملة بعده صلة الموصول لا محل لها من الإعراب.</span></li>
+      <li><span class="ar">فازَ <span class="hl">مَن اجتهدَ</span>.</span><span class="why2">«مَن» هنا موصولة (بمعنى الذي)، مبني في محل رفع فاعل. فاحذر: «مَن» تكون في محل رفع فاعل إذا كان ما بعدها فعلًا ناقصًا في معموله (يحتاج فاعلًا) — ويجوز إعرابها: فاعلًا بفعل محذوف يفسّره المذكور، أو مبتدأً على القاعدة المشهورة.</span></li>
+    </ul>
+    <div class="box note">
+      <span class="ttl">تنبيه إعرابي مهم</span>
+      <p>الأسماء المبنية (الضمائر، أسماء الإشارة، الأسماء الموصولة، أسماء الشرط، أسماء الاستفهام) لا تظهر فيها الحركات؛ ولذلك يُعبَّر عنها بـ«<strong>في محل رفع فاعل</strong>» لا بـ«فاعل مرفوع بالضمة».</p>
+    </div>
+  </section>
+
+
+  <!-- ================= الفصل الثالث ================= -->
+  <section class="part" id="f3">
+    <span class="part-no">الفصل الثالث</span>
+    <h2>مواضع الفاعل بعد الأفعال</h2>
+    <p class="lead">
+      الفعل هو العامل الأصلي في رفع الفاعل؛ ولهذا كان «الفعل + الفاعل» ركنًا لا تستقيم الجملة الفعلية بدونه.
+      وفي هذا الفصل نستقرئ <strong>كل صورة يقع فيها الفاعل بعد فعل</strong>، من الفعل التام المتصرّف إلى الفعل المحذوف.
+    </p>
+
+    <h3 class="topic" id="f3-1">١) بعد الفعل التام المبني للمعلوم (الأصل)</h3>
+    <div class="box rule">
+      <span class="ttl">القاعدة</span>
+      <p>إذا ذُكر فعلٌ تامٌّ متصرِّف مبنيٌّ للمعلوم، فلا بدّ له من فاعل مرفوع بعده: <span class="ar">كتبَ الطالبُ · يكتبُ الطالبُ · اكتبْ يا طالبُ</span>.</p>
+    </div>
+    <div class="box why">
+      <span class="ttl">لماذا لا بدّ من فاعل مع كل فعل؟</span>
+      <ul>
+        <li>لأن <strong>الفعل حدثٌ لا يقوم بنفسه</strong>، فلا بدّ له من مُحدِث؛ فالجملة الفعلية لا تكتمل أركانها إلا بالفاعل.</li>
+        <li>ولذلك قيل: «لا يُحذف الفاعل» حذفًا مُطلَقًا؛ وإنما <strong>يُستتر</strong> أو <strong>يُبنى الفعل للمجهول</strong> إذا قُصد إخفاؤه. قالوا: «الفاعل مذكورٌ أو مستتر، ولا يجوز إسقاطه بالكلية».</li>
+        <li>ولأن الفعل مبني للمعلوم صيغةً تدلّ على أن له فاعلًا معلومًا، فلزم أن يُذكر أو يُقدَّر.</li>
+      </ul>
+    </div>
+
+    <h3 class="topic" id="f3-2">٢) الفصل بين الفعل وفاعله</h3>
+    <div class="box rule">
+      <span class="ttl">القاعدة</span>
+      <p>ليس شرطًا أن يلي الفاعل فعله مباشرة؛ فقد يفصل بينهما فاصلٌ، ويبقى الفاعل مرفوعًا:</p>
+      <ul>
+        <li><strong>بالمفعول به:</strong> <span class="ar">قرأَ الدرسَ محمدٌ · أكرمَ الضيفَ زيدٌ</span> (وهذا هو تقديم المفعول على الفاعل الجائز).</li>
+        <li><strong>بالجار والمجرور:</strong> <span class="ar">حضرَ في الاجتماع مديرٌ.</span></li>
+        <li><strong>بالظرف:</strong> <span class="ar">سافرَ أمسِ أخوك.</span></li>
+        <li><strong>بأداة النفي:</strong> <span class="ar">ما حضرَ أحدٌ.</span></li>
+        <li><strong>بالقسم:</strong> <span class="ar">واللهِ لقد نجحَ الطالبُ.</span></li>
+      </ul>
+    </div>
+    <div class="box why">
+      <span class="ttl">لماذا يجوز الفصل، وهل هناك حدّ له؟</span>
+      <p>لأن العامل لا يشترط الملاصقة لمعموله، وإنما يشترط ألّا يقع بينهما ما يمنع العمل؛ فالرتبة محفوظة (الفاعل بعد عامله) وإن تأخّر لفظه خطوات. ولا يطول الفصل في الكلام الفصيح إلا لغرض، وقد جاء في التنزيل: <span class="ar">﴿وَإِذِ ابْتَلَى إِبْرَاهِيمَ رَبُّهُ﴾</span> وفيه فصلُ المفعول بين الفعل والفاعل.</p>
+    </div>
+
+    <h3 class="topic" id="f3-3">٣) بعد الأفعال الجامدة: نِعْمَ، بئسَ، حبَّذا، ساء</h3>
+    <div class="tw">
+      <table>
+        <caption>الفاعل في أفعال المدح والذم</caption>
+        <thead><tr><th>الفعل</th><th>فاعله</th><th>المثال</th><th>الإعراب</th></tr></thead>
+        <tbody>
+          <tr><td>نِعْمَ</td><td>مُعرَّف بـ«أل»</td><td class="ar">نِعْمَ الرجلُ زيدٌ</td><td>«الرجلُ» فاعل مرفوع، «زيدٌ» مخصوص بالمدح مبتدأ مؤخر</td></tr>
+          <tr><td>نِعْمَ</td><td>مضاف إلى ما فيه «أل»</td><td class="ar">نِعْمَ عملُ الرجلِ الصدقُ</td><td>«عملُ» فاعل، و«الصدقُ» مخصوص</td></tr>
+          <tr><td>نِعْمَ</td><td>ضمير مستتر مفسَّر بتمييز/نكرة</td><td class="ar">نِعْمَ رجلًا زيدٌ</td><td>الفاعل ضمير مستتر، «رجلًا» تمييز منصوب، «زيدٌ» مخصوص</td></tr>
+          <tr><td>بئسَ</td><td>كما في نِعْمَ</td><td class="ar">بئسَ الخُلُقُ الكذبُ</td><td>«الخُلُقُ» فاعل، «الكذبُ» مخصوص بالذم</td></tr>
+          <tr><td>حبَّذا</td><td>اسم الإشارة «ذا»</td><td class="ar">حبَّذا العلمُ</td><td>«حبَّ» فعل مدح، «ذا» فاعل في محل رفع، «العلمُ» مخصوص مبتدأ مؤخر</td></tr>
+          <tr><td>لا حبَّذا</td><td>اسم الإشارة «ذا»</td><td class="ar">لا حبَّذا الكسلُ</td><td>كما سبق، والمخصوص «الكسلُ»</td></tr>
+          <tr><td>ساءَ / بسَّ</td><td>كما في نِعْمَ</td><td class="ar">ساءَ العملُ الغشُّ</td><td>«العملُ» فاعل، «الغشُّ» مخصوص</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="box why">
+      <span class="ttl">لماذا كان فاعل «نعم» على هذه الصور الثلاث؟</span>
+      <p>لأن «نعم» و«بئس» فعلان جامدان لإنشاء المدح والذم، ولا يُفصَّل مضمونهما إلا بما بعدهما؛ فاشترط النحاة في فاعلهما أن يكون <strong>معرَّفًا بـ«أل»</strong> أو <strong>مضافًا إلى ما فيه «أل»</strong> أو <strong>ضميرًا مستترًا مُفسَّرًا بالتمييز/النكرة</strong>؛ لأن التعريف يحقّق العموم والإحاطة المطلوبة في المدح والذم، ولأن النكرة في موضع الإبهام قد تُفسَّر بالتمييز فيتكامل المعنى.</p>
+      <p>أما «حبَّذا» فـ«ذا» فيها اسم إشارة جُعل فاعلًا، و«حبَّ» فعل مدح مسلوب الدلالة على الحدث.</p>
+    </div>
+
+    <h3 class="topic" id="f3-4">٤) بعد «كفى» — الفاعل المجرور بالباء</h3>
+    <ul class="exlist">
+      <li><span class="ar">كفى <span class="hl">اللهُ</span> المؤمنينَ القتالَ.</span><span class="why2">الفاعل ظاهر مرفوع، وهذا هو الأصل؛ لأن «كفى» متعدّية هنا.</span></li>
+      <li><span class="ar">وَكَفَى <span class="hl3">بِـ</span><span class="hl">اللَّهِ</span> شهيدًا.</span><span class="why2">الباء حرف جر زائد، «اللهِ» فاعل مرفوع محلًّا مجرور لفظًا.</span></li>
+    </ul>
+    <div class="box why">
+      <span class="ttl">لماذا زِيدت الباء في فاعل «كفى» خاصة؟</span>
+      <p>لأنه موضع يكثر فيه إسناد الفاعلية إلى اسم الجلالة تعظيمًا، فزادوا الباء توكيدًا ومعونة على النطق (وقيل: لأنه يُفرَّق به بين «كفى» بمعنى «حسْب» وبين «كفى» بمعنى «وَقى» المتعدّية). وزيادتها في فاعل «كفى» <strong>كثيرة جائزة</strong>، فلك أن تقول: «كفى اللهُ شهيدًا».</p>
+    </div>
+
+    <h3 class="topic" id="f3-5">٥) بعد فعل التعجب</h3>
+    <div class="grid2">
+      <div class="box rule">
+        <span class="ttl">ما أحسنَ الصدقَ!</span>
+        <p><strong>الفاعل:</strong> ضمير مستتر <strong>وجوبًا</strong> تقديره (هو) عائدٌ على «ما» التعجبية.</p>
+        <p><strong>ولماذا؟</strong> لأن «ما» هي التي عُجِّب منها، والفاعل ضمير مُبهم لا يظهر في اللفظ، فلا يصح أن تقول: «ما أحسنَ هو الصدقَ».</p>
+      </div>
+      <div class="box rule">
+        <span class="ttl">أحسِنْ بالصدقِ!</span>
+        <p><strong>الفاعل:</strong> «الصدقِ» — فاعل مرفوع محلًّا مجرور لفظًا بالباء الزائدة <strong>اللازمة</strong>.</p>
+        <p><strong>ولماذا؟</strong> لأن صيغة «أفعِلْ» تشبه فعل الأمر، والتمييز بينهما يكون بالباء الزائدة، ولو حُذفت لالتبس الأمر بالتعجب.</p>
+      </div>
+    </div>
+
+    <h3 class="topic" id="f3-6">٦) بعد أفعال الاستثناء (خلا، عدا، حاشا)</h3>
+    <ul class="exlist">
+      <li><span class="ar">جاءَ القومُ <span class="hl">ما خلا</span> سعيدًا.</span><span class="why2">«خلا» فعل ماضٍ، و«ما» مصدرية، والفاعل ضمير مستتر <strong>وجوبًا</strong> تقديره (هو) يعود على «البعض» المفهوم من القوم، و«سعيدًا» مفعول به منصوب.</span></li>
+      <li><span class="ar">نجحَ الطلابُ <span class="hl">عدا</span> طالبًا.</span><span class="why2">«عدا» فعل ماضٍ، وفاعله ضمير مستتر وجوبًا (هو)، والتقدير: عدا البعضُ طالبًا.</span></li>
+    </ul>
+    <div class="box why">
+      <span class="ttl">لماذا وجب استتار الفاعل في «خلا/عدا/حاشا»؟</span>
+      <p>لأن الفاعل فيها ليس المقصود ذكره، بل هو <strong>البعض المفهوم</strong> من الاسم السابق (القوم)، ولا حاجة إلى إظهاره؛ فاستُتر وجوبًا لدلالة السياق عليه، ولم يبقَ بعد الفعل إلا المعمول المستثنى منصوبًا.</p>
+    </div>
+
+    <h3 class="topic" id="f3-7">٧) بعد الفعل المحذوف (مواضع الحذف) — الفاعل مسـتتر وجوبًا</h3>
+    <div class="tw">
+      <table>
+        <thead><tr><th>الموضع</th><th>الفعل المحذوف وتقديره</th><th>الفاعل</th><th>المثال</th></tr></thead>
+        <tbody>
+          <tr><td>الإغراء</td><td>الزَمْ / اتّبِعْ</td><td>ضمير مستتر وجوبًا (أنتَ)</td><td class="ar">الصدقَ الصدقَ!</td></tr>
+          <tr><td>التحذير</td><td>احذَرْ / اجتنِبْ</td><td>ضمير مستتر وجوبًا (أنتَ)</td><td class="ar">إيّاك والغشَّ! · الكذبَ الكذبَ!</td></tr>
+          <tr><td>الاختصاص</td><td>أخُصُّ / أعني</td><td>ضمير مستتر وجوبًا (أنا / نحن)</td><td class="ar">نحن العربَ نُكرِمُ الضيفَ.</td></tr>
+          <tr><td>القسم</td><td>أُقسِمُ / أحلِفُ</td><td>ضمير مستتر وجوبًا (أنا)</td><td class="ar">واللهِ لأجتهدنَّ.</td></tr>
+          <tr><td>النصب على الاشتغال</td><td>الفعل المفسَّر بالمذكور</td><td>ضمير مستتر وجوبًا</td><td class="ar">الدرسَ قرأتُه (قرأتُ الدرسَ).</td></tr>
+          <tr><td>المصدر النائب عن الفعل</td><td>الفعل المفهوم من المصدر</td><td>حسب الفعل (غالبًا مستتر)</td><td class="ar">ضربًا زيدًا (اضرِبْ زيدًا ضربًا).</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="box why">
+      <span class="ttl">لماذا يُحذف الفعل في هذه المواضع، وبأيّ حقّ يبقى الفاعل؟</span>
+      <p>لأن المعنى المراد يُفهم من اللفظ المذكور (المصدر، أو الاسم المنصوب، أو حرف القسم) من غير لبس، فحُذف الفعل <strong>اختصارًا وتوكيدًا</strong> — والحذف في العربية قرينة على قوة المعنى وظهوره — وبقي <strong>الفاعل مُقدَّرًا مستترًا</strong> لأنه جزء من معنى الفعل المحذوف لا يسقط بسقوطه، فالفاعل لا يُحذف وإن حُذف عامله.</p>
+    </div>
+
+    <h3 class="topic" id="f3-8">٨) الفاعل في باب التنازع (فاعل بين فعلين)</h3>
+    <div class="box rule">
+      <span class="ttl">القاعدة</span>
+      <p>إذا توجّه إلى اسمٍ واحد فعلان (أو فعل وشبهه)، فقد <strong>تنازع</strong> الفعلان معمولهما؛ فيُعمل الاسم في أحد الفعلين ويُضمر في الآخر:</p>
+      <p class="ar">ضربتُ وضربَني <span class="hl">زيدٌ</span> · قامَ وقعدَ <span class="hl">القومُ</span> · أكرمتُ وأكرمني <span class="hl">محمدٌ</span></p>
+      <p>فـ«زيدٌ» فاعل للفعل الثاني، ومفعول (في المعنى) للفعل الأول؛ وقد حُذف ضميره من الأول: ضربتُه وضربني زيدٌ.</p>
+    </div>
+    <div class="box why">
+      <span class="ttl">لماذا جاز أن يكون الاسم الواحد فاعلًا لفعل ومفعولًا لآخر؟</span>
+      <p>لأن العاملين يعملان في معمول واحد من جهتين: الحدث الأول وقع <em>عليه</em>، والحدث الثاني وقع <em>منه</em>؛ والعربية تحذف الضمير إذا دلّ عليه السياق اختصارًا، فيُعمل الاسم في الفعل الذي يليانه (وهو الأولى عند أكثرهم) أو في الأول على الخلاف في المذهبين.</p>
+    </div>
+
+    <h3 class="topic" id="f3-9">٩) تنبيهات: أفعالٌ لا فاعل لها في الظاهر</h3>
+    <div class="tw">
+      <table>
+        <thead><tr><th>الأفعال</th><th>ما بعدها</th><th>المثال</th><th>العلّة</th></tr></thead>
+        <tbody>
+          <tr><td>كان وأخواتها (ناقصة)</td><td>اسم مرفوع + خبر منصوب</td><td class="ar">كان الطالبُ مجتهدًا</td><td>نقصانها: لا تكتفي بالاسم، بل تطلب خبرًا يُتمّم</td></tr>
+          <tr><td>كاد وأخواتها (مقاربة/رجاء)</td><td>اسم مرفوع + جملة خبر</td><td class="ar">كاد المطرُ ينزلُ · عسى اللهُ أن يغفرَ</td><td>دخلت على الجملة الاسمية كـ«كان»</td></tr>
+          <tr><td>ليس / ما زال / أصبح…</td><td>اسم مرفوع</td><td class="ar">ليس الغنى مالًا</td><td>الأصل: اسم لا فاعل</td></tr>
+          <tr><td>المبني للمجهول</td><td>نائب فاعل مرفوع</td><td class="ar">كُتِبَ الدرسُ</td><td>حُذف الفاعل وناب عنه المفعول (الملحق ٢)</td></tr>
+        </tbody>
+      </table>
+      <p class="tbl-note">قاعدة الفصل: انظر هل الفعل <em>تامّ</em> أم <em>ناقص</em>؛ فإن كان ناقصًا فالمرفوع بعده «اسمه» لا فاعله.</p>
+    </div>
+  </section>
+
+  <!-- ================= الفصل الرابع ================= -->
+  <section class="part" id="f4">
+    <span class="part-no">الفصل الرابع</span>
+    <h2>مواضع الفاعل بعد المشتقّات (شبه الفعل)</h2>
+    <p class="lead">
+      «شبه الفعل» كل اسم يعمل عمل الفعل: المصدر، واسم الفاعل، والصفة المشبهة، وصيغة المبالغة، واسم التفضيل.
+      وهذه العوامل <strong>ترفع فاعلًا</strong> كما يرفعه الفعل، بشرط <strong>الاعتماد</strong>.
+    </p>
+
+    <h3 class="topic" id="f4-masdar">١) المصدر</h3>
+    <div class="box rule">
+      <span class="ttl">القاعدة</span>
+      <p>يعمل المصدر عمل فعله مطلقًا (في الماضي والحال والاستقبال، دون شرط زمن): يرفع فاعلًا وينصب مفعولًا.</p>
+      <ul>
+        <li><strong>مضافًا:</strong> <span class="ar">عجبتُ من ضربِ زيدٍ عمرًا</span> → «زيدٍ» فاعل مجرور لفظًا مرفوع محلًّا، «عمرًا» مفعول به منصوب بالمصدر.</li>
+        <li><strong>معرَّفًا بالألف واللام:</strong> <span class="ar">حضرتُ حضورَ المديرِ الاجتماعَ.</span></li>
+        <li><strong>بالفاعل ظاهرًا مرفوعًا (إذا لم يُضف إلى فاعله):</strong> <span class="ar">أعجبني كتابةُ الطالبِ الدرسَ.</span></li>
+      </ul>
+    </div>
+    <div class="box why">
+      <span class="ttl">لماذا يعمل المصدر عمل الفعل؟ ولماذا لا يشترط فيه «الاعتماد»؟</span>
+      <p>لأن المصدر <strong>يُنطق به بدل الفعل</strong> في كثير من المواضع: «ضربًا زيدًا» = اضرِبْ زيدًا، و«عجبتُ من ضربِ زيدٍ» = من أن ضربَ زيدٌ؛ فهو نائب عن الفعل في معناه وعمله. ولم يُشترط فيه الاعتماد لأنه <strong>أصيل في الدلالة على الحدث</strong>، بخلاف المشتق الذي يدلّ على ذاتٍ موصوفة بالحدث، فاحتاج إلى قرينة (الاعتماد) ليعمل عمل الفعل.</p>
+    </div>
+
+    <h3 class="topic" id="f4-fatil">٢) اسم الفاعل</h3>
+    <div class="tw">
+      <table>
+        <caption>أين يقع الفاعل بعد اسم الفاعل؟</caption>
+        <thead><tr><th>الحالة</th><th>المثال</th><th>الفاعل</th><th>المعمول الآخر</th></tr></thead>
+        <tbody>
+          <tr><td>مجرَّد معتمد (خبر)</td><td class="ar">زيدٌ ضاربٌ عمرًا غدًا</td><td>ضمير مستتر جوازًا (هو)</td><td>«عمرًا» مفعول به</td></tr>
+          <tr><td>مجرَّد معتمد (خبر مقدم)</td><td class="ar">ما ضاربٌ زيدٌ عمرًا</td><td>«زيدٌ» فاعل لاسم الفاعل</td><td>«عمرًا» مفعول به</td></tr>
+          <tr><td>نكرة موصوفة</td><td class="ar">مررتُ برجلٍ ضاربٍ أخوه زيدًا</td><td>«أخوه» فاعل</td><td>«زيدًا» مفعول به</td></tr>
+          <tr><td>مقرون بـ«أل»</td><td class="ar">هذا الضاربُ زيدًا أمسِ</td><td>ضمير مستتر (هو)</td><td>«زيدًا» مفعول به (والعمل مطلق)</td></tr>
+          <tr><td>من فعل لازم</td><td class="ar">زيدٌ قائمٌ أبوه</td><td>«أبوه» فاعل</td><td>لا مفعول</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="box why">
+      <span class="ttl">لماذا وجب أن يكون اسم الفاعل «معتمدًا» ليرفع فاعلًا؟</span>
+      <p>لأنه في الأصل <strong>صفةٌ لذات</strong> لا فعل؛ فإذا وقع مبتدأً متقدّمًا على معموله اختلّ المعنى وصار كالاسم الجامد. ولكن إذا <strong>اعتمد على ما قبله</strong> — كأن يقع خبرًا لمبتدأ، أو صفة لنكرة، أو بعد نفي أو استفهام، أو في جملة لها سياق — قويَ على العمل لوجود قرينة تدلّ على الفعلية. أما إذا اقترن بـ«أل» فيقوى بلام التعريف فيعمل مطلقًا دون شرط الاعتماد.</p>
+    </div>
+
+    <h3 class="topic" id="f4-sifa">٣) الصفة المشبَّهة</h3>
+    <ul class="exlist">
+      <li><span class="ar">مررتُ برجلٍ <span class="hl">حسَنٍ</span> <span class="hl2">خُلُقُه</span>.</span><span class="why2">«خُلُقُه»: فاعل مرفوع للصفة المشبهة «حسن» (وهي تعمل عمل الفعل اللازم)، والهاء مضاف إليه.</span></li>
+      <li><span class="ar">المؤمنُ <span class="hl">كريمٌ</span> <span class="hl2">أصلُه</span>.</span><span class="why2">«أصلُه» فاعل مرفوع للصفة المشبهة.</span></li>
+      <li><span class="ar">هو <span class="hl">حسنٌ</span> <span class="hl2">وجهَه</span>.</span><span class="why2">«وجهَ» منصوب على التشبيه بالمفعول (خلافًا)؛ فالمنصوب مع الصفة المشبهة مُتأوَّل، لا مفعولًا حقيقيًّا.</span></li>
+    </ul>
+    <div class="box why">
+      <span class="ttl">لماذا لا تنصب الصفة المشبهة مفعولًا؟</span>
+      <p>لأنها <strong>مشتقة من فعل لازم</strong> غالبًا (حَسُنَ، كَرُمَ) تدلّ على صفة ثابتة في الموصوف، وهي أقرب إلى الوصف الخالص من اسم الفاعل؛ فتعمل عمل اللازم (رفع فاعل فقط)، وما جاء منصوبًا معها فهو على <strong>التشبيه بالمفعول</strong> لا على المفعولية الحقيقية.</p>
+      <p>وتَجد الفرق تفصيلًا في الجدول الآتي:</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>الوجه</th><th>اسم الفاعل</th><th>الصفة المشبهة</th></tr></thead>
+          <tbody>
+            <tr><td>المعنى</td><td>حدَث متجدّد (يقوم الآن/غدًا)</td><td>صفة ثابتة ملازمة</td></tr>
+            <tr><td>المصدر</td><td>من الثلاثي والمزيد</td><td>من الثلاثي اللازم غالبًا</td></tr>
+            <tr><td>العمل</td><td>رفع فاعل ونصب مفعول</td><td>رفع فاعل فقط</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <h3 class="topic" id="f4-mubalagha">٤) صيغ المبالغة</h3>
+    <ul class="exlist">
+      <li><span class="ar">هذا <span class="hl">قتّالُ</span> <span class="hl2">الفُجّارِ</span>.</span><span class="why2">«قتّالُ» خبر مرفوع، و«الفجّارِ» مفعول به لصيغة المبالغة مجرور لفظًا منصوب محلًّا.</span></li>
+      <li><span class="ar">رجلٌ <span class="hl">كذّابٌ</span> <span class="hl2">أخوه</span>.</span><span class="why2">«أخوه» فاعل مرفوع لصيغة المبالغة «كذّاب».</span></li>
+      <li><span class="ar">اللهُ <span class="hl">غفّارٌ</span> <span class="hl2">ذنبَ</span> التائبِ.</span><span class="why2">«ذنبَ» مفعول به منصوب لصيغة المبالغة.</span></li>
+    </ul>
+    <div class="box why">
+      <span class="ttl">لماذا تعمل صيغ المبالغة عمل الفعل؟</span>
+      <p>لأنها في حقيقتها <strong>أسماء فاعل مبالَغ فيها</strong> (كذّاب = كثير الكذب)، فقويت على العمل قوة اسم الفاعل؛ بل هي أقوى دلالةً على الحدث لكثرة وقوعه من الفاعل.</p>
+    </div>
+
+    <h3 class="topic" id="f4-tafdil">٥) اسم التفضيل</h3>
+    <ul class="exlist">
+      <li><span class="ar">ما رأيتُ رجلًا <span class="hl">أحسنَ</span> في عينِه <span class="hl2">الكحلُ</span> منه في عينِ زيدٍ.</span><span class="why2">«الكحلُ»: فاعل مرفوع لاسم التفضيل «أحسنَ» (وهو صفة منصوبة لـ«رجلًا»).</span></li>
+      <li><span class="ar">زيدٌ <span class="hl">أفضلُ</span> منك <span class="hl2">نفسًا</span>.</span><span class="why2">«نفسًا» تمييز منصوب، لا مفعول، لأن اسم التفضيل أضعف العوامل عملًا.</span></li>
+    </ul>
+    <div class="box why">
+      <span class="ttl">لماذا كان اسم التفضيل «أضعف العوامل»؟</span>
+      <p>لكثرة شروطه (لا يُصاغ من مزيد، ولا ناقص، ولا مجهول، ولا مما الوصف منه على أفعل/فعلاء)، ولعدم قدرته على نصب المفعول به؛ فلا يعمل إلا رفع الفاعل في الأقل، ومعتمدًا على ما قبله، وغالبًا يكون فاعله ضميرًا مستترًا كما في: «محمدٌ أكرمُ من صالحٍ» (الفاعل: هو).</p>
+    </div>
+
+    <h3 class="topic" id="f4-maf3ul">٦) تنبيه: اسم المفعول يرفع «نائب فاعل» لا فاعلًا</h3>
+    <div class="box rule">
+      <span class="ttl">القاعدة</span>
+      <p>اسم المفعول يعمل عمل الفعل <strong>المبني للمجهول</strong>؛ فيرفع <strong>نائب الفاعل</strong> لا الفاعل: <span class="ar">الدرسُ مكتوبٌ عنوانُه · الفكرةُ مفهومٌ معناها</span>. وانظر تفصيل المواضع في الملحق الثاني.</p>
+    </div>
+
+    <h3 class="topic" id="f4-jadwal">٧) جدول جامع: موضع الفاعل مع كل مشتقّ</h3>
+    <div class="tw">
+      <table>
+        <thead><tr><th>العامل</th><th>يعمل عمل</th><th>الفاعل بعده</th><th>شرط العمل</th><th>المثال</th></tr></thead>
+        <tbody>
+          <tr><td>المصدر</td><td>الفعل مطلقًا (معلومًا ومجهولًا)</td><td>مرفوع، أو مجرور لفظًا بالإضافة</td><td>لا يشترط الاعتماد</td><td class="ar">ضربُ زيدٍ عمرًا</td></tr>
+          <tr><td>اسم الفاعل</td><td>الفعل المعلوم</td><td>مرفوع (ظاهر أو مستتر)</td><td>الاعتماد + الحال/الاستقبال (أو «أل»)</td><td class="ar">هذا ضاربٌ أبوه زيدًا</td></tr>
+          <tr><td>الصفة المشبهة</td><td>الفعل اللازم</td><td>مرفوع فقط</td><td>الاعتماد</td><td class="ar">رجلٌ حسنٌ خُلُقُه</td></tr>
+          <tr><td>صيغة المبالغة</td><td>اسم الفاعل</td><td>مرفوع</td><td>الاعتماد (أو «أل»)</td><td class="ar">كذّابٌ أخوه</td></tr>
+          <tr><td>اسم التفضيل</td><td>اسم الفاعل (أضعف العوامل)</td><td>مرفوع غالبًا مستترًا</td><td>الاعتماد</td><td class="ar">أحسنَ في عينه الكحلُ</td></tr>
+          <tr><td>اسم المفعول</td><td>الفعل المجهول</td><td>نائب فاعل مرفوع</td><td>الاعتماد (أو «أل»)</td><td class="ar">الدرسُ مكتوبٌ عنوانُه</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ================= الفصل الخامس ================= -->
+  <section class="part" id="f5">
+    <span class="part-no">الفصل الخامس</span>
+    <h2>مواضع الفاعل بعد الأدوات</h2>
+    <p class="lead">
+      الأداة في الغالب <strong>لا تعمل في الفاعل</strong>، وإنما تعمل في الفعل (جزمًا أو نصبًا) أو في الجملة (حصرًا أو نفيًا أو شرطًا)؛
+      ومن هنا تنشأ هذه الأحكام: إمّا أن يبقى الفاعل في موضعه بعد الفعل، أو أن يتقدّم/يتأخّر لأجل الأداة، أو أن يكون الفاعل هو الأداة نفسها.
+    </p>
+
+    <div class="tw">
+      <table>
+        <caption>جدول الأدوات وموضع الفاعل معها</caption>
+        <thead><tr><th>الأداة</th><th>أين يقع الفاعل؟</th><th>المثال</th><th>التعليل</th></tr></thead>
+        <tbody>
+          <tr><td>هل / الهمزة (استفهام)</td><td>بعد الفعل في موضعه: مرفوع</td><td class="ar">هل نجحَ الطالبُ؟ · أَقَرأتَ الكتابَ؟</td><td>حرف الاستفهام لا يطلب فاعلًا، وإنما يدخل على الجملة</td></tr>
+          <tr><td>ما / لا / لم / لمّا / لن / إنْ (نفي)</td><td>بعد الفعل: مرفوع (والفعل مجزوم أو منصوب بالأداة)</td><td class="ar">ما جاءَ أحدٌ · لم يحضرْ محمدٌ · لن ينجحَ الكسولُ</td><td>أدوات النفي تعمل في <strong>الفعل</strong> جزمًا أو نصبًا، ولا تعمل في الفاعل</td></tr>
+          <tr><td>ليس / ما (العاملة عمل ليس) / لاتَ</td><td>الاسم بعدها <strong>اسمها</strong> لا فاعل</td><td class="ar">ليس الغنى مالًا · ما هذا بشرًا</td><td>أفعال ناقصة: ترفع اسمًا وتنصب خبرًا</td></tr>
+          <tr><td>قد / السين / سوف</td><td>بعد الفعل كما هو</td><td class="ar">قد نجحَ الطالبُ · سوف يفوزُ الفريقُ</td><td>حروف لا تعمل في الفاعل</td></tr>
+          <tr><td>لا الناهية / لام الأمر</td><td>ضمير مستتر وجوبًا، أو ضمير بارز في الأفعال الخمسة</td><td class="ar">لا تكذبْ · ليكتبوا · لا تتأخّروا</td><td>الأمر والنهي لا يظهر فيهما فاعل ظاهر؛ لأن المخاطب مُعيَّن</td></tr>
+          <tr><td>إنما / إلا (الحصر)</td><td>الفاعل <strong>متأخّر</strong> واجبًا عن أداة الحصر</td><td class="ar">ما نجحَ إلا محمدٌ · إنما يفوزُ المجتهدُ</td><td>المحصور محكوم عليه بالتأخير؛ ولو تقدّم لبطل الحصر</td></tr>
+          <tr><td>إنْ / إذما / مَن / ما / مهما / متى / أين / أيّ (شرط)</td><td>الفاعل بعد فعل الشرط وبعد فعل الجواب (أو مستتر)</td><td class="ar">إنْ يجتهدْ الطالبُ ينجحْ · مَن يفعلْ خيرًا يجدْ خيرًا</td><td>الأداة تعمل في <strong>الجملتين</strong> جزمًا، فلا تعمل في الفاعل</td></tr>
+          <tr><td>لو / لولا / لوما</td><td>الفاعل بعد الفعل؛ والاسم بعد «لولا/لوما» <strong>مبتدأ</strong> لا فاعل</td><td class="ar">لو اجتهدَ الطالبُ لنجحَ · لولا اللهُ لضللنا</td><td>«لولا» الامتناعية حرف يطلب مبتدأً وخبرًا محذوفًا</td></tr>
+          <tr><td>أمّا (شرط وتفصيل)</td><td>الفاعل مستتر غالبًا؛ لأن المفعول يتقدّم على الفعل وجوبًا بعد الفاء</td><td class="ar">فأمّا اليتيمَ فلا تقهرْ</td><td>الفاء الرابطة يجب أن تلي «أمّا» رتبةً، فيتقدّم المفعول، ويبقى الفاعل مستترًا (أنتَ)</td></tr>
+          <tr><td>ألا / أمَا (تنبيه واستفتاح)</td><td>لا عمل لها في الفاعل</td><td class="ar">ألا إنّ أولياءَ اللهِ لا خوفٌ عليهم</td><td>حرف تنبيه لا محل له من الإعراب</td></tr>
+          <tr><td>واو القسم / الباء / التاء</td><td>الفاعل ضمير مستتر وجوبًا في الفعل المحذوف (أُقسِمُ)</td><td class="ar">واللهِ لأجتهدنَّ · باللهِ لأفعلنَّ</td><td>حرف القسم ينوب عن الفعل فيُحذف، ويبقى فاعله مستترًا</td></tr>
+          <tr><td>أنْ / أنَّ / ما / كيْ (مصدرية)</td><td>المصدر المؤوَّل نفسه فاعل</td><td class="ar">يسعدني أن تنجحَ · يُعجبني أنّك مجتهدٌ</td><td>المؤول بالصريح يأخذ حكم الاسم الصريح في موقعه</td></tr>
+          <tr><td>لام التعليل / كي / حتى (ناصبة)</td><td>بعد الفعل المنصوب أو مستتر</td><td class="ar">ذاكرتُ لأنجحَ · أسرعتُ كي ألحقَ</td><td>النصب يقع على <strong>الفعل</strong>، والفاعل يتبع معناه</td></tr>
+          <tr><td>كم الاستفهامية والخبرية</td><td>ليس في الجملة فاعلٌ ظاهر يشغلها؛ التمييز بعدها ليس فاعلًا</td><td class="ar">كم كتابًا قرأتَ؟ · كم كتبٍ قرأتُ!</td><td>«كم» لها الصدارة، والاسم بعدها تمييز</td></tr>
+          <tr><td>إنّ وأخواتها (إنّ، أنّ، كأنّ، لكنّ، ليت، لعلّ)</td><td>الاسم بعدها اسمها منصوبًا أو مرفوعًا، <strong>لا فاعل</strong></td><td class="ar">إنّ اللهَ غفورٌ · ليتَ الشبابَ يعودُ</td><td>أحرف تعمل عمل «الفعل الناقص»</td></tr>
+          <tr><td>حروف النداء (يا، أيا، الهمزة…)</td><td>الاسم بعدها منادى، لا فاعل</td><td class="ar">يا عبدَ اللهِ · يا رجالَ الوطنِ</td><td>مفعول به لفعل النداء المحذوف، أو منادى في محل نصب</td></tr>
+          <tr><td>«ما» التعجبية / «أفعِلْ» التعجبية</td><td>فاعل مستتر وجوبًا (في الأولى) / فاعل مجرور بالباء الزائدة (في الثانية)</td><td class="ar">ما أحسنَ الصدقَ! · أحسِنْ بالصدقِ!</td><td>موضعان خاصّان سبق تفصيلهما في القسم (٥) من الفصل الثالث</td></tr>
+          <tr><td>رُبَّ (للتقليل والتكثير)</td><td>قد يُشغل بعدها بفاعل أو مفعول، والاسم بعدها مجرور غالبًا</td><td class="ar">رُبَّ رجلٍ كريمٍ لقيتُه</td><td>اسم «رُبَّ» مجرور لفظًا، وموقعه الإعرابي بحسب المعنى</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="topic" id="f5-istifham">تفصيل ١: الفاعل مع أسماء الاستفهام (مَن / أيّ)</h3>
+    <div class="box rule">
+      <span class="ttl">في «مَن جاءَ؟» ثلاثة أوجه إعرابية مشهورة</span>
+      <ol>
+        <li><strong>«مَن» مبتدأ</strong> مرفوع في محل رفع، وجملة «جاء» خبره — وهذا مذهب البصريين الأكثر.</li>
+        <li><strong>«مَن» فاعل</strong> بفعل محذوف دلّ عليه المذكور، والتقدير: «جاءَ مَن؟» — وعليه فالفعل المذكور مفسِّر لا عامل.</li>
+        <li>وقد يُقال: «مَن» في محل رفع على أن يكون الفعل المذكور هو العامل، مع مراعاة كونه في صدر الكلام.</li>
+      </ol>
+      <p>وفي «أيُّ الطلابِ نجحَ؟»: «أيّ» <strong>معربة</strong> (ليست مبنية كغيرها من أدوات الاستفهام)، وهي مبتدأ مرفوع، و«الطلابِ» مضاف إليه، والفاعل ضمير مستتر في «نجح».</p>
+    </div>
+    <div class="box why">
+      <span class="ttl">لماذا كان الخلاف في «مَن»؟ وما علة ذلك؟</span>
+      <p>لأن <strong>أسماء الاستفهام لها الصدارة</strong>، فلا يجوز أن يسبقها عاملها؛ فلو جُعلت فاعلًا للفعل المذكور بعدها لزم أن يعمل فيها فعلٌ متأخّر وهي متقدّمة، وهذا ممتنع عندهم. فلذلك اختار البصريون «المبتدأ»، وأجاز الكوفيون «الفاعل بفعل محذوف»، وثمرة الخلاف: هل «مَن» مرفوع على الابتداء أم على الفاعلية؟ وأثرها يظهر في إعراب الجملة لا في المعنى.</p>
+    </div>
+
+    <h3 class="topic" id="f5-shart">تفصيل ٢: الفاعل في أسلوب الشرط</h3>
+    <ul class="exlist">
+      <li><span class="ar">إنْ يجتهدْ <span class="hl">الطالبُ</span> ينجحْ.</span><span class="why2">«الطالبُ» فاعل لفعل الشرط مرفوع، و«إنْ» حرف شرط جازم عمل في الفعلين: «يجتهدْ، ينجحْ».</span></li>
+      <li><span class="ar">مَن يفعلْ خيرًا يجدْ <span class="hl">ثوابَه</span>.</span><span class="why2">«مَن» اسم شرط جازم: مبتدأ (مشهور) أو مفعول به (على أن الفعل بعده مفسِّر)، والفاعل في «يفعلْ» ضمير مستتر.</span></li>
+      <li><span class="ar">متى تسافرْ <span class="hl">أخوك</span> أسافرْ.</span><span class="why2">«متى» ظرف زمان في محل نصب بفعل الشرط، و«أخوك» فاعل مرفوع.</span></li>
+    </ul>
+    <div class="box why">
+      <span class="ttl">لماذا لا تكون أدوات الشرط فاعلًا؟</span>
+      <p>لأن أدوات الشرط <strong>مُعلِّقات</strong> لا مسندات؛ فالحرف يدلّ على ربط الجملتين (الشرط والجواب)، والاسم الواقع بعده (مَن، ما) يعمل في أحد المواضع الإعرابية (مبتدأ أو مفعول أو ظرف) بحسب معناه؛ والفاعل يبقى داخل أحد الفعلين: الشرط أو الجواب.</p>
+    </div>
+
+    <h3 class="topic" id="f5-hasr">تفصيل ٣: الفاعل مع أدوات الحصر (إلا / إنما)</h3>
+    <div class="box rule">
+      <span class="ttl">القاعدة</span>
+      <p>المحصور <strong>متأخِّر وجوبًا</strong> عن أداة الحصر؛ فإذا كان المحصور هو الفاعل، كان بعد «إلا» أو بعد «إنما» مباشرةً، وأُعرب الفاعل مرفوعًا:</p>
+      <p class="ar">ما نجحَ إلا <span class="hl">محمدٌ</span> · ما فازَ إلا <span class="hl">المجتهدُ</span> · إنما يفوزُ <span class="hl">المجتهدُ</span></p>
+    </div>
+    <div class="box why">
+      <span class="ttl">لماذا وجب تأخيره؟ وماذا يقول النحاة عن فاعلية المرفوع بعد «إلا»؟</span>
+      <ul>
+        <li><strong>التأخير:</strong> لأن «إلا» و«إنما» أداتا حصر، وحقيقة الحصر أن الموضوع المحصور به لا يتقدّم الأداة؛ فلو قلت: «ما محمدٌ إلا نجح» اختلّ الحصر.</li>
+        <li><strong>وفي دقة العبارة:</strong> قال النحويون في مثل «ما قامَ إلا محمدٌ»: إن الفاعل في الأصل محذوف (التقدير: ما قامَ أحدٌ إلا محمدٌ)، فلما حُذف الفاعل تفرّغ الفعل لما بعد «إلا»، فارتفع على أنه <strong>فاعل في اللفظ لا في المعنى</strong>؛ وقد يُقال: نائب فاعل على أن الفعل صار لما لم يُسمَّ فاعله، والأول أشهر عند المتقدمين.</li>
+        <li><strong>ويتصل بهذا:</strong> أن المفعول يجب تقديمه إذا كان الفاعل هو المحصور — لأن التأخير للإحدى الوظيفتين يوجب تقدّم الأخرى.</li>
+      </ul>
+    </div>
+
+    <h3 class="topic" id="f5-qasam">تفصيل ٤: الفاعل في أسلوب القسم</h3>
+    <ul class="exlist">
+      <li><span class="ar">واللهِ لأجتهدنَّ.</span><span class="why2">«الواو» حرف قسم وجر، «اللهِ» مجرور لفظًا متعلق بفعل محذوف تقديره (أُقسِمُ) وفاعله ضمير مستتر <strong>وجوبًا</strong> تقديره (أنا)، «لأجتهدنَّ» جواب القسم.</span></li>
+      <li><span class="ar">تاللهِ لأفعلنَّ.</span><span class="why2">التاء لا تدخل إلا على لفظ الجلالة، والأصل: أقسمُ باللهِ.</span></li>
+    </ul>
+    <div class="box why">
+      <span class="ttl">لماذا حُذف فعل القسم وفاعله مستتر؟</span>
+      <p>لأن حرف القسم (الواو/الباء/التاء) <strong>نائب عن الفعل</strong> في أداء معناه، فاستُغني به عن ذكره؛ والفاعل أُضمِر في الفعل المحذوف (أنا) لأنه معلوٌ في كل قَسَم من المتكلم، ولأن الحذف يُعطي القسم قوة وإيقاعًا.</p>
+    </div>
+
+    <h3 class="topic" id="f5-others">تفصيل ٥: مواضع توهّم الفاعل مع بعض الأدوات</h3>
+    <div class="tw">
+      <table>
+        <thead><tr><th>التركيب</th><th>الخطأ الشائع</th><th>الصواب والتعليل</th></tr></thead>
+        <tbody>
+          <tr><td class="ar">لولا اللهُ لضللنا</td><td>إعراب «اللهُ» فاعلًا</td><td>مبتدأ مرفوع، والخبر محذوف تقديره (موجودٌ)، لأن «لولا» الامتناعية تطلب مبتدأً</td></tr>
+          <tr><td class="ar">كم كتابًا قرأتَ؟</td><td>إعراب «كتابًا» فاعلًا</td><td>تمييز منصوب لـ«كم»؛ لأن «كم» هي التي طلبت التمييز</td></tr>
+          <tr><td class="ar">إنّ اللهَ غفورٌ</td><td>إعراب «اللهَ» فاعلًا</td><td>اسم «إنّ» منصوب؛ فالأحرف المشبهة بالفعل لا تطلب فاعلًا</td></tr>
+          <tr><td class="ar">ما هذا بشرًا</td><td>«هذا» فاعل في «ما»</td><td>«ما» الحجازية تعمل عمل «ليس»: «هذا» اسمها في محل رفع، «بشرًا» خبرها</td></tr>
+          <tr><td class="ar">سيرتُ حتى بلغتُ المسجدَ</td><td>إعراب «حتى» أداة حصر</td><td>«حتى» هنا غائية/تعليلية، والفاعل (تُ) ضمير في محل رفع</td></tr>
+          <tr><td class="ar">كأنّ محمدًا أسدٌ</td><td>«محمدًا» فاعل</td><td>اسم «كأنّ» منصوب، والخبر مرفوع</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ================= الفصل السادس ================= -->
+  <section class="part" id="f6">
+    <span class="part-no">الفصل السادس</span>
+    <h2>مواضع الفاعل في الأساليب النحوية</h2>
+    <p class="lead">
+      لكل أسلوب أثره في موضع الفاعل: فقد يبقى في موضعه، وقد يتغيّر حكمه (فاعل → اسم إنّ / منادى / مخصوص)،
+      وقد يُستتر وجوبًا، وقد يُحذف الفعل فيبقى فاعله مُقدَّرًا. وهذا تفصيل الأساليب واحدًا واحدًا:
+    </p>
+
+    <h3 class="topic" id="f6-nfi">١) أسلوب النفي</h3>
+    <div class="box rule">
+      <span class="ttl">موضع الفاعل</span>
+      <p>يبقى الفاعل في موضعه بعد الفعل، والفعل هو الذي يتأثر بالأداة (جزمًا أو نصبًا أو رفعًا):</p>
+      <ul>
+        <li><span class="ar">ما جاءَ <span class="hl">أحدٌ</span> · ما نجحَ <span class="hl">المُهمِلُ</span></span> — فاعل ظاهر مرفوع.</li>
+        <li><span class="ar">لم يحضرْ <span class="hl">محمدٌ</span> · لمّا ينجحْ <span class="hl">الطالبُ</span></span> — فاعل ظاهر، والفعل مجزوم.</li>
+        <li><span class="ar">لن ينفعَ <span class="hl">الكسلُ</span> · ما كنتُ <span class="hl">مُهمِلًا</span></span> — الفاعل ضمير متصل في الأخرى، وما بعد «كن» خبرها لا فاعلها.</li>
+      </ul>
+    </div>
+    <div class="box why">
+      <span class="ttl">لماذا لم تعمل أدوات النفي في الفاعل؟</span>
+      <p>لأن عمل «لم، لمّا، لن، لا الناهية» كلّه واقعٌ على <strong>الفعل</strong>؛ فالنفي في الحقيقة نفيٌ للحدث لا إبطالٌ للإسناد؛ فلذلك يبقى الفاعل كما هو ولا يُحذف ولا يُنصب. أما «ليس» و«ما» العاملة عملها فتعمل في <strong>الجملة الاسمية</strong> (اسم وخبر) لا في فاعل ومفعول.</p>
+    </div>
+
+    <h3 class="topic" id="f6-nhy">٢) أسلوب النهي</h3>
+    <div class="box rule">
+      <span class="ttl">موضع الفاعل</span>
+      <ul>
+        <li><strong>ضمير مستتر وجوبًا</strong> تقديره (أنت/أنتِ) في النهي المباشر: <span class="ar">لا تكذبْ.</span></li>
+        <li><strong>ضمير بارز</strong> عند الأفعال الخمسة أو نون النسوة: <span class="ar">لا تتأخّروا · لا تتأخّرا · لا تتأخّري · لا تتأخّرْنَ.</span></li>
+      </ul>
+    </div>
+    <div class="box why">
+      <span class="ttl">لماذا لا يظهر فاعل ظاهر في النهي؟</span>
+      <p>لأن النهي طلبٌ من <strong>مخاطَب حاضر</strong>؛ فالفاعل معلوم بالضرورة، فاستُؤنس بالاستتار، ولو أُظهر لقيل: «لا تكذبْ يا محمدُ» فـ«يا محمدُ» نداء لا فاعل؛ ولأن إظهار الفاعل في الطلب يفسد الصيغة: فلا يُقال «لا تكذبْ محمدٌ».</p>
+    </div>
+
+    <h3 class="topic" id="f6-amr">٣) أسلوب الأمر</h3>
+    <div class="box rule">
+      <span class="ttl">موضع الفاعل</span>
+      <p>الفاعل في الأمر <strong>مخاطَبٌ دائمًا</strong>، ويكون:</p>
+      <ul>
+        <li>ضميرًا مستترًا وجوبًا في المُفرد: <span class="ar">اكتبْ · اجتهدْ</span> (تقديره أنتَ).</li>
+        <li>ضميرًا بارزًا في المُثنّى والجمع والنساء: <span class="ar">اكتبا · اكتبوا · اكتبي · اكتبْنَ.</span></li>
+        <li>وفي المضارع المقترن بلام الأمر: <span class="ar">لِيجتهدْ محمدٌ</span> — فالفاعل ظاهر مرفوع، لأن الفعل مضارع لا أمر.</li>
+      </ul>
+    </div>
+    <div class="box why">
+      <span class="ttl">لماذا لا يكون فاعل فعل الأمر اسمًا ظاهرًا قطّ؟</span>
+      <p>لأن الأمر في حقيقته <strong>خطابٌ لِمَن هو أدنى/حاضر</strong>، مسنَد إلى «أنت» لا إلى غائب؛ فالمخاطب مُتعيَّن في الصيغة، فلا محلّ لاسم ظاهر في موضع فاعله. وهذا من دقائق العربية: <strong>صيغة الإسناد تحمل دلالة الفاعل</strong>.</p>
+    </div>
+
+    <h3 class="topic" id="f6-istifham">٤) أسلوب الاستفهام</h3>
+    <div class="tw">
+      <table>
+        <thead><tr><th>الصورة</th><th>موضع الفاعل</th><th>المثال</th><th>العلّة</th></tr></thead>
+        <tbody>
+          <tr><td>حرفيّ (هل / الهمزة)</td><td>بعد الفعل كالمعتاد</td><td class="ar">هل نجحَ الطالبُ؟ · أَفسدَ الغشُّ الأممَ؟</td><td>الحرف لا يعمل في الأسماء</td></tr>
+          <tr><td>«مَن» الاستفهامية</td><td>الفاعل ضمير مستتر داخل الفعل، و«مَن» مبتدأ (أو فاعل بفعل محذوف على خلاف)</td><td class="ar">مَن جاءَ؟ · مَن فازَ؟</td><td>لأسماء الاستفهام الصدارة، فلا يعمل فيها فعل متأخر</td></tr>
+          <tr><td>«أيّ» الاستفهامية</td><td>«أيّ» معربة، ويُقدَّر الفاعل مستترًا بعدها</td><td class="ar">أيُّ الطلابِ نجحَ؟</td><td>«أيّ» مبتدأ والإضافة تخصّصه</td></tr>
+          <tr><td>«كم» الاستفهامية</td><td>لا فاعل ظاهر؛ الإعراب لـ«كم» وتمييزها</td><td class="ar">كم كتابًا قرأتَ؟</td><td>«كم» اسم مبني في محل نصب مفعول/ظرف، وتمييزها منصوب</td></tr>
+          <tr><td>متى / أين / كيف / أنّى (ظرف أو حال)</td><td>الفاعل في الجملة بعدها (ظاهر أو مستتر)</td><td class="ar">متى سفرُك؟ · أينَ ذهبَ أخوكَ؟</td><td>هذه الأسماء ظروف أو أحوال، لا مسند إليها</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="box why">
+      <span class="ttl">القاعدة الذهبية في الاستفهام</span>
+      <p>الأصل: <mark>الفاعل يلزم موضعه بعد الفعل</mark>، وإنما يختلّ هذا الموضع إذا كان في الكلام اسمٌ له <strong>الصدارة</strong> (اسم استفهام) فتقدّم وتغيّر إعرابه إلى مبتدأ أو مفعول أو ظرف.</p>
+    </div>
+
+    <h3 class="topic" id="f6-nida">٥) أسلوب النداء</h3>
+    <div class="box rule">
+      <span class="ttl">موضع الفاعل</span>
+      <p>في النداء <strong>لا فاعل ظاهر</strong>؛ لأن العامل فيه فعلٌ محذوف (أنادي/أدعو)، وفاعلُه ضمير مستتر وجوبًا تقديره (أنا)، والمنادى <strong>مفعول به</strong> لفعل النداء المحذوف.</p>
+      <p class="ar">يا عبدَ اللهِ، اتّقِ اللهَ.</p>
+      <p>«يا»: حرف نداء مبني لا محل له من الإعراب، والتقدير: <strong>أنادي</strong> (والفاعل: ضمير مستتر وجوبًا تقديره أنا). «عبدَ»: مفعول به منصوب لفعل النداء المحذوف لأنه مضاف. «اللهِ»: مضاف إليه.</p>
+    </div>
+    <div class="box why">
+      <span class="ttl">لماذا حُذف فعل النداء ولماذا كان المنادى مفعولًا؟</span>
+      <p>لأن حرف النداء <strong>دالٌّ على الفعل ونائبٌ عنه</strong>، فاستُغني به عن ذكر «أنادي»؛ والحذف هنا <strong>واجب</strong> في الاستعمال الفصيح (لا يُقال: أنادي يا محمدُ إلا قليلًا). وإذا كان المنادى مفعولًا للفعل المحذوف، صحّ فيه النصب في المضاف وشبيهه، والبناء على الضم في المفرد والنكرة المقصودة لشبهها بالمضاف؟ — لا، بل لأنها شبيهة بالمُنادَى بالحرف مباشرة فأُعطيت حركة واحدة ثابتة.</p>
+    </div>
+
+    <h3 class="topic" id="f6-tamanni">٦) أسلوب التمني (ليت)</h3>
+    <ul class="exlist">
+      <li><span class="ar">ليتَ <span class="hl">الشبابَ</span> يعودُ.</span><span class="why2">«الشبابَ»: اسم «ليت» منصوب، وليس فاعلًا؛ والفاعل ضمير مستتر وجوبًا (هو) في «يعودُ»؛ والجملة الفعلية خبر «ليت».</span></li>
+      <li><span class="ar">ليتَ لي <span class="hl">مالًا</span> فأُنفقَه.</span><span class="why2">«مالًا»: اسم «ليت» منصوب، وليس فاعلًا.</span></li>
+    </ul>
+    <div class="box why">
+      <span class="ttl">لماذا لا يكون الاسم بعد «ليت» فاعلًا؟</span>
+      <p>لأن «ليت» <strong>حرف</strong> لا فعل، يعمل عمل «إنّ» (نصب الاسم ورفع الخبر)؛ فهو نسيب للأفعال الناقصة لا التامة، فلا فاعل له؛ فالفاعل إنما يُطلب داخل الخبر (في «يعودُ»).</p>
+    </div>
+
+    <h3 class="topic" id="f6-taraji">٧) أسلوب الترجّي (لعلّ / عسى)</h3>
+    <ul class="exlist">
+      <li><span class="ar">لعلّ <span class="hl">اللهَ</span> يرحمُنا.</span><span class="why2">«اللهَ» اسم «لعلّ» منصوب، والفاعل مستتر في «يرحمُ».</span></li>
+      <li><span class="ar">عسى <span class="hl">الطالبُ</span> أن ينجحَ.</span><span class="why2">«الطالبُ» اسم «عسى» مرفوع، و«أن ينجحَ» مصدر مؤوَّل في محل نصب خبر عسى.</span></li>
+      <li><span class="ar">عسى أن ينجحَ الطالبُ.</span><span class="why2">فيها وجهان مشهوران: (أ) المصدر المؤوَّل «أن ينجح» في محل رفع <strong>فاعل</strong> لـ«عسى» على أنها تامّة، (ب) أو اسم عسى ضمير مستتر والمصدر خبرها على أنها ناقصة.</span></li>
+    </ul>
+    <div class="box why">
+      <span class="ttl">لماذا كان «عسى» موضع خلاف؟</span>
+      <p>لأن «عسى» <strong>جامدة</strong> لا تتصرف، وتُستعمل تامّة (بمعنى: قرُب) وناقصة؛ فإذا اختلف المعنى اختلفت الوظيفة: فحيث كانت تامّة كان المصدر المؤوَّل فاعلًا، وحيث كانت ناقصة كان اسمًا لها — والمعنى هو الحاكم.</p>
+    </div>
+
+    <h3 class="topic" id="f6-qasam2">٨) أسلوب القسم</h3>
+    <div class="box rule">
+      <span class="ttl">موضع الفاعل</span>
+      <p>الفاعل ليس ظاهرًا؛ لأن الفعل المحذوف «أُقسِمُ / أحلِفُ» فاعله ضمير مستتر وجوبًا تقديره (أنا)، والجار والمجرور (المُقسَم به) متعلق بالفعل المحذوف.</p>
+      <p class="ar">واللهِ لأجتهدنَّ في طلبِ العلمِ.</p>
+    </div>
+    <div class="box why">
+      <span class="ttl">لماذا؟</span>
+      <p>لأن الغرض بلاغيٌّ: <strong>تعظيم المُقسَم به</strong> بإبرازه في الصدر؛ فلو ذُكر الفعل لطال الكلام وطغى على المقصود. وحاجة القسم إلى التعظيم توجب حذف الفعل وبدء الكلام بحرف القسم.</p>
+    </div>
+
+    <h3 class="topic" id="f6-shart2">٩) أسلوب الشرط</h3>
+    <div class="box rule">
+      <span class="ttl">موضع الفاعل</span>
+      <ul>
+        <li>مع «إنْ» الحرفية: الفاعل يبقى بعد فعل الشّرط وبعد فعله الجواب: <span class="ar">إنْ يجتهدْ <span class="hl">الطالبُ</span> يتفوّقْ.</span></li>
+        <li>مع الأسماء الشرطية (مَن، ما، مهما…): الاسم الشرطي في محل رفع مبتدأ أو رفع فاعل (على الخلاف)، والفاعل داخل الجملتين مستتر أو ظاهر:</li>
+      </ul>
+      <p class="ar">مَن <span class="hl">يجتهدْ</span> ينجحْ · ما <span class="hl">تفعلْ</span> من خيرٍ تجدْه.</p>
+    </div>
+    <div class="box why">
+      <span class="ttl">لماذا لا تكون «مَن» فاعلًا مباشرةً في «من يجتهدْ»؟</span>
+      <p>لأن موضع الإعراب محجوز: «من» لم تُذكر إلا لتُبنى عليها جملة الشرط والجواب، فهي في موضع المبتدأ عند البصريين؛ ولأن الفعل «يجتهدْ» فاعله ضمير مستتر يعود على «مَن»؛ فلا يكون الاسم الواحد في موضعَي إعراب في جملة واحدة.</p>
+    </div>
+
+    <h3 class="topic" id="f6-tawkid2">١٠) أسلوب التوكيد</h3>
+    <ul class="exlist">
+      <li><span class="ar">لأجتهدنَّ في الامتحانِ.</span><span class="why2">«أجتهدَ» مضارع مبني على الفتح لاتصاله بنون التوكيد، والفاعل ضمير مستتر وجوبًا تقديره (أنا).</span></li>
+      <li><span class="ar">حضرَ المديرُ <span class="hl">نفسُه</span>.</span><span class="why2">«المديرُ» فاعل مرفوع، و«نفسُه» توكيد معنوي مرفوع.</span></li>
+      <li><span class="ar">إنّ اللهَ <span class="hl2">لَـ</span>غفورٌ رحيمٌ.</span><span class="why2">اللام المزحلقة تُفيد توكيد النسبة، ولا تغيّر إعراب الفاعل (الذي هو محتجز داخل الخبر).</span></li>
+    </ul>
+    <div class="box why">
+      <span class="ttl">أثر التوكيد في الفاعل</span>
+      <p>التوكيد لا يغيّر موقع الفاعل، لكن فيه <strong>فائدتان</strong>: (١) نون التوكيد تُبقي الفاعل مستترًا في الفعل المؤكد، (٢) أن بعض أدوات التوكيد («إنّ»، لام الابتداء) تعمل عمل «كان» على الجملة الاسمية فلا فاعل لها.</p>
+    </div>
+
+    <h3 class="topic" id="f6-taajjub2">١١) أسلوب التعجب</h3>
+    <div class="tw">
+      <table>
+        <thead><tr><th>الصيغة</th><th>موضع الفاعل</th><th>مثال</th><th>العلّة</th></tr></thead>
+        <tbody>
+          <tr><td>ما أفعَلَه!</td><td>ضمير مستتر وجوبًا (هو)</td><td class="ar">ما أحسنَ الصدقَ!</td><td>الفاعل يعود على «ما» التعجبية ولا يقوم مقامه ظاهر</td></tr>
+          <tr><td>أفعِلْ به!</td><td>الاسم بعد الباء: فاعل مرفوع محلًّا</td><td class="ar">أحسِنْ بالصدقِ!</td><td>الباء الزائدة اللازمة تميّز التعجب من الأمر</td></tr>
+          <tr><td>غير قياسي (سماعي)</td><td>حسب العبارة</td><td class="ar">سبحانَ اللهِ! · للهِ دَرُّه! · يا لكَ من رجلٍ!</td><td>جُمَد تسمع ولا تُقاس</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="topic" id="f6-madh2">١٢) أسلوب المدح والذم</h3>
+    <div class="box rule">
+      <span class="ttl">موضع الفاعل</span>
+      <ul>
+        <li><strong>فاعل «نعم/بئس/ساء»:</strong> هو الاسم المرفوع بعدهما (المعرَّف بـ«أل» / المضاف إلى ما فيه «أل» / الضمير المستتر المُفسَّر بتمييز).</li>
+        <li><strong>فاعل «حبَّذا»:</strong> اسم الإشارة «ذا».</li>
+        <li><strong>المخصوص بالمدح/الذم:</strong> <em>مبتدأ مؤخر</em>، والجملة قبله خبر مقدّم — فلا يكون فاعلًا بحال.</li>
+      </ul>
+      <p class="ar">نِعْمَ الطالبُ المجتهدُ · بئسَ الخُلُقُ الكذبُ · حبَّذا العلمُ.</p>
+    </div>
+    <div class="box why">
+      <span class="ttl">لماذا لا يكون المخصوص فاعلًا؟</span>
+      <p>لأن الفاعل يجب ألّا يزيد عن واحد، وقد أخذ الفعل فاعلَه (الطالبُ / الخلقُ / ذا)؛ فلو أعربنا المخصوص فاعلًا لكان للفعل فاعلان، وهو ممنوع. فوجب أن يُعرب في موضع آخر مناسب: مبتدأً مؤخرًا (أشهر الأقوال) أو خبرًا لمبتدأ محذوف تقديره (هو).</p>
+    </div>
+
+    <h3 class="topic" id="f6-ikhtisas2">١٣) أسلوب الاختصاص</h3>
+    <ul class="exlist">
+      <li><span class="ar">نحن — <span class="hl">العربَ</span> — نُكرِمُ الضيفَ.</span><span class="why2">«العربَ»: مفعول به منصوب لفعل محذوف تقديره (أخُصُّ)، وفاعله ضمير مستتر وجوبًا تقديره (أنا)، والجملة اعتراضية لا محل لها من الإعراب.</span></li>
+      <li><span class="ar">بكم — <span class="hl">معاشرَ الشبابِ</span> — تُبنى الأوطانُ.</span><span class="why2">«معاشرَ» منصوب على الاختصاص، وفاعل «تُبنى» هو «الأوطانُ»: نائب فاعل مرفوع.</span></li>
+    </ul>
+    <div class="box why">
+      <span class="ttl">لماذا كان الفاعل مستترًا في الفعل المحذوف؟</span>
+      <p>لأن الفعل المحذوف «أخُصُّ» مُسنَد إلى المتكلم المذكور قبلَه بالضمير (نحن/بكم)، فالفاعل معلوم من السياق؛ ولذلك لا يظهر، ولا يُذكر إلا معموله المنصوب (المختصّ به) للتوضيح والتخصيص.</p>
+    </div>
+
+    <h3 class="topic" id="f6-ighra2">١٤) أسلوب الإغراء والتحذير</h3>
+    <ul class="exlist">
+      <li><span class="ar">الصدقَ الصدقَ!</span><span class="why2">«الصدقَ» الأول: مفعول به منصوب بفعل محذوف تقديره (الزَمْ)، وفاعله ضمير مستتر وجوبًا (أنتَ)؛ والثاني توكيد لفظي.</span></li>
+      <li><span class="ar">إيّاكَ والغشَّ!</span><span class="why2">«إيّاك»: ضمير منفصل في محل نصب مفعول به لفعل محذوف تقديره (احذَرْ)، وفاعله مستتر وجوبًا (أنتَ)؛ «الغشَّ» مفعول لفعل محذوف تقديره (اجتنِبْ).</span></li>
+    </ul>
+    <div class="box why">
+      <span class="ttl">لماذا حُذف الفعل وبقي فاعله مستترًا؟</span>
+      <p>لأن الغرض <strong>التحذير/الإغراء</strong> نفسه، وهو يحصل بالمنصوب وحده مع نبرة التحذير؛ فحُذف الفعل تنبيهًا وإيجازًا، وبقي فاعله مُقدَّرًا لأنه لا يُسقَط من المعنى.</p>
+    </div>
+
+    <h3 class="topic" id="f6-tailil2">١٥) أسلوب التعليل</h3>
+    <ul class="exlist">
+      <li><span class="ar">ذاكرتُ <span class="hl">لأنجحَ</span>.</span><span class="why2">الفاعل في «ذاكرتُ»: التاء ضمير متصل في محل رفع فاعل؛ وفي «لأنجحَ»: ضمير مستتر وجوبًا تقديره (أنا).</span></li>
+      <li><span class="ar">أسرعَ الطلابُ كي يلحقوا بالقطارِ.</span><span class="why2">«الطلابُ» فاعل مرفوع في الجملة الأولى؛ وفي الثانية الفاعل: الواو في محل رفع (وهو من الأفعال الخمسة منصوب بحذف النون).</span></li>
+    </ul>
+    <div class="box why">
+      <span class="ttl">لماذا يتكرر الفاعل في أسلوب التعليل؟</span>
+      <p>لأن التعليل جملة مستقلة بعد اللام/كي، ولكل جملة فاعلٌ خاصٌّ بها؛ فالأصل أن يُذكر الفاعل في كل جملة، وإن كان ضميرًا يكون مطابقًا للفاعل الأول في المعنى، وقد يستتر لدلالة السياق عليه.</p>
+    </div>
+
+    <h3 class="topic" id="f6-nudba2">١٦) الندبة والاستغاثة</h3>
+    <ul class="exlist">
+      <li><span class="ar">وا محمداه!</span><span class="why2">«وا» حرف نداء للندبة، والمنادى مفعول به لفعل محذوف (أندُبُ)، وفاعله ضمير مستتر وجوبًا (أنا)، والألف ألف الندبة، والهاء هاء السكت.</span></li>
+      <li><span class="ar">يا للناسِ للغريقِ!</span><span class="why2">«يا» للاستغاثة، والجار والمجرور متعلق بفعل محذوف (أستغيثُ) وفاعله مستتر وجوبًا (أنا).</span></li>
+    </ul>
+
+    <h3 class="topic" id="f6-qasr2">١٧) أسلوب القصر</h3>
+    <div class="tw">
+      <table>
+        <thead><tr><th>الطريقة</th><th>موضع الفاعل</th><th>المثال</th><th>الإعراب والتعليل</th></tr></thead>
+        <tbody>
+          <tr><td>النفي والاستثناء</td><td>متأخّر: بعد «إلا»</td><td class="ar">ما فازَ إلا المجتهدُ</td><td>«المجتهدُ» فاعل مرفوع (فاعل في اللفظ لا في المعنى)، والمحصور لا يتقدّم</td></tr>
+          <tr><td>إنما</td><td>متأخّر عن أداة الحصر</td><td class="ar">إنما يفوزُ المجتهدُ</td><td>«إنما» كافّة ومكفوفة، والفاعل مرفوع</td></tr>
+          <tr><td>«بل / لكن / لا» العاطفة</td><td>حسب السياق</td><td class="ar">ما نجحَ محمدٌ بل عليٌّ</td><td>المعطوف يأخذ حكم المعطوف عليه في الرفع</td></tr>
+          <tr><td>تقديم ما حقّه التأخير</td><td>الفاعل مستتر وجوبًا في الفعل</td><td class="ar">إيّاكَ نعبدُ</td><td>«إيّاك» مفعول به مقدَّم واجبًا (لأنه ضمير نصب منفصل للاختصاص)، والفاعل ضمير مستتر وجوبًا (نحن)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="box why">
+      <span class="ttl">لماذا وجب استتار الفاعل في «إيّاك نعبد»؟</span>
+      <p>لأن المفعول ضمير منفصل وُجِّه إليه القصد (الحصر)، والضمائر المنفصلة لا تتصل بالفعل، فلمّا تقدّم «إيّاك» لزم أن يُذكر الفعل بعده، والفاعل فيه «نحن» لا يمكن إظهاره؛ إذ لو ظهر لوجب إفراد ضمير منفصل، والأصل عدم التكلّف. والفائدة: حصر العبادة لله وحده.</p>
+    </div>
+  </section>
+
+  <!-- ================= الفصل السابع ================= -->
+  <section class="part" id="f7">
+    <span class="part-no">الفصل السابع</span>
+    <h2>التقديم والتأخير — متى يجب ومتى يجوز؟</h2>
+    <p class="lead">
+      الرتبة الأصلية في الجملة الفعلية: <mark>الفعل، ثم الفاعل، ثم المفعول به</mark>؛
+      فهذه ثلاثة مواقع: الفعل أولٌ لأنه عامل، والفاعل بعده لأنه مسند إليه، والمفعول آخر لأنه فضلة.
+      وكل تقديم أو تأخير عن هذه الرتبة له حكم (وجوب أو جواز) وله <strong>علّة</strong>.
+    </p>
+
+    <h3 class="topic" id="f7-1">١) القاعدة الكبرى: الفاعل لا يتقدّم على فعله</h3>
+    <div class="box rule">
+      <span class="ttl">القاعدة</span>
+      <p>الفاعل <strong>معمول</strong>، والفعل <strong>عامله</strong>؛ والعامل يجب تقدُّمه على معموله. فإذا وجدتَ اسمًا مرفوعًا <em>قبل</em> الفعل، فليس فاعلًا، بل <strong>مبتدأً</strong>، والفاعل ضمير مستتر بعده:</p>
+      <p class="ar">زيدٌ قامَ = زيدٌ: مبتدأ مرفوع / قامَ: فعل ماضٍ والفاعل ضمير مستتر تقديره (هو) / والجملة الفعلية في محل رفع خبر المبتدأ.</p>
+    </div>
+    <div class="box why">
+      <span class="ttl">لماذا؟ — بالتعليل والمقارنة</span>
+      <ul>
+        <li><strong>لماذا لا يتقدّم؟</strong> (أ) لأن العمل لا يقع إلا من العامل على معموله، وتقدُّمُ العامل شرط في العرف النحوي. (ب) ولأن الفاعلية حكمٌ مرتبط بـ<em>الرتبة</em> (الوقوع بعد الفعل)، فلو جاز تقدّمه لاحتاج إلى علامة خاصة تدلّ عليه، وهي غير موجودة — على عكس المفعول الذي لها علامة النصب وقرينة المعنى. (ج) ولأن ما قبل الفعل صالح لأن يكون مبتدأً؛ فتُحفظ وظيفته اللائقة به.</li>
+        <li><strong>والخلاف:</strong> ذهب البصريون (سيبويه وجمهورهم) إلى <strong>وجوب تقدّم العامل</strong> — أي «لا يجوز تقديم الفاعل على فعله» — وذهب الكوفيون إلى <strong>جواز</strong> تقديمه مطلقًا. و<strong>ثمرة الخلاف</strong> تظهر في التثنية والجمع: فيمنع البصريون «الزيدانِ قامَ» و«الزيدون قامَ»، ويجيزه الكوفيون على أن يكون اللفظ المرفوع فاعلًا مقدَّمًا والفعل باقٍ على إفراده؛ فالخلاف إذن ليس في المعنى بل في الإعراب واللفظ.</li>
+        <li><strong>وأثرٌ آخر:</strong> عند البصريين، حُكم الاسم المقدَّم أن يكون مبتدأً، والجملة بعده خبر؛ فلا يكون فاعلًا أبدًا. (وانظر: الإنصاف لابن الأنباري — مسائل الخلاف في المرفوعات.)</li>
+      </ul>
+    </div>
+    <div class="box note">
+      <span class="ttl">استثناء مفهومي</span>
+      <p>تقدُّم <strong>الضمير</strong> في نحو: «محمدٌ قامَ» ليس تقديمًا للفاعل؛ لأن الفاعل (الضمير المستتر) باقٍ في موضعه بعد الفعل، والمتقدّم اسمٌ آخر مستقلٌّ إعرابه.</p>
+    </div>
+
+    <h3 class="topic" id="f7-2">٢) باب الاشتغال: لماذا لا يرفع الفعل الاسم المقدَّم؟</h3>
+    <div class="tw">
+      <table>
+        <caption>صورتان؛ ولكل صورة إعراب</caption>
+        <thead><tr><th>التركيب</th><th>إعراب الاسم الأول</th><th>سبب الاختيار</th></tr></thead>
+        <tbody>
+          <tr><td class="ar">زيدٌ أكرمتُه</td><td>مبتدأ مرفوع، والجملة الفعلية خبره</td><td>لأن الفعل التالي مشغولٌ بضميره (الهاء) فلم يبقَ له عمل في «زيدٌ»، فَيُرفع على الابتداء</td></tr>
+          <tr><td class="ar">زيدًا أكرمتُه</td><td>مفعول به منصوب لفعل محذوف يفسّره المذكور (أكرمتُ زيدًا)</td><td>لأنه لو رُفع لصار مبتدأً، ولأن النصب يدلّ على أن المعنى: أكرمتُ زيدًا؛ فهو منصوب على الاختصاص بالفعل</td></tr>
+          <tr><td class="ar">زيدًا ضربتُه</td><td>مفعول به منصوب مقدَّم لفعل محذوف يفسّره المذكور</td><td>لأن الفعل المذكور مشغولٌ بضمير يعود على المقدَّم، فلا يعمل فيه، فيُنصب بمحذوف يُفسّره المذكور</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="box why">
+      <span class="ttl">قاعدة تعليلية</span>
+      <p>العربيّ يعمل الفعل في معموله إن أمكن، فإن كان الفعل <strong>مشغولًا</strong> بضمير الاسم المقدَّم (عن الاشتغال) لم يصل عمله إليه، فارتفع بالابتداء؛ فإن قُصد بمضمون الفعل الاهتمامُ بالاسم نُصب بمحذوف يُفسّره المذكور. والعبرة بـ<strong>المعنى المقصود</strong>.</p>
+    </div>
+
+    <h3 class="topic" id="f7-3">٣) وجوب تقديم الفاعل على المفعول — أربعة مواضع</h3>
+    <div class="tw">
+      <table>
+        <caption>مواضع وجوب تقديم الفاعل (على المفعول به)</caption>
+        <thead><tr><th>#</th><th>الموضع</th><th>المثال</th><th>العلّة</th></tr></thead>
+        <tbody>
+          <tr><td>١</td><td>إذا خُشي الالتباس (لخفاء الإعراب ولانتفاء القرينة)</td><td class="ar">أكرمَ موسى مصطفى — الأول فاعل والثاني مفعول</td><td>المقصود بالألفاظ المعاني، فإذا أخلّ الترتيب بإدراك المعنى وجب الرجوع إلى الأصل الذي لا الْتباس فيه؛ ولو عكسنا اللفظ لصعب بيان الفاعل من المفعول</td></tr>
+          <tr><td>٢</td><td>أن يكون الفاعل ضميرًا متصلًا والمفعول اسمًا ظاهرًا</td><td class="ar">أكلنا الطعامَ · شربتُ الماءَ</td><td>الضمير المتصل جزء من الفعل لا يُفصل عنه، فلا يمكن تأخيره، فوجب تقدّم الفاعل وبقي المفعول في موضعه</td></tr>
+          <tr><td>٣</td><td>أن يكون المفعول محصورًا بـ«إنما» أو «إلا»</td><td class="ar">إنما أكلَ فريدٌ رغيفًا · ما قرأَ خالدٌ إلا كتابين</td><td>المحصور يجب تأخيره عن أداة الحصر، فإذا كان المحصور هو المفعول لزم تأخّره، وتقدّم الفاعل</td></tr>
+          <tr><td>٤</td><td>أن يكون الفاعل والمفعول ضميرين متصلين</td><td class="ar">قابلتُه · أكرمتُه · عاقبتُه</td><td>لأن ضمير الرفع (الفاعل) يجب تقدّمه على ضمير النصب، ولا يمكن عكس الترتيب من غير كلفة («أعطيتُكَه»)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="box note">
+      <span class="ttl">ملاحظة تُكمّل الموضع الأول</span>
+      <p>إذا وُجدت <strong>قرينة</strong> ترفع اللبس، جاز تقديم المفعول: <span class="ar">أكرمتْ موسى سلمى</span> — فالتاء دالّة على أن الفاعل مؤنث، و<span class="ar">أكرمَ عيسى موسى العاقلُ</span> — فوصف الفاعل بالعقل أزال اللبس.</p>
+    </div>
+
+    <h3 class="topic" id="f7-4">٤) وجوب تأخير الفاعل عن المفعول — ثلاثة مواضع</h3>
+    <div class="tw">
+      <table>
+        <caption>مواضع وجوب تأخير الفاعل (وتقديم المفعول)</caption>
+        <thead><tr><th>#</th><th>الموضع</th><th>المثال</th><th>العلّة</th></tr></thead>
+        <tbody>
+          <tr><td>١</td><td>أن يكون المفعول ضميرًا متصلًا والفاعل اسمًا ظاهرًا</td><td class="ar">أكرمني محمدٌ · زانتْني حِليَةُ الأميرِ · ﴿أَخَذَتْهُمُ الصَّيْحَةُ﴾</td><td>الضمير المتصل لا يُفصل عن فعله؛ فلو قُدّم الفاعل لزم فصل الضمير، وهو ممتنع، فوجب تأخير الفاعل</td></tr>
+          <tr><td>٢</td><td>أن يتصل بالفاعل ضميرٌ يعود على المفعول</td><td class="ar">﴿وَإِذِ ابْتَلَى إِبْرَاهِيمَ رَبُّهُ﴾ · سكنَ الدارَ صاحبُها</td><td>لأن الضمير لا يعود على متأخّر لفظًا ورتبة؛ فلو قُدّم الفاعل لصار عوده على المفعول المتأخّر، وهو غير جائز</td></tr>
+          <tr><td>٣</td><td>أن يكون الفاعل محصورًا بـ«إلا» أو «إنما»</td><td class="ar">ما نجحَ إلا محمدٌ · إنما أكلَ الرغيفَ أخوكَ</td><td>المحصور (الفاعل) لا يتقدّم على أداة الحصر، فيأتي بعد «إلا/إنما»، ولو قدّمناه على المفعول لبطل الحصر أو عاد على المفعول</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="box rule">
+      <span class="ttl">وتُضمّ إليها قاعدة ابن مالك في «المفعول»</span>
+      <p>قال ابن مالك: <span class="ar">«وأخِّرِ المفعولَ إنْ لَبْسٌ حَذِرْ ... أو أضمرَ الفاعلُ غيرَ منحصرِ»</span> — أي: يؤخَّر المفعول (فيتقدّم الفاعل) في حالتين: (١) خوف اللبس، (٢) أن يكون الفاعل ضميرًا <mark>غير محصور</mark>؛ لأن الضمير غير المحصور (كالتاء في «أكرمتُ زيدًا») لا يُفصل عن فعله، فلا يجوز: «أكرمَ زيدًا أنا»؛ بخلاف المحصور فيجوز: «ما أكرمَ زيدًا إلا أنا».</p>
+    </div>
+
+    <h3 class="topic" id="f7-5">٥) ما يجوز فيه التقديم والتأخير</h3>
+    <div class="box rule">
+      <span class="ttl">القاعدة</span>
+      <p>إذا أُمِنَ اللبسُ وخلت الجملةُ من موجبات الوجوب، جاز للمتكلّم تقديم المفعول على الفاعل — بل تقديمه على الفعل والفاعل معًا — لغرض بلاغي:</p>
+      <ul>
+        <li><span class="ar">قرأَ محمدٌ الدرسَ / قرأَ الدرسَ محمدٌ — الوجهان جائزان.</span></li>
+        <li><span class="ar">﴿وَالْقَمَرَ قَدَّرْنَاهُ مَنَازِلَ﴾ — تقدّم المفعول على الفعل والفاعل (وهو ضمير مستتر) للعناية.</span></li>
+        <li><span class="ar">﴿إِيَّاكَ نَعْبُدُ﴾ — تقديم المفعول المنفصل للاختصاص (وجوبًا كما تقدّم).</span></li>
+        <li><span class="ar">﴿فَأَمَّا الْيَتِيمَ فَلَا تَقْهَرْ﴾ — تقدّمه لأجل الصدارة بعد «أمّا» والفاء، فالفاعل فيه مستتر وجوبًا (أنتَ).</span></li>
+      </ul>
+    </div>
+    <div class="box why">
+      <span class="ttl">لماذا يجوز التقديم؟ وماذا يفيد؟</span>
+      <p>لأن العامل «الفعل» متصرّف، وعمله متصرّف؛ فإذا كان العمل متصرّفًا جاز تقديم معموله. وأما <strong>الفائدة البلاغية</strong>: فالتقديم يفيد (١) العناية والاهتمام بالمقدَّم، (٢) التخصيص والحصر، (٣) مراعاة السجع أو الوزن، (٤) المخالفة عن الأصل لتنبيه الذهن؛ ومن ثمّ اختلف المعنى بين «قرأَ الدرسَ محمدٌ» و«قرأَ محمدٌ الدرسَ» اختلافَ عنايةٍ لا اختلافَ حكمٍ إعرابي.</p>
+    </div>
+
+    <h3 class="topic" id="f7-6">٦) مواضع أخرى (في «غير ذلك») تخصّ موقع الفاعل</h3>
+    <div class="tw">
+      <table>
+        <thead><tr><th>الموضوع</th><th>القاعدة</th><th>المثال والإعراب</th></tr></thead>
+        <tbody>
+          <tr><td>الفاعل المشترك (التنازع)</td><td>يُنسب إلى أحد العاملين ويُضمر في الآخر</td><td class="ar">ضربتُ وضربني زيدٌ — «زيدٌ» فاعل لـ«ضربني» ومفعول في المعنى لـ«ضربتُ»</td></tr>
+          <tr><td>الفاعل في الجملة المعطوفة</td><td>قد يُحذف الفاعل للدلالة، أو يُؤتى به</td><td class="ar">حضرَ محمدٌ وذهبَ (هو) إلى السوقِ</td></tr>
+          <tr><td>الفاعل في جملة الصلة والنعت</td><td>الفاعل داخلها كما في الجملة المستقلة</td><td class="ar">جاءَ الرجلُ الذي فازَ ابنُه</td></tr>
+          <tr><td>الفاعل بعد «أيّها» / «أيتها»</td><td>ما بعدها بدل أو نعت مرفوع، لا فاعل</td><td class="ar">يا أيُّها الناسُ — «أيُّها» منادى مبني على الضم، «الناسُ» بدل مرفوع</td></tr>
+          <tr><td>الفاعل في أسلوب الإغراء/التحذير</td><td>مستتر وجوبًا في الفعل المحذوف</td><td class="ar">الصدقَ الصدقَ! — أي: الزَمْ</td></tr>
+          <tr><td>الفاعل بعد «لا سيما»</td><td>ما بعدها يُعرب حسب المذهب: مفعولًا أو مبتدأً أو مجرورًا مضافًا إليه</td><td class="ar">أحبُّ الطلابَ لا سيّما المجتهدَ/المجتهدُ/المجتهدِ</td></tr>
+          <tr><td>الفاعل في الاستثناء التام المنفي</td><td>يجوز إعراب ما بعد «إلا» فاعلًا (بالنفي) أو بدلًا</td><td class="ar">ما نجحَ أحدٌ إلا محمدٌ = محمدٌ بدل من «أحدٌ» مرفوع، أو فاعل على تفريغ العامل</td></tr>
+          <tr><td>حذف الفاعل</td><td>لا يُحذف؛ وإنما يُستتر، أو يُبنى الفعل للمجهول</td><td class="ar">قيلَ كلامٌ (الفاعل ضمير مستتر في الفعل) / قُتِلَ البطلُ (نائب فاعل)</td></tr>
+          <tr><td>تعدُّد الفاعل</td><td>لا يتحمّل الفعل أكثر من فاعل واحد — إلا ما جاء في لغة «أكلوني البراغيث»</td><td class="ar">الزيدونَ قاموا — الواو فاعل، و«الزيدون» مبتدأ أو بدل بحسب الإعراب</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="topic" id="f7-7">٧) الجدول الجامع: حكم موقع الفاعل في كل حالة</h3>
+    <div class="tw">
+      <table>
+        <caption>خلاصة الفصل السابع</caption>
+        <thead><tr><th>الحالة</th><th>الحكم</th><th>السبب</th><th>المثال</th></tr></thead>
+        <tbody>
+          <tr><td>الفاعل بعد فعله (الأصل)</td><td>واجب</td><td>لأن العامل يجب تقدّمه على معموله</td><td class="ar">قامَ زيدٌ</td></tr>
+          <tr><td>الاسم المرفوع قبل الفعل</td><td>لا يكون فاعلًا (مبتدأ)</td><td>لأن صيغة الفعل لا تعمل فيما قبلها</td><td class="ar">زيدٌ قامَ</td></tr>
+          <tr><td>تقديم المفعول على الفاعل</td><td>جائز</td><td>لأمن اللبس ووجود الغرض البلاغي</td><td class="ar">قرأَ الدرسَ محمدٌ</td></tr>
+          <tr><td>الفاعل ضمير متصل والمفعول ظاهر</td><td>تقديم الفاعل واجب</td><td>لتعذّر فصل الضمير عن فعله</td><td class="ar">أكلنا الطعامَ</td></tr>
+          <tr><td>المفعول محصور بـ«إلا/إنما»</td><td>تقديم الفاعل واجب</td><td>المحصور مؤخَّر وجوبًا</td><td class="ar">ما قرأَ خالدٌ إلا كتابًا</td></tr>
+          <tr><td>الفاعل والمفعول ضميران متصلان</td><td>تقديم الفاعل واجب</td><td>ضمير الرفع قبل ضمير النصب</td><td class="ar">أكرمتُه</td></tr>
+          <tr><td>خوف اللبس</td><td>تقديم الفاعل واجب</td><td>الترتيب هو القرينة الوحيدة</td><td class="ar">أكرمَ موسى مصطفى</td></tr>
+          <tr><td>المفعول ضمير متصل والفاعل ظاهر</td><td>تأخير الفاعل واجب</td><td>عدم جواز فصل الضمير</td><td class="ar">أكرمني محمدٌ</td></tr>
+          <tr><td>ضمير الفاعل يعود على المفعول</td><td>تأخير الفاعل واجب</td><td>الضمير لا يعود على متأخّر</td><td class="ar">﴿وَإِذِ ابْتَلَى إِبْرَاهِيمَ رَبُّهُ﴾</td></tr>
+          <tr><td>الفاعل محصور بـ«إلا/إنما»</td><td>تأخير الفاعل واجب</td><td>المحصور لا يتقدّم أداة الحصر</td><td class="ar">ما نجحَ إلا محمدٌ</td></tr>
+          <tr><td>الفاعل ضمير غير محصور</td><td>تأخير المفعول واجب</td><td>لا يُفصل الضمير عن فعله</td><td class="ar">أكرمتُ زيدًا</td></tr>
+          <tr><td>الاسم له الصدارة (استفهام/شرط)</td><td>تقدّمه واجب على الفعل والفاعل</td><td>الصدارة حقّ ثابت لهذه الأسماء</td><td class="ar">مَن أكرمتَ؟ · أيًّا ما تضربْ أضربْ</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ================= ملحق ١ ================= -->
+  <section class="part" id="m1">
+    <span class="part-no">ملحق ١</span>
+    <h2>مطابقة الفعل للفاعل: تذكيرًا وتأنيثًا وإفرادًا</h2>
+    <p class="lead">من أحكام الفاعل المهمّة: هل يلزم الفعلَ أن يطابقه في التذكير والتأنيث والعدد؟ الجواب: <strong>يطابقه في التأنيث</strong> عند شروط، و<strong>يلزم الإفراد</strong> دائمًا.</p>
+
+    <h3 class="topic" id="m1-1">١) وجوب تأنيث الفعل</h3>
+    <div class="tw">
+      <table>
+        <thead><tr><th>الحالة</th><th>المثال</th><th>العلّة</th></tr></thead>
+        <tbody>
+          <tr><td>الفاعل مؤنث حقيقي (أو مجازي) متصل بفعله غير مفصول</td><td class="ar">حضرتْ سعادُ · نجحتْ الطالباتُ · طلعتِ الشمسُ</td><td>لأن التأنيث صفة الفاعل، ولأن عدم الفصل يمنع الالتباس</td></tr>
+          <tr><td>الفاعل ضمير مستتر يعود على مؤنث حقيقي أو مجازي</td><td class="ar">هندُ حضرتْ · الشمسُ تَجري · الفتاةُ تجتهدُ</td><td>لأن الفاعل ضمير عائد على مؤنث؛ فتؤنّث صيغته لازمةً</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="topic" id="m1-2">٢) جواز الوجهين (التأنيث والتذكير)</h3>
+    <div class="tw">
+      <table>
+        <thead><tr><th>الحالة</th><th>مثال</th><th>التعليل</th></tr></thead>
+        <tbody>
+          <tr><td>الفاعل مؤنث <strong>مجازي</strong></td><td class="ar">طلعَ الشمسُ / طلعتِ الشمسُ</td><td>لأن التأنيث غير حقيقي، فجاز اعتبار اللفظ</td></tr>
+          <tr><td>الفاعل مؤنث حقيقي <strong>مفصول</strong> عن فعله</td><td class="ar">فازَ بالجائزةِ طالبةٌ / فازتْ بالجائزةِ طالبةٌ</td><td>لأن الفصل يمنع الالتباس بين الفعل وفاعله</td></tr>
+          <tr><td>الفعل جامد (نِعم/بئس) والفاعل مؤنث حقيقي</td><td class="ar">بئستِ المرأةُ / بئسَ المرأةُ سجّاحاً</td><td>لأن الجامد لا يتصرف، والوجهان مسموعان</td></tr>
+          <tr><td>الفاعل جمع تكسير لمؤنث أو مذكر</td><td class="ar">جاءَ الرجالُ / جاءتِ الرجالُ · الفواطمُ</td><td>لأن جمع التكسير يعتدّ به مرة مفردًا ومرة جمعًا في التذكير والتأنيث</td></tr>
+          <tr><td>الفاعل اسم مؤنث ظاهر مع الفعل المتأخر أو في السياق المطوّل</td><td class="ar">حضرَ اليومَ سلمى</td><td>لجواز اعتبار معنى الاسم والاكتفاء بالقرينة</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="box why">
+      <span class="ttl">لماذا تتصل تاء التأنيث ساكنة دائمًا؟</span>
+      <p>لأنها حرف دالّ على التأنيث لا ضمير فاعل؛ فإذا وقع بعدها ساكن كُسرت لالتقاء الساكنين: «قامتِ الفتاةُ»، وإذا وقع بعدها متحرك بقيت ساكنة: «قامتْ فاطمةُ». وبذلك فرِّق بين تاء التأنيث (ساكنة) وتاء الفاعل (متحركة): «كتبتَ، كتبتِ».</p>
+    </div>
+
+    <h3 class="topic" id="m1-3">٣) لزوم إفراد الفعل</h3>
+    <div class="box rule">
+      <span class="ttl">القاعدة</span>
+      <p>الفعل في حال الإسناد إلى اسم ظاهر <strong>يفرد دائمًا</strong>، فلا يُثنّى ولا يُجمع: <span class="ar">نجحَ الطالبانِ · اجتهدَ المعلمونَ · فازتِ الطالباتُ</span>. وأما ظهور علامة التثنية أو الجمع فمقصور على الضمائر البارزة والأفعال الخمسة: <span class="ar">نجحا · نجحوا · يجتهدونَ</span>.</p>
+    </div>
+    <div class="box why">
+      <span class="ttl">لماذا؟</span>
+      <p>لأن الفعل خبرٌ عن الحدث، والعددُ يُفهم من الفاعل المذكور بعده؛ فلو ثُنّي الفعل أو جُمع لتكرّر العدد مرتين، وهذا إخلال بالاقتصاد اللغوي. وأما في الضمائر البارزة فالصيغة نفسها هي الدالة على الفاعل، فلا مكرّر.</p>
+    </div>
+  </section>
+
+  <!-- ================= ملحق ٢ ================= -->
+  <section class="part" id="m2">
+    <span class="part-no">ملحق ٢</span>
+    <h2>نائب الفاعل: مواضعُ نيابته وأحكامه</h2>
+    <div class="box rule">
+      <span class="ttl">التعريف</span>
+      <p><strong>نائب الفاعل</strong>: اسم مرفوع يحلّ محلّ الفاعل المحذوف حين يُبنى الفعل للمجهول، فيأخذ <strong>أحكام الفاعل كلها</strong>: الرفع، ووجوب التأخّر عن رافعه، وعدم الحذف.</p>
+    </div>
+    <h3 class="topic" id="m2-1">١) صيغة الفعل المبني للمجهول</h3>
+    <div class="tw">
+      <table>
+        <thead><tr><th>الزمن</th><th>الضبط</th><th>المثال</th></tr></thead>
+        <tbody>
+          <tr><td>الماضي</td><td>يُضمّ أوله ويُكسَر ما قبل آخره</td><td class="ar">كُتِبَ الدرسُ · ضُرِبَ اللصُّ · أُكرِمَ الضيفُ</td></tr>
+          <tr><td>المضارع</td><td>يُضمّ أوله ويُفتَح ما قبل آخره</td><td class="ar">يُكتَبُ الدرسُ · تُكرَمُ الضيوفُ</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3 class="topic" id="m2-2">٢) ما ينوب عن الفاعل (مرتّبًا)</h3>
+    <div class="tw">
+      <table>
+        <caption>الترتيب بحسب وجود المعمولات</caption>
+        <thead><tr><th>#</th><th>ما ينوب</th><th>المثال</th><th>الإعراب</th></tr></thead>
+        <tbody>
+          <tr><td>١</td><td>المفعول به (الأصل والأوْلى)</td><td class="ar">كُتِبَ الدرسُ · ﴿وَقُضِيَ الْأَمْرُ﴾</td><td>نائب فاعل مرفوع</td></tr>
+          <tr><td>٢</td><td>المفعول الثاني إن كان الفعل متعديًا لمفعولين — (مع بقاء الأول منصوبًا)</td><td class="ar">أُعطِيَ الفقيرُ درهمًا → أُعطِيَ الفقيرُ دِرهَمٌ؟ (الوجهان)</td><td>الأشهر: نائب فاعل المرفوع، ويبقى الآخر منصوبًا</td></tr>
+          <tr><td>٣</td><td>الجار والمجرور (إن لم يكن مفعول)</td><td class="ar">لا يُسكَتُ على ظلمٍ · ﴿وَلَمَّا سُقِطَ فِي أَيْدِيهِمْ﴾</td><td>الجار والمجرور في محل رفع نائب فاعل</td></tr>
+          <tr><td>٤</td><td>الظرف (إن لم يكن جار ومجرور)</td><td class="ar">صِيمَ يومٌ · سُهِرَتْ ليلةٌ ممتعةٌ</td><td>الظرف نائب فاعل مرفوع</td></tr>
+          <tr><td>٥</td><td>المصدر (إن لم يكن ظرف ولا جار ومجرور)</td><td class="ar">أُحتُفِلَ احتفالٌ باهرٌ</td><td>المصدر نائب فاعل مرفوع</td></tr>
+        </tbody>
+      </table>
+      <p class="tbl-note">القاعدة العملية: يُبحث أوّلًا عن مفعول به، فإن عُدم فجارّ ومجرور، فإن عُدم فظرف، فإن عُدم فمصدر.</p>
+    </div>
+    <div class="box why">
+      <span class="ttl">لماذا ناب المفعول عن الفاعل؟ ولماذا لم يُحذف الفاعل دون بديل؟</span>
+      <ul>
+        <li>لأن الفعل لا بدّ له من مسند إليه يُشغل موضع الفاعل ويُعطى حكمه (الرفع)، وإلا لبقيت الجملة ناقصة.</li>
+        <li>ولأن <strong>المفعول به أقرب المعمولات منزلةً للفاعل</strong> (فهو الذي وقع عليه الحدث)، فناب عنه أوّلًا.</li>
+        <li>وأسباب حذف الفاعل: الجهل به، أو العلم به مع عدم الحاجة إلى ذكره، أو الخوف منه أو عليه، أو قصد الإبهام، أو التعظيم/التحقير، أو مراعاة السجع والوزن.</li>
+      </ul>
+    </div>
+    <div class="box note">
+      <span class="ttl">الفرق بين الفاعل ونائب الفاعل — في جدول</span>
+      <div class="tw">
+        <table>
+          <thead><tr><th>الوجه</th><th>الفاعل</th><th>نائب الفاعل</th></tr></thead>
+          <tbody>
+            <tr><td>الفعل</td><td>مبني للمعلوم</td><td>مبني للمجهول</td></tr>
+            <tr><td>المعنى</td><td>من قام بالفعل</td><td>من وقع عليه الفعل (في الأصل مفعول)</td></tr>
+            <tr><td>الحكم</td><td>مرفوع أبدًا</td><td>مرفوع أبدًا</td></tr>
+            <tr><td>الموضع</td><td>بعد الفعل</td><td>بعد الفعل (وفي محلّ الفاعل تمامًا)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ملحق ٣ ================= -->
+  <section class="part" id="m3">
+    <span class="part-no">ملحق ٣</span>
+    <h2>خلاصة العلل: «لماذا؟» لكل حكم في صفحة واحدة</h2>
+    <div class="tw">
+      <table>
+        <caption>مفاتيح التعليل في باب الفاعل</caption>
+        <thead><tr><th>#</th><th>الحكم</th><th>العلّة المختصرة</th></tr></thead>
+        <tbody>
+          <tr><td>١</td><td>الفاعل مرفوع</td><td>لأنه عمدة الجملة الفعلية، وللتفريق بين من فعل ومن وقع عليه الفعل</td></tr>
+          <tr><td>٢</td><td>الفاعل لا يتقدّم على فعله</td><td>لأن العامل يجب تقدّمه على معموله، ولأن ما قبل الفعل صالح لأن يكون مبتدأً</td></tr>
+          <tr><td>٣</td><td>وجوب تأخير الفاعل إذا كان المفعول ضميرًا متصلًا</td><td>لأن الضمير المتصل لا يُفصل عن فعله</td></tr>
+          <tr><td>٤</td><td>وجوب تأخيره إذا اتصل به ضمير يعود على المفعول</td><td>لأن الضمير لا يعود على متأخّر لفظًا ورتبة</td></tr>
+          <tr><td>٥</td><td>وجوب تأخيره إذا كان محصورًا</td><td>لأن المحصور لا يتقدّم أداة الحصر</td></tr>
+          <tr><td>٦</td><td>وجوب تقديمه مع ضمير الفاعل المتصل</td><td>لتعذّر فصل الضمير وتأخيره</td></tr>
+          <tr><td>٧</td><td>وجوب تقديمه عند خوف اللبس</td><td>لأن المقصود بالألفاظ المعاني، والترتيب هو القرينة</td></tr>
+          <tr><td>٨</td><td>استتار الضمير وجوبًا في الأمر والمضارع المبدوء بأو ن</td><td>لأن صيغة الفعل تعيّن الفاعل، فلا يقوم مقامه ظاهر</td></tr>
+          <tr><td>٩</td><td>استتار الضمير وجوبًا في «ما أفعله» و«أفعِلْ به»</td><td>لأن الفاعل ضمير مبهم عائد على «ما» أو لتمييز التعجب من الأمر</td></tr>
+          <tr><td>١٠</td><td>جرّ الفاعل بالباء في «كفى» و«أفعِلْ به»</td><td>لأن الباء حرف جر زائد للتوكيد (ولازمة في التعجب للتمييز)، والاسم باقٍ على فاعليته محلًّا</td></tr>
+          <tr><td>١١</td><td>فاعل «نعم/بئس» معرَّفًا بـ«أل» أو مضافًا أو مُفسَّرًا بتمييز</td><td>لأن المدح/الذم يحتاج إحاطةً وتمييزًا، ولأن النكرة لا تفيد المقصود من غير مُفسِّر</td></tr>
+          <tr><td>١٢</td><td>المخصوص بالمدح/الذم ليس فاعلًا</td><td>لأن الفاعل لا يزيد عن واحد، وقد شُغِل موضعه</td></tr>
+          <tr><td>١٣</td><td>المنادى ليس فاعلًا</td><td>لأن عامله فعل محذوف (أنادي) فاعله مستتر، والمنادى مفعول به</td></tr>
+          <tr><td>١٤</td><td>عدم إعراب «مَن الاستفهامية» فاعلًا عند البصريين</td><td>لأن لأسماء الاستفهام الصدارة، فلا يعمل فيها فعل متأخّر</td></tr>
+          <tr><td>١٥</td><td>حذف الفعل في الإغراء والتحذير والقسم والاختصاص</td><td>للإيجاز والتنبيه، مع بقاء الفاعل مستترًا لأن الفاعل لا يُسقط</td></tr>
+          <tr><td>١٦</td><td>عمل المصدر مطلقًا، وعمل المشتقّ بالاعتماد</td><td>لأن المصدر أصيل في الدلالة على الحدث، والمشتقّ وصفٌ يحتاج قرينة</td></tr>
+          <tr><td>١٧</td><td>الصفة المشبَّهة ترفع ولا تنصب</td><td>لأنها من الفعل اللازم ودلالتها على الثبوت لا على الحدث المتجدّد</td></tr>
+          <tr><td>١٨</td><td>الفاعل مصدر مؤوَّل</td><td>لأنه مؤوَّل بالصريح فيأخذ حكمه</td></tr>
+          <tr><td>١٩</td><td>الفعل يلزم الإفراد مع الفاعل الظاهر</td><td>لأن العدد يُفهم من الفاعل، فلا يُكرَّر في الفعل</td></tr>
+          <tr><td>٢٠</td><td>وجوب التأنيث أو جوازه</td><td>بحسب كون التأنيث حقيقيًّا أو مجازيًّا، وحسب الفصل وعدم الفصل</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ================= ملحق ٤ ================= -->
+  <section class="part" id="m4">
+    <span class="part-no">ملحق ٤</span>
+    <h2>التدريبات الشاملة مع الحلول</h2>
+    <p class="lead">عشرون تدريبًا تغطي مواضع الفاعل كلّها — اضغط على السؤال لكشف الجواب.</p>
+
+    <h3 class="topic">أ) تدريبات التعيين والتصنيف</h3>
+    <details class="qa"><summary>١) عيّن الفاعل ونوعه: «نجحَ الطالبانِ في الامتحانِ».</summary><div class="body"><p>الفاعل: <strong>«الطالبانِ»</strong>، نوعه: <em>اسم ظاهر مثنّى</em>، مرفوع وعلامة رفعه <strong>الألف</strong> لأنه مثنى. و«في الامتحان» جار ومجرور متعلق بـ«نجح».</p></div></details>
+    <details class="qa"><summary>٢) ما نوع الفاعل في: «اكتبْ درسَك» و«كتبتُ الدرسَ» و«محمدٌ كتبَ»؟</summary><div class="body"><p>الأول: ضمير مستتر <strong>وجوبًا</strong> تقديره (أنتَ)، الثاني: ضمير متصل (التاء) في محل رفع فاعل، الثالث: ضمير مستتر <strong>جوازًا</strong> تقديره (هو) — لأن الفاعل يمكن أن يحلّ محلّه اسم ظاهر: «كتبَ محمدٌ».</p></div></details>
+    <details class="qa"><summary>٣) ما إعراب «زيدٌ» في: «زيدٌ قامَ»؟ ولماذا؟</summary><div class="body"><p>مبتدأ مرفوع، وليس فاعلًا؛ لأن الفاعل <strong>لا يتقدّم على فعله</strong>، والفاعل في «قام» ضمير مستتر تقديره (هو)، والجملة الفعلية في محل رفع خبر المبتدأ.</p></div></details>
+    <details class="qa"><summary>٤) أعرب: «كفى باللهِ وكيلًا».</summary><div class="body"><p>«كفى»: فعل ماضٍ مبني على الفتح المقدر. «الباء»: حرف جر زائد. «اللهِ»: لفظ الجلالة فاعل مرفوع، وعلامة رفعه ضمة مقدرة منع من ظهورها اشتغال المحل بحركة حرف الجر الزائد (مجرور لفظًا مرفوع محلًّا). «وكيلًا»: تمييز منصوب.</p></div></details>
+    <details class="qa"><summary>٥) في قولنا: «نِعْمَ الرجلُ زيدٌ» — ما فاعل «نِعْمَ»؟ وما إعراب «زيدٌ»؟</summary><div class="body"><p>الفاعل: <strong>«الرجلُ»</strong> مرفوع. و«زيدٌ»: <strong>مخصوص بالمدح</strong>، يعرب مبتدأ مؤخرًا (والجملة الفعلية قبله في محل رفع خبر مقدم)، ولا يجوز إعرابه فاعلًا؛ لأنه يلزم منه تعدّد الفاعل.</p></div></details>
+
+    <h3 class="topic">ب) تدريبات التقديم والتأخير</h3>
+    <details class="qa"><summary>٦) لماذا وجب تأخير الفاعل في: «أكرمني محمدٌ»؟</summary><div class="body"><p>لأن المفعول به ضمير متصل («الياء») والفاعل اسم ظاهر؛ والضمير المتصل لا يجوز فصله عن فعله؛ فلو قُدّم الفاعل لقيل: «أكرمَ محمدٌ إيّاي» وهذا خلاف الأصل، فوجب تأخيره.</p></div></details>
+    <details class="qa"><summary>٧) أعرب: «وإذ ابتلى إبراهيمَ ربُّه» وبيّن علّة الترتيب.</summary><div class="body"><p>«إبراهيمَ»: مفعول به منصوب مقدّم. «ربُّه»: فاعل مؤخّر مرفوع، وهو مضاف والهاء مضاف إليه. والعلّة: أن الضمير في «ربه» يعود على «إبراهيم»، والضمير لا يعود على متأخّر لفظًا ورتبة، فلو قدّمنا الفاعل لعاد الضمير على متأخّر.</p></div></details>
+    <details class="qa"><summary>٨) ما حكم تقديم الفاعل في: «أكلنا الطعامَ» و«أكرمتُه»؟</summary><div class="body"><p>واجب؛ لأن الفاعل ضمير متصل لا يمكن فصله عن فعله، فيترتّب عليه تقدّمه على المفعول؛ ولا يقال: «الطعامَ أكلنا» على المعنى نفسه.</p></div></details>
+    <details class="qa"><summary>٩) «ضربَ موسى عيسى» — ما حكم الترتيب؟ ولماذا؟</summary><div class="body"><p>يجب الترتيب على الأصل فتكون «موسى» فاعلًا و«عيسى» مفعولًا؛ لأن اسمي العلم هذين لا تظهر حركة آخرهما (إعراب مقدّر)، فلو جاز العكس لالتبس الفاعل بالمفعول. فإذا وُجدت قرينة جاز العكس: «ضربتْ موسى سلمى».</p></div></details>
+    <details class="qa"><summary>١٠) ما إعراب «محمدٌ» في: «ما نجحَ إلا محمدٌ»؟ وما علّة التأخير؟</summary><div class="body"><p>فاعل مرفوع (وقيل: نائب فاعل على أن الفعل صار لما لم يُسمَّ فاعله) — والأشهر الأول، ويُقال: «فاعل في اللفظ لا في المعنى» لأن الفاعل في الحقيقة محذوف تقديره «أحدٌ». وعلّة التأخير: أن المحصور لا يتقدّم أداة الحصر.</p></div></details>
+
+    <h3 class="topic">ج) تدريبات الأساليب والأدوات</h3>
+    <details class="qa"><summary>١١) ما موضع الفاعل في: «يا عبدَ اللهِ»؟</summary><div class="body"><p>لا فاعل ظاهر؛ لأن «يا» حرف نداء والتقدير: أنادي، وفاعل الفعل المحذوف ضمير مستتر وجوبًا (أنا)، و«عبدَ» منادى مفعول به منصوب لأنه مضاف.</p></div></details>
+    <details class="qa"><summary>١٢) أعرب: «ما أحسنَ الصدقَ» وبيّن فاعل الفعل.</summary><div class="body"><p>«ما»: نكرة تعجبية في محل رفع مبتدأ. «أحسنَ»: فعل ماضٍ جامد لإنشاء التعجب، والفاعل ضمير مستتر وجوبًا تقديره (هو). «الصدقَ»: مفعول به منصوب (وهو المتعجَّب منه). والجملة الفعلية في محل رفع خبر.</p></div></details>
+    <details class="qa"><summary>١٣) في «أحسِنْ بالصدقِ» — لماذا جُرّ «الصدق»؟ وما إعرابه؟</summary><div class="body"><p>جُرّ بالباء الزائدة <strong>اللازمة</strong>؛ لأن صيغة «أفعِلْ» تشبه فعل الأمر، والباء تميّز التعجب من الأمر. وإعرابه: فاعل مرفوع محلًّا مجرور لفظًا.</p></div></details>
+    <details class="qa"><summary>١٤) ما الفاعل في: «يسعدني أن تنجحَ»؟</summary><div class="body"><p>الفاعل: المصدر المؤوَّل من «أن تنجح» في محل <strong>رفع فاعل</strong>، والتقدير: يسعدني نجاحُك. والياء مفعول به، والفاعل في «تنجح» ضمير مستتر وجوبًا (أنت).</p></div></details>
+    <details class="qa"><summary>١٥) أعرب: «إيّاكَ نعبدُ» واذكر موضع الفاعل.</summary><div class="body"><p>«إيّاك»: ضمير منفصل مبني في محل نصب مفعول به مقدّم وجوبًا (لأنه ضمير نصب منفصل أُفيد به الاختصاص). «نعبدُ»: فعل مضارع مرفوع، والفاعل ضمير مستتر وجوبًا تقديره (نحن). والجملة في محل رفع... (خبر لمبتدأ محذوف تقديره «نحن» أو استئنافية).</p></div></details>
+
+    <h3 class="topic">د) تدريبات المشتقّات والنائب</h3>
+    <details class="qa"><summary>١٦) أعرب: «مررتُ برجلٍ حسنٍ خُلُقُه».</summary><div class="body"><p>«برجلٍ»: جار ومجرور. «حسنٍ»: نعت مجرور، وهي <strong>صفة مشبَّهة</strong> تعمل عمل الفعل اللازم. «خُلُقُه»: فاعل مرفوع للصفة المشبهة، وهو مضاف والهاء مضاف إليه.</p></div></details>
+    <details class="qa"><summary>١٧) لماذا لا تنصب الصفة المشبَّهة مفعولًا؟ وماذا نُعرب المنصوب بعدها؟</summary><div class="body"><p>لأنها مشتقة من الفعل <strong>اللازم</strong> غالبًا وتدلّ على صفة ثابتة، فلا تعمل إلا عمل اللازم (رفع الفاعل). وأما المنصوب بعدها فيُعرب على <strong>التشبيه بالمفعول</strong> في اللفظ لا على المفعولية الحقيقية: «هو حسنٌ وجهَه».</p></div></details>
+    <details class="qa"><summary>١٨) حوّل إلى المبني للمجهول وبيّن نائب الفاعل: «كتبَ الطالبُ الدرسَ».</summary><div class="body"><p>«كُتِبَ الدرسُ»: نائب الفاعل «الدرسُ» مرفوع بالضمة (وكان مفعولًا منصوبًا)، والفعل ماضٍ مبني للمجهول: ضُمّ أوله وكُسر ما قبل آخره.</p></div></details>
+    <details class="qa"><summary>١٩) ما نائب الفاعل في: «سُهِرَت ليلةٌ ممتعةٌ» و«لا يُسكَتُ على ظلمٍ»؟</summary><div class="body"><p>في الأولى: «ليلةٌ» نائب فاعل مرفوع، وهو <strong>ظرف زمان</strong> ناب عن الفاعل لعدم وجود مفعول. وفي الثانية: الجار والمجرور «على ظلمٍ» في محل رفع <strong>نائب فاعل</strong>.</p></div></details>
+    <details class="qa"><summary>٢٠) عيّن موضع الفاعل وأعربه في: «أعجبني أنْ تتحدَّثَ بصدقٍ».</summary><div class="body"><p>الفاعل: المصدر المؤوَّل «أن تتحدَّثَ» في محل <strong>رفع فاعل</strong> لـ«أعجب»، والياء مفعول به، والتقدير: أعجبني تحدُّثُك بصدق. وفي «تتحدَّث» فاعل مستتر وجوبًا تقديره (أنت).</p></div></details>
+  </section>
+
+  <!-- ================= ملحق ٥ ================= -->
+  <section class="part" id="m5">
+    <span class="part-no">ملحق ٥</span>
+    <h2>المصادر والمراجع التي روجعت</h2>
+    <div class="tw">
+      <table>
+        <caption>كتب النحو التي بحثتُ فيها، وما استُفيد منها</caption>
+        <thead><tr><th>المرجع</th><th>ما أُخِذ منه</th></tr></thead>
+        <tbody>
+          <tr><td>شرح ابن عقيل على ألفية ابن مالك (ومنه منحة الجليل لمحيي الدين عبد الحميد)</td><td>تعريف الفاعل وأنواعه (صريح، ضمير، مؤوَّل)، وأحكامه، ومواضع تقدّمه وتأخّره</td></tr>
+          <tr><td>الإنصاف في مسائل الخلاف — ابن الأنباري</td><td>الخلاف بين البصريين والكوفيين في تقديم الفاعل/معمول الفعل، وثمرة الخلاف، وطريقة الاحتجاج والرد</td></tr>
+          <tr><td>شرح ألفية ابن مالك — العثيمين</td><td>نصّ: «وأخِّر المفعولَ إنْ لبسٌ حَذِرْ / أو أضمرَ الفاعلُ غيرَ منحصرِ»، وتعليل وجوب الترتيب عند اللبس والحصر</td></tr>
+          <tr><td>أوضح المسالك / شرح الأشموني وحاشية الصبان</td><td>تفاصيل التقديم والتأخير، وأمثلته، وأحكام الفاعل مع الأفعال الجامدة</td></tr>
+          <tr><td>النحو الوافي (عباس حسن) وجامع الدروس (الغلاييني)</td><td>تنظيم المواضع والأحكام، وشروط الإعمال في المشتقّات</td></tr>
+          <tr><td>موسوعة الدرر السنية (أحكام الفاعل) ومواقع تعليمية موثوقة</td><td>ترتيب الأحكام، وإعراب الأمثلة، وأمثلة نائب الفاعل والصور الإعرابية</td></tr>
+          <tr><td>المقررات الجامعية (الفاعل ونائبه) وكتب الصرف في «الإسناد»</td><td>صور الفاعل، ومطابقة الفعل للفاعل، والإسناد إلى الضمائر</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="box note">
+      <span class="ttl">تنبيه منهجي</span>
+      <p>ما ذُكر هو <strong>المشهور</strong> في كتب النحو، وقد يُوجد خلاف في بعض التفصيلات (مثل إعراب «مَن» الاستفهامية، وإعراب ما بعد «إلا» في الاستثناء المنفيّ، وإعراب «عسى أن يفعل»)، وقد نبّهتُ على الخلاف في مواضعه. والقاعدة في الجدل النحوي: الحق لا يُعرف بالشخص، بل بالدليل والاستعمال الفصيح.</p>
+    </div>
+    <hr>
+    <div class="box tip">
+      <span class="ttl">منهج عملي لإعراب الفاعل في أي جملة (ستّ خطوات)</span>
+      <ol class="steps">
+        <li>حدّد الفعل: هل هو <strong>تام</strong> أم <strong>ناقص</strong>؟ (الناقص لا فاعل له).</li>
+        <li>انظر: هل هو <strong>معلوم</strong> أم <strong>مجهول</strong>؟ (المجهول: نائب فاعل).</li>
+        <li>ابحث عن الاسم المرفوع بعد الفعل إن كان الرفع ظاهرًا.</li>
+        <li>إن لم تجد مرفوعًا ظاهرًا فابحث عن <strong>ضمير متصل</strong> أو <strong>مستتر</strong>.</li>
+        <li>راجع حكم الترتيب: هل وقع المفعول قبله؟ ولأيّ علةٍ؟</li>
+        <li>أعرب: «فاعل مرفوع وعلامة رفعه …» أو «في محل رفع فاعل» حسب نوع الاسم.</li>
+      </ol>
+    </div>
+  </section>
+
+  </main>
+</div>
+</div>
+
+<footer class="site">
+  <div class="wrap">
+    <p><strong>مواضع الفاعل في العربية</strong> — بحث تفصيلي في كتب النحو: المواضع، والأحكام، والعلل، والأمثلة المعربة.</p>
+    <p>راجعه مع: <a href="index.html">الملف الأول: الأساليب النحوية · اللازم والمتعدي · إسناد الفعل · إعمال المشتق</a></p>
+  </div>
+</footer>
+
+<button class="up" id="upBtn" title="أعلى الصفحة">↑</button>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var themeBtn = document.getElementById('themeBtn');
+  function setTheme(t) {
+    root.setAttribute('data-theme', t);
+    try { localStorage.setItem('grammar-theme', t); } catch (e) {}
+    if (themeBtn) themeBtn.textContent = (t === 'dark' ? '☀️ الوضع النهاري' : '🌙 الوضع الليلي');
+  }
+  var saved = null;
+  try { saved = localStorage.getItem('grammar-theme'); } catch (e) {}
+  if (saved) { setTheme(saved); }
+  else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) { setTheme('dark'); }
+  if (themeBtn) themeBtn.addEventListener('click', function () {
+    setTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+
+  var collapseBtn = document.getElementById('collapseBtn');
+  var allOpen = false;
+  if (collapseBtn) collapseBtn.addEventListener('click', function () {
+    allOpen = !allOpen;
+    var list = document.querySelectorAll('details.qa');
+    for (var i = 0; i < list.length; i++) { list[i].open = allOpen; }
+    collapseBtn.textContent = allOpen ? 'طيّ كل الأجوبة' : 'فتح كل الأجوبة';
+  });
+
+  var printBtn = document.getElementById('printBtn');
+  if (printBtn) printBtn.addEventListener('click', function () { window.print(); });
+
+  var upBtn = document.getElementById('upBtn');
+  window.addEventListener('scroll', function () {
+    if (!upBtn) return;
+    if (window.scrollY > 400) upBtn.classList.add('show'); else upBtn.classList.remove('show');
+  });
+  if (upBtn) upBtn.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+  var links = document.querySelectorAll('nav.toc a[href^="#"]');
+  var targets = [];
+  for (var j = 0; j < links.length; j++) {
+    var el = document.querySelector(links[j].getAttribute('href'));
+    if (el) targets.push({ link: links[j], el: el });
+  }
+  function syncToc() {
+    var pos = window.scrollY + 120, current = null;
+    for (var k = 0; k < targets.length; k++) {
+      if (targets[k].el.offsetTop <= pos) current = targets[k];
+    }
+    for (var m = 0; m < targets.length; m++) targets[m].link.classList.remove('active');
+    if (current) current.link.classList.add('active');
+  }
+  window.addEventListener('scroll', syncToc);
+  syncToc();
+
+  var input = document.getElementById('searchInput');
+  var lastHit = null;
+  if (input) input.addEventListener('keydown', function (e) {
+    if (e.key !== 'Enter') return;
+    if (lastHit && lastHit.classList) lastHit.classList.remove('hit');
+    var q = input.value.trim();
+    if (!q) return;
+    var nodes = document.querySelectorAll('main .box, main table, main h3.topic, main details.qa, main .exlist li');
+    for (var i = 0; i < nodes.length; i++) {
+      if (nodes[i].textContent.indexOf(q) !== -1) {
+        nodes[i].scrollIntoView({ behavior: 'smooth', block: 'center' });
+        nodes[i].classList.add('hit');
+        lastHit = nodes[i];
+        break;
+      }
+    }
+  });
+})();
+</script>
+</body>
+</html>
