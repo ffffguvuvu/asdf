@@ -118,7 +118,8 @@ def main():
 
     total_h = len(idx) and sum(1 for _ in re.finditer(r'<h[34]', ' '.join(body)))
     stats = {
-        'lessons': sum(1 for b in body if '<section' in b),
+        'lessons': sum(1 for mt in metas if re.match(r'^l\d+$', mt['sid'])),
+        'appendix': sum(1 for mt in metas if not re.match(r'^l\d+$', mt['sid'])),
         'heads': len(re.findall(r'<h3', ''.join(body))) + len(re.findall(r'<h4', ''.join(body))),
         'tables': ''.join(body).count('<table'),
     }
@@ -138,7 +139,8 @@ def main():
     <h1>دروسُ الإعرابِ الأربعةَ عشر</h1>
     <p class="sub">كلُّ درسٍ قائمٌ بنفسه: حدُّه، وأركانُه، وأحكامُه رقماً رقماً، وتقسيماتُه جداول، وأمثلةٌ مشكولةٌ مُعربة، ثمَّ <b>«مواضعُ الدرس»</b>: أين يقع هذا المبحثُ في الأساليب، وفي التقديمِ والتأخير، وفي الحذف، وفي النواصب، وفي النواسخ، وفي التراكيب الخاصة. وفي آخرِ الملفِّ <b>الثوابتُ</b> مصنَّفة، و<b>مصفوفةُ المواضع</b> لكلِّ الدروس في صفحةٍ واحدة.</p>
     <div class="hero-stats">
-      <span>📚 {ar(stats['lessons'])} درسًا</span>
+      <span>📚 {ar(stats['lessons'])} درسًا مفصَّلًا</span>
+      <span>🧾 {ar(stats['appendix'])} ملاحقَ جامعة</span>
       <span>🗂️ {ar(stats['heads'])} مبحثًا فرعيًّا</span>
       <span>📐 {ar(stats['tables'])} جدولًا</span>
       <span>🧷 مواضعُ كلِّ درسٍ في ستةِ أبواب</span>
