@@ -64,7 +64,7 @@ body:not(.sheets) .sheet{display:contents}
 /* ——— نسخةُ القراءةِ: أسودُ على أبيضَ، بلا زخرفةٍ، وبالأوراقِ نفسِها ——— */
 body.reading{background:#fff}
 body.reading .sheet{background:#fff;border:none;box-shadow:none;border-radius:0;margin:0 auto;
-  color:#111;font-size:12pt;line-height:1.78;text-align:right;padding:1.9cm 2.54cm}
+  color:#111;font-size:var(--fsheet);line-height:var(--lh);text-align:justify;padding:calc(var(--py) + var(--foot)) var(--px)}
 body.reading .sheet .phead{display:none}
 body.reading .sheet .pnum{color:#555;font-size:10pt;bottom:1.05cm;border-top:none}
 body.reading h1,body.reading h2,body.reading h3,body.reading h4,body.reading b,body.reading strong,
@@ -342,38 +342,38 @@ def main():
 :root{--pw:21cm;--ph:29.7cm;--px:3.18cm;--py:2.54cm}
 *{box-sizing:border-box}
 body{margin:0;background:#fff;color:#111;direction:rtl;
-  font:12pt/1.78 "Amiri","Noto Naskh Arabic","Scheherazade New",serif}
+  font:11.5pt/1.95 "Amiri","Noto Naskh Arabic","Scheherazade New",serif}
 main{max-width:var(--pw);margin:0 auto}
 .sheet{position:relative;width:var(--pw);min-height:var(--ph);padding:var(--py) var(--px);
   margin:0 auto;text-align:justify;page-break-after:always;break-after:page}
 .sheet:last-of-type{page-break-after:auto;break-after:auto}
 .phead{display:none}
-.pnum{position:absolute;bottom:.9cm;inset-inline:var(--px);text-align:center;margin:0;font-size:10pt;color:#555}
-.pnote{font-size:9pt;color:#555;margin:.4em 0 0}
+.pnum{position:absolute;bottom:1.05cm;inset-inline:var(--px);text-align:center;margin:0;font-size:.8em;color:#555}
+.pnote{font-size:.8em;color:#555;margin:.4em 0 0}
 .cover{display:block}
 .hero-inner{max-width:none;text-align:justify}
-.hero-inner h1{font-size:22pt;text-align:center;margin:.5em 0}
-.hero-inner .sub{font-size:11pt;text-align:center;color:#333}
+.hero-inner h1{font-size:1.9em;text-align:center;margin:.5em 0}
+.hero-inner .sub{font-size:.95em;text-align:center;color:#333}
 .badge,.hero-stats span{display:inline-block;border:.6pt solid #bbb;border-radius:3px;padding:0 .5em;
   font-size:10pt;margin:.15em;color:#333}
 .hero-stats{display:block;margin:.8em 0;text-align:center}
 .hero-callout{border:.8pt solid #bbb;border-radius:3px;padding:.6em .8em;margin:1em 0;text-align:center}
-.hero-callout .big{display:block;font-size:13pt;margin-bottom:.3em}
-h1{font-size:22pt;text-align:center;margin:2.6cm 0 .5cm}
-h2{font-size:16pt;margin:0 0 .7em;border-bottom:.8pt solid #999;padding-bottom:.25em}
-h3{font-size:13.5pt;margin:1.1em 0 .35em}
-h4{font-size:12pt;margin:1em 0 .3em}
+.hero-callout .big{display:block;font-size:1.12em;margin-bottom:.3em}
+h1{font-size:1.9em;text-align:center;margin:1.2em 0 .5em}
+h2{font-size:1.45em;margin:0 0 .7em;border-bottom:.8pt solid #999;padding-bottom:.25em}
+h3{font-size:1.22em;margin:1.1em 0 .35em}
+h4{font-size:1.08em;margin:1em 0 .3em}
 p{margin:.25em 0 .6em}
 ul,ol{padding-inline-start:1.5em;margin:.3em 0 .6em}
-table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:9.5pt;line-height:1.5;margin:.5em 0}
+table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:.8em;line-height:1.5;margin:.5em 0}
 th,td{border:.6pt solid #999;padding:.3em .4em;text-align:right;font-size:inherit;overflow-wrap:anywhere}
 th{background:#f2f2f2}
 .box,.rule,.ex,.note,.warn,.card,.lede,.irab,details.qa,ol.rules{border:.8pt solid #bbb;border-radius:3px;
   padding:.5em .7em;margin:.5em 0;background:#fff}
 .tag,.chip,.lbl{display:inline-block;border:.6pt solid #bbb;background:#f2f2f2;border-radius:3px;
-  padding:0 .4em;font-size:9pt;font-weight:700}
+  padding:0 .4em;font-size:.82em;font-weight:700}
 .num{font-weight:700}
-.small,.subsub,.idxsub{font-size:10.5pt}
+.small,.subsub,.idxsub{font-size:.9em}
 a{color:#111;text-decoration:none}
 .irab .stmt{display:block;font-size:11.5pt;margin:0 0 .3em}
 ol.rules{list-style:none;padding:0;counter-reset:rl}

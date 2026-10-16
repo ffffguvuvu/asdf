@@ -144,7 +144,7 @@ body:not(.sheets) .sheet{display:contents}
 /* ——— نسخةُ القراءةِ: أسودُ على أبيضَ، بلا زخرفةٍ، وبالأوراقِ نفسِها ——— */
 body.reading{background:#fff}
 body.reading .sheet{background:#fff;border:none;box-shadow:none;border-radius:0;margin:0 auto;
-  color:#111;font-size:12pt;line-height:1.78;text-align:right;padding:1.9cm 2.54cm}
+  color:#111;font-size:var(--fsheet);line-height:var(--lh);text-align:justify;padding:calc(var(--py) + var(--foot)) var(--px)}
 body.reading .sheet .phead{display:none}
 body.reading .sheet .pnum{color:#555;font-size:10pt;bottom:1.05cm;border-top:none}
 body.reading h1,body.reading h2,body.reading h3,body.reading h4,body.reading b,body.reading strong,
