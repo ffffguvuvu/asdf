@@ -6,6 +6,8 @@
 شغِّله من جذر المستودع:  python3 lessons-src/build.py
 """
 import re, os, glob, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import paginate as PG
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
@@ -51,17 +53,40 @@ body.sheets .sheet small,body.sheets .sheet a,body.sheets .sheet b,body.sheets .
 body.sheets .sheet ol.rules > li{font-size:.98em}
 body.sheets .sheet .badge,body.sheets .sheet .tag{font-family:inherit}
 body.sheets .sheet .hero-inner{font-size:1em}
-body.sheets .sheet:after{content:attr(data-page);position:absolute;bottom:calc(var(--py) - 1.35cm);
-  inset-inline:var(--px);text-align:center;font-size:9pt;line-height:1.4;font-weight:600;
-  color:var(--muted);font-family:inherit;letter-spacing:.15px}
-body.sheets .sheet:before{content:attr(data-head);position:absolute;top:calc(var(--py) - 1.55cm);
-  inset-inline:var(--px);text-align:center;font-size:8.6pt;line-height:1.35;color:var(--muted);
-  border-bottom:.6pt solid var(--line);padding-bottom:.16cm;font-family:inherit}
-body.sheets .sheet.cover:before,body.sheets .sheet.cover:after{display:none}
+
+
+
 body.sheets .sheet.oversize{min-height:0}
+body.sheets .sheet > section,body.sheets .sheet > section.cont,body.sheets .sheet > section.loose{
+  background:none;border:none;box-shadow:none;border-radius:0;padding:0;margin:0}
+body:not(.sheets) .book{display:block;max-width:none}
+body:not(.sheets) .sheet{display:contents}
+/* ——— نسخةُ القراءةِ: أسودُ على أبيضَ، بلا زخرفةٍ، وبالأوراقِ نفسِها ——— */
+body.reading{background:#fff}
+body.reading .sheet{background:#fff;border:none;box-shadow:none;border-radius:0;margin:0 auto;
+  color:#111;font-size:12pt;line-height:1.78;text-align:right;padding:1.9cm 2.54cm}
+body.reading .sheet .phead{display:none}
+body.reading .sheet .pnum{color:#555;font-size:10pt;bottom:1.05cm;border-top:none}
+body.reading h1,body.reading h2,body.reading h3,body.reading h4,body.reading b,body.reading strong,
+body.reading .tag,body.reading .kicker,body.reading .num,body.reading .lede b,body.reading a{color:#111}
+body.reading section>h2,body.reading h2,body.reading h3,body.reading h4{border-bottom:none}
+body.reading .box,body.reading .rule,body.reading .ex,body.reading .note,body.reading .warn,
+body.reading .card,body.reading details.qa,body.reading ol.rules,body.reading ol.rules>li,
+body.reading .irab,body.reading .lede,body.reading .hero,body.reading .hero-callout{
+  background:#fff!important;color:#111!important;border:1px solid #cfcfcf!important;box-shadow:none!important}
+body.reading .irab .stmt,body.reading .irab li,body.reading .irab b{color:#111!important}
+body.reading .tag,body.reading .chip,body.reading .lbl{background:#f1f1f1!important;border:1px solid #cfcfcf!important;color:#333!important}
+body.reading ol.rules>li:before{background:#f1f1f1!important;color:#111!important;border-inline-end:1px solid #cfcfcf!important}
+body.reading th,body.reading td{border-color:#cfcfcf!important;color:#111!important}
+body.reading table th{background:#f1f1f1!important}
+body.reading table.pos td:first-child,body.reading table.matrix td:first-child,body.reading table.thab td:first-child{
+  background:#f7f7f7!important;color:#111!important}
+body.reading a{text-decoration:underline}
+body.reading .badge,body.reading .hero-stats span,body.reading .hero-inner .sub,body.reading .small{color:#333!important}
+body.reading .pager,body.reading nav.toc{display:none}
 .book.paginating .sheet{min-height:0;box-shadow:none;border-color:transparent;margin-bottom:0}
 body.sheets main > section > .pager{display:none}
-body.sheets .sheet.oversize:after{content:attr(data-page) " · ورقةٌ تجاوزتْ مِقدارَها لجدولٍ كبيرٍ"}
+
 body.sheets .sheet table.pos th,body.sheets .sheet table.pos td{min-width:0}
 body.sheets .sheet .box .tag,body.sheets .sheet .rule .tag{margin:0 0 .35em}
 body.sheets .sheet ol.rules{counter-reset:rl}
@@ -69,12 +94,19 @@ body.sheets .sheet .irab .stmt{display:block;margin:0 0 .35em;font-size:1.05em}
 body.sheets .sheet ul,body.sheets .sheet ol{padding-inline-start:1.6em;margin:.25em 0 .55em}
 body.sheets .sheet .idxlist{padding-inline-start:1.2em}
 body.sheets .hero{position:relative}
-body.sheets .hero:after{content:attr(data-page);position:absolute;bottom:calc(var(--py) - 1.35cm);
-  inset-inline:var(--px);text-align:center;font-size:9pt;color:#cfe0d9;font-family:inherit}
+
 body.sheets main:not(:has(> .book)){max-width:none;padding:0}
 body.sheets main:not(:has(> .book)) > section{background:#fff;border:1px solid var(--line);border-radius:2px;
   box-shadow:0 4px 20px rgba(0,0,0,.10);padding:calc(var(--py) + var(--foot)) var(--px);margin:0 0 18px;
   min-height:var(--ph);max-width:var(--pw);font-size:var(--fsheet);line-height:var(--lh);text-align:justify}
+body.sheets .sheet .pnum,body.sheets .sheet .phead{position:absolute;inset-inline:var(--px);text-align:center;
+  margin:0;font-family:inherit;color:var(--muted);font-weight:600;letter-spacing:.15px;line-height:1.4}
+body.sheets .sheet .pnum{bottom:calc(var(--py) - 1.35cm);font-size:9pt}
+body.sheets .sheet .phead{top:calc(var(--py) - 1.55cm);font-size:8.6pt;border-bottom:.6pt solid var(--line);padding-bottom:.16cm}
+body.sheets .sheet .pnote{font-size:8.4pt;color:var(--muted);margin:.4em 0 0}
+body.sheets .hero .pnum{position:absolute;bottom:calc(var(--py) - 1.35cm);inset-inline:var(--px);text-align:center;
+  margin:0;font-size:9pt;color:#cfe0d9}
+body:not(.sheets) .phead,body:not(.sheets) .pnum,body:not(.sheets) .pnote{display:none}
 body.sheets .sheet > :first-child{margin-top:0}
 body.sheets .sheet > :last-child{margin-bottom:0}
 body.sheets .sheet h1{font-size:2.05em;line-height:1.5;text-align:center}
@@ -115,8 +147,8 @@ body.sheets .hero-stats{justify-content:center;flex-wrap:wrap}
   body.sheets .sheet{border:none;box-shadow:none;border-radius:0;margin:0;min-height:0;
     padding:calc(var(--foot) / 2) 0 0;box-sizing:border-box;page-break-after:always;break-after:print}
   body.sheets .sheet:last-of-type{page-break-after:auto;break-after:auto}
-  body.sheets .sheet:before{display:none}
-  body.sheets .sheet:after{position:static;inset-inline:auto;margin:1.05em 0 0;padding:0;border:none}
+  body.sheets .sheet .phead{display:none}
+  body.sheets .sheet .pnum{position:static;inset-inline:auto;margin:1.05em 0 0;padding:0;border:none}
   body.sheets .sheet,.sheet *{orphans:3;widows:3}
   body.sheets .sheet table{font-size:9pt}
   body.sheets .sheet th,body.sheets .sheet td{padding:.24em .34em}
@@ -124,6 +156,7 @@ body.sheets .hero-stats{justify-content:center;flex-wrap:wrap}
   table{min-width:0}
   thead{display:table-header-group}
   .irab{background:#123a34!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body.reading .irab,body.reading .box,body.reading .rule,body.reading .ex,body.reading .note,body.reading .warn,body.reading details.qa{background:#fff!important;color:#111!important}
   .pager,.no-print{display:none!important}
   section{box-shadow:none;border:none;break-inside:auto}
 }
@@ -228,6 +261,17 @@ def main():
                    + (f'\n      <div class="idxsub">{sub}</div>' if sub else '') + '\n    </li>')
         body.append(raw)
 
+    toc_html = ('<section id="toc">\n'
+                '  <h2><span class="num">٭</span>الفهرسُ التفصيليّ</h2>\n'
+                '  <p>فهرسٌ بكلِّ درسٍ ومبحثِه — كلُّ عنوانٍ رابطٌ مباشر. وللقارئِ أن يعود إلى جدولِ المواضع في آخرِ كلِّ درس، '
+                'ثمَّ إلى <a href="#matrix">مصفوفةِ المواضع الجامعة</a> التي تجمع الدروسَ الأربعةَ عشر في مقابل الأبوابِ الستة.</p>\n'
+                '  <ol class="idxlist">\n' + chr(10).join(idx) + '\n  </ol>\n</section>')
+    foot_html = ('<footer>\n  <p>دروسُ الإعراب — وُضع هذا الملفُّ.self-contained: يعمل بلا إنترنت، وكلُّ رابطٍ داخليٍّ '
+                 'مُتحقَّقٌ منه. راجِعْه مع «الدليل الشامل في النحو العربي والبلاغة».</p>\n</footer>')
+    main_src = toc_html + '\n' + ''.join(body) + '\n' + foot_html
+    titles = {(mt['sid'] or ''): ((mt['num'] or '') + ' ' + (mt['title'] or '')).strip() for mt in metas}
+    sheets_html, total_pages = PG.paginate(main_src, titles, cover=True)
+    pages_html = '<div class="book">\n' + sheets_html + '\n</div>'
     total_h = len(idx) and sum(1 for _ in re.finditer(r'<h[34]', ' '.join(body)))
     stats = {
         'lessons': sum(1 for mt in metas if re.match(r'^l\d+$', mt['sid'])),
@@ -246,10 +290,10 @@ def main():
 </head>
 <body class="sheets">
 <div class="toolbar no-print">
-  <button onclick="document.body.classList.toggle('sheets');renderPages()">عرضٌ ورقيٌّ (ورقةٌ مقطَّعةٌ) / عرضٌ متَّصل</button>
-  <button onclick="document.body.classList.toggle('each-lesson');renderPages()">كلُّ درسٍ في صفحةٍ مستقلةٍ</button>
+  <button onclick="document.body.classList.toggle('sheets')">عرضٌ ورقيٌّ (أوراقٌ مثبَّتةٌ) / عرضٌ متَّصلٌ</button>
+  <button onclick="setReading(!document.body.classList.contains('reading'))">نسخةُ قراءةٍ (أسودُ على أبيضَ)</button>
   <button onclick="window.print()">طباعةٌ أو حفظٌ في ملفٍ مستقلٍّ</button>
-  <span class="hint">قياسُ الورقةِ: ٢١ سم عرضًا × ٢٩٫٧ سم طولًا؛ وهوامشُها: ٢٫٥٤ سم أعلى وأسفلَ، ٣٫١٨ سم يمينًا ويسارًا. الخطُّ مضبوطٌ على ١١٫٥ نقطةً بمسافةِ سطرٍ ١٫٩٥، والكتابةُ مُبرَّرةٌ؛ والمحتوى مُدمَجٌ في أوراقٍ متَّصلةٍ تُرقَّمُ «صفحةُ كذا من كذا» مع عنوانٍ جارٍ أعلى كلِّ ورقةٍ.</span>
+  <span class="hint">مقاسُ الورقةِ: ٢١ سم × ٢٩٫٧ سم؛ وهوامشُها ٢٫٥٤ سم أعلى وأسفلَ و٣٫١٨ سم جانبًا؛ الخطُّ ١١٫٥ نقطةً بسطرٍ ١٫٩٥ وكتابةٍ مُبرَّرةٍ. التقطيعُ حُفِرَ وقتَ البناءِ لا وقتَ العرضِ: {ar(total_pages)} صفحةً، برقمٍ متَّصلٍ وعنوانٍ جارٍ أعلى كلِّ صفحةٍ — فالشاشةُ والطباعةُ ونسخةُ القراءةِ صفحةٌ واحدةٌ بكلماتٍ واحدةٍ.</span>
 </div>
 <header class="hero">
   <div class="hero-inner">
@@ -261,6 +305,7 @@ def main():
       <span>🧾 {ar(stats['appendix'])} ملاحقَ جامعة</span>
       <span>🗂️ {ar(stats['heads'])} مبحثًا فرعيًّا</span>
       <span>📐 {ar(stats['tables'])} جدولًا</span>
+      <span>📄 {ar(total_pages)} صفحةً مثبَّتةَ التقطيعِ</span>
       <span>🧷 مواضعُ كلِّ درسٍ في ستةِ أبواب</span>
       <span>✅ ثوابتٌ مصنَّفةٌ في الختام</span>
       <span>🖋️ أمثلةٌ مشكولةٌ مُعربة</span>
@@ -271,6 +316,7 @@ def main():
       <span class="small" style="color:#d9e6de">نموذجٌ يُطبَّق في درسَي المبتدأ والخبر: جملةُ «الحَيُّ القَيُّومُ» خبرٌ لمبتدأ محذوفٍ وجوبًا، و«إلَّا» أداةُ حصر، و«هُوَ» ضميرٌ منفصلٌ في محلِّ رفعٍ مبتدأ.</span>
     </div>
   </div>
+  <p class="pnum">صفحةُ ١ من {ar(total_pages)}</p>
 </header>
 <div class="layout">
   <nav class="toc">
@@ -279,118 +325,94 @@ def main():
 {''.join(nav)}      <a class="grp" href="#matrix"><b>٭</b>مصفوفةُ المواضع</a>
   </nav>
   <main>
-<section id="toc">
-  <h2><span class="num">٭</span>الفهرسُ التفصيليّ</h2>
-  <p>فهرسٌ بكلِّ درسٍ ومبحثِه — كلُّ عنوانٍ رابطٌ مباشر. وللقارئِ أن يعود إلى جدولِ المواضع في آخرِ كلِّ درس، ثمَّ إلى <a href="#matrix">مصفوفةِ المواضع الجامعة</a> التي تجمع الدروسَ الأربعةَ عشر في مقابل الأبوابِ الستة.</p>
-  <ol class="idxlist">
-{chr(10).join(idx)}
-  </ol>
-</section>
-{''.join(body)}
-<footer>
-  <p>دروسُ الإعراب — وُضع هذا الملفُّ.self-contained: يعمل بلا إنترنت، وكلُّ رابطٍ داخليٍّ مُتحقَّقٌ منه. راجِعْه مع «الدليل الشامل في النحو العربي والبلاغة».</p>
-</footer>
+{pages_html}
   </main>
 </div>
 </body>
 </html>
 '''
     doc = doc.replace('ملفُّ.self-contained', 'ملفٌّ قائمٌ بنفسه،')
-    JS = r'''<script>
-/* تقطيعٌ متَّصلٌ إلى أوراقٍ بمقاسِ الورقةِ، مع ترقيمٍ متَّصلٍ وعنوانٍ جارٍ ومنعِ اليتيمِ */
-var PG={pw:21,ph:29.7,px:3.18,py:2.54,foot:1.05,safe:18},AR='\u0660\u0661\u0662\u0663\u0664\u0665\u0666\u0667\u0668\u0669';
-function arNum(n){return String(n).split('').map(function(c){return AR[+c]||c;}).join('');}
-function mmToPx(x){return x*96/2.54;}
-function capPx(){return mmToPx(PG.ph)-2*mmToPx(PG.py)-2*mmToPx(PG.foot)-PG.safe;}
-function one(s){return (s||'').replace(/\s+/g,' ').trim();}
-var FALLBACK={toc:'فهرسُ الدروسِ',thawat:'ثوابتُ المواضعِ',thawat2:'بوّاباتُ الأبوابِ',matrix:'مصفوفةُ المواضعِ',sources:'المصادرُ والمنهجيةُ'};
-function titleOf(sec){
-  var t='';
-  if(sec.id&&FALLBACK[sec.id]){t=FALLBACK[sec.id];}
-  else{var h=sec.querySelector('h2');if(h){t=one(h.textContent);t=t.replace(/\s+/g,' ');t=t.replace(/([\u0660-\u0669]+)[\s\u00a0]*(?=[\u0621-\u064A])/,'$1 ');if(t.length>62)t=t.slice(0,62)+'…';}}
-  return t||'دروسُ الإعرابِ';
-}
-function unPages(){
-  var book=document.querySelector('main > .book');
-  if(book){
-    var groups={},order=[];
-    [].slice.call(book.querySelectorAll(':scope > .sheet')).forEach(function(sh){
-      [].slice.call(sh.children).forEach(function(el){
-        var sid=el.getAttribute('data-sid')||'*';
-        if(!groups[sid]){groups[sid]=[];order.push(sid);}
-        groups[sid].push(el);el.removeAttribute('data-sid');
-      });
-    });
-    order.forEach(function(sid){
-      var host=(sid==='*')?document.querySelector('main'):document.getElementById(sid);
-      if(!host)return;
-      groups[sid].forEach(function(el){host.appendChild(el);});
-    });
-    if(book.parentNode)book.parentNode.removeChild(book);
-  }
-  var hero=document.querySelector('header.hero');
-  if(hero){hero.removeAttribute('data-page');}
-}
-function renderPages(){
-  unPages();
-  if(!document.body.classList.contains('sheets'))return;
-  var main=document.querySelector('main');if(!main)return;
-  var cap=capPx();
-  var book=document.createElement('div');book.className='book paginating';
-  var each=document.body.classList.contains('each-lesson');
-  var sheets=[],cur=null;
-  function openSheet(){cur=document.createElement('div');cur.className='sheet';sheets.push(cur);book.appendChild(cur);return cur;}
-  openSheet();
-  function place(el,title){
-    if(cur.children.length){
-      cur.appendChild(el);
-      if(cur.scrollHeight>cap){cur.removeChild(el);openSheet();}
-    }
-    cur.appendChild(el);
-    if(!cur.getAttribute('data-head'))cur.setAttribute('data-head',title);
-    if(cur.scrollHeight>cap)cur.classList.add('oversize');
-  }
-  [].slice.call(main.children).forEach(function(box){
-    if(box.classList.contains('book'))return;
-    if(box.tagName==='SECTION'){
-      var sid=box.id||'*',t=titleOf(box);
-      if(each&&cur.children.length)openSheet();
-      [].slice.call(box.children).forEach(function(el){
-        if(el.classList.contains('book')||el.classList.contains('pager'))return;
-        if(sid!=='*')el.setAttribute('data-sid',sid);
-        place(el,t);
-      });
-    }else{
-      box.setAttribute('data-sid','*');
-      place(box,'خاتمةُ الملفِ');
-    }
-  });
-  for(var i=0;i<sheets.length-1;i++){
-    var last=sheets[i].lastElementChild;
-    if(last&&/^H[1-4]$/.test(last.tagName)){
-      sheets[i].removeChild(last);
-      sheets[i+1].insertBefore(last,sheets[i+1].firstElementChild);
-      if(sheets[i+1].scrollHeight>cap)sheets[i+1].classList.add('oversize');
-    }
-  }
-  if(!sheets[0].children.length&&sheets.length>1){book.removeChild(sheets[0]);sheets.shift();}
-  main.appendChild(book);
-  void book.offsetWidth;
-  book.classList.remove('paginating');
-  var hero=document.querySelector('header.hero');
-  var first=hero?2:1,total=sheets.length+(hero?1:0);
-  if(hero)hero.setAttribute('data-page','صفحةُ ١ من '+arNum(total));
-  sheets.forEach(function(s,i){
-    s.setAttribute('data-page','صفحةُ '+arNum(i+first)+' من '+arNum(total));
-    if(!s.getAttribute('data-head'))s.setAttribute('data-head','دروسُ الإعرابِ');
-  });
-}
-var rT=null;
-window.addEventListener('resize',function(){clearTimeout(rT);rT=setTimeout(renderPages,250);});
-window.addEventListener('load',renderPages);
-if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){renderPages();});}
-</script>'''
-    doc = doc.replace('</body>', "\n" + JS + "\n</body>", 1)
+    READ_TPL = """<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>دروسُ الإعراب — نسخةُ القراءةِ</title>
+<style>
+:root{--pw:21cm;--ph:29.7cm;--px:3.18cm;--py:2.54cm}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:#111;direction:rtl;
+  font:12pt/1.78 "Amiri","Noto Naskh Arabic","Scheherazade New",serif}
+main{max-width:var(--pw);margin:0 auto}
+.sheet{position:relative;width:var(--pw);min-height:var(--ph);padding:var(--py) var(--px);
+  margin:0 auto;text-align:justify;page-break-after:always;break-after:page}
+.sheet:last-of-type{page-break-after:auto;break-after:auto}
+.phead{display:none}
+.pnum{position:absolute;bottom:.9cm;inset-inline:var(--px);text-align:center;margin:0;font-size:10pt;color:#555}
+.pnote{font-size:9pt;color:#555;margin:.4em 0 0}
+.cover{display:block}
+.hero-inner{max-width:none;text-align:justify}
+.hero-inner h1{font-size:22pt;text-align:center;margin:.5em 0}
+.hero-inner .sub{font-size:11pt;text-align:center;color:#333}
+.badge,.hero-stats span{display:inline-block;border:.6pt solid #bbb;border-radius:3px;padding:0 .5em;
+  font-size:10pt;margin:.15em;color:#333}
+.hero-stats{display:block;margin:.8em 0;text-align:center}
+.hero-callout{border:.8pt solid #bbb;border-radius:3px;padding:.6em .8em;margin:1em 0;text-align:center}
+.hero-callout .big{display:block;font-size:13pt;margin-bottom:.3em}
+h1{font-size:22pt;text-align:center;margin:2.6cm 0 .5cm}
+h2{font-size:16pt;margin:0 0 .7em;border-bottom:.8pt solid #999;padding-bottom:.25em}
+h3{font-size:13.5pt;margin:1.1em 0 .35em}
+h4{font-size:12pt;margin:1em 0 .3em}
+p{margin:.25em 0 .6em}
+ul,ol{padding-inline-start:1.5em;margin:.3em 0 .6em}
+table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:9.5pt;line-height:1.5;margin:.5em 0}
+th,td{border:.6pt solid #999;padding:.3em .4em;text-align:right;font-size:inherit;overflow-wrap:anywhere}
+th{background:#f2f2f2}
+.box,.rule,.ex,.note,.warn,.card,.lede,.irab,details.qa,ol.rules{border:.8pt solid #bbb;border-radius:3px;
+  padding:.5em .7em;margin:.5em 0;background:#fff}
+.tag,.chip,.lbl{display:inline-block;border:.6pt solid #bbb;background:#f2f2f2;border-radius:3px;
+  padding:0 .4em;font-size:9pt;font-weight:700}
+.num{font-weight:700}
+.small,.subsub,.idxsub{font-size:10.5pt}
+a{color:#111;text-decoration:none}
+.irab .stmt{display:block;font-size:11.5pt;margin:0 0 .3em}
+ol.rules{list-style:none;padding:0;counter-reset:rl}
+ol.rules>li{counter-increment:rl;position:relative;padding:.25em 2.6em .25em .5em;
+  border-bottom:.5pt solid #ddd;list-style:none}
+ol.rules>li:last-child{border-bottom:none}
+ol.rules>li:before{content:counter(rl,arabic-indic);position:absolute;inset-inline-start:0;font-weight:700}
+.tblwrap{overflow:visible}
+img{max-width:100%}
+@page{size:A4;margin:var(--py) var(--px)}
+</style>
+</head>
+<body>
+<main>
+@@COVER@@
+@@PAGES@@
+</main>
+</body>
+</html>
+"""
+    hero_html = re.search(r'(?s)<header class="hero">.*?</header>', doc)
+    hero_inner = re.sub(r'(?s)\s*</?header[^>]*>\s*', '', hero_html.group(0)) if hero_html else ''
+    hero_inner = re.sub(r'(?s)\s*<p class="pnum">.*?</p>', '', hero_inner)   # يتولّاها الغلافُ أدناه
+    cover = ('<div class="sheet cover">\n' + hero_inner +
+             '\n  <p class="pnum">صفحةُ ١ من ' + ar(total_pages) + '</p>\n  </div>')
+    read_doc = (READ_TPL
+                .replace('@@TOTAL@@', ar(total_pages))
+                .replace('@@PAGES@@', pages_html)
+                .replace('@@COVER@@', cover))
+    read_doc = read_doc.replace('ملفُّ.self-contained', 'ملفٌّ قائمٌ بنفسه،')
+    open(os.path.join(HERE, '..', 'arabic-reading.html'), 'w', encoding='utf-8').write(read_doc)
+    print('نسخةُ القراءةِ KB:', round(len(read_doc.encode()) / 1024, 1), '| أوراقٌ:', read_doc.count('<div class="sheet'))
+    DOC_JS = '<script>\n' + (
+        'function setReading(on){var c=document.body.classList;'
+        'if(on){c.add("reading");c.add("sheets");}else{c.remove("reading");}}\n'
+        'window.setReading=setReading;\n'
+        '</script>'
+    )
+    doc = doc.replace('</body>', "\n" + DOC_JS + "\n</body>", 1)
     open(OUT, 'w', encoding='utf-8').write(doc)
     # تحقَّق
     from html.parser import HTMLParser
