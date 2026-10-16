@@ -347,7 +347,7 @@ main{max-width:var(--pw);margin:0 auto}
 .sheet{position:relative;width:var(--pw);min-height:var(--ph);padding:var(--py) var(--px);
   margin:0 auto;text-align:justify;page-break-after:always;break-after:page}
 .sheet:last-of-type{page-break-after:auto;break-after:auto}
-.phead{display:none}
+.phead{font-size:.8em;color:#555;text-align:center;margin:0 0 1.1em;border-bottom:.5pt solid #ddd;padding-bottom:.2em}
 .pnum{position:absolute;bottom:1.05cm;inset-inline:var(--px);text-align:center;margin:0;font-size:.8em;color:#555}
 .pnote{font-size:.8em;color:#555;margin:.4em 0 0}
 .cover{display:block}
