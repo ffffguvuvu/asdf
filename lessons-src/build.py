@@ -17,6 +17,53 @@ def ar(n):
     return ''.join(AR[int(c)] for c in str(n))
 
 EXTRA_CSS = """
+
+/* ——— وضعُ الصفحات: قياسُ A4 بهوامشَ كهيئاتِ Word (٢٫٥٤ سم أعلى/أسفل، ٣٫١٨ سم يمينًا ويسارًا) ——— */
+:root{--pw:21cm;--ph:29.7cm;--px:3.18cm;--py:2.54cm}
+.toolbar{position:sticky;top:0;z-index:60;display:flex;gap:8px;align-items:center;justify-content:center;
+  flex-wrap:wrap;padding:8px 12px;background:rgba(250,247,240,.94);border-bottom:1px solid var(--line);
+  backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+.toolbar button{font:inherit;font-size:14px;font-weight:700;color:var(--ink2);background:#fffdfa;
+  border:1px solid var(--line);border-radius:9px;padding:6px 14px;cursor:pointer}
+.toolbar button:hover{border-color:var(--gold);color:var(--green)}
+.toolbar .hint{font-size:13px;color:var(--muted)}
+.irab ul{padding-inline-start:22px;margin:0}
+.irab .alt{color:#cfe6dd}
+body.sheets .layout{display:block;max-width:none;padding:0;margin:0}
+body.sheets nav.toc{display:none}
+body.sheets .hero{max-width:var(--pw);margin:22px auto;padding:var(--py) var(--px);min-height:var(--ph);
+  display:grid;place-items:center;box-sizing:border-box;border-radius:3px;box-shadow:0 3px 18px rgba(0,0,0,.10)}
+body.sheets .hero-inner{max-width:none}
+body.sheets main{max-width:var(--pw);margin:0 auto;padding:20px 0 70px}
+body.sheets .book{display:block}
+body.sheets .sheet{position:relative;background:#fff;border:1px solid var(--line);border-radius:2px;
+  box-shadow:0 3px 16px rgba(0,0,0,.10);min-height:var(--ph);padding:var(--py) var(--px);
+  margin:0 0 20px;box-sizing:border-box;overflow-wrap:break-word}
+body.sheets .sheet:after{content:attr(data-page);position:absolute;bottom:.75cm;inset-inline:var(--px);
+  display:flex;justify-content:space-between;font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:5px}
+body.sheets .sheet.oversize:after{content:attr(data-page) " · صفحةٌ أطولُ من ورقةٍ لجدولٍ كبير"}
+body.sheets main > section:not(:has(.book)){background:#fff;border:1px solid var(--line);border-radius:2px;
+  box-shadow:0 3px 16px rgba(0,0,0,.10);padding:var(--py) var(--px);margin:0 0 20px}
+body.sheets .sheet > :first-child{margin-top:0}
+body.sheets .pager{max-width:var(--pw);margin:0 auto 22px;justify-content:space-between}
+body.sheets .tblwrap table{min-width:0}
+body.sheets table{font-size:14.6px}
+@page{size:A4;margin:var(--py) var(--px)}
+@media print{
+  .toolbar{display:none!important}
+  body{background:#fff;font-size:11.5pt}
+  body.sheets .layout,body.sheets main{max-width:none;margin:0;padding:0;display:block}
+  body.sheets .hero{max-width:none;min-height:0;margin:0 0 8mm;padding:12mm 0;box-shadow:none;border:none;display:block}
+  body.sheets .sheet{border:none;box-shadow:none;border-radius:0;margin:0;padding:0;min-height:0;page-break-after:auto}
+  body.sheets .sheet:after{display:none}
+  body.sheets .book{page-break-before:always;break-before:page}
+  body.sheets .book:first-of-type{page-break-before:auto;break-before:auto}
+  .tblwrap{overflow:visible}
+  table{min-width:0;font-size:9.5pt}
+  th,td{padding:6px 7px}
+  .irab{background:#123a34!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .pager,.no-print{display:none!important}
+}
 /* ——— إضافات «دروس الإعراب» ——— */
 ol.rules{list-style:none;counter-reset:rl;padding:0;margin:14px 0;
   border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fffdfa}
@@ -130,11 +177,16 @@ def main():
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>دروسُ الإعراب — أربعةَ عشرَ درسًا مع الثوابتِ ومصافحةِ المواضع</title>
+<title>دروسُ الإعراب — أربعةَ عشرَ درسًا مع الثوابتِ ومصفوفةِ المواضع</title>
 <meta name="description" content="أربعةَ عشرَ درسًا مفصَّلًا: المبتدأ، الخبر، الفعل، الفاعل، المفعول، أسماء الإشارة، الأسماء الموصولة، العطف، التوكيد، البدل، النعت، الحال، التمييز، الإضافة — مع جمعِ الثوابت في آخر الملفِّ مصنَّفةً، وبيانِ جميع مواضع كلِّ درسٍ: الأساليب، والتقديم والتأخير، والحذف، والنواصب، والنواسخ، والتراكيب الخاصة.">
 {style}
 </head>
-<body>
+<body class="sheets">
+<div class="toolbar no-print">
+  <button onclick="document.body.classList.toggle('sheets');renderPages()">عرضٌ ورقيٌّ (ورقةٌ مقطَّعةٌ) / عرضٌ متَّصل</button>
+  <button onclick="window.print()">طباعةٌ أو حفظٌ في ملفٍ مستقلٍّ</button>
+  <span class="hint">قياسُ الورقةِ: ٢١ سم عرضًا × ٢٩٫٧ سم طولًا؛ وهوامشُها: ٢٫٥٤ سم أعلى وأسفلَ، ٣٫١٨ سم يمينًا ويسارًا — كصفحةِ المستنداتِ المعتادةِ.</span>
+</div>
 <header class="hero">
   <div class="hero-inner">
     <span class="badge">دروسٌ مفصَّلة · مواضعُ مطرَّدة · ثوابتُ مصنَّفة</span>
@@ -180,6 +232,54 @@ def main():
 </html>
 '''
     doc = doc.replace('ملفُّ.self-contained', 'ملفٌّ قائمٌ بنفسه،')
+    doc = doc.replace('</body>', "\n<script>\n" + ('''/* تقطيعُ المحتوى إلى أوراقٍ بحجمِ الورقةِ المعتادةِ (شاشةً)؛ والطباعةُ تُولِّي قواعدَ @page */
+var PG={pw:21,ph:29.7,px:3.18,py:2.54},AR='٠١٢٣٤٥٦٧٨٩';
+function arNum(n){return String(n).split('').map(function(c){return AR[+c]||c;}).join('');}
+function mmToPx(x){return x*96/2.54;}
+function unPages(){
+  document.querySelectorAll('main > section').forEach(function(sec){
+    var book=sec.querySelector(':scope > .book');
+    if(!book)return;
+    var sheets=[].slice.call(book.querySelectorAll(':scope > .sheet'));
+    sheets.forEach(function(sh){
+      while(sh.firstChild){book.parentNode.insertBefore(sh.firstChild,book);}
+    });
+    book.remove();
+  });
+}
+function renderPages(){
+  unPages();
+  if(!document.body.classList.contains('sheets'))return;
+  var inner=mmToPx(PG.ph)-2*mmToPx(PG.py)-10;
+  document.querySelectorAll('main > section').forEach(function(sec){
+    var kids=[].slice.call(sec.children).filter(function(el){
+      return !el.classList.contains('book')&&!el.classList.contains('pager');
+    });
+    if(!kids.length)return;
+    var pager=sec.querySelector(':scope > .pager');
+    var book=document.createElement('div');book.className='book';
+    var pages=[],cur=null;
+    function newPage(){cur=document.createElement('div');cur.className='sheet';pages.push(cur);book.appendChild(cur);}
+    newPage();
+    kids.forEach(function(el){
+      cur.appendChild(el);
+      if(cur.scrollHeight>inner&&cur.children.length>1){cur.removeChild(el);newPage();cur.appendChild(el);}
+    });
+    if(pager)pages[pages.length-1].appendChild(pager);
+    sec.appendChild(book);
+    pages.forEach(function(p){
+      if(p.scrollHeight>inner+8)p.classList.add('oversize');
+    });
+  });
+  var all=[].slice.call(document.querySelectorAll('main .sheet'));
+  all.forEach(function(p,i){
+    p.setAttribute('data-page','دروسُ الإعراب — صفحةُ '+arNum(i+1)+' من '+arNum(all.length));
+  });
+}
+var rT=null;
+window.addEventListener('resize',function(){clearTimeout(rT);rT=setTimeout(renderPages,250);});
+window.addEventListener('load',renderPages);
+if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){renderPages();});}''') + '</script>\n</body>', 1)
     open(OUT, 'w', encoding='utf-8').write(doc)
     # تحقَّق
     from html.parser import HTMLParser
