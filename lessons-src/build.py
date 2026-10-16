@@ -65,8 +65,8 @@ body:not(.sheets) .sheet{display:contents}
 body.reading{background:#fff}
 body.reading .sheet{background:#fff;border:none;box-shadow:none;border-radius:0;margin:0 auto;
   color:#111;font-size:var(--fsheet);line-height:var(--lh);text-align:justify;padding:calc(var(--py) + var(--foot)) var(--px)}
-body.reading .sheet .phead{display:none}
-body.reading .sheet .pnum{color:#555;font-size:10pt;bottom:1.05cm;border-top:none}
+body.reading .sheet .phead{font-size:.8em;color:#555;text-align:center;margin:0 0 1.1em;border-bottom:.5pt solid #ddd;padding-bottom:.2em}
+body.reading .sheet .pnum{color:#555;font-size:.8em;bottom:1.05cm;border-top:none}
 body.reading h1,body.reading h2,body.reading h3,body.reading h4,body.reading b,body.reading strong,
 body.reading .tag,body.reading .kicker,body.reading .num,body.reading .lede b,body.reading a{color:#111}
 body.reading section>h2,body.reading h2,body.reading h3,body.reading h4{border-bottom:none}
